@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,10 @@ Route::post('/login',[AuthController::class,'login'])->name('cinema.login');
 Route::get('/register',[AuthController::class,'registerPage'])->name('cinema.registerpage');
 Route::post('/register',[AuthController::class,'register'])->name('cinema.register');
 Route::get('/logout',[AuthController::class,'logout'])->name('cinema.logout');
+
+Route::group(['prefix' =>'admin','middleware' => 'checkpermission'], function() {
+    Route::get('/',[AdminController::class,'homeAdmin'])->name('admin.home');
+});
 
 
 Route::get('{any}', function () {
