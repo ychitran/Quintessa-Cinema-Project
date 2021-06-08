@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+//================ Header Navbar Start========================================
+.header {
+    &__auto {
+        height: auto;
+        width: 100%;
+    }
+    &__full {
+        width: 100%;
+        height: 100%;
+    }
+    &__height-menu {
+        height: 70px;
+        width: 100%;
+    }
+    &__space {
+        margin-right: 20px;
+    }
+    &__font {
+        color: #fff;
+        font-family: 'Josefin Sans', sans-serif;
+        line-height: 28px;
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        font-weight: 600;
+    }
+    &__display {
+        display: flex;
+    }
+    &__margin {
+        margin: auto;
+    }
+    &__width {
+        width: 60%;
+    }
+    &__icon {
+        color: white;
+    }
+    &__border {
+        border-bottom: 1px solid rgb(138, 137, 137);
+    }
+}
+
+//================= Header Navbar End========================
+// Slide Start
+.slide {
+    &__height {
+        height: 800px;
+        width: 100%;
+    }
+    &__img {
+        filter: brightness(50%);
+    }
+    &__index {
+        z-index: 1;
+    }
+    &__animation {
+        -webkit-transition: -webkit-transform 2s ease-in-out !important;
+        -o-transition: -o-transform 2s ease-in-out !important;
+        transition: transform 2s ease-in-out !important;
+    }
+    &__height-auto {
+        height: auto;
+    }
+}
+
+// Slide End
