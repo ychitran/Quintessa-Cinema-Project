@@ -28,7 +28,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/admin/admin_assets/vendor/bootstrap/css/bootstrap.min.css",
+              "src/assets/admin/admin_assets/css/orionicons.css",
+              "src/assets/admin/admin_assets/css/style.default.css"
             ],
             "scripts": []
           },
