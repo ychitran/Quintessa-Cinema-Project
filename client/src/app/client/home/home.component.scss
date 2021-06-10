@@ -1,10 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
-//================ Header Navbar Start========================================
-.header {
+//================ Header Navbar Start
+.head {
     &__auto {
         height: auto;
         width: 100%;
@@ -18,14 +13,14 @@
         width: 100%;
     }
     &__space {
-        margin-right: 20px;
+        margin-right: 60px;
     }
     &__font {
         color: #fff;
         font-family: 'Josefin Sans', sans-serif;
         line-height: 28px;
-        font-size: 13px;
-        letter-spacing: 1.5px;
+        font-size: 14px;
+        letter-spacing: 2px;
         font-weight: 600;
     }
     &__display {
@@ -34,23 +29,37 @@
     &__margin {
         margin: auto;
     }
-    &__width {
+    &__logo {
         width: 60%;
     }
     &__icon {
         color: white;
+        margin-right: 30px;
     }
     &__border {
-        border-bottom: 1px solid rgb(138, 137, 137);
+        border-bottom: 1px solid rgb(66, 66, 66);
+    }
+    &__margin-left {
+        margin: auto 0 auto 10px;
     }
 }
 
-//================= Header Navbar End========================
-// Slide Start
+.straight::after {
+    content: '|';
+    color: #fb802d;
+    margin-left: 15px;
+    margin-right: 10px;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+//================= Header Navbar End
+//================== Slide Start
 .slide {
     &__height {
         height: 800px;
         width: 100%;
+        margin-bottom: 80px;
     }
     &__img {
         filter: brightness(50%);
@@ -58,14 +67,198 @@
     &__index {
         z-index: 1;
     }
-    &__animation {
-        -webkit-transition: -webkit-transform 2s ease-in-out !important;
-        -o-transition: -o-transform 2s ease-in-out !important;
-        transition: transform 2s ease-in-out !important;
-    }
+    // &__animation {
+    //     -webkit-transition: -webkit-transform 2s ease-in-out !important;
+    //     -o-transition: -o-transform 2s ease-in-out !important;
+    //     transition: transform 2s ease-in-out !important;
+    // }
     &__height-auto {
         height: auto;
     }
 }
 
-// Slide End
+.animation {
+    &__center {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    &__font-tittle {
+        font-family: 'Josefin Sans', sans-serif;
+        color: #fff;
+        font-size: 100px;
+        font-weight: 700;
+    }
+    &__font-under {
+        font-family: 'Josefin Sans', sans-serif;
+        color: #fff;
+        font-size: 18px;
+        letter-spacing: 5px;
+    }
+    &__height {
+        margin-top: 50px;
+    }
+}
+
+.button {
+    --offset: 10px;
+    --border-size: 2px;
+    position: relative;
+    padding: 1.5em 3em;
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: .25em;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 0;
+    box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+    transition: background .8s ease;
+    &:hover {
+        background: rgba(100, 0, 0, .03);
+    }
+    &__horizontal,
+    &__vertical {
+        position: absolute;
+        top: var(--horizontal-offset, 0);
+        right: var(--vertical-offset, 0);
+        bottom: var(--horizontal-offset, 0);
+        left: var(--vertical-offset, 0);
+        transition: transform .8s ease;
+        will-change: transform;
+        &::before {
+            content: '';
+            position: absolute;
+            border: inherit;
+        }
+    }
+    &__horizontal {
+        --vertical-offset: calc(var(--offset) * -1);
+        border-top: var(--border-size) solid currentcolor;
+        border-bottom: var(--border-size) solid currentcolor;
+        &::before {
+            top: calc(var(--vertical-offset) - var(--border-size));
+            bottom: calc(var(--vertical-offset) - var(--border-size));
+            left: calc(var(--vertical-offset) * -1);
+            right: calc(var(--vertical-offset) * -1);
+        }
+    }
+    &:hover &__horizontal {
+        transform: scaleX(0);
+    }
+    &__vertical {
+        --horizontal-offset: calc(var(--offset) * -1);
+        border-left: var(--border-size) solid currentcolor;
+        border-right: var(--border-size) solid currentcolor;
+        &::before {
+            top: calc(var(--horizontal-offset) * -1);
+            bottom: calc(var(--horizontal-offset) * -1);
+            left: calc(var(--horizontal-offset) - var(--border-size));
+            right: calc(var(--horizontal-offset) - var(--border-size));
+        }
+    }
+    &:hover &__vertical {
+        transform: scaleY(0);
+    }
+}
+
+// ===================Slide End
+// ===============Tittle Now Playing Start - Tittle Coming Soon Start
+.content-play {
+    &__bottom {
+        margin-bottom: 80px;
+    }
+    &__font {
+        font-family: 'Josefin Sans', sans-serif;
+        color: #fff;
+        font-size: 27px;
+        font-weight: 500;
+    }
+    &:after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 1.5px;
+        background: #f44336;
+        top: 30px;
+        margin: auto;
+        margin-top: 10px;
+    }
+}
+
+//============ Tittle Now Playing End - Tittle Coming Soon End
+//========= Image Now Playing Start - Image Coming Soon Start
+.img {
+    &__height {
+        height: 600px;
+        width: 100%;
+    }
+    &__height-picture {
+        height: 500px;
+        width: 100%;
+    }
+    &__font {
+        font-family: 'Roboto', sans-serif;
+        font-size: 20px;
+        font-weight: 300;
+        letter-spacing: 3px;
+    }
+}
+
+.hide {
+    display: none;
+}
+
+.card-img-top:hover {
+    filter: brightness(50%);
+    transition: 0.5s;
+    +.hide {
+        display: block;
+    }
+}
+
+//Image Now Playing End - Image Coming Soon End
+// Footer Start
+.footer {
+    &__height {
+        height: 400px;
+    }
+    &__tittle {
+        font-family: 'Montserrat', sans-serif;
+        color: #fff;
+        font-size: 16px;
+        letter-spacing: 2px;
+        font-weight: 500;
+        margin-bottom: 40px;
+    }
+    &__font {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.6);
+    }
+    &__social {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+    }
+    &__space {
+        margin-right: 10px;
+    }
+    &__border {
+        border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+    &__logo {
+        width: 40%;
+    }
+    &__height-logo {
+        height: 20px;
+    }
+    &__bottom {
+        margin-bottom: 50px
+    }
+}
+
+// Footer End
