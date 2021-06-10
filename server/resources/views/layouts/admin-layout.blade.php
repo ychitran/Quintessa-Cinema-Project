@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="{{asset('/storage/admin_assets/css/orionicons.css')}}">
   <!-- theme stylesheet-->
   <link rel="stylesheet" href="{{asset('/storage/admin_assets/css/style.default.css')}}" id="theme-stylesheet">
-  <!-- Custom stylesheet - for your changes-->
+  <!-- Custom stylesheet -->
   <link rel="stylesheet" href="{{asset('/storage/admin_assets/css/custom.css')}}">
   <link rel="stylesheet" href="{{asset('/storage/admin_assets/css/style.css')}}">
 
@@ -58,10 +58,10 @@
       <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">QUẢN LÝ</div>
       <ul class="sidebar-menu list-unstyled">
         <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i class="o-home-1 mr-3 text-gray"></i><span>Home</span></a></li>
-        <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i class="fas fa-film mr-3 text-gray"></i><span>Quản Lý Phim</span></a></li>
+        <li class="sidebar-list-item"><a href="{{route('admin.managefilm')}}" class="sidebar-link text-dark"><i class="fas fa-film mr-3 text-gray"></i><span>Quản Lý Phim</span></a></li>
         <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i class="fas fa-ticket-alt mr-3 text-gray"></i><span>Quản Lý Vé</span></a></li>
         <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i class="fas fa-calendar-week mr-3 text-gray"></i><span>Quản Lý Lịch Chiếu</span></a></li>
-        <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i class="o-survey-1 mr-3 text-gray"></i><span>Quản Lý Rạp</span></a></li>
+        <li class="sidebar-list-item"><a href="{{route('admin.managecinema')}}" class="sidebar-link text-dark"><i class="o-survey-1 mr-3 text-gray"></i><span>Quản Lý Rạp</span></a></li>
         <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i class="fab fa-windows mr-3 text-gray"></i><span>Quản Lý Phòng</span></a></li>
         <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i class="fas fa-couch mr-3 text-gray"></i><span>Quản Lý Ghế</span></a></li>
         <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i class="fas fa-user-friends mr-3 text-gray"></i><span>Quản Lý Người dùng</span></a></li>

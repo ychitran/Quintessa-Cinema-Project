@@ -23,6 +23,24 @@ Route::get('/logout',[AuthController::class,'logout'])->name('cinema.logout');
 
 Route::group(['prefix' =>'admin','middleware' => 'checkpermission'], function() {
     Route::get('/',[AdminController::class,'homeAdmin'])->name('admin.home');
+
+    // Manage Film
+    Route::get('/managefilm',[AdminController::class,'manageFilm'])->name('admin.managefilm');
+    Route::get('/addfilm',[AdminController::class,'addFilmPage'])->name('admin.addfilm.page');
+    Route::post('/addfilm',[AdminController::class,'addFilm'])->name('admin.addfilm');
+    Route::get('/editfilm/{id}',[AdminController::class,'editFilmPage'])->name('admin.editfilm.page');
+    Route::post('/editfilm/{id}',[AdminController::class,'validationFilm'])->name('admin.editfilm');
+    Route::get('/deletefilm/{id}',[AdminController::class,'deleteFilm'])->name('admin.deletefilm');
+
+    //Manage Cinema
+    Route::get('/managecinema',[AdminController::class,'manageCinema'])->name('admin.managecinema');
+    Route::get('/addcinema',[AdminController::class,'addCinemaPage'])->name('admin.addcinema.page');
+    Route::post('/addcinema',[AdminController::class,'addCinema'])->name('admin.addcinema');
+
+    Route::get('/editcinema/{id}',[AdminController::class,'editCinemaPage'])->name('admin.editcinema.page');
+    Route::post('/editcinema/{id}',[AdminController::class,'updateCinema'])->name('admin.editcinema');
+    Route::get('/deletecinema/{id}',[AdminController::class,'deleteCinema'])->name('admin.deletecinema');
+
 });
 
 
