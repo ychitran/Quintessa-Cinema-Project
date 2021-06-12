@@ -21,8 +21,8 @@ class CreateUsersTable extends Migration
             $table->longText('avatar')->nullable(true);
             $table->string('phone_number')->unique();
             $table->integer('cinema_point')->nullable(true);
-            $table->unsignedBigInteger('role_id');
-            $table->unsignedBigInteger('cinema_id');
+            $table->unsignedBigInteger('role_id')->nullable(true);
+            $table->unsignedBigInteger('cinema_id')->nullable(true);
             $table->foreign('role_id')->references('id')->on('roles');
             $table->foreign('cinema_id')->references('id')->on('cinemas');
             $table->rememberToken();

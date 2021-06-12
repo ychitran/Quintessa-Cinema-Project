@@ -16,6 +16,46 @@ const ROUTES: Routes = [
       {
         path:'film',
         loadChildren: () => import(`../manager/film/film.module`). then(m => m.FilmModule)
+      },
+      {
+        path:'cinema',
+        loadChildren: () => import(`../manager//cinema/cinema.module`). then(m => m.CinemaModule)
+      },
+      {
+        path:'staff',
+        loadChildren: () => import(`../manager/staff/staff.module`). then(m => m.StaffModule)
+      },
+      {
+        path:'adv',
+        loadChildren: () => import(`../manager/advertisement/advertisement.module`). then(m => m.AdvertisementModule)
+      },
+      {
+        path:'combo',
+        loadChildren: () => import(`../manager/combo/combo.module`). then(m => m.ComboModule)
+      },
+      {
+        path:'discount',
+        loadChildren: () => import(`../manager/discount/discount.module`). then(m => m.DiscountModule)
+      },
+      {
+        path:'revenue',
+        loadChildren: () => import(`../manager/revenue/revenue.module`). then(m => m.RevenueModule)
+      },
+      {
+        path:'room',
+        loadChildren: () => import(`../manager/room/room.module`). then(m => m.RoomModule)
+      },
+      {
+        path:'screening',
+        loadChildren: () => import(`../manager/screening/screening.module`). then(m => m.ScreeningModule)
+      },
+      {
+        path:'seat',
+        loadChildren: () => import(`../manager/seat/seat.module`). then(m => m.SeatModule)
+      },
+      {
+        path:'user',
+        loadChildren: () => import(`../manager/user/user.module`). then(m => m.UserModule)
       }
     ]
     

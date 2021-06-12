@@ -22,12 +22,12 @@ class CreateFilmsTable extends Migration
             $table->string('categories');
             $table->string('director');
             $table->string('caster');
-            $table->integer('duration');
-            $table->date('release_date');
+            $table->integer('duration')->nullable(true);
+            $table->date('release_date')->nullable(true);
             $table->integer('status');
-            $table->string('trailer');
-            $table->string('description');
-            $table->unsignedBigInteger('format_id');
+            $table->string('trailer')->nullable(true);
+            $table->string('description')->nullable(true);
+            $table->unsignedBigInteger('format_id')->nullable(true);
             $table->foreign('format_id')->references('id')->on('format_films');
             $table->softDeletes();
             $table->timestamps();
