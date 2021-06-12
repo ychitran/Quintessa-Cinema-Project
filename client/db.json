@@ -1,0 +1,23 @@
+{
+  "films": [],
+  "cinemas": [
+    {
+      "id": 1,
+      "cinema_name": "Cinerama Huế",
+      "information": " Vincom plaza, tầng 4, 50A Hùng Vương, Phú Nhuận, Thành phố Huế, Thừa Thiên Huế"
+    },
+    {
+      "cinema_name": "Labore in ducimus v",
+      "information": "Consectetur officia ",
+      "id": 2
+    }
+  ],
+  "staffs": {
+    "full_name": "Odio voluptas ration",
+    "email": "Dolor architecto dui",
+    "password": "123456",
+    "phone_number": "Sunt ex corporis est",
+    "role_id": 2,
+    "cinema_id": 1
+  }
+}

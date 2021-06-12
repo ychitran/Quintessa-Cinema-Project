@@ -14,11 +14,11 @@ const ROUTES : Routes = [
     component: ListFilmComponent
   },
   {
-    path:'addfilm',
+    path:'add',
     component: AddFilmComponent
   },
   {
-    path:'editfilm/:id',
+    path:'edit/:id',
     component: EditFilmComponent
   }
 ]
