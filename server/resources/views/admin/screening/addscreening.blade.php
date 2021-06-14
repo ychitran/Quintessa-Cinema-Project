@@ -1,3 +1,6 @@
+@extends('layouts.admin-layout')
+
+@section('admin-content')
 <form action="" method="POST" class="form-horizontal">
 	@csrf
 	<div class="form-group row">
@@ -46,7 +49,9 @@
 	</div>
 	<div class="form-group row">
 		<div class="col-md-9 m-auto">
-			<!-- <input type="submit" value="THÊM" class="btn btn-primary"> -->
+			<input type="submit" value="THÊM" class="btn btn-primary">
 		</div>
 	</div>
 </form>
+
+@endsection

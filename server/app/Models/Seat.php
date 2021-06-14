@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Seat extends Model
 {
     use HasFactory;
+    public function room(){
+        return $this->belongsTo('App\Models\Room');
+    }
+
+    public function order() {
+        return $this->hasOne('App\Models\Order');
+    }
 }

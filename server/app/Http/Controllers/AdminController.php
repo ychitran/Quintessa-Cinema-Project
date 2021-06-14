@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Room;
 use App\Models\Ad;
 use App\Models\Cinema;
 use App\Models\Film;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Screening;
 
 class AdminController extends Controller
 {
@@ -188,4 +190,50 @@ class AdminController extends Controller
     public function addAdPage() {
         return redirect('admin/addads');
     }
+
+	//CRUD Screening 
+	public function manageScreening()
+	{
+		$screenings = Screening::all();
+		return view('admin.manage.screenings',compact('screenings'));
+	}
+
+	public function addScreeningPage()
+	{
+		$films = Film::where('status','1')->get();
+		$cinemas = Cinema::all();
+		$rooms = Room::all();
+		return view('admin.screening.addscreening',compact('films','cinemas','rooms'));
+	}
+	public function addScreening(Request $request)
+	{
+		$screenings= new Screening();
+		$screenings->film_id = $request->film_id;
+		$screenings->cinema_id = $request->cinema_id;
+		$screenings->room_id = $request->room_id;
+		$screenings->date = $request->date;
+		$screenings->start_time = $request->start_time;
+		$screenings->save();
+		return;
+	}
+
+	public function editScreeningPage($id)
+	{
+		$screenings = Screening::where('id',$id)->get();
+		return view('admin.screening.editscreening',compact('screenings'));
+	}
+
+	public function editScreening(Request $request,$id)
+	{
+		$screenings = Screening::findOrFail($id);
+		$screenings->date = $request->date;
+		$screenings->start_time = $request->start_time;
+		$screenings->save();
+		return redirect()->route('admin.managescreening');
+	}
+	public function deleteScreeningPage($id)
+	{
+		Screening::where('id',$id)->delete();
+		return redirect()->route('admin.managescreening');
+	}
 }

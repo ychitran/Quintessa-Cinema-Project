@@ -41,6 +41,16 @@ Route::group(['prefix' =>'admin','middleware' => 'checkpermission'], function() 
     Route::post('/editcinema/{id}',[AdminController::class,'updateCinema'])->name('admin.editcinema');
     Route::get('/deletecinema/{id}',[AdminController::class,'deleteCinema'])->name('admin.deletecinema');
 
+    //Manage Screening
+
+    Route::get('/managescreening',[AdminController::class,'manageScreening'])->name('admin.managescreening');
+    Route::get('/addscreening',[AdminController::class,'addScreeningPage'])->name('admin.addscreening.page');
+    Route::post('/addscreening',[AdminController::class,'addScreening'])->name('admin.addscreening');
+    Route::get('/editscreening/{id}',[AdminController::class,'editScreeningPage'])->name('admin.editscreening.page');
+    Route::post('/editscreening/{id}',[AdminController::class,'editScreening'])->name('admin.editscreening');
+    Route::delete('/deletescreening/{id}',[AdminController::class,'deleteScreeningPage'])->name('admin.deletescreening');
+
+
 });
 
 
