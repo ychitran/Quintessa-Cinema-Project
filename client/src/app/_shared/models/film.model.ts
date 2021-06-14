@@ -10,7 +10,7 @@ export interface Film {
     poster:string,
     trailer:string,
     format_id:boolean,
-    release_at:Date,
+    release_date:Date,
     status:boolean,
     description:string
 }

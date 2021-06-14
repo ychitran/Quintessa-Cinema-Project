@@ -173,7 +173,7 @@ class AdminController extends Controller
         return view('admin.manage.ads',compact('ads'));
     }
 
-    public function addAd(Request $request) {
+    public function saveAd(Request $request) {
         $ad = new Ad();
         $ad->company_name = $request->company_name;
         $ad->content = $request->content;

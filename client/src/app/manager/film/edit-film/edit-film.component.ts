@@ -40,7 +40,7 @@ export class EditFilmComponent implements OnInit {
       poster: [film.poster,[Validators.required]],
       trailer: [film.trailer,[Validators.required]],
       format_id: [film.format_id],
-      release_at: [film.release_at],
+      release_date: [film.release_date],
       status: [film.status],
       description: [film.description]
     })
