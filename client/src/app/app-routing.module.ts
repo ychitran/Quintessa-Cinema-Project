@@ -7,6 +7,10 @@ const ROUTES: Routes = [
   {
     path: '',
     loadChildren: () => import(`./client/client.module`). then(m => m.ClientModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import(`./manager/manager.module`). then(m => m.ManagerModule)
   }
 ]
 
