@@ -11,7 +11,7 @@
                         <div class="navbar-nav">
                             <a class="nav-link active head__space head__font" aria-current="page">HOME</a>
                             <a class="nav-link head__space head__font ">SHOWTIMES</a>
-                            <a class="nav-link head__font">ORDER TICKET</a>
+                            <button type="button" class="btn nav-link head__font" data-mdb-toggle="modal" data-mdb-target="#exampleModal">ORDER TICKET</button>
                         </div>
                     </div>
                 </div>
@@ -33,8 +33,8 @@
 
 <!-- Animation Start -->
 <div class="animate-container position-absolute animation__center text-center ">
-    <h4 class="animation__font-tittle animate__animated animate__zoomIn animate__slower	3s">SPIDER MAN</h4>
-    <h6 class="animation__font-under animate__animated animate__zoomIn animate__slower	3s">NO WAY HOME</h6>
+    <h4 class="animation__font-tittle animate__animated animate__zoomIn animate__slower	3s animate__infinite ">SPIDER MAN</h4>
+    <h6 class="animation__font-under animate__animated animate__zoomIn animate__slower	3s animate__infinite ">NO WAY HOME</h6>
     <button class="button animation__height animate__animated animate__zoomIn animate__slower	3s">
         Order Ticket
         <div class="button__horizontal"></div>
@@ -51,7 +51,7 @@
 
 <!-- Image Now Playing Start -->
 
-<div id="carouselExampleControls" class="carousel slide container content-play__bottom text-center img__height head__border " data-mdb-ride="carousel">
+<div id="carouselExampleControls" class="carousel slide container content-play__bottom text-center img__height head__border text-center " data-mdb-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <div class="card-group head__full">
@@ -85,15 +85,16 @@
                 </div>
             </div>
         </div>
+        <button class="carousel-control-prev " type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+        <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
     </div>
-    <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+
 </div>
 <!-- Image Now Playing End -->
 
@@ -104,49 +105,49 @@
 <!-- Tittle Coming Soon End -->
 
 <!-- Image Coming Soon Start -->
-<div id="carouselExampleControls" class="carousel slide content-play__bottom img__height text-center head__border" data-mdb-ride="carousel">
+<div id="carouselExampleControls2" class="carousel slide content-play__bottom text-center img__height-coming head__border text-center " data-mdb-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <div class="card-group head__full">
                 <div class="card head__full">
-                    <img src="assets\frontend\img\new_movie\blackwidow-updatedreleasedate_byeb.png" class="card-img-top img__height-picture img" />
+                    <img src="assets\frontend\img\new_movie\blackwidow-updatedreleasedate_byeb.png" class="card-img-top img__picture-coming img" />
                 </div>
                 <div class="card head__full">
-                    <img src="assets\frontend\img\new_movie\spider-far-poster-3.jpg" class="card-img-top img__height-picture img" :hover />
+                    <img src="assets\frontend\img\new_movie\spider-far-poster-3.jpg" class="card-img-top img__picture-coming img" :hover />
                 </div>
                 <div class="card head__full">
-                    <img src="assets\frontend\img\new_movie\deew942-aeaad734-4fbb-4eff-9fa4-5abf42615fc1.jpg" class="card-img-top img__height-picture img" :hover />
+                    <img src="assets\frontend\img\new_movie\deew942-aeaad734-4fbb-4eff-9fa4-5abf42615fc1.jpg" class="card-img-top img__picture-coming img" :hover />
                 </div>
                 <div class="card head__full">
-                    <img src="assets\frontend\img\new_movie\81ai6zx6eXL._AC_SY879_.jpg" class="card-img-top img__height-picture img" :hover />
+                    <img src="assets\frontend\img\new_movie\81ai6zx6eXL._AC_SY879_.jpg" class="card-img-top img__picture-coming img" :hover />
                 </div>
             </div>
         </div>
         <div class="carousel-item">
             <div class="card-group">
                 <div class="card head__full">
-                    <img src="assets\frontend\img\new_movie\blackwidow-updatedreleasedate_byeb.png" class="card-img-top img__height-picture img" :hover />
+                    <img src="assets\frontend\img\new_movie\blackwidow-updatedreleasedate_byeb.png" class="card-img-top img__picture-coming img" :hover />
                 </div>
                 <div class="card head__full">
-                    <img src="assets\frontend\img\new_movie\spider-far-poster-3.jpg" class="card-img-top img__height-picture img" :hover />
+                    <img src="assets\frontend\img\new_movie\spider-far-poster-3.jpg" class="card-img-top img__picture-coming img" :hover />
                 </div>
                 <div class="card head__full">
-                    <img src="assets\frontend\img\new_movie\deew942-aeaad734-4fbb-4eff-9fa4-5abf42615fc1.jpg" class="card-img-top img__height-picture img" :hover />
+                    <img src="assets\frontend\img\new_movie\deew942-aeaad734-4fbb-4eff-9fa4-5abf42615fc1.jpg" class="card-img-top img__picture-coming img" :hover />
                 </div>
                 <div class="card head__full">
-                    <img src="assets\frontend\img\new_movie\81ai6zx6eXL._AC_SY879_.jpg" class="card-img-top img__height-picture img" :hover />
+                    <img src="assets\frontend\img\new_movie\81ai6zx6eXL._AC_SY879_.jpg" class="card-img-top img__picture-coming img" :hover />
                 </div>
             </div>
         </div>
+        <button class="carousel-control-prev " type="button" data-mdb-target="#carouselExampleControls2" data-mdb-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+        <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleControls2" data-mdb-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
     </div>
-    <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
 </div>
 <!-- Image Coming Soon End -->
 
@@ -193,7 +194,7 @@
         <div class="col-md-4">
             <div class="col-md-4">
                 <p class="footer__font">
-                    @Not Copyright</p>
+                    @ Do Not Copyright</p>
             </div>
         </div>
         <div class="col-md-4">
@@ -205,3 +206,48 @@
         </div>
     </div>
 </div>
+
+
+<!--===================== Modal Order Ticket Start================================= -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl ">
+        <div class="modal-content">
+            <div class="container ticket-order__width">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="modal-title ticket-order__font">ORDER A TICKET</h5>
+                        <h3 class="ticket-order__font-nav">MOVIE</h3>
+                        <select name="movie" class="ticket-order__border">
+                            <option value="#">Black Widow - Goá phụ đen</option>
+                            <option value="#">Spider Man - Far From Home</option>
+                            <option value="#">Spider Man - No Way Home</option>
+                            <option value="#">Avenger - Endgame</option>
+                        </select>
+                        <h3 class="ticket-order__font-nav">DATE</h3>
+                        <input type="date" class="ticket-order__border">
+                        <h3 class="ticket-order__font-nav">TIME</h3>
+                        <div class="time">
+                            <button type="button" class="btn btn-outline btn-rounded btn-sm ticket-order__space" data-mdb-ripple-color="dark">11:00</button>
+                            <button type="button" class="btn btn-outline btn-rounded btn-sm ticket-order__space" data-mdb-ripple-color="dark">11:30</button>
+                            <button type="button" class="btn btn-outline btn-rounded btn-sm ticket-order__space" data-mdb-ripple-color="dark">12:00</button>
+                        </div>
+                        <button type="button" class="btn btn-outline-warning btn-rounded btn-sm ticket-order__space-top" data-mdb-ripple-color="dark">NEXT</button>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h5 class="modal-title ticket-order__font">YOUR INFORMATION</h5>
+                        <h3 class="ticket-order__font-nav">MOVIE</h3>
+                        <h5 class="ticket-order__inf">Avenger: Endgame</h5>
+                        <h3 class="ticket-order__font-nav">DATE</h3>
+                        <h5 class="ticket-order__inf">5/6/2021</h5>
+                        <h3 class="ticket-order__font-nav">SEAT</h3>
+                        <h5 class="ticket-order__inf">R4 S13</h5>
+                        <h3 class="ticket-order__font-nav">TICKET: 2</h3>
+                        <h3 class="ticket-order__font-nav">TOTAL: $30</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================Modal Order Ticket End============================== -->
