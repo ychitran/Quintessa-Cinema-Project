@@ -15,7 +15,7 @@
 								<div class="form-group row">
 									<label class="col-md-3 form-control-label">Tên Phim</label>
 									<div class="col-md-9">
-										<input id="inputHorizontalSuccess" name="name" type="text" placeholder="Tên phim" class="form-control form-control-success" required>
+										<input id="inputHorizontalSuccess" name="film_name" type="text" placeholder="Tên phim" class="form-control form-control-success" required>
 									</div>
 								</div>
 								<div class="form-group row">
@@ -51,19 +51,31 @@
 								<div class="form-group row">
 									<label class="col-sm-3 form-control-label">Diễn Viên</label>
 									<div class="col-md-9">
-										<input id="inputHorizontalWarning" name="case" type="text" placeholder="Diễn viên" class="form-control form-control-warning " required>
+										<input id="inputHorizontalWarning" name="caster" type="text" placeholder="Diễn viên" class="form-control form-control-warning " required>
 									</div>
 								</div>
 								<div class="form-group row">
 									<label class="col-sm-3 form-control-label">Thời lượng</label>
 									<div class="col-md-9">
-										<input id="inputHorizontalWarning" name="durations" type="text" placeholder="Thời lượng" class="form-control form-control-warning " required>
+										<input id="inputHorizontalWarning" name="duration" type="text" placeholder="Thời lượng" class="form-control form-control-warning " required>
 									</div>
 								</div>
 								<div class="form-group row">
 									<label class="col-sm-3 form-control-label">Ngày Khởi Chiếu</label>
 									<div class="col-md-9">
 										<input id="inputHorizontalWarning" name="release_date" type="date" class="form-control form-control-warning " required>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-md-3 form-control-label">Định dạng</label>
+									<div class="col-md-9">
+										<select name="format_id" class="form-control" id="rap">
+											<!-- <option checked></option> -->
+											@foreach ($formats as $format)
+											<option value="{{$format->id}}">{{$format->format_name}}</option>
+											@endforeach
+										</select>
 									</div>
 								</div>
 								<div class="form-group row">
@@ -74,7 +86,7 @@
 											<label for="radio1" class="custom-control-label">Phim Đang Chiếu</label>
 										</div>
 										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="radio2" name="status" value="0" class="custom-control-input" >
+											<input type="radio" id="radio2" name="status" value="0" class="custom-control-input">
 											<label for="radio2" class="custom-control-label">Phim Sắp Chiếu</label>
 										</div>
 									</div>
@@ -91,12 +103,7 @@
 										<textarea class="form-control " name="description" rows="5" id="noidung"></textarea required>
 									</div>
 								</div>
-								<div class="form-group row">
-									<label class="col-sm-3 form-control-label">Giá Vé</label>
-									<div class="col-md-9">
-										<input id="inputHorizontalWarning" name="ticket_price" type="text" placeholder="Giá vé" class="form-control form-control-warning " required>
-									</div>
-								</div>
+				
 								<div class="form-group row">
 									<div class="col-md-9 m-auto">
 										<input type="submit" value="THÊM" class="btn btn-primary">

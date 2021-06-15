@@ -9,36 +9,38 @@
 					<div class="card">
 						<div class="card-header">
 							<h6 class="text-uppercase mb-0">Quản Lý Lịch Chiếu</h6>
-							<a href="{{route('admin.addscreening.page')}}" style="position: absolute;right: 35px;top: 22px;"><i class="fas fa-plus-square text-success" style="font-size: 24px"></i></a>
+							<a href="screening/create" style="position: absolute;right: 35px;top: 22px;"><i class="fas fa-plus-square text-success" style="font-size: 24px"></i></a>
 						</div>
 						<div class="card-body">
-						<table class="table table-hover card-text">
-    <thead>
-        <tr>
-            <th>No.</th>
-            <th>Phim</th>
-            <th>Rạp</th>
-            <th>Ngày</th>
-            <th>Thời gian</th>
-            <th>Chức năng</th>
-        </tr>
-    </thead>
-    <tbody id="lichchieu">
-        @foreach ($screenings as $key => $screening)
-        <tr>
-            <td>{{$key+1}}</td>
-            <td>{{$screening->film->name}}</td>
-            <td>{{$screening->cinema->cinema_name}}</td>
-            <td>{{date('d-m-Y',strtotime($screening->date))}}</td>
-            <td>{{date('H:i',strtotime($screening->start_time))}}</td>
-            <td><a "><button style="background-color: #ffffff00;border: none" title="Sửa"><i class="fas fa-edit text-success"></i></button></a><br>
-            <button  value="{{$screening->id}}" type="submit" style="background-color: #ffffff00;border: none" title="Xóa"><i class="fas fa-trash-alt text-danger"></i></button>
-                
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+							<table class="table table-hover card-text">
+								<thead>
+									<tr>
+										<th>No.</th>
+										<th>Phim</th>
+										<th>Rạp</th>
+										<th>Ngày</th>
+										<th>Thời gian</th>
+										<th>Chức năng</th>
+									</tr>
+								</thead>
+								<tbody id="lichchieu">
+									@foreach ($screenings as $key => $screening)
+									<tr>
+										<td>{{$key+1}}</td>
+										<td>{{$screening->film->name}}</td>
+										<td>{{$screening->cinema->cinema_name}}</td>
+										<td>{{date('d-m-Y',strtotime($screening->date))}}</td>
+										<td>{{date('H:i',strtotime($screening->start_time))}}</td>
+										<td><a href="screening/edit/{{$screening->id}}"><button style="background-color: #ffffff00;border: none" title="Sửa"><i class="fas fa-edit text-success"></i></button></a><br>
+											<form action="screening/delete/{{$screening->id}}" method="get" onsubmit="return confirm('Chắc chắn muốn xóa ?')">
+												@csrf
+												<button type="submit" style="background-color: #ffffff00;border: none" title="Xóa"><i class="fas fa-trash-alt text-danger"></i></button>
+											</form>
+											</td>
+									</tr>
+									@endforeach
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
@@ -60,4 +62,3 @@
 	</footer>
 </div>
 @endsection
-
