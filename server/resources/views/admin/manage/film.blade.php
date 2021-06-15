@@ -20,7 +20,7 @@
 					<div class="card">
 						<div class="card-header">
 							<h6 class="text-uppercase mb-0">Quản Lý Phim</h6>
-							<a href="{{route('admin.addfilm.page')}}" title="Thêm mới" style="position: absolute;right: 35px;top: 22px;"><i class="fas fa-plus-square text-success" style="font-size: 24px"></i></a>
+							<a href="film/create" title="Thêm mới" style="position: absolute;right: 35px;top: 22px;"><i class="fas fa-plus-square text-success" style="font-size: 24px"></i></a>
 						</div>
 						<div class="card-body">
 							<table class="table table-hover card-text" id="tablephim">
@@ -32,7 +32,6 @@
 										<th>Thời Lượng</th>
 										<th>Ngày Khởi chiếu</th>
 										<th>Trạng thái</th>
-										<th>Giá vé</th>
 										<th>Chức năng</th>
 									</tr>
 								</thead>
@@ -67,10 +66,9 @@
 											@else
 											Sắp Chiếu
 											@endif</td>
-										<td>{{$film->ticket_price}}</td>
 
-										<td><a href="{{route('admin.editfilm',$film->id)}}"><button style="background-color: #ffffff00;border: none" title="Sửa"><i class="fas fa-edit text-success"></i></button></a><br>
-											<form action="{{route('admin.deletefilm',$film->id)}}" method="get" onsubmit="return confirm('Chắc chắn muốn xóa ?')">
+										<td><a href="film/edit/{{$film->id}}"><button style="background-color: #ffffff00;border: none" title="Sửa"><i class="fas fa-edit text-success"></i></button></a><br>
+											<form action="film/delete/{{$film->id}}" method="get" onsubmit="return confirm('Chắc chắn muốn xóa ?')">
 												@csrf
 												<button type="submit" style="background-color: #ffffff00;border: none" title="Xóa"><i class="fas fa-trash-alt text-danger"></i></button>
 											</form>

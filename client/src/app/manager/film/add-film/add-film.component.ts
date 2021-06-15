@@ -31,7 +31,7 @@ export class AddFilmComponent implements OnInit {
       poster: ["",[Validators.required]],
       trailer: ["",[Validators.required]],
       format_id: [],
-      release_at: [],
+      release_date: [],
       status: [],
       description: []
     })

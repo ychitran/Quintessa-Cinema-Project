@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
     use HasFactory;
+    public function seat() {
+        return $this->hasMany('App\Models\Screening');
+    }
+
+    public function cinema() {
+        return $this->belongsTo('App\Models\Cinema');
+    }
+
 }

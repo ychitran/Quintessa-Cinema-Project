@@ -6,20 +6,41 @@
 		<section class="py-5">
 			<div class="row">
 				<div class="col-lg-12 mb-4">
-					<!-- <label class="ml-3">Tìm Kiếm Theo Tên Phim:</label>
-					<select class="form-control w-50 mb-3" id="lich">
-						@foreach ($films as $film)
-						<option value="{{$film->id}}">{{$film->name}}</option>
-						@endforeach
-
-					</select> -->
 					<div class="card">
 						<div class="card-header">
 							<h6 class="text-uppercase mb-0">Quản Lý Lịch Chiếu</h6>
-							<a onclick="openAddForm()" style="position: absolute;right: 35px;top: 22px;"><i class="fas fa-plus-square text-success" style="font-size: 24px"></i></a>
+							<a href="screening/create" style="position: absolute;right: 35px;top: 22px;"><i class="fas fa-plus-square text-success" style="font-size: 24px"></i></a>
 						</div>
 						<div class="card-body">
-
+							<table class="table table-hover card-text">
+								<thead>
+									<tr>
+										<th>No.</th>
+										<th>Phim</th>
+										<th>Rạp</th>
+										<th>Ngày</th>
+										<th>Thời gian</th>
+										<th>Chức năng</th>
+									</tr>
+								</thead>
+								<tbody id="lichchieu">
+									@foreach ($screenings as $key => $screening)
+									<tr>
+										<td>{{$key+1}}</td>
+										<td>{{$screening->film->name}}</td>
+										<td>{{$screening->cinema->cinema_name}}</td>
+										<td>{{date('d-m-Y',strtotime($screening->date))}}</td>
+										<td>{{date('H:i',strtotime($screening->start_time))}}</td>
+										<td><a href="screening/edit/{{$screening->id}}"><button style="background-color: #ffffff00;border: none" title="Sửa"><i class="fas fa-edit text-success"></i></button></a><br>
+											<form action="screening/delete/{{$screening->id}}" method="get" onsubmit="return confirm('Chắc chắn muốn xóa ?')">
+												@csrf
+												<button type="submit" style="background-color: #ffffff00;border: none" title="Xóa"><i class="fas fa-trash-alt text-danger"></i></button>
+											</form>
+											</td>
+									</tr>
+									@endforeach
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
@@ -40,202 +61,4 @@
 		</div>
 	</footer>
 </div>
-
-<div class="modal fade" id="add-screenings-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<center>
-					<h5 class="modal-title" id="exampleModalLabel">Thêm lịch chiếu</h5>
-				</center>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body-add">
-
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" onclick="submitAddForm()">Thêm mới </button>
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="modal fade" id="edit-screenings-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<center>
-					<h5 class="modal-title" id="exampleModalLabel">Sửa lịch chiếu</h5>
-				</center>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body-edit">
-
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-primary submitEditForm">Sửa</button>
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="modal fade" id="delete-screenings-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-
-				<h5 class="modal-title" id="exampleModalLabel">Xóa lịch chiếu</h5>
-
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<center>
-				<div class="modal-body-delete">
-					Bạn có chắc muốn xóa?
-				</div>
-			</center>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-primary confirm">Xác nhận</button>
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-<script>
-	window.onload = loadList
-
-	function confirmdelete(idScreening) {
-		$('#delete-screenings-modal').modal();
-
-		$(".confirm").click(function() {
-			$.ajax({
-				url: `/admin/deletescreening/${idScreening}`,
-				type: 'GET',
-				success: function() {
-
-					// Close Modal
-					$("#delete-screenings-modal").modal("hide");
-
-					// Reload List
-					loadList();
-				},
-				error: function() {
-					alert("Delete Failed")
-				}
-			})
-		});
-
-	}
-
-	//add screening
-	function openAddForm() {
-		$("#add-screenings-modal").modal();
-
-		$.ajax({
-			url: `{{route('admin.addscreening.page')}}`,
-			success: function(xml) {
-				$('.modal-body-add').html(xml);
-
-				// Display Modal
-				$('#add-screenings-modal').modal('show');
-			}
-		})
-	}
-
-	function submitAddForm() {
-		const data = {
-			_token: document.querySelector(`.form-horizontal [name="_token"]`).value,
-			film_id: document.querySelector(`.form-horizontal [name="film"]`).value,
-			cinema_id: document.querySelector(`.form-horizontal [name="cinema"]`).value,
-			room_id: document.querySelector(`.form-horizontal [name="room"]`).value,
-			date: document.querySelector(`.form-horizontal [name="date"]`).value,
-			start_time: document.querySelector(`.form-horizontal [name="start_time"]`).value,
-		}
-
-		$.ajax({
-			url: `{{route('admin.addscreening')}}`,
-			type: 'POST',
-			data: data,
-			success: function() {
-				// Close Modal
-				$("#add-screenings-modal").modal("hide");
-
-				// Reload List
-				loadList();
-			},
-			error: function() {
-				alert("Edit Failed")
-			}
-		})
-	}
-
-	//edit screening
-	function openEditForm(idScreening) {
-		$("#edit-screenings-modal").modal();
-
-		$.ajax({
-			url: `/admin/editscreening/${idScreening}`,
-			success: function(xml) {
-				$('.modal-body-edit').html(xml);
-
-				// Display Modal
-				$('#edit-screenings-modal').modal('show');
-			}
-		})
-
-		$(".submitEditForm").click(function() {
-			const data = {
-				_token: document.querySelector(`.form-horizontal [name="_token"]`).value,
-				name: document.querySelector(`.form-horizontal [name="name"]`).value,
-				cinema_name: document.querySelector(`.form-horizontal [name="cinema_name"]`).value,
-				room_name: document.querySelector(`.form-horizontal [name="room_name"]`).value,
-				date: document.querySelector(`.form-horizontal [name="date"]`).value,
-				start_time: document.querySelector(`.form-horizontal [name="start_time"]`).value,
-			}
-
-			$.ajax({
-				url: `/admin/editscreening/${idScreening}`,
-				type: 'POST',
-				data: data,
-				success: function() {
-					// Close Modal
-					$("#edit-screenings-modal").modal("hide");
-
-					// Reload List
-					loadList();
-				},
-				error: function() {
-					alert("Edit Failed")
-				}
-			})
-		});
-
-
-	}
-
-
-
-	function loadList() {
-		var url = `{{route('admin.getscrlist')}}`;
-
-		$.ajax({
-			url: url,
-			success: function(xml) {
-
-				$('.card-body').html(xml);
-			},
-			error: function(error) {
-				console.log("Xảy ra lỗi: " + error.message)
-			}
-		})
-	}
-</script>
 @endsection

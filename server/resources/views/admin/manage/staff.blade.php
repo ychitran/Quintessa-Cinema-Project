@@ -8,27 +8,31 @@
 				<div class="col-lg-12 mb-4">
 					<div class="card">
 						<div class="card-header">
-							<h6 class="text-uppercase mb-0">Quản Lý Phòng</h6>
-							<a href="room/create" title="Thêm mới" style="position: absolute;right: 35px;top: 22px;"><i class="fas fa-plus-square text-success" style="font-size: 24px"></i></a>
+							<h6 class="text-uppercase mb-0">Quản Lý Nhân viên</h6>
+                            <a href="staff/create" title="Thêm mới" style="position: absolute;right: 35px;top: 22px;"><i class="fas fa-plus-square text-success" style="font-size: 24px"></i></a>
 						</div>
 						<div class="card-body">                           
 							<table class="table table-hover card-text">
 								<thead>
 									<tr>
 										<th>No.</th>
-										<th>Tên Phòng</th>
-										<th>Thuộc Rạp</th>
-										<th>Chức năng</th>
+										<th>Tên nhân viên</th>
+										<th>Số điện thoại</th>
+										<th>Chức vụ</th>
+										<th>Cụm rạp</th>
+                                        <th>Chức năng</th>
 									</tr>
 								</thead>
 								<tbody>
-									@foreach ($rooms as $key => $room)                     		
+									@foreach ($staffs as $key => $staff)                     		
 									<tr>
 										<td>{{$key+1}}</td>
-										<td>{{$room->room_name}}</td>		
-										<td>{{$room->cinema->cinema_name}}</td>	
-										<td><a href="room/edit/{{$room->id}}"><button style="background-color: #ffffff00;border: none" title="Sửa"><i class="fas fa-edit text-success"></i></button></a><br>
-											<form action="room/delete/{{$room->id}}" method="get" onsubmit="return confirm('Chắc chắn muốn xóa ?')">
+										<td>{{$staff->full_name}}</td>
+										<td>{{$staff->phone_number}}</td>	
+										<td>{{$staff->role->role_name}}</td>
+                                        <td>{{$staff->cinema->cinema_name}}</td>
+										<td><a href="staff/edit/{{$staff->id}}"><button style="background-color: #ffffff00;border: none" title="Sửa"><i class="fas fa-edit text-success"></i></button></a><br>
+											<form action="staff/delete/{{$staff->id}}" method="get" onsubmit="return confirm('Chắc chắn muốn xóa ?')">
 												@csrf
 												<button type="submit" style="background-color: #ffffff00;border: none" title="Xóa"><i class="fas fa-trash-alt text-danger"></i></button>
 											</form></td>
@@ -37,7 +41,6 @@
 									</tbody>
 								</table>
 							</div>
-						</div>
 					</div>
 				</div>
 			</section>
@@ -50,8 +53,8 @@
 					</div>
 					<!-- <div class="col-md-6 text-center text-md-right text-gray-400">
 						<p class="mb-0">Design by <a href="https://bootstrapious.com/admin-templates" class="external text-gray-400">Bootstrapious</a></p>
-						
-					</div> -->
+						<!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+					</div>
 				</div>
 			</div>
 		</footer>

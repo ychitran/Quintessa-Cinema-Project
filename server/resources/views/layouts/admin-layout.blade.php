@@ -20,7 +20,7 @@
 
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Favicon-->
 </head>
@@ -38,16 +38,15 @@
             </div>
           </form>
         </li>
+
         @if (Auth::check())
-        <li class="nav-item dropdown ml-auto"><a id="userInfo" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><img src="{{asset('/storage/' .auth()->user()->avatar)}}" alt="" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
-          <div aria-labelledby="userInfo" class="dropdown-menu"><a href="#" class="dropdown-item"><strong class="d-block text-uppercase headings-font-family">{{Auth::user()->name}}</strong></a>
+        <li class="nav-item dropdown ml-auto"><a id="userInfo" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><img src="http://dmrmechanical.com/wp-content/uploads/2018/01/avatar-1577909_640-300x300.png" alt="" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
+          <div aria-labelledby="userInfo" class="dropdown-menu"><a href="#" class="dropdown-item"><strong class="d-block text-uppercase headings-font-family">{{Auth::user()->full_name}}</strong></a>
             <div class=" dropdown-divider">
             </div><a href="" class="dropdown-item">Trang chủ</a>
             <div class="dropdown-divider"></div><a href="{{route('cinema.logout')}}" class="dropdown-item">Logout</a>
           </div>
         </li>
-        @else
-        {{-- false expr --}}
         @endif
 
       </ul>
@@ -57,14 +56,18 @@
     <div id="sidebar" class="sidebar py-3">
       <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">QUẢN LÝ</div>
       <ul class="sidebar-menu list-unstyled">
-        <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i class="o-home-1 mr-3 text-gray"></i><span>Home</span></a></li>
-        <li class="sidebar-list-item"><a href="{{route('admin.managefilm')}}" class="sidebar-link text-dark"><i class="fas fa-film mr-3 text-gray"></i><span>Quản Lý Phim</span></a></li>
+        <li class="sidebar-list-item"><a href="/admin" class="sidebar-link text-dark"><i class="o-home-1 mr-3 text-gray"></i><span>Home</span></a></li>
+        <li class="sidebar-list-item"><a href="/admin/cinema" class="sidebar-link text-dark"><i class="o-survey-1 mr-3 text-gray"></i><span>Quản Lý Rạp</span></a></li>
+        <li class="sidebar-list-item"><a href="/admin/film" class="sidebar-link text-dark"><i class="fas fa-film mr-3 text-gray"></i><span>Quản Lý Phim</span></a></li>
+        <li class="sidebar-list-item"><a href="{{route('admin.managescreening')}}" class="sidebar-link text-dark"><i class="fas fa-calendar-week mr-3 text-gray"></i><span>Quản Lý Lịch Chiếu</span></a></li>
         <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i class="fas fa-ticket-alt mr-3 text-gray"></i><span>Quản Lý Vé</span></a></li>
-        <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i class="fas fa-calendar-week mr-3 text-gray"></i><span>Quản Lý Lịch Chiếu</span></a></li>
-        <li class="sidebar-list-item"><a href="{{route('admin.managecinema')}}" class="sidebar-link text-dark"><i class="o-survey-1 mr-3 text-gray"></i><span>Quản Lý Rạp</span></a></li>
-        <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i class="fab fa-windows mr-3 text-gray"></i><span>Quản Lý Phòng</span></a></li>
+        <li class="sidebar-list-item"><a href="/admin/room" class="sidebar-link text-dark"><i class="fab fa-windows mr-3 text-gray"></i><span>Quản Lý Phòng</span></a></li>
         <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i class="fas fa-couch mr-3 text-gray"></i><span>Quản Lý Ghế</span></a></li>
-        <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i class="fas fa-user-friends mr-3 text-gray"></i><span>Quản Lý Người dùng</span></a></li>
+        <li class="sidebar-list-item"><a href="/admin/combo" class="sidebar-link text-dark"><i class="fas fa-couch mr-3 text-gray"></i><span>Quản Lý Sản phẩm</span></a></li>  
+        <li class="sidebar-list-item"><a href="/admin/member" class="sidebar-link text-dark"><i class="fas fa-user-friends mr-3 text-gray"></i><span>Quản Lý Thành viên</span></a></li>
+        <li class="sidebar-list-item"><a href="/admin/staff" class="sidebar-link text-dark"><i class="fas fa-user-friends mr-3 text-gray"></i><span>Quản Lý Nhân viên</span></a></li>
+        <li class="sidebar-list-item"><a href="/admin/advertisement" class="sidebar-link text-dark"><i class="fas fa-ad mr-3 text-gray"></i><span>Quảng cáo</span></a></li>
+
       </ul>
 
     </div>
@@ -74,16 +77,16 @@
 
 
 
-  <!-- <script src="{{asset('/storage/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
-  <script src="{{asset('/storage/ckfinder/ckfinder.js')}}"></script> -->
+  <script src="{{asset('/storage/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
+  <script src="{{asset('/storage/ckfinder/ckfinder.js')}}"></script>
 
 
-  <!-- <script src="{{asset('/storage/admin_assets/vendor/jquery/jquery.min.js')}}"></script>
-  <script src="{{asset('/storage/admin_assets/vendor/popper.js/umd/popper.min.js')}}"> </script>
+  <!-- <script src="{{asset('/storage/admin_assets/vendor/jquery/jquery.min.js')}}"></script> -->
+  <!-- <script src="{{asset('/storage/admin_assets/vendor/popper.js/umd/popper.min.js')}}"> </script> -->
   <script src="{{asset('/storage/admin_assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-  <script src="{{asset('/storage/admin_assets/vendor/jquery.cookie/jquery.cookie.js')}}"> </script>
-  {{-- <script src="{{asset('/storage/admin_assets/vendor/chart.js/Chart.min.js')}}"></script> --}}
-  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+  <!-- <script src="{{asset('/storage/admin_assets/vendor/jquery.cookie/jquery.cookie.js')}}"> </script> -->
+  <!-- {{-- <script src="{{asset('/storage/admin_assets/vendor/chart.js/Chart.min.js')}}"></script> --}} -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
   <script src="{{asset('/storage/admin_assets/js/charts-home.js')}}"></script>
   <script src="{{asset('/storage/admin_assets/js/front.js')}}"></script>
   <script src="{{asset('/storage/js/adminjs.js')}}"></script> -->

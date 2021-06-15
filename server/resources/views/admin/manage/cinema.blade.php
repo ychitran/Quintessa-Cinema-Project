@@ -9,7 +9,7 @@
 					<div class="card">
 						<div class="card-header">
 							<h6 class="text-uppercase mb-0">Quản Lý Rạp</h6>
-							<a onclick="openAddForm()" title="Thêm mới" style="position: absolute;right: 35px;top: 22px;"><i class="fas fa-plus-square text-success" style="font-size: 24px"></i></a>
+							<a href="cinema/create" title="Thêm mới" style="position: absolute;right: 35px;top: 22px;"><i class="fas fa-plus-square text-success" style="font-size: 24px"></i></a>
 						</div>
 						<div class="card-body">                           
 							<table class="table table-hover card-text">
@@ -27,8 +27,8 @@
 										<td>{{$key+1}}</td>
 										<td>{{$cinema->cinema_name}}</td>
 										<td>{{$cinema->infomation}}</td>
-										<td><a href="{{route('admin.editcinema.page', $cinema->id)}}"><button style="background-color: #ffffff00;border: none" title="Sửa"><i class="fas fa-edit text-success"></i></button></a><br>
-											<form action="{{route('admin.deletecinema' ,$cinema->id)}}" method="get" onsubmit="return confirm('Chắc chắn muốn xóa ?')">
+										<td><a href="cinema/edit/{{$cinema->id}}"><button style="background-color: #ffffff00;border: none" title="Sửa"><i class="fas fa-edit text-success"></i></button></a><br>
+											<form action="cinema/delete/{{$cinema->id}}" method="get" onsubmit="return confirm('Chắc chắn muốn xóa ?')">
 												@csrf
 												<button type="submit" style="background-color: #ffffff00;border: none" title="Xóa"><i class="fas fa-trash-alt text-danger"></i></button>
 											</form></td>
