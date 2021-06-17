@@ -1,0 +1,240 @@
+.body {
+    &__bg {
+        background-image: url(../../../assets/frontend/img/bg-single.jpg);
+    }
+}
+
+//================ Header Navbar Start===========
+.head {
+    &__auto {
+        height: auto;
+        width: 100%;
+    }
+    &__full {
+        height: 100%;
+        width: 100%;
+    }
+    &__height-menu {
+        height: 70px;
+        width: 100%;
+    }
+    &__space {
+        margin-right: 60px;
+    }
+    &__font {
+        color: #fff;
+        font-family: 'Josefin Sans', sans-serif;
+        line-height: 28px;
+        font-size: 14px;
+        letter-spacing: 2px;
+        font-weight: 600;
+    }
+    &__display {
+        display: flex;
+    }
+    &__margin {
+        margin: auto;
+    }
+    &__logo {
+        width: 60%;
+    }
+    &__icon {
+        color: white;
+        margin-right: 30px;
+    }
+    &__border {
+        border-bottom: 1px solid rgb(66, 66, 66);
+    }
+    &__margin-left {
+        margin: auto 0 auto 10px;
+    }
+    &__bottom {
+        margin-bottom: 100px;
+    }
+}
+
+.straight::after {
+    content: '|';
+    color: #fb802d;
+    margin-left: 15px;
+    margin-right: 10px;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+//================= Header Navbar End
+// Article Details Start
+.article {
+    &__height {
+        height: 700px;
+        background-color: #333;
+        margin-bottom: 80px;
+    }
+    &__full {
+        height: 100%;
+        width: 100%;
+    }
+    &__padding {
+        padding: 0;
+    }
+    &__filter {
+        filter: brightness(80%);
+    }
+    &__filter-content {
+        filter: brightness(15%)
+    }
+    &__margin {
+        margin: 0;
+    }
+    &__font {
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1.1;
+    }
+    &__details {
+        padding: 40px 65px;
+        margin-right: 5%;
+    }
+    &__font-category {
+        font-size: 17px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        color: #fff;
+    }
+    &__font-content {
+        font-size: 14px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        color: #fff;
+    }
+    &__space {
+        margin-top: 30px;
+    }
+    &__index {
+        z-index: 1;
+    }
+    &__space-list {
+        margin-top: 15px;
+    }
+    &__space-bottom {
+        margin-bottom: 10px;
+    }
+    &__border {
+        border-bottom: 1px solid rgb(66, 66, 66);
+        line-height: 43px;
+    }
+    &__space-right {
+        margin-right: 10px;
+    }
+}
+
+// Article Details End
+// ===============Tittle Now Playing Start - Tittle Coming Soon Start
+.content-play {
+    &__bottom {
+        margin-bottom: 70px;
+    }
+    &__font {
+        font-family: 'Josefin Sans', sans-serif;
+        color: #fff;
+        font-size: 27px;
+        font-weight: 500;
+    }
+    &:after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 1.5px;
+        background: #f44336;
+        top: 30px;
+        margin: auto;
+        margin-top: 10px;
+    }
+}
+
+//============ Tittle Now Playing End - Tittle Coming Soon End
+//========= Image Now Playing Start - Image Coming Soon Start
+.img {
+    &__height {
+        height: 500px;
+        width: 100%;
+    }
+    &__height-picture {
+        height: 430px;
+        width: 100%;
+    }
+    &__font {
+        font-family: 'Roboto', sans-serif;
+        font-size: 20px;
+        font-weight: 300;
+        letter-spacing: 3px;
+    }
+    &__picture-coming {
+        height: 480px;
+        width: 100%;
+    }
+    &__height-coming {
+        height: 600px;
+        width: 100%;
+    }
+    &__reset {
+        padding: 0;
+    }
+}
+
+.hide {
+    display: none;
+}
+
+.card-img-top:hover {
+    filter: brightness(50%);
+    transition: 0.5s;
+    +.hide {
+        display: block;
+    }
+}
+
+//Image Now Playing End - Image Coming Soon End
+// Footer Start
+.footer {
+    &__height {
+        height: 400px;
+    }
+    &__tittle {
+        font-family: 'Montserrat', sans-serif;
+        color: #fff;
+        font-size: 16px;
+        letter-spacing: 2px;
+        font-weight: 500;
+        margin-bottom: 40px;
+    }
+    &__font {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.6);
+    }
+    &__social {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+    }
+    &__space {
+        margin-right: 10px;
+    }
+    &__border {
+        border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+    &__logo {
+        width: 40%;
+    }
+    &__height-logo {
+        height: 20px;
+    }
+    &__bottom {
+        margin-bottom: 50px
+    }
+}
+
+// Footer End

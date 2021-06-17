@@ -1,4 +1,8 @@
-//================ Header Navbar Start
+body {
+    background-color: #212121;
+}
+
+//================ Header Navbar Start===========
 .head {
     &__auto {
         height: auto;
@@ -67,11 +71,6 @@
     &__index {
         z-index: 1;
     }
-    // &__animation {
-    //     -webkit-transition: -webkit-transform 2s ease-in-out !important;
-    //     -o-transition: -o-transform 2s ease-in-out !important;
-    //     transition: transform 2s ease-in-out !important;
-    // }
     &__height-auto {
         height: auto;
     }
@@ -313,6 +312,27 @@
     &__space-top {
         margin-top: 50px;
     }
+    &__border-seat {
+        border: 1px solid #000;
+        color: #000;
+        border-radius: 5px;
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+        float: left;
+        margin-right: 5px;
+    }
+    &__seat-top {
+        margin-top: 80px;
+    }
+    &__seat-space {
+        margin-right: 20px;
+    }
+    &__font-row {
+        font-family: 'Montserrat', sans-serif;
+        color: #000;
+        font-size: 12px;
+        font-weight: 600;
+        padding-bottom: 15px;
+    }
 }
-
-//======================= Modal Order Ticket End===============================
