@@ -16,7 +16,7 @@ class CinemaSeeder extends Seeder
     {
         DB::table('cinemas')->insert([
             'cinema_name' => 'Quintessa Cinema Huế',
-            'infomation' => 'Tầng 4 Big C Huế, 181 Bà Triệu, Phú Nhuận, Thành phố Huế, Thừa Thiên Huế'
+            'information' => 'Tầng 4 Big C Huế, 181 Bà Triệu, Phú Nhuận, Thành phố Huế, Thừa Thiên Huế'
         ]);
     }
 }

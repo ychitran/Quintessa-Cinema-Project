@@ -17,7 +17,6 @@ class CreateRolesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('role_name');
-            $table->string('salary');
         });
     }
 

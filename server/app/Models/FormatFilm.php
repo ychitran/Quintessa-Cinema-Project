@@ -12,4 +12,8 @@ class FormatFilm extends Model
     public function film() {
         return $this->hasMany('App\Models\Film');
     }
+
+    public function price() {
+        return $this->hasMany('App\Models\TicketPrice');
+    }
 }
