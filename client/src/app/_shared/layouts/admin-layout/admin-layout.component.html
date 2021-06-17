@@ -52,10 +52,11 @@
             <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">
                 QUẢN LÝ</div>
             <ul class="sidebar-menu list-unstyled">
-                <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i
-                            class="o-home-1 mr-3 text-gray"></i><span>Home</span></a></li>
-                <li class="sidebar-list-item"><a routerLink="./film" class="sidebar-link text-dark"><i
-                            class="fas fa-film mr-3 text-gray"></i><span>Quản Lý Phim</span></a></li>
+                <li class="sidebar-list-item"><a (click)="goToHome()" href="javascript:;"
+                        class="sidebar-link text-dark"><i class="o-home-1 mr-3 text-gray"></i><span>Home</span></a></li>
+                <li class="sidebar-list-item"><a (click)="goToFilm()" href="javascript:;"
+                        class="sidebar-link text-dark"><i class="fas fa-film mr-3 text-gray"></i><span>Quản Lý
+                            Phim</span></a></li>
                 <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i
                             class="fas fa-ticket-alt mr-3 text-gray"></i><span>Quản Lý Vé</span></a></li>
                 <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i
@@ -68,11 +69,39 @@
                             class="fas fa-couch mr-3 text-gray"></i><span>Quản Lý Ghế</span></a></li>
                 <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i
                             class="fas fa-user-friends mr-3 text-gray"></i><span>Quản Lý Người dùng</span></a></li>
+                <li class="sidebar-list-item"><a (click)="goToStaff()" href="javascript:;"
+                        class="sidebar-link text-dark"><i class="fas fa-user-friends mr-3 text-gray"></i><span>Quản Lý
+                            Nhân viên</span></a></li>
             </ul>
 
         </div>
-        <router-outlet></router-outlet>
+        <div class="page-holder w-100 d-flex flex-wrap">
+            <div class="container-fluid px-xl-5">
+                <section class="py-5">
+                    <div class="row">
+                        <div class="col-lg-12 mb-5">
+                            <div class="card">
+                                <router-outlet></router-outlet>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+        </div>
     </div>
+    <footer class="footer bg-white shadow align-self-end py-3 px-xl-5 w-100">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-left text-primary">
+                    <p class="mb-2 mb-md-0">QUINTESSA Cinema &copy; 2021</p>
+                </div>
+                <div class="col-md-6 text-center text-md-right text-gray-400">
+                    <p class="mb-0">Design by <Strong>Gainer</Strong></p>
+                </div>
+            </div>
+        </div>  
+    </footer>   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"

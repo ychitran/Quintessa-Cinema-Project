@@ -40,7 +40,7 @@ class AuthController extends Controller
             $password=$request->password;
             if(Auth::attempt(['email'=>$email,'password'=>$password])){
             if(Auth::user()->role_id != null){
-                return redirect()->route('admin.home');
+                return redirect('admin');
             }else {
             return redirect();
             }

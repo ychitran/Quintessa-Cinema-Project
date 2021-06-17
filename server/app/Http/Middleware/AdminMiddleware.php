@@ -19,7 +19,7 @@ class AdminMiddleware
     {
         if (Auth::check()) {
             $user = Auth::user();
-            if ($user->role_id != null) 
+            if ($user->role_id == 1) 
                 return $next($request);
             else
                 return abort('403');

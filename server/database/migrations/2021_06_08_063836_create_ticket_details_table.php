@@ -17,7 +17,7 @@ class CreateTicketDetailsTable extends Migration
             $table->id();
             $table->string('seats');
             $table->string('phone_number')->nullable(true);
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable(true);
             $table->unsignedBigInteger('screening_id');
             $table->unsignedBigInteger('combo_id')->nullable(true);
             $table->unsignedBigInteger('discount_id')->nullable(true);
