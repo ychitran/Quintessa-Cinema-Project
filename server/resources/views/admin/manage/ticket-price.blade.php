@@ -8,38 +8,42 @@
 				<div class="col-lg-12 mb-4">
 					<div class="card">
 						<div class="card-header">
-							<h6 class="text-uppercase mb-0">Quản Lý Sản phẩm</h6>
-							<a href="combo/create" title="Thêm mới" style="position: absolute;right: 35px;top: 22px;"><i class="fas fa-plus-square text-success" style="font-size: 24px"></i></a>
+							<h6 class="text-uppercase mb-0">Quản Lý Giá vé</h6>
+                            <!-- <a href="staff/create" title="Thêm mới" style="position: absolute;right: 35px;top: 22px;"><i class="fas fa-plus-square text-success" style="font-size: 24px"></i></a> -->
 						</div>
 						<div class="card-body">                           
 							<table class="table table-hover card-text">
 								<thead>
 									<tr>
 										<th>No.</th>
-										<th>Tên Sản phẩm</th>
-										<th>Chi tiết</th>
-										<th>Giá</th>
+                                        <th>Định dạng phim</th>
+										<th>Giá ngày thường</th>
+										<th>Membership</th>
+										<th>Cuối tuần</th>
+										<th>Ngày lễ</th>
                                         <th>Chức năng</th>
 									</tr>
 								</thead>
 								<tbody>
-									@foreach ($combos as $key => $combo)                     		
+									@foreach ($prices as $key => $price)                     		
 									<tr>
 										<td>{{$key+1}}</td>
-										<td>{{$combo->product_name}}</td>
-										<td>{{$combo->product_detail}}</td>
-                                        <td>{{$combo->product_value}}</td>
-										<td><a href="combo/edit/{{$combo->id}}"><button style="background-color: #ffffff00;border: none" title="Sửa"><i class="fas fa-edit text-success"></i></button></a><br>
-											<form action="combo/delete/{{$combo->id}}" method="get" onsubmit="return confirm('Chắc chắn muốn xóa ?')">
+										<td>{{$price->format->format_name}}</td>
+										<td>{{$price->normal_price}}</td>	
+										<td>{{$price->member_price}}</td>
+                                        <td>{{$price->weekend_price}}</td>
+                                        <td>{{$price->holiday_price}}</td>
+										<td><a href="ticket-price/edit/{{$price->id}}"><button style="background-color: #ffffff00;border: none" title="Sửa"><i class="fas fa-edit text-success"></i></button></a><br>
+											<!-- <form action="staff/delete/{{}}" method="get" onsubmit="return confirm('Chắc chắn muốn xóa ?')">
 												@csrf
 												<button type="submit" style="background-color: #ffffff00;border: none" title="Xóa"><i class="fas fa-trash-alt text-danger"></i></button>
-											</form></td>
+											</form> -->
+                                            </td>
 										</tr>
 										@endforeach
 									</tbody>
 								</table>
 							</div>
-						</div>
 					</div>
 				</div>
 			</section>
@@ -52,8 +56,8 @@
 					</div>
 					<!-- <div class="col-md-6 text-center text-md-right text-gray-400">
 						<p class="mb-0">Design by <a href="https://bootstrapious.com/admin-templates" class="external text-gray-400">Bootstrapious</a></p>
-						Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)
-					</div> -->
+						<!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+					</div>
 				</div>
 			</div>
 		</footer>

@@ -24,7 +24,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3 form-control-label">Thông tin rạp</label>
                                     <div class="col-md-9">
-                                        <textarea class="form-control " name="infomation" rows="5" id="ttrap">{{$cinema->infomation}}</textarea>
+                                        <textarea class="form-control " name="information" rows="5" id="ttrap">{{$cinema->information}}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">

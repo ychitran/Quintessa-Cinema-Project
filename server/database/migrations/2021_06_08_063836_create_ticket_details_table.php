@@ -22,7 +22,8 @@ class CreateTicketDetailsTable extends Migration
             $table->unsignedBigInteger('combo_id')->nullable(true);
             $table->unsignedBigInteger('discount_id')->nullable(true);
             $table->integer('status');
-            $table->string('total_price');
+            $table->integer('ticket_price');
+            $table->integer('total_price');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('screening_id')->references('id')->on('screenings');
             $table->foreign('combo_id')->references('id')->on('combos');

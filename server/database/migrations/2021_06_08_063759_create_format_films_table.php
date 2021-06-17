@@ -16,7 +16,6 @@ class CreateFormatFilmsTable extends Migration
         Schema::create('format_films', function (Blueprint $table) {
             $table->id();
             $table->string('format_name');
-            $table->integer('format_price');
             $table->timestamps();
             
         });
