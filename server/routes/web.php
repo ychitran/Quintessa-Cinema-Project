@@ -10,6 +10,7 @@ use App\Http\Controllers\MembersController;
 use App\Http\Controllers\RoomsController;
 use App\Http\Controllers\ScreeningsController;
 use App\Http\Controllers\StaffsController;
+use App\Http\Controllers\TicketDetailController;
 use App\Http\Controllers\TicketPriceController;
 use Illuminate\Support\Facades\Route;
 
@@ -121,6 +122,16 @@ Route::group(['prefix' =>'admin','middleware' => 'checkpermission'], function() 
     Route::get('/ticket-price',[TicketPriceController::class,'managePrice']);
     
     Route::group(['prefix' => 'ticket-price'], function() {
+    // Route::get('/create',[CombosController::class,'createCombo']);
+    // Route::post('/create',[CombosController::class,'storeCombo']);
+    Route::get('/edit/{id}',[TicketPriceController::class,'edit']);
+    Route::post('/edit/{id}',[TicketPriceController::class,'update']);
+    // Route::get('/delete/{id}',[CombosController::class,'deleteCombo']);
+    });
+
+    Route::get('/ticket',[TicketDetailController::class,'manageTicket']);
+    
+    Route::group(['prefix' => 'ticket'], function() {
     // Route::get('/create',[CombosController::class,'createCombo']);
     // Route::post('/create',[CombosController::class,'storeCombo']);
     Route::get('/edit/{id}',[TicketPriceController::class,'edit']);

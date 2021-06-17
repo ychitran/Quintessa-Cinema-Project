@@ -63,7 +63,7 @@
         <li class="sidebar-list-item"><a href="/admin/cinema" class="sidebar-link text-dark"><i class="o-survey-1 mr-3 text-gray"></i><span>Quản Lý Rạp</span></a></li>
         <li class="sidebar-list-item"><a href="/admin/film" class="sidebar-link text-dark"><i class="fas fa-film mr-3 text-gray"></i><span>Quản Lý Phim</span></a></li>
         <li class="sidebar-list-item"><a href="/admin/screening" class="sidebar-link text-dark"><i class="fas fa-calendar-week mr-3 text-gray"></i><span>Quản Lý Lịch Chiếu</span></a></li>
-        <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i class="fas fa-ticket-alt mr-3 text-gray"></i><span>Quản Lý Vé</span></a></li>
+        <li class="sidebar-list-item"><a href="/admin/ticket" class="sidebar-link text-dark"><i class="fas fa-ticket-alt mr-3 text-gray"></i><span>Quản Lý Vé</span></a></li>
         <li class="sidebar-list-item"><a href="/admin/room" class="sidebar-link text-dark"><i class="fab fa-windows mr-3 text-gray"></i><span>Quản Lý Phòng</span></a></li>
         <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i class="fas fa-couch mr-3 text-gray"></i><span>Quản Lý Ghế</span></a></li>
         <li class="sidebar-list-item"><a href="/admin/combo" class="sidebar-link text-dark"><i class="fal fa-popcorn mr-3 text-gray"></i><span>Quản Lý Sản phẩm</span></a></li>  
