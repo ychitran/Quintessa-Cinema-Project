@@ -1,5 +1,38 @@
 {
-  "films": [],
+  "films": [
+    {
+      "film_name": "Commodi quibusdam vo",
+      "global_name": "Aut maiores non qui ",
+      "producer": "Enim tenetur et eos ",
+      "categories": "Numquam vero vel rep",
+      "director": "Cupiditate voluptate",
+      "caster": "Facere nisi eu irure",
+      "duration": "102",
+      "poster": "Qui laboris duis qui",
+      "trailer": "Modi incididunt comm",
+      "format_id": "0",
+      "release_date": "2010-03-17",
+      "status": "1",
+      "description": "Tempora illo nihil c",
+      "id": 1
+    },
+    {
+      "film_name": "Aliquid dolorum plac",
+      "global_name": "Et vel aut anim dolo",
+      "producer": "Animi impedit hic ",
+      "categories": "Laboriosam mollitia",
+      "director": "Et aliquip praesenti",
+      "caster": "Tenetur illum quisq",
+      "duration": "111",
+      "poster": "Labore tempor iusto ",
+      "trailer": "Labore neque Nam bla",
+      "format_id": "0",
+      "release_date": "2001-09-25",
+      "status": "1",
+      "description": "Incidunt elit volu",
+      "id": 2
+    }
+  ],
   "cinemas": [
     {
       "id": 1,
@@ -12,12 +45,73 @@
       "id": 2
     }
   ],
-  "staffs": {
-    "full_name": "Odio voluptas ration",
-    "email": "Dolor architecto dui",
-    "password": "123456",
-    "phone_number": "Sunt ex corporis est",
-    "role_id": 2,
-    "cinema_id": 1
-  }
+  "staffs": [
+    {
+      "full_name": "Odio voluptas ration",
+      "email": "Dolor architecto dui",
+      "password": "123456",
+      "phone_number": "Sunt ex corporis est",
+      "role_id": 2,
+      "cinema_id": 1
+    }
+  ],
+  "tickets": [
+    {
+      "screening_id": "1",
+      "seats": [
+        "A1",
+        "A2",
+        "A3"
+      ],
+      "phone_number": null,
+      "user_id": null,
+      "combo_id": null,
+      "discount_id": null,
+      "status": 1,
+      "ticket_price": 150000,
+      "total_price": 150000
+    },
+    {
+      "screening_id": "1",
+      "seats": [
+        "A4",
+        "A5",
+        "A6"
+      ],
+      "phone_number": "0123123123",
+      "user_id": 5,
+      "combo_id": null,
+      "discount_id": null,
+      "status": 1,
+      "ticket_price": 150000,
+      "total_price": 150000
+    },
+    {
+      "screening_id": "1",
+      "seats": [
+        "A1",
+        "A2",
+        "A3"
+      ],
+      "phone_number": "0123456789",
+      "user_id": 4,
+      "combo_id": 1,
+      "discount_id": null,
+      "status": 1,
+      "ticket_price": 225000,
+      "total_price": 225000
+    }
+  ],
+  "rooms": [
+    {
+      "id":1,
+      "room_name":"H01",
+      "cinema_id":1
+    },
+    {
+      "id":2,
+      "room_name":"H02",
+      "cinema_id":1
+    }
+  ]
 }
