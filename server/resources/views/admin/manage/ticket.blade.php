@@ -9,7 +9,7 @@
 					<div class="card">
 						<div class="card-header">
 							<h6 class="text-uppercase mb-0">Quản Lý Vé</h6>
-							<!-- <a href="" title="Thêm mới" style="position: absolute;right: 35px;top: 22px;"><i class="fas fa-plus-square text-success" style="font-size: 24px"></i></a> -->
+							<a href="ticket/order" title="Thêm mới" style="position: absolute;right: 35px;top: 22px;"><i class="fas fa-plus-square text-success" style="font-size: 24px"></i></a>
 						</div>
 						<div class="card-body"> 
 
