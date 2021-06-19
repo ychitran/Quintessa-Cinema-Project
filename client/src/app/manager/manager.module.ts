@@ -56,7 +56,12 @@ const ROUTES: Routes = [
       {
         path:'user',
         loadChildren: () => import(`../manager/user/user.module`). then(m => m.UserModule)
+      },
+      {
+        path:'ticket',
+        loadChildren: () => import(`../manager/ticket/ticket.module`). then(m => m.TicketModule)
       }
+
     ]
     
   },

@@ -61,6 +61,10 @@ export class AdminLayoutComponent implements OnInit {
     this.router.navigateByUrl("/admin/ad")
   }
 
+  goToTicket() {
+    this.router.navigateByUrl("/admin/ticket")
+  }
+
 
 
 }

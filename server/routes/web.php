@@ -132,7 +132,7 @@ Route::group(['prefix' =>'admin','middleware' => 'checkpermission'], function() 
     Route::get('/ticket',[TicketDetailController::class,'manageTicket']);
     
     Route::group(['prefix' => 'ticket'], function() {
-    // Route::get('/create',[CombosController::class,'createCombo']);
+    Route::get('/order',[TicketDetailController::class,'orderTicket']);
     // Route::post('/create',[CombosController::class,'storeCombo']);
     Route::get('/edit/{id}',[TicketPriceController::class,'edit']);
     Route::post('/edit/{id}',[TicketPriceController::class,'update']);
