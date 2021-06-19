@@ -113,5 +113,104 @@
       "room_name":"H02",
       "cinema_id":1
     }
+  ],
+  "seats":[
+    {
+      "id":1,
+      "row":"A",
+      "number": [
+        {
+          "id":1,
+          "row":"A",
+          "number":1,
+          "room_id":1
+        },
+        {
+          "id":2,
+          "row":"A",
+          "number":2,
+          "room_id":1
+        },
+        {
+          "id":3,
+          "row":"A",
+          "number":3,
+          "room_id":1
+        },
+        {
+          "id":4,
+          "row":"A",
+          "number":4,
+          "room_id":1
+        },
+        {
+          "id":5,
+          "row":"A",
+          "number":5,
+          "room_id":1
+        }
+      ],
+      "room_id":1
+    },
+    {
+      "id":2,
+      "row":"B",
+      "number": [
+        {
+          "id":1,
+          "row":"B",
+          "number":1,
+          "room_id":1
+        },
+        {
+          "id":2,
+          "row":"B",
+          "number":2,
+          "room_id":1
+        },
+        {
+          "id":3,
+          "row":"B",
+          "number":3,
+          "room_id":1
+        },
+        {
+          "id":4,
+          "row":"B",
+          "number":4,
+          "room_id":1
+        },
+        {
+          "id":5,
+          "row":"B",
+          "number":5,
+          "room_id":1
+        }
+      ],
+      "room_id":1
+    }
+  ],
+  "screenings": [
+    {
+      "id":1,
+      "date": "2021/06/19",
+      "start_time":"12:00",
+      "film_id":1,
+      "room_id":1
+    },
+    {
+      "id":2,
+      "date": "2021/06/19",
+      "start_time":"14:00",
+      "film_id":1,
+      "room_id":1
+    },
+    {
+      "id":3,
+      "date": "2021/06/19",
+      "start_time":"16:00",
+      "film_id":1,
+      "room_id":1
+    }
   ]
 }
