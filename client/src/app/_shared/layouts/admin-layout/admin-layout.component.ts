@@ -32,8 +32,8 @@ export class AdminLayoutComponent implements OnInit {
     this.router.navigateByUrl("/admin/screening")
   }
 
-  goToUser(){
-    this.router.navigateByUrl("/admin/user")
+  goToMember(){
+    this.router.navigateByUrl("/admin/member")
 
   }
 
@@ -65,6 +65,8 @@ export class AdminLayoutComponent implements OnInit {
     this.router.navigateByUrl("/admin/ticket")
   }
 
-
+  goToAds() {
+    this.router.navigateByUrl("/admin/advertisement")
+  }
 
 }
