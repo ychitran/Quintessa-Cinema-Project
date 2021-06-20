@@ -54,12 +54,16 @@ const ROUTES: Routes = [
         loadChildren: () => import(`../manager/seat/seat.module`). then(m => m.SeatModule)
       },
       {
-        path:'user',
+        path:'member',
         loadChildren: () => import(`../manager/user/user.module`). then(m => m.UserModule)
       },
       {
         path:'ticket',
         loadChildren: () => import(`../manager/ticket/ticket.module`). then(m => m.TicketModule)
+      },
+      {
+        path:'advertisement',
+        loadChildren: () => import(`./advertisement/advertisement.module`).then(m => m.AdvertisementModule)
       }
 
     ]
