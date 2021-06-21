@@ -6,10 +6,6 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from '../manager/home/home.component';
 
 const ROUTES: Routes = [
-  {
-    path:'',
-    component:AdminLayoutComponent,
-    children: [
       {
         path: '', component: HomeComponent
       },
@@ -67,10 +63,6 @@ const ROUTES: Routes = [
       }
 
     ]
-    
-  },
-  
-]
 
 
 @NgModule({

@@ -2,15 +2,28 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { AdminLayoutComponent } from './_shared/layouts/admin-layout/admin-layout.component';
+import { ClientLayoutComponent } from './_shared/layouts/client-layout/client-layout.component';
 
 const ROUTES: Routes = [
   {
     path: '',
-    loadChildren: () => import(`./client/client.module`). then(m => m.ClientModule)
+    component: ClientLayoutComponent,
+    children: [{
+      path:'',
+      loadChildren: () => import(`./client/client.module`). then(m => m.ClientModule)
+    }]
+    
   },
   {
     path: 'admin',
-    loadChildren: () => import(`./manager/manager.module`). then(m => m.ManagerModule)
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path:'',
+        loadChildren: () => import(`./manager/manager.module`). then(m => m.ManagerModule)
+      }
+    ]
   }
 ]
 

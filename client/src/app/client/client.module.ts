@@ -7,16 +7,12 @@ import { DetailsFilmComponent } from './details-film/details-film.component';
 
 
 const ROUTES: Routes = [
-  {
-    path: '', component: ClientLayoutComponent,
-    children: [{
-      path: '', component: HomeComponent
+{
+    path: '', component: HomeComponent
     },
       {
       path: 'details-film', component: DetailsFilmComponent
     }]
-  }
-]
 
 
 
