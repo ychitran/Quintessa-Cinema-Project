@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientLayoutComponent } from '../_shared/layouts/client-layout/client-layout.component';
 import { DetailsFilmComponent } from './details-film/details-film.component';
+import { ListFilmComponent } from './list-film/list-film.component';
 
 
 const ROUTES: Routes = [
@@ -14,6 +15,9 @@ const ROUTES: Routes = [
     },
       {
       path: 'details-film', component: DetailsFilmComponent
+      },
+      {
+      path: 'list-film', component: ListFilmComponent
     }]
   }
 ]
@@ -21,7 +25,7 @@ const ROUTES: Routes = [
 
 
 @NgModule({
-  declarations: [HomeComponent, DetailsFilmComponent],
+  declarations: [HomeComponent, DetailsFilmComponent, ListFilmComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(ROUTES)

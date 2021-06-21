@@ -10,8 +10,8 @@
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
-                                <a class="nav-link active head__space head__font" aria-current="page">HOME</a>
-                                <a class="nav-link head__space head__font ">SHOWTIMES</a>
+                                <a class="nav-link active head__space head__font" [routerLink]="['/']" routerLinkActive="router-link-active" aria-current="page">HOME</a>
+                                <a class="nav-link head__space head__font " [routerLink]="['/list-film']" routerLinkActive="router-link-active">SHOWTIMES</a>
                                 <button type="button" class="btn nav-link head__font" data-mdb-toggle="modal" data-mdb-target="#exampleModal">ORDER TICKET</button>
                             </div>
                         </div>
@@ -27,8 +27,8 @@
     <!-- Header Navbar End -->
 
     <!-- Slides Start -->
-    <div class="slides-container-fluid slide__height text-center position-relative">
-        <img class="slide__img head__full" src="assets\frontend\img\slide\teahub.io-spiderman-hd-wallpaper-download-855340.png" alt="background">
+    <div class="slides-container-fluid slide__height text-center position-relative" *ngFor="let slide of slides">
+        <img class="slide__img head__full" src="{{slide.background_slide}}" alt="background">
     </div>
     <!-- Slides End -->
 
