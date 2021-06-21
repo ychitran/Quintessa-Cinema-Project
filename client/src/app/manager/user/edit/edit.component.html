@@ -1,1 +1,39 @@
-<p>edit works!</p>
+<div class="card-header">
+    <h3 class="h6 text-uppercase mb-0">Chỉnh sửa Thông tin Thành viên</h3>
+</div>
+<div class="card-body">
+
+
+    <form [formGroup]="editMemberForm" (ngSubmit)="update()">
+        <div class="alert alert-danger" *ngIf="editMemberForm.invalid">
+            Vui lòng điền đầy đủ thông tin
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 form-control-label">Tên Thành viên</label>
+            <div class="col-md-9">
+                <input id="inputHorizontalSuccess" formControlName="full_name" type="text" placeholder="Tiêu đề"
+                    class="form-control form-control-success">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 form-control-label">Email</label>
+            <div class="col-md-9">
+                <input id="inputHorizontalSuccess" formControlName="email" type="text" placeholder="Tiêu đề"
+                    class="form-control form-control-success">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-md-3 form-control-label">Số điện thoại</label>
+            <div class="col-md-9">
+                <input id="inputHorizontalSuccess" formControlName="phone_number" type="text" placeholder="Tiêu đề"
+                    class="form-control form-control-success">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-9 m-auto">
+                <input type="submit" value="Thêm" class="btn btn-primary">
+            </div>
+        </div>
+    </form>
+</div>

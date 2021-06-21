@@ -8,7 +8,7 @@
 				<div class="col-lg-12 mb-4">
 					<div class="card">
 						<div class="card-header">
-							<h6 class="text-uppercase mb-0">Quản Lý Quảng cáo</h6>
+							<h6 class="text-uppercase mb-0">Quản Lý Sản phẩm</h6>
 							<a href="combo/create" title="Thêm mới" style="position: absolute;right: 35px;top: 22px;"><i class="fas fa-plus-square text-success" style="font-size: 24px"></i></a>
 						</div>
 						<div class="card-body">                           

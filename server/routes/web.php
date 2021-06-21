@@ -10,6 +10,8 @@ use App\Http\Controllers\MembersController;
 use App\Http\Controllers\RoomsController;
 use App\Http\Controllers\ScreeningsController;
 use App\Http\Controllers\StaffsController;
+use App\Http\Controllers\TicketDetailController;
+use App\Http\Controllers\TicketPriceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,19 +38,19 @@ Route::group(['prefix' =>'admin','middleware' => 'checkpermission'], function() 
     Route::get('/film',[FilmsController::class,'manageFilm'])->name('admin.managefilm');
     Route::group(['prefix' => 'film','middleware' => 'administrator'], function() {
     Route::get('/create',[FilmsController::class,'createFilm'])->name('admin.addfilm.page');
-    Route::post('/store',[FilmsController::class,'storeFilm'])->name('admin.addfilm');
+    Route::post('/create',[FilmsController::class,'storeFilm'])->name('admin.addfilm');
     Route::get('/edit/{id}',[FilmsController::class,'editFilm'])->name('admin.editfilm.page');
-    Route::post('/update/{id}',[FilmsController::class,'updateFilm'])->name('admin.editfilm');
+    Route::post('/edit/{id}',[FilmsController::class,'updateFilm'])->name('admin.editfilm');
     Route::get('/delete/{id}',[FilmsController::class,'deleteFilm'])->name('admin.deletefilm');
     });
     //Manage Cinema
     Route::get('/cinema',[CinemasController::class,'manageCinema']);
     Route::group(['prefix' => 'cinema','middleware' => 'administrator'], function() {
     Route::get('/create',[CinemasController::class,'createCinema']);
-    Route::post('/store',[CinemasController::class,'storeCinema']);
+    Route::post('/create',[CinemasController::class,'storeCinema']);
 
-    Route::get('edit/{id}',[CinemasController::class,'editCinema']);
-    Route::post('update//{id}',[CinemasController::class,'updateCinema']);
+    Route::get('/edit/{id}',[CinemasController::class,'editCinema']);
+    Route::post('/edit/{id}',[CinemasController::class,'updateCinema']);
     Route::get('/delete/{id}',[CinemasController::class,'deleteCinema']);
     });
     //Manage Screening
@@ -57,9 +59,9 @@ Route::group(['prefix' =>'admin','middleware' => 'checkpermission'], function() 
     
     Route::group(['prefix' => 'screening','middleware' => 'manager'], function() {
     Route::get('/create',[ScreeningsController::class,'createScreening']);
-    Route::post('/store',[ScreeningsController::class,'storeScreening']);
+    Route::post('/create',[ScreeningsController::class,'storeScreening']);
     Route::get('/edit/{id}',[ScreeningsController::class,'editScreening']);
-    Route::post('/update/{id}',[ScreeningsController::class,'updateScreening']);
+    Route::post('/edit/{id}',[ScreeningsController::class,'updateScreening']);
     Route::delete('/delete/{id}',[ScreeningsController::class,'deleteScreening']);
     });
     //Manager Staff
@@ -67,9 +69,9 @@ Route::group(['prefix' =>'admin','middleware' => 'checkpermission'], function() 
     
     Route::group(['prefix' => 'staff'], function() {
     Route::get('/create',[StaffsController::class,'createStaff'])->name('admin.addstaff.page');
-    Route::post('/store',[StaffsController::class,'storeStaff'])->name('admin.addstaff');
+    Route::post('/create',[StaffsController::class,'storeStaff'])->name('admin.addstaff');
     Route::get('/edit/{id}',[StaffsController::class,'editStaff']);
-    Route::post('/update/{id}',[StaffsController::class,'updateStaff']);
+    Route::post('/edit/{id}',[StaffsController::class,'updateStaff']);
     Route::get('/delete/{id}',[StaffsController::class,'deleteStaff']);
     });
     //Manager Advertisement
@@ -77,20 +79,20 @@ Route::group(['prefix' =>'admin','middleware' => 'checkpermission'], function() 
 
     Route::group(['prefix' => 'advertisement','middleware' => 'administrator'], function() {
     Route::get('/create',[AdvertisementsController::class,'createAd']);
-    Route::post('/store',[AdvertisementsController::class,'storeAd']);
+    Route::post('/create',[AdvertisementsController::class,'storeAd']);
     Route::get('/edit/{id}',[AdvertisementsController::class,'editAd']);
-    Route::post('/update/{id}',[AdvertisementsController::class,'updateAd']);
+    Route::post('/edit/{id}',[AdvertisementsController::class,'updateAd']);
     Route::get('/delete/{id}',[AdvertisementsController::class,'deleteAd']);
     });
 
     //manager Room
     Route::get('/room',[RoomsController::class,'manageRoom']);
     
-    Route::group(['prefix' => 'room','middleware' => 'manager'], function() {
+    Route::group(['prefix' => 'room','middleware' => 'administrator'], function() {
     Route::get('/create',[RoomsController::class,'createRoom']);
-    Route::post('/store',[RoomsController::class,'storeRoom']);
+    Route::post('/create',[RoomsController::class,'storeRoom']);
     Route::get('/edit/{id}',[RoomsController::class,'editRoom']);
-    Route::post('/update/{id}',[RoomsController::class,'updateRoom']);
+    Route::post('/edit/{id}',[RoomsController::class,'updateRoom']);
     Route::get('/delete/{id}',[RoomsController::class,'deleteRoom']);
     });
 
@@ -99,22 +101,44 @@ Route::group(['prefix' =>'admin','middleware' => 'checkpermission'], function() 
     
     Route::group(['prefix' => 'member','middleware' => 'manager'], function() {
     Route::get('/create',[MembersController::class,'createMember']);
-    Route::post('/store',[MembersController::class,'storeMember']);
+    Route::post('/create',[MembersController::class,'storeMember']);
     Route::get('/edit/{id}',[MembersController::class,'editMember']);
-    Route::post('/update/{id}',[MembersController::class,'updateMember']);
+    Route::post('/edit/{id}',[MembersController::class,'updateMember']);
     Route::get('/delete/{id}',[MembersController::class,'deleteMember']);
     });
 
     //manager Combo
     Route::get('/combo',[CombosController::class,'manageCombo']);
     
-    Route::group(['prefix' => 'combo','middleware' => 'administrator'], function() {
+    Route::group(['prefix' => 'combo','middleware' => 'manager'], function() {
     Route::get('/create',[CombosController::class,'createCombo']);
-    Route::post('/store',[CombosController::class,'storeCombo']);
+    Route::post('/create',[CombosController::class,'storeCombo']);
     Route::get('/edit/{id}',[CombosController::class,'editCombo']);
-    Route::post('/update/{id}',[CombosController::class,'updateCombo']);
+    Route::post('/edit/{id}',[CombosController::class,'updateCombo']);
     Route::get('/delete/{id}',[CombosController::class,'deleteCombo']);
     });
+
+    //Manager Ticket Price
+    Route::get('/ticket-price',[TicketPriceController::class,'managePrice']);
+    
+    Route::group(['prefix' => 'ticket-price'], function() {
+    // Route::get('/create',[CombosController::class,'createCombo']);
+    // Route::post('/create',[CombosController::class,'storeCombo']);
+    Route::get('/edit/{id}',[TicketPriceController::class,'edit']);
+    Route::post('/edit/{id}',[TicketPriceController::class,'update']);
+    // Route::get('/delete/{id}',[CombosController::class,'deleteCombo']);
+    });
+
+    Route::get('/ticket',[TicketDetailController::class,'manageTicket']);
+    
+    Route::group(['prefix' => 'ticket'], function() {
+    Route::get('/order',[TicketDetailController::class,'orderTicket']);
+    // Route::post('/create',[CombosController::class,'storeCombo']);
+    Route::get('/edit/{id}',[TicketPriceController::class,'edit']);
+    Route::post('/edit/{id}',[TicketPriceController::class,'update']);
+    // Route::get('/delete/{id}',[CombosController::class,'deleteCombo']);
+    });
+
 });
 
 

@@ -15,9 +15,10 @@ class CreateRevenuesTable extends Migration
     {
         Schema::create('revenues', function (Blueprint $table) {
             $table->id();
-            $table->string('revenue_ticket');
+            $table->date('belong_to');
+            $table->string('revenue_month');
+            $table->string('revenue_film');
             $table->string('revenue_combo');
-            $table->string('revenue_ads');
             $table->string('profit');
             $table->timestamps();
         });

@@ -16,17 +16,18 @@ class RoleSeeder extends Seeder
     {
         DB::table('roles')->insert([
             'role_name' => 'Administrator',
-            'salary' => '20000000'
         ]);
 
         DB::table('roles')->insert([
             'role_name' => 'Cinema Manager',
-            'salary' => '14000000'
         ]);
 
         DB::table('roles')->insert([
             'role_name' => 'Cinema Sales',
-            'salary' => '7000000'
+        ]);
+
+        DB::table('roles')->insert([
+            'role_name' => 'Cinema Ticket Checked',
         ]);
     }
 }
