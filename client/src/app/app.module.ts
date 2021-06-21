@@ -8,8 +8,6 @@ import { ClientLayoutComponent } from './_shared/layouts/client-layout/client-la
 import { HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
