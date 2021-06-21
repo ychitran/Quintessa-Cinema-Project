@@ -1,1 +1,48 @@
-<p>add works!</p>
+<div class="card-header">
+    <h3 class="h6 text-uppercase mb-0">Thêm Sản phẩm </h3>
+</div>
+<div class="card-body">
+
+    <form [formGroup]="addComboForm" (ngSubmit)="save()"  class="form-horizontal" action="">
+        <div class="alert alert-danger" *ngIf="addComboForm.invalid">
+            Vui lòng điền đầy đủ thông tin
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 form-control-label">Tên Sản phẩm</label>
+            <div class="col-md-9">
+                <input id="inputHorizontalSuccess" formControlName="product_name" type="text" placeholder="Tiêu đề"
+                    class="form-control form-control-success">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 form-control-label">Chi tiết sản phẩm</label>
+            <div class="col-md-9">
+                <input id="inputHorizontalSuccess" formControlName="product_detail" type="text" placeholder="Tiêu đề"
+                    class="form-control form-control-success">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 form-control-label">Ảnh sản phẩm</label>
+            <div class="col-md-9">
+                <input id="inputHorizontalSuccess" formControlName="product_image" type="file" placeholder="Tiêu đề"
+                    class="form-control form-control-success">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 form-control-label">Giá sản phẩm</label>
+            <div class="col-md-9">
+                <input id="inputHorizontalSuccess" formControlName="product_value" type="number" placeholder="Tiêu đề"
+                    class="form-control form-control-success">
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-md-9 m-auto">
+                <input type="submit" value="Thêm" class="btn btn-primary">
+            </div>
+        </div>
+    </form>
+</div>
