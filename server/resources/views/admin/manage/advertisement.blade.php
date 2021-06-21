@@ -29,7 +29,7 @@
 										<td>{{$key+1}}</td>
 										<td>{{$ad->company_name}}</td>
 										<td>{{$ad->content}}</td>
-                                        <td>{{$ad->start_time}}</td>
+                                        <td>{{$ad->start_time}}{{date(strto)}}</td>
                                         <td>{{date('Y-m-d', strtotime($ad->start_time. ' + '.strval($ad->date_count). 'days'))}}</td>
 										<td><a href="advertisement/edit/{{$ad->id}}"><button style="background-color: #ffffff00;border: none" title="Sửa"><i class="fas fa-edit text-success"></i></button></a><br>
 											<form action="advertisement/delete/{{$ad->id}}" method="get" onsubmit="return confirm('Chắc chắn muốn xóa ?')">

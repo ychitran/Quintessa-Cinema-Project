@@ -8,10 +8,8 @@ import { ListFilmComponent } from './list-film/list-film.component';
 
 
 const ROUTES: Routes = [
-  {
-    path: '', component: ClientLayoutComponent,
-    children: [{
-      path: '', component: HomeComponent
+{
+    path: '', component: HomeComponent
     },
       {
       path: 'details-film', component: DetailsFilmComponent
@@ -19,8 +17,6 @@ const ROUTES: Routes = [
       {
       path: 'list-film', component: ListFilmComponent
     }]
-  }
-]
 
 
 
