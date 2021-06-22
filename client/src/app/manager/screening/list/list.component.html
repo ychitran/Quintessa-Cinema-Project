@@ -1,1 +1,45 @@
-<p>list works!</p>
+<div class="card-header">
+    <h6 class="text-uppercase mb-0">Quản Lý Lịch Chiếu</h6>
+    <a href="screening/create" style="position: absolute;right: 35px;top: 22px;"><i
+            class="fas fa-plus-square text-success" style="font-size: 24px"></i></a>
+</div>
+<div class="card-body">
+    <div class="form-group row">
+		<label class="col-md-3 form-control-label">Phim</label>
+		<div class="col-md-9">
+			<select (change)="loadListProvider($event.target.value)" class="form-control" id="rap" >
+                <option checked></option>
+				<option *ngFor="let film of films" value="{{film.id}}">{{film.global_name}}</option>
+			</select>
+		</div>
+
+	</div>
+    <table class="table table-hover card-text">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Phim</th>
+                <th>Rạp</th>
+                <th>Ngày</th>
+                <th>Thời gian</th>
+                <th>Chức năng</th>
+            </tr>
+        </thead>
+        <tbody id="lichchieu">
+           
+            <tr *ngFor="let screening of screenings; index as key">
+                <td>{{key+1}}</td>
+                <td>{{screening.film_id}}</td>
+                <td>{{screening.room_id}}</td>
+                <td>{{screening.date | date:'dd/MM/YYYY'}}</td>
+                <td>{{screening.start_time}}</td>
+                <td><a href="screening/edit/{{screening.id}}"><button style="background-color: #ffffff00;border: none"
+                            title="Sửa"><i class="fas fa-edit text-success"></i></button></a><br>
+                    
+                        <button type="submit" style="background-color: #ffffff00;border: none" title="Xóa"><i
+                                class="fas fa-trash-alt text-danger"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,1 +1,33 @@
-<p>edit works!</p>
+<div class="card-header">
+    <h3 class="h6 text-uppercase mb-0">Chỉnh sửa Phòng Chiếu</h3>
+</div>
+<div class="card-body">
+    <form [formGroup]="editRoomForm" (ngSubmit)="update()" class="form-horizontal">
+        <div class="alert alert-danger" *ngIf="editRoomForm.invalid">
+            Vui lòng điền đầy đủ thông tin
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 form-control-label">Tên phòng</label>
+            <div class="col-md-9">
+                <input id="inputHorizontalSuccess" formControlName="room_name" type="text" placeholder="Tên Phòng"
+                    class="form-control form-control-success">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 form-control-label">Chọn rạp</label>
+            <div class="col-md-9">
+                <select class="form-control w-25 mb-5" id="phong" formControlName="cinema_id">
+                    <option checked>Vui lòng chọn rạp</option>
+                    
+                    <option  value="{{room.cinema_id}}">{{room.cinema_id}}</option>
+                    
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-9 m-auto">
+                <input type="submit" value="THÊM" class="btn btn-primary">
+            </div>
+        </div>
+    </form>
+</div>

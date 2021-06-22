@@ -1,1 +1,47 @@
-<p>add works!</p>
+<div class="card-header">
+    <h3 class="h6 text-uppercase mb-0">Thêm Phim Mới</h3>
+</div>
+<div class="card-body">
+    <form [formGroup]="addScreeningForm" (ngSubmit)="save()" class="form-horizontal">
+        <div class="alert alert-danger" *ngIf="addScreeningForm.invalid">
+            Vui lòng điền đầy đủ thông tin
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 form-control-label">Phim</label>
+            <div class="col-md-9">
+                <select formControlName="film_id" class="form-control">
+                   
+                    <option *ngFor="let film of films" value="{{film.id}}">{{film.film_name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 form-control-label">Phòng</label>
+            <div class="col-md-9">
+                <select formControlName="room_id" class="form-control" id="phong">
+                    <option checked></option>
+                   
+                    <option *ngFor="let room of rooms" value="{{room.id}}">{{room.room_name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 form-control-label">Ngày</label>
+            <div class="col-md-9">
+                <input id="inputHorizontalWarning" formControlName="date" type="date" class="form-control form-control-warning">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 form-control-label">Thời gian</label>
+            <div class="col-md-9">
+                <input id="inputHorizontalWarningg" formControlName="start_time" type="time" class="form-control ">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-9 m-auto">
+                <input type="submit" value="THÊM" class="btn btn-primary">
+            </div>
+        </div>
+    </form>
+
+</div>

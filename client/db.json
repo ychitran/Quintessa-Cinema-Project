@@ -104,123 +104,128 @@
   ],
   "rooms": [
     {
-      "id":1,
-      "room_name":"H01",
-      "cinema_id":1
+      "id": 1,
+      "room_name": "H01",
+      "cinema_id": 1
     },
     {
-      "id":2,
-      "room_name":"H02",
-      "cinema_id":1
+      "id": 2,
+      "room_name": "H02",
+      "cinema_id": 1
+    },
+    {
+      "room_name": "H03",
+      "cinema_id": "1",
+      "id": 3
     }
   ],
-  "seats":[
+  "seats": [
     {
-      "id":1,
-      "row":"A",
+      "id": 1,
+      "row": "A",
       "number": [
         {
-          "id":1,
-          "row":"A",
-          "number":1,
-          "room_id":1
+          "id": 1,
+          "row": "A",
+          "number": 1,
+          "room_id": 1
         },
         {
-          "id":2,
-          "row":"A",
-          "number":2,
-          "room_id":1
+          "id": 2,
+          "row": "A",
+          "number": 2,
+          "room_id": 1
         },
         {
-          "id":3,
-          "row":"A",
-          "number":3,
-          "room_id":1
+          "id": 3,
+          "row": "A",
+          "number": 3,
+          "room_id": 1
         },
         {
-          "id":4,
-          "row":"A",
-          "number":4,
-          "room_id":1
+          "id": 4,
+          "row": "A",
+          "number": 4,
+          "room_id": 1
         },
         {
-          "id":5,
-          "row":"A",
-          "number":5,
-          "room_id":1
+          "id": 5,
+          "row": "A",
+          "number": 5,
+          "room_id": 1
         }
       ],
-      "room_id":1
+      "room_id": 1
     },
     {
-      "id":2,
-      "row":"B",
+      "id": 2,
+      "row": "B",
       "number": [
         {
-          "id":1,
-          "row":"B",
-          "number":1,
-          "room_id":1
+          "id": 1,
+          "row": "B",
+          "number": 1,
+          "room_id": 1
         },
         {
-          "id":2,
-          "row":"B",
-          "number":2,
-          "room_id":1
+          "id": 2,
+          "row": "B",
+          "number": 2,
+          "room_id": 1
         },
         {
-          "id":3,
-          "row":"B",
-          "number":3,
-          "room_id":1
+          "id": 3,
+          "row": "B",
+          "number": 3,
+          "room_id": 1
         },
         {
-          "id":4,
-          "row":"B",
-          "number":4,
-          "room_id":1
+          "id": 4,
+          "row": "B",
+          "number": 4,
+          "room_id": 1
         },
         {
-          "id":5,
-          "row":"B",
-          "number":5,
-          "room_id":1
+          "id": 5,
+          "row": "B",
+          "number": 5,
+          "room_id": 1
         }
       ],
-      "room_id":1
+      "room_id": 1
     }
   ],
   "screenings": [
     {
-      "id":1,
+      "id": 1,
       "date": "2021/06/19",
-      "start_time":"12:00",
-      "film_id":1,
-      "room_id":1
+      "start_time": "12:00",
+      "film_id": 1,
+      "room_id": 1
     },
     {
-      "id":2,
+      "id": 2,
       "date": "2021/06/19",
-      "start_time":"14:00",
-      "film_id":1,
-      "room_id":1
+      "start_time": "14:00",
+      "film_id": 1,
+      "room_id": 1
     },
     {
-      "id":3,
+      "id": 3,
       "date": "2021/06/19",
-      "start_time":"16:00",
-      "film_id":1,
-      "room_id":1
+      "start_time": "16:00",
+      "film_id": 1,
+      "room_id": 1
     }
   ],
   "members": [
     {
-      "id":1,
-      "full_name":"Nguyễn Văn Thộn",
-      "email":"thon@email.com",
-      "password":"123456",
-      "phone_number":"0123123789",
-      "cinema_point":0
+      "id": 1,
+      "full_name": "Nguyễn Văn Thộn",
+      "email": "thon@email.com",
+      "password": "123456",
+      "phone_number": "0123123789",
+      "cinema_point": 0
     }
   ]
 }
