@@ -36,33 +36,49 @@
             QUẢN LÝ</div>
         <ul class="sidebar-menu list-unstyled">
             <li class="sidebar-list-item"><a (click)="goToHome()" href="javascript:;" class="sidebar-link text-dark"><i
-                        class="o-home-1 mr-3 text-gray"></i><span>Home</span></a></li>
-            <li class="sidebar-list-item"><a (click)="goToFilm()" href="javascript:;" class="sidebar-link text-dark"><i
-                        class="fas fa-film mr-3 text-gray"></i><span>Quản Lý
-                        Phim</span></a></li>
+                        class="o-home-1 mr-3 text-gray"></i><span>Home</span></a>
+            </li>
+            <li class="sidebar-list-item">
+                <ul class="sidebar-menu list-unstyled">
+                    <li class="sidebar-list-item"><a routerLink="./cinema" class="sidebar-link text-dark"><i
+                                class="o-survey-1 mr-3 text-gray"></i><span>Quản Lý Rạp</span></a></li>
+                </ul>
+            </li>
+            <li class="sidebar-list-item">
+                <ul class="sidebar-menu list-unstyled">
+
+                    <li class="sidebar-list-item"><a (click)="goToFilm()" href="javascript:;"
+                            class="sidebar-link text-dark"><i class="fas fa-film mr-3 text-gray"></i><span>Quản Lý
+                                Phim</span></a></li>
+                    <li class="sidebar-list-item"><a href="javascript:;" routerLink="./screening"
+                            class="sidebar-link text-dark"><i class="fas fa-calendar-week mr-3 text-gray"></i><span>Quản
+                                Lý Lịch
+                                Chiếu</span></a></li>
+                    <li class="sidebar-list-item"><a (click)="goToMember()" href="javascript:;"
+                            class="sidebar-link text-dark"><i class="fas fa-user-friends mr-3 text-gray"></i><span>Quản
+                                Lý
+                                Người dùng</span></a></li>
+                    <li class="sidebar-list-item"><a (click)="goToStaff()" href="javascript:;"
+                            class="sidebar-link text-dark"><i class="fas fa-user-friends mr-3 text-gray"></i><span>Quản
+                                Lý
+                                Nhân viên</span></a></li>
+                    <li class="sidebar-list-item"><a (click)="goToAds()" href="javascript:;"
+                            class="sidebar-link text-dark"><i class="fad fa-ad mr-3 text-gray"></i><span>Quảng
+                                cáo</span></a></li>
+
+                    <li class="sidebar-list-item"><a routerLink="./room" href="javascript:;"
+                            class="sidebar-link text-dark"><i class="fab fa-windows mr-3 text-gray"></i><span>Quản Lý
+                                Phòng chiếu</span></a></li>
+                </ul>
+            </li>
             <li class="sidebar-list-item"><a (click)="goToTicket()" href="javascript:;"
                     class="sidebar-link text-dark"><i class="fas fa-ticket-alt mr-3 text-gray"></i><span>Quản Lý
                         Vé</span></a></li>
-            <li class="sidebar-list-item"><a routerLink="./combo" href="javascript:;"
-                    class="sidebar-link text-dark"><i class="fad fa-popcorn mr-3 text-gray"></i><span>Quản lý Sản phẩm</span></a></li>
-            <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i
-                        class="fas fa-calendar-week mr-3 text-gray"></i><span>Quản Lý Lịch Chiếu</span></a></li>
-            <li class="sidebar-list-item"><a routerLink="./cinema" class="sidebar-link text-dark"><i
-                        class="o-survey-1 mr-3 text-gray"></i><span>Quản Lý Rạp</span></a></li>
-            <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i
-                        class="fab fa-windows mr-3 text-gray"></i><span>Quản Lý Phòng</span></a></li>
+            <li class="sidebar-list-item"><a routerLink="./combo" href="javascript:;" class="sidebar-link text-dark"><i
+                        class="fad fa-popcorn mr-3 text-gray"></i><span>Quản lý Sản phẩm</span></a></li>
             <li class="sidebar-list-item"><a (click)="goToSeat()" href="javascript:;" class="sidebar-link text-dark"><i
                         class="fas fa-couch mr-3 text-gray"></i><span>Quản Lý Ghế</span></a></li>
-            <li class="sidebar-list-item"><a (click)="goToMember()" href="javascript:;"
-                    class="sidebar-link text-dark"><i class="fas fa-user-friends mr-3 text-gray"></i><span>Quản Lý
-                        Người dùng</span></a></li>
-            <li class="sidebar-list-item"><a (click)="goToStaff()" href="javascript:;" class="sidebar-link text-dark"><i
-                        class="fas fa-user-friends mr-3 text-gray"></i><span>Quản Lý
-                        Nhân viên</span></a></li>
-            <li class="sidebar-list-item"><a (click)="goToAds()" href="javascript:;" class="sidebar-link text-dark"><i
-                        class="fad fa-ad mr-3 text-gray"></i><span>Quảng cáo</span></a></li>
-        </ul> <i class="fad fa-popcorn"></i>
-
+        </ul>
     </div>
     <div class="page-holder w-100 d-flex flex-wrap">
         <div class="container-fluid px-xl-5">
@@ -83,7 +99,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 text-center text-md-left text-primary">
-                <p class="mb-2 mb-md-0">QUINTESSA Cinema &copy; 2021</p>
+                <p class="mb-2 mb-md-0">Cinerama Cinema &copy; 2021</p>
             </div>
             <div class="col-md-6 text-center text-md-right text-gray-400">
                 <p class="mb-0">Design by <Strong>Gainer</Strong></p>

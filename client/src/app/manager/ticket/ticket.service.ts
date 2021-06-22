@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Film } from 'src/app/_shared/models/film.model';
 import { Room } from 'src/app/_shared/models/room.model';
 import { Seat } from 'src/app/_shared/models/seat.model';
+import { TicketPrice } from 'src/app/_shared/models/ticket-price.model';
 import { TicketDetail } from 'src/app/_shared/models/ticket.model';
 
 @Injectable({
@@ -23,6 +24,15 @@ export class TicketService {
         q:keyword
       }
     });
+  }
+
+  //Second
+  getListNd():Observable<Array<TicketPrice>>{
+    return this.httpClient.get<Array<TicketPrice>>('http://localhost:3000/ticket-prices')
+  }
+
+  getElement(id):Observable<TicketPrice> {
+    return this.httpClient.get<TicketPrice>('http://localhost:3000/ticket-prices/'+id)
   }
 
   // getSeat(room_id): Observable<Array<Seat>> {
