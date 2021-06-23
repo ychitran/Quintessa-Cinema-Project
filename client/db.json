@@ -227,5 +227,27 @@
       "phone_number": "0123123789",
       "cinema_point": 0
     }
+  ],
+  "monthly_revenues": [
+    {
+      "id":1,
+      "cinema_id":1,
+      "month":"2021/06/30",
+      "total_revenue":"3000000000"
+    }
+  ],
+  "film_revenues": [
+    {
+      "id":1,
+      "monthly_id":1,
+      "film_id":1,
+      "revenue":"1000000000"
+    },
+    {
+      "id":2,
+      "monthly_id":1,
+      "film_id":2,
+      "revenue":"1000000000"
+    }
   ]
 }

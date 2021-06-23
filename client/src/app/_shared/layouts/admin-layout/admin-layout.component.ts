@@ -14,11 +14,8 @@ export class AdminLayoutComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getRole();
   }
-  getRole() {
-    throw new Error('Method not implemented.');
-  }
+  
 
   goToHome() {
     this.router.navigateByUrl("/admin")

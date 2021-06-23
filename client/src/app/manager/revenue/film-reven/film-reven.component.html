@@ -1,5 +1,12 @@
+<div class="input-group">
+
+    <input #keyword (keydown.enter)="loadList($event.target.value)" type="text" class="form-control col-sm-3 form-control-label" placeholder="Tìm kiếm"
+        aria-label="Search Keyword" aria-describedby="basic-addon2">
+
+</div>
+
 <div class="card-header">
-    <h6 class="text-uppercase mb-0">Quản Lý Doanh thu</h6>
+    <h6 class="text-uppercase mb-0">Doanh thu theo phim</h6>
     <a routerLink="./add" title="Thêm mới" style="position: absolute;right: 35px;top: 22px;"><i
             class="fas fa-plus-square text-success" style="font-size: 24px"></i></a>
 </div>
@@ -8,7 +15,7 @@
         <thead>
             <tr>
                 <th>No.</th>
-                <th>Tên rạp</th>
+                <th>Tên phim</th>
                 <th>Tháng</th>
                 <th>Doanh thu</th>
                 <th>Chi tiết</th>
@@ -17,15 +24,10 @@
         <tbody>
             <tr *ngFor="let revenue of revenues; index as i">
                 <th>{{i+1}}</th>
-                <td>{{revenue.cinema_id}}</td>
-                <td>{{revenue.month}}</td>
-                <td>{{revenue.total_revenue}}</td>
+                <td>{{revenue.film_id}}</td>
+                <td>{{revenue.monthly_id}}</td>
+                <td>{{revenue.revenue}}</td>
                 <td>
-                    <a style="padding: 0 15px;" [routerLink]="['film',revenue.id]">
-                        <i class="fas fa-edit text-success"></i>
-                    </a>
-                    <a [routerLink]="['combo',revenue.id]"><i class="fas fa-trash-alt text-danger"></i></a>
-                    <a [routerLink]="['advertisement',revenue.id]"><i class="fas fa-trash-alt text-danger"></i></a>
                 </td>
             </tr>
         </tbody>
