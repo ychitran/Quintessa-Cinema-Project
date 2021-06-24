@@ -6,13 +6,13 @@ import { Film } from 'src/app/_shared/models/film.model';
 @Injectable({
   providedIn: 'root'
 })
-export class ListFilmService {
-  
-  private apiURL: string = "https://60ce078a91cc8e00178dc6b4.mockapi.io/cinema/film";
+export class DetailsFilmService {
+
   constructor(
     private readonly httpClient: HttpClient
   ) { }
-  getAll(): Observable<Array<Film>> {
-    return this.httpClient.get<Array<Film>>(this.apiURL);
+
+  getFilm(id): Observable<Film> {
+    return this.httpClient.get<Film>('https://60ce078a91cc8e00178dc6b4.mockapi.io/cinema/film/' + id);
   }
 }

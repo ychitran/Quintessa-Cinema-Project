@@ -79,16 +79,20 @@
 // Article Details Start
 .article {
     &__height {
-        height: 380px;
+        height: 500px;
         background-color: #333;
         margin-bottom: 80px;
+    }
+    &__col-height {
+        height: 100%;
     }
     &__full {
         height: 100%;
         width: 100%;
     }
     &__padding {
-        padding: 0;
+        padding-left: 0;
+        padding-right: 0;
     }
     &__filter {
         filter: brightness(80%);
@@ -106,10 +110,6 @@
         font-weight: 700;
         line-height: 1.1;
     }
-    &__details {
-        padding: 40px 65px;
-        margin-right: 5%;
-    }
     &__font-category {
         font-size: 17px;
         font-family: 'Open Sans', sans-serif;
@@ -117,10 +117,17 @@
         color: #fff;
     }
     &__font-content {
-        font-size: 14px;
-        font-family: 'Open Sans', sans-serif;
+        font-size: 17px;
+        font-family: 'Roboto', sans-serif;
         font-weight: 400;
         color: #fff;
+    }
+    &__border {
+        border-bottom: 1px solid rgb(66, 66, 66);
+        line-height: 43px;
+    }
+    &__content-size {
+        padding: 50px 40px;
     }
     &__space {
         margin-top: 30px;
@@ -128,18 +135,11 @@
     &__index {
         z-index: 1;
     }
-    &__space-list {
-        margin-top: 15px;
+    &__display {
+        display: flex;
     }
-    &__space-bottom {
-        margin-bottom: 10px;
-    }
-    &__border {
-        border-bottom: 1px solid rgb(66, 66, 66);
-        line-height: 43px;
-    }
-    &__space-right {
-        margin-right: 10px;
+    &__auto {
+        margin: auto;
     }
 }
 
