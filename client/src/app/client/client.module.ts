@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ClientLayoutComponent } from '../_shared/layouts/client-layout/client-layout.component';
 import { DetailsFilmComponent } from './details-film/details-film.component';
 import { ListFilmComponent } from './list-film/list-film.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 const ROUTES: Routes = [
@@ -14,11 +15,12 @@ const ROUTES: Routes = [
       path: '', component: HomeComponent
     },
       {
-      path: 'details-film', component: DetailsFilmComponent
+      path: 'list-film', component: ListFilmComponent
       },
       {
-      path: 'list-film', component: ListFilmComponent
-    }]
+      path: 'details-film/:id', component: DetailsFilmComponent
+      },
+     ]
   }
 ]
 
@@ -28,7 +30,8 @@ const ROUTES: Routes = [
   declarations: [HomeComponent, DetailsFilmComponent, ListFilmComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(ROUTES)
+    RouterModule.forChild(ROUTES),
+    ReactiveFormsModule
   ]
 })
 export class ClientModule { }

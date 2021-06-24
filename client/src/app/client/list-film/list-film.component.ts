@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Film } from '../model/film.model';
+import { Film } from 'src/app/_shared/models/film.model';
 import { ListFilmService } from './list-film.service';
 
 @Component({

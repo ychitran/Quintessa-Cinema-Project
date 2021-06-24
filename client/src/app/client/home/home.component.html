@@ -1,4 +1,4 @@
-<body>
+<div class="body__bg">
     <!-- Header Navbar Start -->
     <div class="header container-fluid text-center position-absolute slide__index head__border">
         <div class="row">
@@ -12,14 +12,16 @@
                             <div class="navbar-nav">
                                 <a class="nav-link active head__space head__font" [routerLink]="['/']" routerLinkActive="router-link-active" aria-current="page">HOME</a>
                                 <a class="nav-link head__space head__font " [routerLink]="['/list-film']" routerLinkActive="router-link-active">SHOWTIMES</a>
-                                <button type="button" class="btn nav-link head__font" data-mdb-toggle="modal" data-mdb-target="#exampleModal">ORDER TICKET</button>
+                                <button class="btn nav-link head__font" data-mdb-toggle="modal" data-mdb-target="#orderModal">ORDER TICKET</button>
                             </div>
                         </div>
                     </div>
                 </nav>
             </div>
-            <div class="col-md-2 head__display">
-                <a class="straight head__font head__margin-left">LOGIN</a>
+            <div class="col-md-1 head__display">
+                <button class="btn nav-link head__font straight" :after>LOGIN</button>
+            </div>
+            <div class="col-md-1 head__display">
                 <i class="fab fa-youtube head__margin-left head__icon"></i>
             </div>
         </div>
@@ -33,9 +35,9 @@
     <!-- Slides End -->
 
     <!-- Animation Start -->
-    <div class="animate-container position-absolute animation__center text-center ">
-        <h4 class="animation__font-tittle animate__animated animate__zoomIn animate__slower	3s animate__infinite ">SPIDER MAN</h4>
-        <h6 class="animation__font-under animate__animated animate__zoomIn animate__slower	3s animate__infinite ">NO WAY HOME</h6>
+    <div class="animate-container position-absolute animation__center text-center " *ngFor="let slide of slides">
+        <h4 class="animation__font-tittle animate__animated animate__zoomIn animate__slower	3s animate__infinite ">{{slide.tittle_lg}}</h4>
+        <h6 class="animation__font-under animate__animated animate__zoomIn animate__slower	3s animate__infinite ">{{slide.tittle_sm}}</h6>
         <button class="button animation__height animate__animated animate__zoomIn animate__slower	3s">
         Order Ticket
         <div class="button__horizontal"></div>
@@ -207,118 +209,4 @@
         </div>
     </div>
     <!-- Footer End -->
-
-    <!--===================== Modal Order Ticket Start================================= -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl ">
-            <div class="modal-content">
-                <div class="container ticket-order__width">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div id="carouselExampleControlsOrder" class="carousel slide" data-bs-interval="false" data-wrap="false">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <h5 class="modal-title ticket-order__font">ORDER A TICKET</h5>
-                                        <h3 class="ticket-order__font-nav">MOVIE</h3>
-                                        <select name="movie" class="ticket-order__border">
-                                        <option value="#">Black Widow - Goá phụ đen</option>
-                                        <option value="#">Spider Man - Far From Home</option>
-                                        <option value="#">Spider Man - No Way Home</option>
-                                        <option value="#">Avenger - Endgame</option>
-                                    </select>
-                                        <h3 class="ticket-order__font-nav">DATE</h3>
-                                        <input type="date" class="ticket-order__border">
-                                        <h3 class="ticket-order__font-nav">TIME</h3>
-                                        <div class="time">
-                                            <button type="button" class="btn btn-outline btn-rounded btn-sm ticket-order__space" data-mdb-ripple-color="dark">11:00</button>
-                                            <button type="button" class="btn btn-outline btn-rounded btn-sm ticket-order__space" data-mdb-ripple-color="dark">11:30</button>
-                                            <button type="button" class="btn btn-outline btn-rounded btn-sm ticket-order__space" data-mdb-ripple-color="dark">12:00</button>
-                                        </div>
-                                        <button type="button" class="btn btn-outline-warning btn-rounded btn-sm ticket-order__space-top" data-mdb-slide="next" data-mdb-target="#carouselExampleControlsOrder" data-mdb-ripple-color="dark">NEXT</button>
-                                    </div>
-                                    <!-- Modal Seat Start -->
-                                    <div class="carousel-item text-center container">
-                                        <div class="row">
-                                            <h5 class="modal-title ticket-order__font">SEAT</h5>
-                                            <img src="assets/frontend/img/ScreenForSeating_450.png " alt="">
-                                            <div class="col-md-1 ticket-order__seat-top ticket-order__font-row">A</div>
-                                            <div class="col-md-3">
-                                                <div class="seat-chart ticket-order__seat-top">
-                                                    <div id="1" role="checkbox" class="ticket-order__border-seat">1</div>
-                                                    <div id="2" role="checkbox" class="ticket-order__border-seat">2</div>
-                                                    <div id="1" role="checkbox" class="ticket-order__border-seat">3</div>
-                                                    <div id="2" role="checkbox" class="ticket-order__border-seat">4</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div class="seat-chart ticket-order__seat-top ">
-                                                    <div id="3" role="checkbox" class="ticket-order__border-seat">3</div>
-                                                    <div id="4" role="checkbox" class="ticket-order__border-seat">4</div>
-                                                    <div id="1" role="checkbox" class="ticket-order__border-seat">5</div>
-                                                    <div id="2" role="checkbox" class="ticket-order__border-seat">6</div>
-                                                    <div id="3" role="checkbox" class="ticket-order__border-seat">7</div>
-                                                    <div id="4" role="checkbox" class="ticket-order__border-seat">8</div>
-                                                    <div id="5" role="checkbox" class="ticket-order__border-seat">9</div>
-                                                    <div id="6" role="checkbox" class="ticket-order__border-seat">10</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="seat-chart ticket-order__seat-top ">
-                                                    <div id="1" role="checkbox" class="ticket-order__border-seat">11</div>
-                                                    <div id="2" role="checkbox" class="ticket-order__border-seat">12</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 ticket-order__font-row">B</div>
-                                            <div class="col-md-3">
-                                                <div class="seat-chart">
-                                                    <div id="1" role="checkbox" class="ticket-order__border-seat">1</div>
-                                                    <div id="2" role="checkbox" class="ticket-order__border-seat">2</div>
-                                                    <div id="1" role="checkbox" class="ticket-order__border-seat">3</div>
-                                                    <div id="2" role="checkbox" class="ticket-order__border-seat">4</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div class="seat-chart ">
-                                                    <div id="3" role="checkbox" class="ticket-order__border-seat">3</div>
-                                                    <div id="4" role="checkbox" class="ticket-order__border-seat">4</div>
-                                                    <div id="1" role="checkbox" class="ticket-order__border-seat">5</div>
-                                                    <div id="2" role="checkbox" class="ticket-order__border-seat">6</div>
-                                                    <div id="3" role="checkbox" class="ticket-order__border-seat">7</div>
-                                                    <div id="4" role="checkbox" class="ticket-order__border-seat">8</div>
-                                                    <div id="5" role="checkbox" class="ticket-order__border-seat">9</div>
-                                                    <div id="6" role="checkbox" class="ticket-order__border-seat">10</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="seat-chart">
-                                                    <div id="1" role="checkbox" class="ticket-order__border-seat">11</div>
-                                                    <div id="2" role="checkbox" class="ticket-order__border-seat">12</div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <!-- Modal Seat End -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Your Information Start -->
-                        <div class="col-md-4 ">
-                            <h5 class="modal-title ticket-order__font ">YOUR INFORMATION</h5>
-                            <h3 class="ticket-order__font-nav ">MOVIE</h3>
-                            <h5 class="ticket-order__inf ">Avenger: Endgame</h5>
-                            <h3 class="ticket-order__font-nav ">DATE</h3>
-                            <h5 class="ticket-order__inf ">5/6/2021</h5>
-                            <h3 class="ticket-order__font-nav ">SEAT</h3>
-                            <h5 class="ticket-order__inf ">R4 S13</h5>
-                            <h3 class="ticket-order__font-nav ">TICKET: 2</h3>
-                            <h3 class="ticket-order__font-nav ">TOTAL: $30</h3>
-                        </div>
-                        <!-- Your Information End -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ============================Modal Order Ticket End============================== -->
-</body>
+</div>

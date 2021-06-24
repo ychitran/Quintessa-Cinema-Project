@@ -1,4 +1,4 @@
-<body class="body__bg">
+<div class="body__bg">
     <!-- Header Navbar Start -->
     <div class="header container-fluid text-center slide__index head__border head__bottom">
         <div class="row">
@@ -34,28 +34,26 @@
     <!-- List Film Content End -->
 
     <!-- Article Details Start -->
-    <div class="article-details container article__height article__padding" *ngFor="let film of films">
-        <div class="row article__full article__padding article__margin">
-            <div class="col-md-2 article__padding">
+    <div class="article container article__height article__padding" *ngFor="let film of films">
+        <div class="row article__full article__margin">
+            <div class="col-md-3 article__col-height article__padding ">
                 <img class="article__full article__filter" src="{{film.poster}}" alt="">
             </div>
-            <div class="col-md-10 article__padding">
-                <div class="content-details article__details position-absolute article__index">
-                    <h2 class="article__font">{{film.name}}</h2>
-                    <span class="article__font-category">Action</span>
-                    <p class="article__font-content article__space">{{film.content}}</p>
-                    <button type="button" class="btn btn-outline-warning btn-rounded article__space-list" data-mdb-ripple-color="dark">
-                            Details
-                          </button>
+            <div class="col-md-9 article__col-height article__padding position-relative article__display">
+                <img class="article__full article__filter-content" src="{{film.background}}" alt="">
+                <div class="content article__center article__content-size article__index position-absolute article__auto">
+                    <h2 class="article__font">{{film.film_name}}</h2>
+                    <h4 class="article__font-category article__space">{{film.categories}}</h4>
+                    <p class="article__font-content article__space">{{film.description}}</p>
+                    <button type="button" class="btn btn-outline-warning btn-rounded article__space" [routerLink]="['/details-film', film.id]" routerLinkActive="router-link-active" data-mdb-ripple-color="dark">
+  Details
+</button>
                 </div>
-                <img class="article__full article__filter-content position-relative" src="{{film.background}}" alt="">
-
             </div>
         </div>
     </div>
 
     <!-- Article Details End -->
-
     <!-- Footer Start -->
     <div class="footer container footer__height head__border footer__bottom">
         <div class="row">
@@ -111,4 +109,4 @@
         </div>
     </div>
     <!-- Footer End -->
-</body>
+</div>
