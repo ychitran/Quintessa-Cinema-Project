@@ -7,9 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cinema Dashboard</title>
 
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+
+
   <link rel="stylesheet" href="{{asset('/storage/admin_assets/vendor/bootstrap/css/bootstrap.min.css')}}">
   <!-- Font Awesome CSS-->
-  <link rel="stylesheet" href="{{asset('/storage/fontawesome/css/all.css')}}">
+  <!-- <link rel="stylesheet" href="{{asset('/storage/fontawesome/css/all.css')}}"> -->
   <!-- orion icons-->
   <link rel="stylesheet" href="{{asset('/storage/admin_assets/css/orionicons.css')}}">
   <!-- theme stylesheet-->
@@ -59,14 +62,16 @@
         <li class="sidebar-list-item"><a href="/admin" class="sidebar-link text-dark"><i class="o-home-1 mr-3 text-gray"></i><span>Home</span></a></li>
         <li class="sidebar-list-item"><a href="/admin/cinema" class="sidebar-link text-dark"><i class="o-survey-1 mr-3 text-gray"></i><span>Quản Lý Rạp</span></a></li>
         <li class="sidebar-list-item"><a href="/admin/film" class="sidebar-link text-dark"><i class="fas fa-film mr-3 text-gray"></i><span>Quản Lý Phim</span></a></li>
-        <li class="sidebar-list-item"><a href="{{route('admin.managescreening')}}" class="sidebar-link text-dark"><i class="fas fa-calendar-week mr-3 text-gray"></i><span>Quản Lý Lịch Chiếu</span></a></li>
-        <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i class="fas fa-ticket-alt mr-3 text-gray"></i><span>Quản Lý Vé</span></a></li>
+        <li class="sidebar-list-item"><a href="/admin/screening" class="sidebar-link text-dark"><i class="fas fa-calendar-week mr-3 text-gray"></i><span>Quản Lý Lịch Chiếu</span></a></li>
+        <li class="sidebar-list-item"><a href="/admin/ticket" class="sidebar-link text-dark"><i class="fas fa-ticket-alt mr-3 text-gray"></i><span>Quản Lý Vé</span></a></li>
         <li class="sidebar-list-item"><a href="/admin/room" class="sidebar-link text-dark"><i class="fab fa-windows mr-3 text-gray"></i><span>Quản Lý Phòng</span></a></li>
         <li class="sidebar-list-item"><a href="" class="sidebar-link text-dark"><i class="fas fa-couch mr-3 text-gray"></i><span>Quản Lý Ghế</span></a></li>
-        <li class="sidebar-list-item"><a href="/admin/combo" class="sidebar-link text-dark"><i class="fas fa-couch mr-3 text-gray"></i><span>Quản Lý Sản phẩm</span></a></li>  
+        <li class="sidebar-list-item"><a href="/admin/combo" class="sidebar-link text-dark"><i class="fal fa-popcorn mr-3 text-gray"></i><span>Quản Lý Sản phẩm</span></a></li>  
         <li class="sidebar-list-item"><a href="/admin/member" class="sidebar-link text-dark"><i class="fas fa-user-friends mr-3 text-gray"></i><span>Quản Lý Thành viên</span></a></li>
-        <li class="sidebar-list-item"><a href="/admin/staff" class="sidebar-link text-dark"><i class="fas fa-user-friends mr-3 text-gray"></i><span>Quản Lý Nhân viên</span></a></li>
+        <li class="sidebar-list-item"><a href="/admin/staff" class="sidebar-link text-dark"><i class="fad fa-user-friends mr-3 text-gray"></i><span>Quản Lý Nhân viên</span></a></li>
         <li class="sidebar-list-item"><a href="/admin/advertisement" class="sidebar-link text-dark"><i class="fas fa-ad mr-3 text-gray"></i><span>Quảng cáo</span></a></li>
+        <li class="sidebar-list-item"><a href="/admin/revenue" class="sidebar-link text-dark"><i class="far fa-money-bill-alt mr-3 text-gray"></i><span>Doanh thu</span></a></li>
+        <li class="sidebar-list-item"><a href="/admin/ticket-price" class="sidebar-link text-dark"><i class="fas fa-file-invoice-dollar mr-3 text-gray"></i><span>Quản lý Giá vé</span></a></li>
 
       </ul>
 

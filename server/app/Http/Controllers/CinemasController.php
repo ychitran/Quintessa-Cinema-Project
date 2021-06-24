@@ -21,10 +21,10 @@ class CinemasController extends Controller
 	{
 		$cinemas = new Cinema();
 		$cinemas->cinema_name = $request->cinema_name;
-		$cinemas->infomation = $request->infomation;
+		$cinemas->information = $request->information;
 		$cinemas->save();
 
-		return redirect("admin/managercinema");
+		return redirect("admin/cinema");
 	}
     public function editCinema($id) {
         $cinema = Cinema::findOrFail($id);
@@ -34,9 +34,9 @@ class CinemasController extends Controller
     public function updateCinema(Request $request, $id ) {
         $cinema =  Cinema::findOrFail($id);
         $cinema->cinema_name = $request->cinema_name;
-        $cinema->infomation = $request->infomation;
+        $cinema->information = $request->information;
         $cinema->save();
-        return redirect("admin/managercinema");
+        return redirect("admin/cinema");
     }
 
     public function deleteCinema($id) {

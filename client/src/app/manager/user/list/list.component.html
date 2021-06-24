@@ -1,1 +1,38 @@
-<p>list works!</p>
+<div class="input-group">
+
+    <input #keyword (keydown.enter)="loadList($event.target.value)" type="text" class="form-control col-sm-3 form-control-label" placeholder="Tìm kiếm"
+        aria-label="Search Keyword" aria-describedby="basic-addon2">
+
+</div>
+<div class="card-header">
+    <h6 class="text-uppercase mb-0">Quản Lý Người Dùng</h6>
+    <a routerLink="./add" title="Thêm mới" style="position: absolute;right: 35px;top: 22px;"><i
+        class="fas fa-plus-square text-success" style="font-size: 24px"></i></a>
+</div>
+<div class="card-body">
+    <table class="table table-hover card-text">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Tên thành viên</th>
+                <th>Email</th>
+                <th>Số điện thoại</th>
+                <th>Q-Point</th>
+                <th>Chức năng</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let member of members; index as i">
+                <td>{{i+1}}</td>
+                <td>{{member.full_name}}</td>
+                <td>{{member.email}}</td>
+                <td>{{member.phone_number}}</td>
+                <td>{{member.cinema_point}}</td>
+                <td>
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

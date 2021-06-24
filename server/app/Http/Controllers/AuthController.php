@@ -42,7 +42,7 @@ class AuthController extends Controller
             if(Auth::user()->role_id != null){
                 return redirect('admin');
             }else {
-            return redirect();
+            return redirect('/');
             }
         }else{
             return redirect()->route('cinema.loginpage');

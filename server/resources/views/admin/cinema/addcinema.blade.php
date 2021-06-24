@@ -23,12 +23,12 @@
 								<div class="form-group row">
 									<label class="col-sm-3 form-control-label">Thông tin rạp</label>
 									<div class="col-md-9">
-										<textarea class="form-control " name="infomation" rows="5" id="ttrap"></textarea>
+										<textarea class="form-control " name="information" rows="5" id="ttrap"></textarea>
 									</div>
 								</div>
 								<div class="form-group row">
 									<div class="col-md-9 m-auto">
-										<!-- <input type="submit" value="ADD" class="btn btn-primary"> -->
+										<input type="submit" value="Thêm" class="btn btn-primary">
 									</div>
 								</div>
 							</form>

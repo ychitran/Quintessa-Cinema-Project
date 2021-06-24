@@ -16,7 +16,7 @@ class CreateCinemasTable extends Migration
         Schema::create('cinemas', function (Blueprint $table) {
             $table->id();
             $table->string('cinema_name');
-            $table->string('infomation');
+            $table->string('information');
             $table->timestamps();
         });
     }
