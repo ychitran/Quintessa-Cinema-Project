@@ -4,12 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from '../manager/home/home.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const ROUTES: Routes = [
-  {
-    path:'',
-    component:AdminLayoutComponent,
-    children: [
       {
         path: '', component: HomeComponent
       },
@@ -67,10 +64,6 @@ const ROUTES: Routes = [
       }
 
     ]
-    
-  },
-  
-]
 
 
 @NgModule({
@@ -78,6 +71,7 @@ const ROUTES: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(ROUTES),
+    ReactiveFormsModule
   ]
 })
 export class ManagerModule { }

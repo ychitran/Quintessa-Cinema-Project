@@ -9,19 +9,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 const ROUTES: Routes = [
-  {
-    path: '', component: ClientLayoutComponent,
-    children: [{
-      path: '', component: HomeComponent
+{
+    path: '', component: HomeComponent
     },
       {
       path: 'list-film', component: ListFilmComponent
       },
       {
       path: 'details-film/:id', component: DetailsFilmComponent
-      },
-     ]
-  }
+      }
 ]
 
 
