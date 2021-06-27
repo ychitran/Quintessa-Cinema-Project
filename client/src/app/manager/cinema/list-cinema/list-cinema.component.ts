@@ -18,6 +18,7 @@ export class ListCinemaComponent implements OnInit {
   ngOnInit(): void {
     this.loadList();
   }
+  
   loadList(keyword= ''):void  {
     this.cinemaService.getList(keyword).subscribe(res => this.cinemas = res);
   }
@@ -33,5 +34,6 @@ export class ListCinemaComponent implements OnInit {
     )
     
   }
+
 
 }

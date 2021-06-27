@@ -1,6 +1,7 @@
 export interface MonthlyRevenue {
     id:number,
-    month:Date,
+    month:string,
+    year:string,
     cinema_id:number,
     total_revenue:string
 }

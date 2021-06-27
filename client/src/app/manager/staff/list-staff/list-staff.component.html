@@ -24,8 +24,8 @@
             <tr *ngFor="let staff of staffs; index as i">
                 <th>{{i+1}}</th>
                 <td>{{staff.full_name}}</td>
-                <td>{{staff.role_id}}</td>
-                <td>{{staff.cinema_id}}</td>
+                <td>{{staff.role_name}}</td>
+                <td>{{staff.cinema_name}}</td>
                 <td>
                     <a style="padding: 0 15px;" [routerLink]="['edit',staff.id]">
                         <i class="fas fa-edit text-success"></i>

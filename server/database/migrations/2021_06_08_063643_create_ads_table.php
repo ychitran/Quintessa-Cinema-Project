@@ -20,7 +20,7 @@ class CreateAdsTable extends Migration
             $table->string('contract_price');
             $table->string('duration');
             $table->date('start_time');
-            $table->integer('date_count');
+            $table->date('end');
             $table->softDeletes();
             $table->timestamps();
         });

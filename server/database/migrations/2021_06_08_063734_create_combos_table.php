@@ -16,8 +16,8 @@ class CreateCombosTable extends Migration
         Schema::create('combos', function (Blueprint $table) {
             $table->id();
             $table->string('product_name');
-            $table->string('product_detail');
-            $table->string('product_image');
+            $table->string('product_detail')->nullable();
+            $table->longText('product_image');
             $table->integer('product_value');
             $table->softDeletes();
             $table->timestamps();

@@ -31,6 +31,7 @@
 										<th>Thể loại</th>
 										<th>Thời Lượng</th>
 										<th>Ngày Khởi chiếu</th>
+										<th>Định dạng</th>
 										<th>Trạng thái</th>
 										<th>Chức năng</th>
 									</tr>
@@ -61,6 +62,7 @@
 										<td>{{$film->categories}}</td>
 										<td>{{$film->durations}}</td>
 										<td>{{$film->release_date}}</td>
+										<td>{{$film->format_name}}</td>
 										<td>@if ($film->status == '1')
 											Đang Chiếu
 											@else

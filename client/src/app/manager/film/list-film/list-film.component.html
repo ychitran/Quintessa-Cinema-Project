@@ -23,7 +23,12 @@
 				<td>{{film.categories}}</td>
 				<td>{{film.duration}}</td>
 				<td>{{film.release_date}}</td>
-				<td>{{film.status}}</td>
+				<ng-container *ngIf="film.status == 1; else unPublic">
+					<td>Phim Đang Chiếu</td>
+				</ng-container>
+				
+					<ng-template #unPublic><td>Phim Sắp Chiếu</td></ng-template>
+
 				<td>
 					<a class="btn btn-danger" (click)="remove(film.id)"><i class="fas fa-trash-alt"></i></a>
 					<a class="btn btn-primary" [routerLink]="['edit',film.id]"><i class="far fa-edit"></i></a>

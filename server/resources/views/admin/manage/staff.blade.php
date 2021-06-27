@@ -29,7 +29,7 @@
 										<td>{{$key+1}}</td>
 										<td>{{$staff->full_name}}</td>
 										<td>{{$staff->phone_number}}</td>	
-										<td>{{$staff->role->role_name}}</td>
+										<td>{{$staff->role_name}}</td>
                                         <td>{{$staff->cinema->cinema_name}}</td>
 										<td><a href="staff/edit/{{$staff->id}}"><button style="background-color: #ffffff00;border: none" title="Sửa"><i class="fas fa-edit text-success"></i></button></a><br>
 											<form action="staff/delete/{{$staff->id}}" method="get" onsubmit="return confirm('Chắc chắn muốn xóa ?')">

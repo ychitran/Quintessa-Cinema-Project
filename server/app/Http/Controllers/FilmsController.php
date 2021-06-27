@@ -10,7 +10,11 @@ class FilmsController extends Controller
 {
     public function manageFilm()
 	{
-		$films = Film::orderby('id','desc')->paginate(10);
+		
+		$films = Film::orderby('id','desc')
+			->leftJoin('format_films','films.format_id','=','format_films.id')
+			->select('films.*','format_films.format_name as format_name')
+			->paginate(10);
 		return view('admin.manage.film',compact('films'));
 	}
 
@@ -42,6 +46,7 @@ class FilmsController extends Controller
 		$films->description = $request->description;
 		$films->format_id = $request->format_id;
 			$films->save();
+		
 		return redirect('admin/film');
 
 	}

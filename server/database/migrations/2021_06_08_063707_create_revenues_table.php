@@ -15,11 +15,11 @@ class CreateRevenuesTable extends Migration
     {
         Schema::create('revenues', function (Blueprint $table) {
             $table->id();
-            $table->date('belong_to');
-            $table->string('revenue_month');
-            $table->string('revenue_film');
-            $table->string('revenue_combo');
-            $table->string('profit');
+            $table->string('month');
+            $table->string('year');
+            $table->unsignedBigInteger('cinema_id')->nullable();
+            $table->string('total_revenue')->nullable();
+            $table->foreign('cinema_id')->references('id')->on('cinemas');
             $table->timestamps();
         });
     }
