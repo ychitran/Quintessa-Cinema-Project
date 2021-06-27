@@ -17,7 +17,7 @@
             <tr *ngFor="let room of rooms; index as key">
                 <td>{{key+1}}</td>
                 <td>{{room.room_name}}</td>
-                <td>{{room.cinema_id}}</td>
+                <td>{{room.cinema_name}}</td>
                 <td><a [routerLink]="['edit',room.id]"><button style="background-color: #ffffff00;border: none"
                             title="Sửa"><i class="fas fa-edit text-success"></i></button></a><br>
                     <button type="submit" style="background-color: #ffffff00;border: none" title="Xóa"><i

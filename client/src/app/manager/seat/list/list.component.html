@@ -1,41 +1,42 @@
 <div class="card-header">
     <h6 class="text-uppercase mb-0">Đặt vé</h6>
-    <!-- <a routerLink="./order" title="Thêm mới" style="position: absolute;right: 35px;top: 22px;"><i
-            class="fas fa-plus-square text-success" style="font-size: 24px"></i></a> -->
+    <a title="Thêm mới" style="position: absolute;right: 35px;top: 22px;"><i class="fas fa-plus-square text-success"
+            style="font-size: 24px"></i></a>
 </div>
 
 <div class="card-body">
     <div class="form-group row">
-		<label class="col-md-3 form-control-label">Phim</label>
-		<div class="col-md-9">
-			<select (change)="loadScreeningDate($event.target.value)" class="form-control" id="rap" >
+        <label class="col-md-3 form-control-label">Phim</label>
+        <div class="col-md-9">
+            <select (change)="loadScreeningDate($event.target.value)" (change)="loadFilmDetail($event.target.value)"
+                class="form-control" id="film">
                 <option checked></option>
-				<option *ngFor="let film of films" value="{{film.id}}">{{film.global_name}}</option>
-			</select>
-		</div>
+                <option *ngFor="let film of films" value="{{film.id}}">{{film.global_name}}
+                </option>
+            </select>
+        </div>
 
-	</div>
+    </div>
     <div class="form-group row">
-		<label class="col-md-3 form-control-label">Ngày chiếu</label>
-		<div class="col-md-9">
-			<select (change)="loadStartTime($event.target.value)" class="form-control" id="rap" >
+        <label class="col-md-3 form-control-label">Ngày chiếu</label>
+        <div class="col-md-9">
+            <select (change)="loadStartTime($event.target.value)" class="form-control" id="rap">
                 <option checked></option>
-				<option *ngFor="let date of dates" value="{{date.date}}">{{date.date}}</option>
-			</select>
-		</div>
+                <option *ngFor="let date of dates" value="{{date.date}}">{{date.date}}</option>
+            </select>
+        </div>
 
-	</div>
+    </div>
 
     <div class="form-group row">
-		<label class="col-md-3 form-control-label">Giờ chiếu</label>
-		<div class="col-md-9">
-			<select (change)="loadSeat($event.target.value)" class="form-control" id="rap" >
-                <option checked></option>
-				<option *ngFor="let start_time of start_times" value="{{start_time.room_id}}">{{start_time.start_time}}</option>
-			</select>
-		</div>
+        <label class="col-md-3 form-control-label">Giờ chiếu</label>
+        <div class="col-md-9">
+            <a *ngFor="let start_time of start_times" class="btn btn-outline-primary"
+                (click)="loadSeat(start_time.room_id,start_time.id,start_time.start_time)">{{start_time.start_time}}
+            </a>
+        </div>
 
-	</div>
+    </div>
     <div class="seatbooking" style="background-color: #fff;height: auto">
 
 
@@ -58,13 +59,57 @@
                     </div>
 
 
-                    <div *ngFor="let seat_number of seat['number']" id="{{seat_number.id}}" class="seatNumber" value="{{seat_number.row}}{{seat_number.number}}"><a class="btn btn-outline-primary">{{seat_number.number}}</a></div>
+                    <ng-cointainer *ngFor="let seat_number of seat['number']">
+                        <ng-container
+                            *ngIf="seat_number.screening_id != null && seat_number.screening_id == screening_id ; else seatDisable">
+                            <button
+                                class="btn btn-outline btn-rounded btn-sm  seat-disable">{{seat_number.number}}</button>
+
+                        </ng-container>
+                        <ng-template #seatDisable>
+                            <button (click)="seatSelect($event)" value="{{seat_number.row}}{{seat_number.number}}"
+                                type="button"
+                                class="btn btn-outline btn-rounded btn-sm ">{{seat_number.number}}</button>
+                        </ng-template>
+                    </ng-cointainer>
 
 
+
+                </div>
+
+                <div class="col-md-4 ">
+
+                    <h5 class="modal-title ticket-order__font ">THÔNG TIN</h5>
+                    <h3 class="ticket-order__font-nav ">TÊN PHIM</h3>
+                    <h3 class="ticket-order__font-nav ">{{move_name}}</h3>
+                    <h3 class="ticket-order__font-nav ">NGÀY</h3>
+                    <h5 class="ticket-order__inf ">{{date}}</h5>
+                    <h3 class="ticket-order__font-nav ">SUẤT CHIẾU</h3>
+                    <h5 class="ticket-order__inf ">{{start_time}}</h5>
+                    <h3 class="ticket-order__font-nav ">SỐ GHẾ</h3>
+                    <h5 class="ticket-order__inf ">
+                        <ng-container *ngFor="let seatt of seat"> {{seatt}}</ng-container>
+                    </h5>
+                    <h3 class="ticket-order__font-nav ">TỔNG TIỀN: $30</h3>
                 </div>
                 <div class="seatReceipt">
-                    <button class="btnClear">Clear</button>
+                    <button class="btn btn-outline-warning" (click)="clearSeat()">Clear</button>
                 </div>
+                <form [formGroup]="orderTicketForm" (ngSubmit)="save()">
+                    <input class="ticket-order__inf name" formControlName="film_id" hidden>
+                    <input class="ticket-order__inf name" formControlName="screening_id" hidden>
+                    <input class="ticket-order__inf name" formControlName="seats" hidden>
+                    <input class="ticket-order__inf name" formControlName="combo_id" hidden>
+                    <input class="ticket-order__inf name" formControlName="discount_id" hidden>
+                    <input class="ticket-order__inf name" formControlName="phone_number" hidden>
+                    <input class="ticket-order__inf name" formControlName="user_id" hidden>
+                    <input class="ticket-order__inf name" formControlName="status" hidden>
+                    <input class="ticket-order__inf name" formControlName="ticket_price" hidden>
+                    <input class="ticket-order__inf name" formControlName="total_price" hidden>
+                    <div class="seatReceipt">
+                        <button type="submit" class="btn btn-outline-primary">Đặt vé</button>
+                    </div>
+                </form>
             </div>
 
         </div>
@@ -72,3 +117,150 @@
         <br /><br />
     </div>
 </div>
+
+
+
+
+
+
+<!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ticket-order__width" role="document">
+        <div class="modal-content ">
+            <div class="modal-header">      data-mdb-toggle="modal" data-mdb-target="#exampleModalCenter"
+                <h5 class="modal-title" id="exampleModalLongTitle">ĐẶT VÉ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div id="carouselExampleControlsOrder" class="carousel slide" data-bs-interval="false"
+                            data-wrap="false">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <h5 class="modal-title ticket-order__font">ORDER A TICKET</h5>
+                                    <h3 class="ticket-order__font-nav">MOVIE</h3>
+                                    <select (change)="loadScreeningDate($event.target.value)" name="movie"
+                                        class="ticket-order__border">
+                                        <option checked></option>
+                                        <option *ngFor="let film of films" value="{{film.id}}">{{film.global_name}}
+                                        </option>
+                                    </select>
+                                    <h3 class="ticket-order__font-nav">DATE</h3>
+                                    <select (change)="loadStartTime($event.target.value)"
+                                        class="form-control ticket-order__border" id="rap">
+                                        <option checked></option>
+                                        <option *ngFor="let date of dates" value="{{date.date}}">{{date.date}}</option>
+                                    </select>
+                                    <h3 class="ticket-order__font-nav">TIME</h3>
+                                    <div class="time">
+                                        <a *ngFor="let start_time of start_times" class="btn btn-outline btn-rounded btn-sm ticket-order__space"
+                                            (click)="loadSeat(start_time.room_id,start_time.id)">{{start_time.start_time}}
+                                        </a>
+                                       
+                                    </div>
+                                    <button type="button"
+                                        class="btn btn-outline-warning btn-rounded btn-sm ticket-order__space-top"
+                                        data-mdb-slide="next" data-mdb-target="#carouselExampleControlsOrder"
+                                        data-mdb-ripple-color="dark">NEXT</button>
+                                </div>
+                                
+                                <div class="carousel-item text-center container">
+                                    <div class="row">
+                                        <h5 class="modal-title ticket-order__font">SEAT</h5>
+                                        <img src="assets/frontend/img/ScreenForSeating_450.png " alt="">
+                                        <div class="col-md-1 ticket-order__seat-top ticket-order__font-row">A</div>
+                                        <div class="col-md-3">
+                                            <div class="seat-chart ticket-order__seat-top">
+                                                <div id="1" role="checkbox" class="ticket-order__border-seat">1</div>
+                                                <div id="2" role="checkbox" class="ticket-order__border-seat">2</div>
+                                                <div id="1" role="checkbox" class="ticket-order__border-seat">3</div>
+                                                <div id="2" role="checkbox" class="ticket-order__border-seat">4</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="seat-chart ticket-order__seat-top ">
+                                                <div id="3" role="checkbox" class="ticket-order__border-seat">3</div>
+                                                <div id="4" role="checkbox" class="ticket-order__border-seat">4</div>
+                                                <div id="1" role="checkbox" class="ticket-order__border-seat">5</div>
+                                                <div id="2" role="checkbox" class="ticket-order__border-seat">6</div>
+                                                <div id="3" role="checkbox" class="ticket-order__border-seat">7</div>
+                                                <div id="4" role="checkbox" class="ticket-order__border-seat">8</div>
+                                                <div id="5" role="checkbox" class="ticket-order__border-seat">9</div>
+                                                <div id="6" role="checkbox" class="ticket-order__border-seat">10</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="seat-chart ticket-order__seat-top ">
+                                                <div id="1" role="checkbox" class="ticket-order__border-seat">11</div>
+                                                <div id="2" role="checkbox" class="ticket-order__border-seat">12</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ticket-order__font-row">B</div>
+                                        <div class="col-md-3">
+                                            <div class="seat-chart">
+                                                <div id="1" role="checkbox" class="ticket-order__border-seat">1</div>
+                                                <div id="2" role="checkbox" class="ticket-order__border-seat">2</div>
+                                                <div id="1" role="checkbox" class="ticket-order__border-seat">3</div>
+                                                <div id="2" role="checkbox" class="ticket-order__border-seat">4</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="seat-chart ">
+                                                <div id="3" role="checkbox" class="ticket-order__border-seat">3</div>
+                                                <div id="4" role="checkbox" class="ticket-order__border-seat">4</div>
+                                                <div id="1" role="checkbox" class="ticket-order__border-seat">5</div>
+                                                <div id="2" role="checkbox" class="ticket-order__border-seat">6</div>
+                                                <div id="3" role="checkbox" class="ticket-order__border-seat">7</div>
+                                                <div id="4" role="checkbox" class="ticket-order__border-seat">8</div>
+                                                <div id="5" role="checkbox" class="ticket-order__border-seat">9</div>
+                                                <div id="6" role="checkbox" class="ticket-order__border-seat">10</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="seat-chart">
+                                                <div id="1" role="checkbox" class="ticket-order__border-seat">11</div>
+                                                <div id="2" role="checkbox" class="ticket-order__border-seat">12</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4 ">
+                        <h5 class="modal-title ticket-order__font ">YOUR INFORMATION</h5>
+                        <h3 class="ticket-order__font-nav ">MOVIE</h3>
+                        <h5 class="ticket-order__inf ">Avenger: Endgame</h5>
+                        <h3 class="ticket-order__font-nav ">DATE</h3>
+                        <h5 class="ticket-order__inf ">5/6/2021</h5>
+                        <h3 class="ticket-order__font-nav ">SEAT</h3>
+                        <h5 class="ticket-order__inf ">R4 S13</h5>
+                        <h3 class="ticket-order__font-nav ">TICKET: 2</h3>
+                        <h3 class="ticket-order__font-nav ">TOTAL: $30</h3>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- <script>
+    function selectSeat() {
+    var seat = document.getElementsByClassName("availableSeat")
+    seat.clas
+}
+</script> -->

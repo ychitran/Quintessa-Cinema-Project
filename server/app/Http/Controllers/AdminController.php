@@ -19,7 +19,7 @@ class AdminController extends Controller
         return view('admin.home');
     }
 
-    //CRUD Cinema
+    
     
 
 }

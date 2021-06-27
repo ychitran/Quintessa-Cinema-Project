@@ -31,13 +31,29 @@
       "status": "1",
       "description": "Incidunt elit volu",
       "id": 2
+    },
+    {
+      "film_name": "Omnis laboriosam ve",
+      "global_name": "Dolor ipsum adipisci",
+      "producer": "Quia dolorem pariatu",
+      "categories": "Amet nostrum culpa",
+      "director": "Odio id dolores comm",
+      "caster": "Earum et iusto magna",
+      "duration": "100",
+      "poster": "Totam cupiditate acc",
+      "trailer": "Et voluptatem ut nat",
+      "format_id": "1",
+      "release_date": "1995-01-07",
+      "status": "0",
+      "description": "Minima ad id vel omn",
+      "id": 3
     }
   ],
   "cinemas": [
     {
-      "id": 1,
-      "cinema_name": "Cinerama Huế",
-      "information": " Vincom plaza, tầng 4, 50A Hùng Vương, Phú Nhuận, Thành phố Huế, Thừa Thiên Huế"
+      "cinema_name": "Cinerama  Thừa Thiên Huế",
+      "information": " Vincom plaza, tầng 4, 50A Hùng Vương, Phú Nhuận, Thành phố Huế, Thừa Thiên Huế",
+      "id": 1
     },
     {
       "cinema_name": "Labore in ducimus v",
@@ -52,12 +68,16 @@
       "password": "123456",
       "phone_number": "Sunt ex corporis est",
       "role_id": 2,
-      "cinema_id": 1
+      "cinema_id": 1,
+      "role_name":"Ticket Seller",
+      "cinema_name": "Cinerama  Thừa Thiên Huế"
     }
   ],
   "tickets": [
     {
-      "screening_id": "1",
+      "id": 1,
+      "film_id": 1,
+      "screening_id": 1,
       "seats": [
         "A1",
         "A2",
@@ -72,7 +92,9 @@
       "total_price": 150000
     },
     {
-      "screening_id": "1",
+      "id": 3,
+      "film_id": 1,
+      "screening_id": 1,
       "seats": [
         "A4",
         "A5",
@@ -87,7 +109,9 @@
       "total_price": 150000
     },
     {
-      "screening_id": "1",
+      "id": 2,
+      "film_id": 1,
+      "screening_id": 1,
       "seats": [
         "A1",
         "A2",
@@ -100,23 +124,42 @@
       "status": 1,
       "ticket_price": 225000,
       "total_price": 225000
+    },
+    {
+      "film_id": 1,
+      "phone_number": null,
+      "user_id": null,
+      "combo_id": null,
+      "discount_id": null,
+      "status": 1,
+      "ticket_price": 45000,
+      "total_price": 60000,
+      "seats": [
+        "B5"
+      ],
+      "id": 4
     }
   ],
   "rooms": [
     {
       "id": 1,
       "room_name": "H01",
-      "cinema_id": 1
+      "cinema_id": 1,
+      "cinema_name":"Cinerama  Thừa Thiên Huế"
     },
     {
       "id": 2,
       "room_name": "H02",
-      "cinema_id": 1
+      "cinema_id": 1,
+      "cinema_name":"Cinerama  Thừa Thiên Huế"
+
     },
     {
       "room_name": "H03",
       "cinema_id": "1",
-      "id": 3
+      "id": 3,
+      "cinema_name":"Cinerama  Thừa Thiên Huế"
+
     }
   ],
   "seats": [
@@ -128,31 +171,36 @@
           "id": 1,
           "row": "A",
           "number": 1,
-          "room_id": 1
+          "room_id": 1,
+          "screening_id": 1
         },
         {
           "id": 2,
           "row": "A",
           "number": 2,
-          "room_id": 1
+          "room_id": 1,
+          "screening_id": null
         },
         {
           "id": 3,
           "row": "A",
           "number": 3,
-          "room_id": 1
+          "room_id": 1,
+          "screening_id": null
         },
         {
           "id": 4,
           "row": "A",
           "number": 4,
-          "room_id": 1
+          "room_id": 1,
+          "screening_id": 1
         },
         {
           "id": 5,
           "row": "A",
           "number": 5,
-          "room_id": 1
+          "room_id": 1,
+          "screening_id": null
         }
       ],
       "room_id": 1
@@ -165,7 +213,8 @@
           "id": 1,
           "row": "B",
           "number": 1,
-          "room_id": 1
+          "room_id": 1,
+          "screening_id": null
         },
         {
           "id": 2,
@@ -201,21 +250,28 @@
       "date": "2021/06/19",
       "start_time": "12:00",
       "film_id": 1,
-      "room_id": 1
+      "room_id": 1,
+      "film_name":"Omnis laboriosam ve",
+      "room_name":"H01"
     },
     {
       "id": 2,
       "date": "2021/06/19",
       "start_time": "14:00",
       "film_id": 1,
-      "room_id": 1
+      "room_id": 2,
+      "film_name":"Omnis laboriosam ve",
+      "room_name":"H01"
+
     },
     {
       "id": 3,
       "date": "2021/06/19",
       "start_time": "16:00",
       "film_id": 1,
-      "room_id": 1
+      "room_id": 1,
+      "film_name":"Omnis laboriosam ve",
+      "room_name":"H01"
     }
   ],
   "members": [
@@ -226,6 +282,48 @@
       "password": "123456",
       "phone_number": "0123123789",
       "cinema_point": 0
+    }
+  ],
+  "monthly_revenues": [
+    {
+      "id": 1,
+      "cinema_id": 1,
+      "month": "2021/06/30",
+      "total_revenue": "3000000000"
+    }
+  ],
+  "film_revenues": [
+    {
+      "id": 1,
+      "monthly_id": 1,
+      "film_id": 1,
+      "revenue": "1000000000"
+    },
+    {
+      "id": 2,
+      "monthly_id": 1,
+      "film_id": 2,
+      "revenue": "1000000000"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "screening_id": 1,
+      "seat_id": 1,
+      "ticket_id": 1
+    },
+    {
+      "id": 1,
+      "screening_id": 1,
+      "seat_id": 2,
+      "ticket_id": 1
+    },
+    {
+      "id": 1,
+      "screening_id": 1,
+      "seat_id": 3,
+      "ticket_id": 1
     }
   ]
 }
