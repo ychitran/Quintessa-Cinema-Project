@@ -1,23 +1,18 @@
 <header class="header">
     <nav class="navbar navbar-expand-lg px-4 py-2 bg-white shadow">
-        <div class="sidebar-toggler text-gray-500 mr-4 mr-lg-5 lead" style="cursor: pointer;"><i
-                class="fas fa-align-left"></i></div><a href=""
-            class="navbar-brand font-weight-bold text-uppercase text-base">ADMIN Dashboard</a>
+        <div class="sidebar-toggler text-gray-500 mr-4 mr-lg-5 lead" style="cursor: pointer;"><i class="fas fa-align-left"></i></div><a href="" class="navbar-brand font-weight-bold text-uppercase text-base">ADMIN Dashboard</a>
         <ul class="ml-auto d-flex align-items-center list-unstyled mb-0">
             <li class="nav-item">
                 <form id="searchForm" class="ml-auto d-none d-lg-block">
                     <div class="form-group position-relative mb-0">
-                        <button type="submit" style="top: -3px; left: 0;"
-                            class="position-absolute bg-white border-0 p-0"><i
+                        <button type="submit" style="top: -3px; left: 0;" class="position-absolute bg-white border-0 p-0"><i
                                 class="o-search-magnify-1 text-gray text-lg"></i></button>
-                        <input type="search" placeholder="Search ..."
-                            class="form-control form-control-sm border-0 no-shadow pl-4">
+                        <input type="search" placeholder="Search ..." class="form-control form-control-sm border-0 no-shadow pl-4">
                     </div>
                 </form>
             </li>
-            <li class="nav-item dropdown ml-auto"><a id="userInfo" href="" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false" class="nav-link dropdown-toggle"><img src="" alt="" style="max-width: 2.5rem;"
-                        class="img-fluid rounded-circle shadow"></a>
+            <li class="nav-item dropdown ml-auto">
+                <a id="userInfo" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><img src="" alt="" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
                 <div aria-labelledby="userInfo" class="dropdown-menu"><a href="#" class="dropdown-item"><strong
                             class="d-block text-uppercase headings-font-family"></strong></a>
                     <div class=" dropdown-divider">
@@ -47,34 +42,27 @@
             <li class="sidebar-list-item">
                 <ul class="sidebar-menu list-unstyled">
 
-                    <li class="sidebar-list-item"><a (click)="goToFilm()" href="javascript:;"
-                            class="sidebar-link text-dark"><i class="fas fa-film mr-3 text-gray"></i><span>Quản Lý
+                    <li class="sidebar-list-item"><a (click)="goToFilm()" href="javascript:;" class="sidebar-link text-dark"><i class="fas fa-film mr-3 text-gray"></i><span>Quản Lý
                                 Phim</span></a></li>
-                    <li class="sidebar-list-item"><a href="javascript:;" routerLink="./screening"
-                            class="sidebar-link text-dark"><i class="fas fa-calendar-week mr-3 text-gray"></i><span>Quản
+                    <li class="sidebar-list-item"><a href="javascript:;" routerLink="./screening" class="sidebar-link text-dark"><i class="fas fa-calendar-week mr-3 text-gray"></i><span>Quản
                                 Lý Lịch
                                 Chiếu</span></a></li>
-                    <li class="sidebar-list-item"><a (click)="goToMember()" href="javascript:;"
-                            class="sidebar-link text-dark"><i class="fas fa-user-friends mr-3 text-gray"></i><span>Quản
+                    <li class="sidebar-list-item"><a (click)="goToMember()" href="javascript:;" class="sidebar-link text-dark"><i class="fas fa-user-friends mr-3 text-gray"></i><span>Quản
                                 Lý
                                 Người dùng</span></a></li>
-                    <li class="sidebar-list-item"><a (click)="goToStaff()" href="javascript:;"
-                            class="sidebar-link text-dark"><i class="fas fa-user-friends mr-3 text-gray"></i><span>Quản
+                    <li class="sidebar-list-item"><a (click)="goToStaff()" href="javascript:;" class="sidebar-link text-dark"><i class="fas fa-user-friends mr-3 text-gray"></i><span>Quản
                                 Lý
                                 Nhân viên</span></a></li>
-                    <li class="sidebar-list-item"><a (click)="goToAds()" href="javascript:;"
-                            class="sidebar-link text-dark"><i class="fad fa-ad mr-3 text-gray"></i><span>Quảng
+                    <li class="sidebar-list-item"><a (click)="goToAds()" href="javascript:;" class="sidebar-link text-dark"><i class="fad fa-ad mr-3 text-gray"></i><span>Quảng
                                 cáo</span></a></li>
 
-                    <li class="sidebar-list-item"><a routerLink="./room" href="javascript:;"
-                            class="sidebar-link text-dark"><i class="fab fa-windows mr-3 text-gray"></i><span>Quản Lý
+                    <li class="sidebar-list-item"><a routerLink="./room" href="javascript:;" class="sidebar-link text-dark"><i class="fab fa-windows mr-3 text-gray"></i><span>Quản Lý
                                 Phòng chiếu</span></a></li>
                     <li class="sidebar-list-item"><a routerLink="./revenue" href="javascript:;"
                                     class="sidebar-link text-dark"><i class="fas fa-film mr-3 text-gray"></i><span>Doanh thu</span></a></li>
                 </ul>
             </li>
-            <li class="sidebar-list-item"><a (click)="goToTicket()" href="javascript:;"
-                    class="sidebar-link text-dark"><i class="fas fa-ticket-alt mr-3 text-gray"></i><span>Quản Lý
+            <li class="sidebar-list-item"><a (click)="goToTicket()" href="javascript:;" class="sidebar-link text-dark"><i class="fas fa-ticket-alt mr-3 text-gray"></i><span>Quản Lý
                         Vé</span></a></li>
             <li class="sidebar-list-item"><a routerLink="./combo" href="javascript:;" class="sidebar-link text-dark"><i
                         class="fad fa-popcorn mr-3 text-gray"></i><span>Quản lý Sản phẩm</span></a></li>
@@ -104,7 +92,9 @@
                 <p class="mb-2 mb-md-0">Cinerama Cinema &copy; 2021</p>
             </div>
             <div class="col-md-6 text-center text-md-right text-gray-400">
-                <p class="mb-0">Design by <Strong>Gainer</Strong></p>
+                <p class="mb-0">Design by
+                    <Strong>Gainer</Strong>
+                </p>
             </div>
         </div>
     </div>
