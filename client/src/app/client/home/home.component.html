@@ -2,11 +2,11 @@
     <!-- Header Navbar Start -->
     <div class="header container-fluid text-center position-absolute slide__index head__border">
         <div class="row">
-            <div class="col-md-2 head__display">
+            <div class="col-2 head__display">
                 <img class="head__logo head__margin" src="assets\frontend\logo\Logo-light.png" alt="logo">
             </div>
-            <div class="col-md-8 head__display">
-                <nav class="navbar navbar-expand-lg head__margin">
+            <div class="col-8 head__display">
+                <nav class="navbar navbar-expand head__margin">
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
@@ -18,7 +18,7 @@
                     </div>
                 </nav>
             </div>
-            <div class="col-md-2 head__display head__margin">
+            <div class="col-2 head__display head__margin">
                 <a class="btn nav-link head__font">ĐĂNG NHẬP</a>
             </div>
         </div>
@@ -32,7 +32,7 @@
     <!-- Slides End -->
 
     <!-- Animation Start -->
-    <div class="animate-container position-absolute animation__center text-center " *ngFor="let slide of slides">
+    <div class="animate-container position-absolute animation__center text-center col-12 " *ngFor="let slide of slides">
         <h4 class="animation__font-tittle animate__animated animate__zoomIn animate__slower	3s animate__infinite ">{{slide.tittle_lg}}</h4>
         <h6 class="animation__font-under animate__animated animate__zoomIn animate__slower	3s animate__infinite ">{{slide.tittle_sm}}</h6>
         <button class="button animation__height animate__animated animate__zoomIn animate__slower	3s">
@@ -130,16 +130,16 @@
     </div>
     <div class="logo container head__height-menu text-center">
         <div class="row">
-            <div class="col-md-4">
-                <div class="col-md-4">
+            <div class="col-4">
+                <div class="col-4">
                     <p class="footer__font">
                         @ Do Not Copyright</p>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-4">
                 <img class="footer__logo head__margin" src="assets\frontend\logo\Logo-light.png" alt="logo">
             </div>
-            <div class="col-md-4">
+            <div class="col-4">
                 <p class="footer__font">
                     @License by: 'Nhac cong di xem phim'</p>
             </div>

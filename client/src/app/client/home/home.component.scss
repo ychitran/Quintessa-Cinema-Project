@@ -101,6 +101,18 @@
     }
 }
 
+// Responsive
+@media (max-width: 576px) {
+    .animation {
+        &__font-tittle {
+            font-family: 'Josefin Sans', sans-serif;
+            color: #fff;
+            font-size: 50px;
+            font-weight: 700;
+        }
+    }
+}
+
 .button {
     --offset: 10px;
     --border-size: 2px;
