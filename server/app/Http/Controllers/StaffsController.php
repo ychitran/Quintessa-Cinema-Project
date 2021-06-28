@@ -13,7 +13,10 @@ class StaffsController extends Controller
 	{
         $role = auth()->user()->role_id;
         if($role == 1) {
-            $staffs = User::where('role_id','<>',1)->where('role_id','<>',null)->get(); 
+            $staffs = User::where('role_id','<>',1)->where('role_id','<>',null)
+			->leftJoin('roles','users.role_id','=','roles.id')
+			->select('users.*','roles.role_name as role_name')
+			->get(); 
         } elseif($role == 2) {
             $staffs = User::where('role_id',3)->first();
         }

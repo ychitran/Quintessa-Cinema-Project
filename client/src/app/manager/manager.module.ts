@@ -61,7 +61,12 @@ const ROUTES: Routes = [
       {
         path:'advertisement',
         loadChildren: () => import(`./advertisement/advertisement.module`).then(m => m.AdvertisementModule)
+      },
+      {
+        path:'revenue',
+        loadChildren: () => import(`./revenue/revenue.module`).then(m => m.RevenueModule)
       }
+
 
     ]
 

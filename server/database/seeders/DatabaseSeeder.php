@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         // $this->call(RoleSeeder::class);
         // $this->call(UserSeeder::class);
         // $this->call(TicketPriceSeeder::class);
+        $this->call(RoomSeeder::class);
+
         $this->call(SeatSeeder::class);
 
     }
