@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Film } from 'src/app/client/model/film.model';
+import { Film } from 'src/app/_shared/models/film.model';
 import { Room } from 'src/app/_shared/models/room.model';
 import { ScreeningService } from '../screening.service';
 
