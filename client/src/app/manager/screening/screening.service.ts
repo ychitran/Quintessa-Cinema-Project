@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Film } from 'src/app/client/model/film.model';
+import { Film } from 'src/app/_shared/models/film.model';
 import { Room } from 'src/app/_shared/models/room.model';
 import { Screening } from 'src/app/_shared/models/screening.model';
 
