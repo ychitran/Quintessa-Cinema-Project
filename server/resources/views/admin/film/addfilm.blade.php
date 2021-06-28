@@ -27,9 +27,17 @@
 								<div class="form-group row">
 									<label class="col-sm-3 form-control-label">Ảnh Phim</label>
 									<div class="col-md-9">
-										<input id="inputHorizontalWarning" name=image type="file" class="form-control form-control-warning" required>
+										<input id="inputHorizontalWarning" name=poster type="file" class="form-control form-control-warning" required>
 									</div>
 								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-3 form-control-label">Ảnh bìa Phim</label>
+									<div class="col-md-9">
+										<input id="inputHorizontalWarning" name=banner type="file" class="form-control form-control-warning" required>
+									</div>
+								</div>
+
 								<div class="form-group row">
 									<label class="col-sm-3 form-control-label">Nhà Sản Xuất</label>
 									<div class="col-md-9">

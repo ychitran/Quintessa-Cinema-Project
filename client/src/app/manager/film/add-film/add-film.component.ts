@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FilmService } from '../film.service';
 import { Router } from '@angular/router';
+import { FormatFilm } from 'src/app/_shared/models/format-film.model';
 
 @Component({
   selector: 'app-add-film',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AddFilmComponent implements OnInit {
   addFilmForm: FormGroup;
-
+  formats : Array<FormatFilm> = []
   constructor(
     private readonly HttpClient: HttpClient,
     private readonly formBuilder: FormBuilder,
@@ -20,6 +21,7 @@ export class AddFilmComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.filmService.getInformation().subscribe(res => this.cinemaInfo(res))
     this.addFilmForm = this.formBuilder.group({
       film_name: ["",[Validators.required]],
       global_name: ["",[Validators.required]],
@@ -29,13 +31,16 @@ export class AddFilmComponent implements OnInit {
       caster: ["",[Validators.required]],
       duration: [1,[Validators.min(1)]],
       poster: ["",[Validators.required]],
+      banner: ["",[Validators.required]],
       trailer: ["",[Validators.required]],
-      format_id: [],
+      format_id: [this.formats],
       release_date: [],
       status: [],
       description: []
     })
   }
+  cinemaInfo(res): void {
+this.formats = res  }
 
   save() {
     if(this.addFilmForm.invalid){

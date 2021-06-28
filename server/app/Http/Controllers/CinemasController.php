@@ -9,8 +9,10 @@ class CinemasController extends Controller
 {
     public function manageCinema()
 	{
-		$cinemas = Cinema::paginate(10);
-		return view('admin.manage.cinema',compact('cinemas'));
+		$cinemas = Cinema::all();
+
+		// return view('admin.manage.cinema',compact('cinemas'));
+        return response()->json($cinemas);
 	}
 
     public function createCinema()
@@ -24,11 +26,11 @@ class CinemasController extends Controller
 		$cinemas->information = $request->information;
 		$cinemas->save();
 
-		return redirect("admin/cinema");
+		return;
 	}
     public function editCinema($id) {
         $cinema = Cinema::findOrFail($id);
-		return view('admin.cinema.editcinema',compact('cinema'));
+		return response()->json($cinema);
     }
 
     public function updateCinema(Request $request, $id ) {

@@ -14,14 +14,14 @@ class FilmsController extends Controller
 		$films = Film::orderby('id','desc')
 			->leftJoin('format_films','films.format_id','=','format_films.id')
 			->select('films.*','format_films.format_name as format_name')
-			->paginate(10);
-		return view('admin.manage.film',compact('films'));
+			->get();
+		return response()->json($films);
 	}
 
     public function createFilm()
 	{
 		$formats = FormatFilm::all();
-		return view('admin.film.addfilm',compact('formats'));
+		return response()->json($formats);
 	}
 	public function storeFilm(Request $request)
 	{
@@ -29,9 +29,14 @@ class FilmsController extends Controller
 		$films = new Film();
 		$films->film_name = $request->film_name;
 		$films->global_name = $request->global_name;
-		if ($request->hasFile('image')) {
-            $path = base64_encode(file_get_contents($request->file('image')));
+		if ($request->hasFile('poster')) {
+            $path = base64_encode(file_get_contents($request->file('poster')));
             $films->poster = 'data:image/jpg;base64,'.$path;
+        }
+
+		if ($request->hasFile('banner')) {
+            $path = base64_encode(file_get_contents($request->file('banner')));
+            $films->banner = 'data:image/jpg;base64,'.$path;
         }
 
 		$films->producer = $request->producer;
@@ -45,9 +50,9 @@ class FilmsController extends Controller
 		$films->trailer=$request->trailer;
 		$films->description = $request->description;
 		$films->format_id = $request->format_id;
-			$films->save();
+		$films->save();
 		
-		return redirect('admin/film');
+		return;
 
 	}
 	public function editFilm($id)
