@@ -10,19 +10,16 @@
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
-                                <a class="nav-link active head__space head__font" [routerLink]="['/']" routerLinkActive="router-link-active" aria-current="page">HOME</a>
-                                <a class="nav-link head__space head__font " [routerLink]="['/list-film']" routerLinkActive="router-link-active">SHOWTIMES</a>
-                                <button class="btn nav-link head__font" data-mdb-toggle="modal" data-mdb-target="#orderModal">ORDER TICKET</button>
+                                <a class="nav-link active head__space head__font" [routerLink]="['/']" routerLinkActive="router-link-active" aria-current="page">TRANG CHỦ</a>
+                                <a class="nav-link head__space head__font " [routerLink]="['/list-film']" routerLinkActive="router-link-active">SUẤT CHIẾU</a>
+                                <a class="btn nav-link head__font" data-mdb-toggle="modal" data-mdb-target="#orderModal">ĐẶT VÉ</a>
                             </div>
                         </div>
                     </div>
                 </nav>
             </div>
-            <div class="col-md-1 head__display">
-                <button class="btn nav-link head__font straight" :after>LOGIN</button>
-            </div>
-            <div class="col-md-1 head__display">
-                <i class="fab fa-youtube head__margin-left head__icon"></i>
+            <div class="col-md-2 head__display head__margin">
+                <a class="btn nav-link head__font">ĐĂNG NHẬP</a>
             </div>
         </div>
     </div>
@@ -48,109 +45,49 @@
 
     <!-- Tittle Now Playing Start-->
     <div class="content-now-playing container text-center content-play__bottom">
-        <h2 class="content-play__font content-play" :after>NOW PLAYING</h2>
+        <h2 class="content-play__font content-play" :after>PHIM ĐANG CHIẾU</h2>
     </div>
     <!-- Tittle Now Playing End-->
 
     <!-- Image Now Playing Start -->
 
-    <div id="carouselExampleControls" class="carousel slide container content-play__bottom text-center img__height head__border text-center " data-mdb-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="card-group">
-                    <div class="card head__full">
-                        <img src="assets\frontend\img\new_movie\blackwidow-updatedreleasedate_byeb.png" class="card-img-top img__height-picture img" />
-                    </div>
-                    <div class="card head__full">
-                        <img src="assets\frontend\img\new_movie\spider-far-poster-3.jpg" class="card-img-top img__height-picture img" :hover />
-                    </div>
-                    <div class="card head__full">
-                        <img src="assets\frontend\img\new_movie\deew942-aeaad734-4fbb-4eff-9fa4-5abf42615fc1.jpg" class="card-img-top img__height-picture img" :hover />
-                    </div>
-                    <div class="card head__full">
-                        <img src="assets\frontend\img\new_movie\81ai6zx6eXL._AC_SY879_.jpg" class="card-img-top img__height-picture img" :hover />
-                    </div>
+    <div class="container content-play__bottom text-center img__height head__border text-center">
+        <section id="timeline" class="head_full">
+            <div class="tl-item" *ngFor="let film of films">
+                <div class="tl-bg carousel-item active" style="background-image: url({{film.poster}})"></div>
+                <div class="tl-year">
+                    <p class="f2 heading--sanSerif">20/7/2021</p>
+                </div>
+                <div class="tl-content">
+                    <h1>Black Widow</h1>
+                    <p></p>
                 </div>
             </div>
-            <div class="carousel-item">
-                <div class="card-group">
-                    <div class="card head__full">
-                        <img src="assets\frontend\img\new_movie\blackwidow-updatedreleasedate_byeb.png" class="card-img-top img__height-picture img" :hover />
-                    </div>
-                    <div class="card head__full">
-                        <img src="assets\frontend\img\new_movie\spider-far-poster-3.jpg" class="card-img-top img__height-picture img" :hover />
-                    </div>
-                    <div class="card head__full">
-                        <img src="assets\frontend\img\new_movie\deew942-aeaad734-4fbb-4eff-9fa4-5abf42615fc1.jpg" class="card-img-top img__height-picture img" :hover />
-                    </div>
-                    <div class="card head__full">
-                        <img src="assets\frontend\img\new_movie\81ai6zx6eXL._AC_SY879_.jpg" class="card-img-top img__height-picture img" :hover />
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev " type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-            <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-
+        </section>
     </div>
     <!-- Image Now Playing End -->
 
     <!-- Tittle Coming Soon Start -->
     <div class="content-now-playing container text-center content-play__bottom">
-        <h2 class="content-play__font content-play" :after>COMING SOON</h2>
+        <h2 class="content-play__font content-play" :after>PHIM SẮP CHIẾU</h2>
     </div>
     <!-- Tittle Coming Soon End -->
 
     <!-- Image Coming Soon Start -->
-    <div id="carouselExampleControls2" class="carousel slide content-play__bottom text-center img__height-coming head__border text-center " data-mdb-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="card-group">
-                    <div class="card head__full">
-                        <img src="assets\frontend\img\new_movie\blackwidow-updatedreleasedate_byeb.png" class="card-img-top img__picture-coming img" />
-                    </div>
-                    <div class="card head__full">
-                        <img src="assets\frontend\img\new_movie\spider-far-poster-3.jpg" class="card-img-top img__picture-coming img" :hover />
-                    </div>
-                    <div class="card head__full">
-                        <img src="assets\frontend\img\new_movie\deew942-aeaad734-4fbb-4eff-9fa4-5abf42615fc1.jpg" class="card-img-top img__picture-coming img" :hover />
-                    </div>
-                    <div class="card head__full">
-                        <img src="assets\frontend\img\new_movie\81ai6zx6eXL._AC_SY879_.jpg" class="card-img-top img__picture-coming img" :hover />
-                    </div>
+
+    <div class="content-play__bottom text-center img__height head__border text-center">
+        <section id="timeline" class="head_full">
+            <div class="tl-item" *ngFor="let film of films">
+                <div class="tl-bg carousel-item active" style="background-image: url({{film.poster}})"></div>
+                <div class="tl-year">
+                    <p class="f2 heading--sanSerif">20/7/2021</p>
+                </div>
+                <div class="tl-content">
+                    <h1>Black Widow</h1>
+                    <p></p>
                 </div>
             </div>
-            <div class="carousel-item">
-                <div class="card-group">
-                    <div class="card head__full">
-                        <img src="assets\frontend\img\new_movie\blackwidow-updatedreleasedate_byeb.png" class="card-img-top img__picture-coming img" :hover />
-                    </div>
-                    <div class="card head__full">
-                        <img src="assets\frontend\img\new_movie\spider-far-poster-3.jpg" class="card-img-top img__picture-coming img" :hover />
-                    </div>
-                    <div class="card head__full">
-                        <img src="assets\frontend\img\new_movie\deew942-aeaad734-4fbb-4eff-9fa4-5abf42615fc1.jpg" class="card-img-top img__picture-coming img" :hover />
-                    </div>
-                    <div class="card head__full">
-                        <img src="assets\frontend\img\new_movie\81ai6zx6eXL._AC_SY879_.jpg" class="card-img-top img__picture-coming img" :hover />
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev " type="button" data-mdb-target="#carouselExampleControls2" data-mdb-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-            <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleControls2" data-mdb-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
+        </section>
     </div>
     <!-- Image Coming Soon End -->
 

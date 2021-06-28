@@ -17,8 +17,7 @@ import { HomeService } from './home.service';
 })
 export class HomeComponent implements OnInit {
   slides: Array<Slide>
-
-  films : Array<Film>
+  films: Array<Film>
   film : Film
   move_name : string
   orderTicketForm : FormGroup
