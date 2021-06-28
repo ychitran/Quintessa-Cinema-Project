@@ -18,6 +18,7 @@ class CreateFilmsTable extends Migration
             $table->string('film_name');
             $table->string('global_name');
             $table->longText('poster');
+            $table->longText('banner');
             $table->string('producer')->nullable();
             $table->string('categories')->nullable();
             $table->string('director')->nullable();

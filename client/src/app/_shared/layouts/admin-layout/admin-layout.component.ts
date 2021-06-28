@@ -22,52 +22,52 @@ export class AdminLayoutComponent implements OnInit {
   }
 
   goToFilm(){
-    this.router.navigateByUrl("/admin/film")
+    this.router.navigateByUrl("/admin/films")
   }
 
   goToCinema(){
-    this.router.navigateByUrl("/admin/cinema")
+    this.router.navigateByUrl("/admin/cinemas")
   }
 
   goToScreening(){
-    this.router.navigateByUrl("/admin/screening")
+    this.router.navigateByUrl("/admin/screenings")
   }
 
   goToMember(){
-    this.router.navigateByUrl("/admin/member")
+    this.router.navigateByUrl("/admin/members")
 
   }
 
   goToStaff(){
-    this.router.navigateByUrl("/admin/staff")
+    this.router.navigateByUrl("/admin/staffs")
 
   }
 
   goToSeat(){
-    this.router.navigateByUrl("/admin/seat")
+    this.router.navigateByUrl("/admin/seats")
 
   }
 
   goToRoom(){
-    this.router.navigateByUrl("/admin/room")
+    this.router.navigateByUrl("/admin/rooms")
 
   }
 
   goToRevenue(){
-    this.router.navigateByUrl("/admin/revenue")
+    this.router.navigateByUrl("/admin/revenues")
 
   }
 
   goToAd(){
-    this.router.navigateByUrl("/admin/ad")
+    this.router.navigateByUrl("/admin/advs")
   }
 
   goToTicket() {
-    this.router.navigateByUrl("/admin/ticket")
+    this.router.navigateByUrl("/admin/tickets")
   }
 
   goToAds() {
-    this.router.navigateByUrl("/admin/advertisement")
+    this.router.navigateByUrl("/admin/advertisements")
   }
 
 }

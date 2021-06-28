@@ -5,12 +5,13 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AdminLayoutComponent } from './_shared/layouts/admin-layout/admin-layout.component';
 import { ClientLayoutComponent } from './_shared/layouts/client-layout/client-layout.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { ApiInterceptor } from './_shared/services/interceptors/api.interceptor';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(en);
@@ -28,7 +29,10 @@ registerLocaleData(en);
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US },
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

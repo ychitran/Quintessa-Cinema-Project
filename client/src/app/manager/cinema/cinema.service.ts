@@ -14,7 +14,7 @@ export class CinemaService {
   ) { }
 
   getList(keyword:string): Observable<Array<Cinema>> {
-    return this.httpClient.get<Array<Cinema>>('http://localhost:3000/cinemas',{
+    return this.httpClient.get<Array<Cinema>>('/admin/cinemas',{
       params: {
         q:keyword
       }
@@ -22,11 +22,11 @@ export class CinemaService {
   }
 
   getElement(id): Observable<Cinema> {
-    return this.httpClient.get<Cinema>('http://localhost:3000/cinemas/' + id);
+    return this.httpClient.get<Cinema>('/admin/cinemas/edit/'+id);
   }
 
   save(cinema : Cinema): Observable<Cinema> {
-    return this.httpClient.post<Cinema>(`http://localhost:3000/cinemas/`, cinema);
+    return this.httpClient.post<Cinema>(`/admin/cinemas/add`, cinema);
   
   }
 
