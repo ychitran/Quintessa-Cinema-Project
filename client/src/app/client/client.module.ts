@@ -9,7 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 const ROUTES: Routes = [
-{
+  {
     path: '', component: HomeComponent
     },
       {
