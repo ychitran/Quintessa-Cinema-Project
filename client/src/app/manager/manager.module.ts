@@ -11,59 +11,59 @@ const ROUTES: Routes = [
         path: '', component: HomeComponent
       },
       {
-        path:'film',
+        path:'films',
         loadChildren: () => import(`../manager/film/film.module`). then(m => m.FilmModule)
       },
       {
-        path:'cinema',
+        path:'cinemas',
         loadChildren: () => import(`../manager//cinema/cinema.module`). then(m => m.CinemaModule)
       },
       {
-        path:'staff',
+        path:'staffs',
         loadChildren: () => import(`../manager/staff/staff.module`). then(m => m.StaffModule)
       },
       {
-        path:'adv',
+        path:'advs',
         loadChildren: () => import(`../manager/advertisement/advertisement.module`). then(m => m.AdvertisementModule)
       },
       {
-        path:'combo',
+        path:'combos',
         loadChildren: () => import(`../manager/combo/combo.module`). then(m => m.ComboModule)
       },
       {
-        path:'discount',
+        path:'discounts',
         loadChildren: () => import(`../manager/discount/discount.module`). then(m => m.DiscountModule)
       },
       {
-        path:'revenue',
+        path:'revenues',
         loadChildren: () => import(`../manager/revenue/revenue.module`). then(m => m.RevenueModule)
       },
       {
-        path:'room',
+        path:'rooms',
         loadChildren: () => import(`../manager/room/room.module`). then(m => m.RoomModule)
       },
       {
-        path:'screening',
+        path:'screenings',
         loadChildren: () => import(`../manager/screening/screening.module`). then(m => m.ScreeningModule)
       },
       {
-        path:'seat',
+        path:'seats',
         loadChildren: () => import(`../manager/seat/seat.module`). then(m => m.SeatModule)
       },
       {
-        path:'member',
+        path:'members',
         loadChildren: () => import(`../manager/user/user.module`). then(m => m.UserModule)
       },
       {
-        path:'ticket',
+        path:'tickets',
         loadChildren: () => import(`../manager/ticket/ticket.module`). then(m => m.TicketModule)
       },
       {
-        path:'advertisement',
+        path:'advertisements',
         loadChildren: () => import(`./advertisement/advertisement.module`).then(m => m.AdvertisementModule)
       },
       {
-        path:'revenue',
+        path:'revenues',
         loadChildren: () => import(`./revenue/revenue.module`).then(m => m.RevenueModule)
       }
 

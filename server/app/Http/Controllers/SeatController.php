@@ -64,7 +64,7 @@ class SeatController extends Controller
         $seats[$i]['number'] = $seat;
     }
     dd($seats); 
-        return view('admin.seat.seat', compact('seats'));
+        return response()->json($seat);
     }
 
     public function storeOrderTicket(Request $request) {

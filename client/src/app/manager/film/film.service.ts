@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Film } from 'src/app/_shared/models/film.model';
+import { FormatFilm } from 'src/app/_shared/models/format-film.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,19 +16,24 @@ export class FilmService {
   ) { }
 
   getList(keyword:string): Observable<Array<Film>> {
-    return this.httpClient.get<Array<Film>>('http://localhost:3000/films',{
-      params: {
-        q:keyword
-      }
-    });
+    return this.httpClient.get<Array<Film>>('/admin/films');
   }
+
+  getInformation():Observable<Array<FormatFilm>> {
+    return this.httpClient.get<Array<FormatFilm>>('/admin/films/add');
+  }
+  // ,{
+  //   params: {
+  //     q:keyword
+  //   }
+  // }
 
   getElement(id): Observable<Film> {
     return this.httpClient.get<Film>('http://localhost:3000/films/' + id);
   }
 
   save(film : Film): Observable<Film> {
-    return this.httpClient.post<Film>(`http://localhost:3000/films/`, film);
+    return this.httpClient.post<Film>(`/admin/films/add`, film);
   
   }
 
