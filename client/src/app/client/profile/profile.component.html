@@ -1,0 +1,193 @@
+<div class="body__bg">
+    <!-- Header Navbar Start -->
+    <div class="header container-fluid text-center slide__index head__border head__bottom">
+        <div class="row">
+            <div class="col-md-2 head__display">
+                <img class="head__logo head__margin" src="assets\frontend\logo\Logo-light.png" alt="logo">
+            </div>
+            <div class="col-md-8 head__display">
+                <nav class="navbar navbar-expand-lg head__margin">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <div class="navbar-nav">
+                                <a class="nav-link active head__space head__font" [routerLink]="['/']" routerLinkActive="router-link-active" aria-current="page">TRANG CHỦ</a>
+                                <a class="nav-link head__space head__font" [routerLink]="['/list-film']" routerLinkActive="router-link-active">SUẤT CHIẾU</a>
+                                <button class="btn nav-link head__font" data-mdb-toggle="modal" data-mdb-target="#orderModal">ĐẶT VÉ</button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-md-2 head__display">
+                <a class="nav-link active head__space head__font" [routerLink]="['/profile']" routerLinkActive="router-link-active" aria-current="page">ĐĂNG NHẬP</a>
+                <i class="fab fa-youtube head__margin-left head__icon"></i>
+            </div>
+        </div>
+    </div>
+    <!-- Header Navbar End -->
+
+    <div class="profile__height container position-relative">
+        <div class="profile__head">
+            <img src="../../../assets/frontend/img/profile/2017-Embroidery-Alan-Walker-Faded-Mask-Dustproof-Breathable-Riding-Mask-for-Women-Men-Student-Boy-Girls.jpg" class="img-fluid rounded-circle profile__avatar position-absolute" alt="" />
+        </div>
+        <div class="profile__info">
+            <div class="tittle profile__bottom row text-center">
+                <div class="col-4">
+                </div>
+                <div class="col-4 profile__font-tittle">Alan Walker</div>
+                <div class="col-4"></div>
+            </div>
+            <div class="info ms-5">
+                <form action="" class="row">
+                    <div class="col-6">
+                        <div class="email mb-5">
+                            <span class="profile__font">Email:</span>
+                            <div class="form mt-3">
+                                <input type="text" id="form5Example1" value="alanwalker@gmail.com" class="form-control profile__input-bg" />
+                            </div>
+                        </div>
+                        <div class="password mb-5">
+                            <span class="profile__font">Mật khẩu:</span>
+                            <div class="form mt-3">
+                                <input type="password" value="ahihihi" id="form5Example1" class="form-control profile__input-bg" />
+                            </div>
+                        </div>
+                        <div class="name mb-5">
+                            <span class="profile__font">Họ và tên:</span>
+                            <div class="form mt-3">
+                                <input type="text" value="Alan Walker" id="form5Example1" class="form-control profile__input-bg" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="phone mb-5">
+                            <span class="profile__font">Số điện thoại:</span>
+                            <div class="form mt-3">
+                                <input type="text" id="form5Example1" value="0857489632" class="form-control profile__input-bg" />
+                            </div>
+                        </div>
+                        <div class="address mb-5">
+                            <span class="profile__font">Địa chỉ:</span>
+                            <div class="form mt-3">
+                                <input type="text" id="form5Example1" value="250 Hà Nội" class="form-control profile__input-bg" />
+                            </div>
+                        </div>
+                        <div class="city mb-5">
+                            <span class="profile__font">Thành phố: </span>
+                            <div class="form mt-3">
+                                <input type="text" id="form5Example1" value="Hà Nội" class="form-control profile__input-bg" />
+                            </div>
+                        </div>
+                        <div class="history text-center">
+                            <button type="button" class="btn" data-mdb-toggle="modal" data-mdb-target="#historyModal"> <span class="profile__font">Lịch sử giao dịch </span></button>
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer Start -->
+    <div class="footer container footer__height head__border footer__bottom">
+        <div class="row">
+            <div class="col-3">
+                <h2 class="footer__tittle">MENU</h2>
+                <p class="footer__font">Trang chủ</p>
+                <p class="footer__font">Suất chiếu</p>
+                <p class="footer__font">Đặt vé</p>
+                <i class="fab fa-youtube footer__social footer__space"></i>
+                <i class="fab fa-facebook footer__social footer__space"></i>
+                <i class="fab fa-twitter footer__social"></i>
+            </div>
+            <div class="col-3">
+                <h2 class="footer__tittle">ĐỊA CHỈ</h2>
+                <p class="footer__font">28 Nguyễn Tri Phương,</p>
+                <p class="footer__font">Phường Phú Nhuận, thành phố Huế</p>
+                <p class="footer__font">Email: cinerama@gmail.com</p>
+                <p class="footer__font"><i class="fas fa-phone-alt footer__social footer__space"></i>+0125.124789</p>
+            </div>
+            <div class="col-6">
+                <h2 class="footer__tittle">LIÊN HỆ</h2>
+                <div class="form-outline mb-4 footer__border">
+                    <input type="text" id="form4Example1" class="form-control" />
+                    <label class="form-label text-white-50" for="form4Example1">Tên của bạn *</label>
+                </div>
+                <div class="form-outline mb-4 footer__border">
+                    <input type="text" id="form4Example1" class="form-control" />
+                    <label class="form-label text-white-50" for="form4Example1">Email *</label>
+                </div>
+                <div class="form-outline mb-4 footer__border">
+                    <textarea class="form-control"></textarea>
+                    <label class="form-label text-white-50" for="form6Example7">Tin nhắn * </label>
+                </div>
+                <button type="button" class="btn btn-outline-warning btn-rounded">GỬI </button>
+            </div>
+        </div>
+    </div>
+    <div class="logo container head__height-menu text-center">
+        <div class="row">
+            <div class="col-4">
+                <div class="col-4">
+                    <p class="footer__font">
+                        @ Do Not Copyright</p>
+                </div>
+            </div>
+            <div class="col-4">
+                <img class="footer__logo head__margin" src="assets\frontend\logo\Logo-light.png" alt="logo">
+            </div>
+            <div class="col-4">
+                <p class="footer__font">
+                    @License by: 'Nhac cong di xem phim'</p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+    <!-- Modal History Start -->
+    <div class="modal fade" id="historyModal" tabindex="-1" aria-labelledby="historyModal" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="container">
+                    <h5 class="history__font mb-5 mt-3">LỊCH SỬ GIAO DỊCH</h5>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal History End -->
+
+
+
+
+</div>

@@ -27,14 +27,13 @@
 
 <router-outlet>
     <!--===================== Modal Order Ticket Start================================= -->
-    <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl ">
+    <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModal" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="container ticket-order__width">
                     <div class="row">
                         <div class="col-md-8">
-                            <div id="carouselExampleControlsOrder" class="carousel slide" data-bs-interval="false"
-                                data-wrap="false">
+                            <div id="carouselExampleControlsOrder" class="carousel slide" data-mdb-interval="false">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <h5 class="modal-title ticket-order__font">ORDER A TICKET</h5>
@@ -70,10 +69,8 @@
                                                 >{{start_time.start_time}}</button>
                                         </div>
 
-                                        <!-- <button type="button"
-                                            class="btn btn-outline-warning btn-rounded btn-sm ticket-order__space-top"
-                                            data-mdb-slide="next" data-mdb-target="#carouselExampleControlsOrder"
-                                            data-mdb-ripple-color="dark">NEXT</button> -->
+                                        <button type="button" class="btn btn-outline-warning btn-rounded btn-sm ticket-order__space-top " data-mdb-slide="next" data-mdb-target="#carouselExampleControlsOrder" data-mdb-ripple-color="dark">NEXT</button>
+
                                     </div>
                                     <!-- Modal Seat Start -->
                                     <div class="carousel-item container">
