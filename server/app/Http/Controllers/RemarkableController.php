@@ -11,39 +11,41 @@ use Illuminate\Support\Facades\DB;
 
 class RemarkableController extends Controller
 {
+    public function enableRemarkable() {
+        $remarkable = Remarkable::where('remarkables.status',1)
+        ->leftJoin('films','remarkables.film_id','=','films.id')
+        ->select('remarkables.*','films.global_name as film_name')
+        ->get();
+        return response()->json($remarkable);
+    }
+
     public function listRemarkable(){
         $remarkable = Remarkable::all();
         return response()->json($remarkable);
     }
 
-    public function createRemarkable($category) {
-        if($category == 'film') {
-            $list_of_category = Film::all();
-        }elseif($category == 'combo') {
-            $list_of_category = Combo::all();
-        } else {
-            $list_of_category = Discount::all();
-        };
+    public function createRemarkable() {
+        $list_of_category = Film::where('status',1)->get();
+        // if($category == 'film') {
+        //     $list_of_category = Film::all();
+        // }elseif($category == 'combo') {
+        //     $list_of_category = Combo::all();
+        // } else {
+        //     $list_of_category = Discount::all();
+        // };
         return response()->json($list_of_category);
     }
 
     public function storeRemarkable(Request $request) {
         $remarkable = new Remarkable();
         $remarkable->film_id = $request->film_id;
-
-        if ($request->hasFile('poster')) {
-            $path = base64_encode(file_get_contents($request->file('poster')));
-            $remarkable->poster = 'data:image/jpg;base64,'.$path;
-        }
-
-		if ($request->hasFile('banner')) {
-            $path = base64_encode(file_get_contents($request->file('banner')));
-            $remarkable->banner = 'data:image/jpg;base64,'.$path;
-        }
-        $remarkable->combo_id = $request->combo_id;
-        $remarkable->discount_id = $request->discount_id;
-        $remarkable->categories = $request->categories;
+        $remarkable->banner->$request->banner;
         $remarkable->status = $request->status;
+
+        // $remarkable->poster->$request->poster;
+        // $remarkable->combo_id = $request->combo_id;
+        // $remarkable->discount_id = $request->discount_id;
+        // $remarkable->categories = $request->categories;
         $remarkable->save();
         
         return;

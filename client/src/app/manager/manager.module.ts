@@ -65,6 +65,10 @@ const ROUTES: Routes = [
       {
         path:'revenues',
         loadChildren: () => import(`./revenue/revenue.module`).then(m => m.RevenueModule)
+      },
+      {
+        path:'remarkables',
+        loadChildren: () => import(`./remarkable/remarkable.module`).then(m => m.RemarkableModule)
       }
 
 

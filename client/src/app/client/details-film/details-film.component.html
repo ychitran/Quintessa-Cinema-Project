@@ -1,53 +1,26 @@
-<div class="body__bg">
-    <!-- Header Navbar Start -->
-    <div class="header container-fluid text-center slide__index head__border head__bottom">
-        <div class="row">
-            <div class="col-md-2 head__display">
-                <img class="head__logo head__margin" src="assets\frontend\logo\Logo-light.png" alt="logo">
-            </div>
-            <div class="col-md-8 head__display">
-                <nav class="navbar navbar-expand-lg head__margin">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                            <div class="navbar-nav">
-                                <a class="nav-link active head__space head__font" [routerLink]="['']" routerLinkActive="router-link-active" aria-current="page">TRANG CHỦ</a>
-                                <a class="nav-link head__space head__font ">SUẤT CHIẾU</a>
-                                <button class="btn nav-link head__font" data-mdb-toggle="modal" data-mdb-target="#orderModal">ĐẶT VÉ</button>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-            <div class="col-md-2 head__display">
-                <a class="nav-link active head__space head__font" [routerLink]="['/profile']" routerLinkActive="router-link-active" aria-current="page">ĐĂNG NHẬP</a>
-                <i class="fab fa-youtube head__margin-left head__icon"></i>
-            </div>
-        </div>
-    </div>
     <!-- Header Navbar End -->
 
     <!-- Article Details Start -->
     <div class="article-details container article__height article__padding">
         <div class="row article__full article__margin">
             <div class="col-md-4 article__col-height article__padding">
-                <img class="article__full article__filter" src="{{film?.poster}}" alt="">
+                <img class="article__full article__filter" src="{{film.poster}}" alt="">
             </div>
             <div class="col-md-8 article__col-height article__padding position-relative article__display">
                 <div class="content article__center article__content-size article__index position-absolute article__auto">
-                    <h2 class="article__font">{{film?.film_name}}</h2>
-                    <span class="article__font-category">{{film?.categories}}</span>
-                    <p class="article__font-content article__space">{{film?.description}}</p>
+                    <h2 class="article__font">{{film.global_name}}</h2>
+                    <span class="article__font-category">{{film.categories}}</span>
+                    <p class="article__font-content article__space">{{film.description}}</p>
                     <ul class="article__font-content">
-                        <li class="article__space-list article__border">Running Time: {{film?.duration}}</li>
-                        <li class="article__space-list article__border">Genre: {{film?.categories}} </li>
-                        <li class="article__space-list article__border">Director: {{film?.director}}</li>
-                        <li class="article__space-list article__border">Cast: {{film?.caster}} </li>
-                        <li class="article__space-list article__border">Release Data: {{film?.release_date}} </li>
+                        <li class="article__space-list article__border">Thời lượng: {{film.duration}}</li>
+                        <li class="article__space-list article__border">Đạo diễn: {{film.director}}</li>
+                        <li class="article__space-list article__border">Diên viên: {{film.caster}} </li>
+                        <li class="article__space-list article__border">Ngày khởi chiếu: {{film.release_date | date: 'dd-MM-yyyy'}} </li>
                     </ul>
-                    <span class="article__font-category">Available Time:</span>
-                    <br>
+                    <!-- <span class="article__font-category">Available Time:</span>
+                    <br> -->
                     <div class="row article__space">
-                        <div class="time col-md-6">
+                        <!-- <div class="time col-md-6">
                             <button type="button" class="btn btn-outline-light btn-rounded btn-sm article__space-list article__space-right" data-mdb-ripple-color="dark">
                             10:00
                           </button>
@@ -57,7 +30,7 @@
                             <button type="button" class="btn btn-outline-light btn-rounded btn-sm article__space-list article__space-right" data-mdb-ripple-color="dark">
                             12:00
                           </button>
-                        </div>
+                        </div> -->
                         <div class="col-md-6 text-right">
                             <button type="button" class="btn video-btn btn-outline-warning btn-rounded btn-sm article__space-list" data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#videoModal"><i class="far fa-play-circle"></i>
                      Trailer
@@ -68,108 +41,56 @@
                         </div>
                     </div>
                 </div>
-                <img class="article__full article__filter-content" src="assets\frontend\img\details\wp5888175-spider-man-far-from-home-computer-wallpapers.jpg" alt="">
+                <img class="article__full article__filter-content" src="{{film.banner}}" alt="">
             </div>
         </div>
     </div>
     <!-- Article Details End -->
 
     <!-- Tittle Now Playing Start-->
-    <div class="content-now-playing container text-center content-play__bottom">
-        <h2 class="content-play__font content-play" :after>ĐANG CHIẾU</h2>
-    </div>
-    <!-- Tittle Now Playing End-->
-
-    <!-- Tittle Now Playing Start-->
-    <div class="content-now-playing container text-center content-play__bottom">
-        <h2 class="content-play__font content-play" :after>PHIM ĐANG CHIẾU</h2>
-    </div>
+    <!-- <div class="content-now-playing container text-center content-play__bottom">
+        <h2 class="content-play__font content-play" :after>Đang chiếu</h2>
+    </div> -->
     <!-- Tittle Now Playing End-->
 
     <!-- Image Now Playing Start -->
 
-    <div class="container content-play__bottom text-center img__height head__border text-center">
-        <section id="timeline" class="head_full">
-            <div class="tl-item" *ngFor="let film of films">
-                <div class="tl-bg carousel-item active" style="background-image: url({{film.poster}})"></div>
-                <div class="tl-year">
-                    <p class="f2 heading--sanSerif">{{film.release_date}}</p>
-                </div>
-                <div class="tl-content">
-                    <h1>{{film.film_name}}</h1>
-                    <div class="col-8 offset-2"> <a [routerLink]="['/details-film', film.id]" routerLinkActive="router-link-active" class="btn btn-sm animated-button sandy-three">Chi tiết</a></div>
+    <!-- <div id="carouselExampleControls" class="carousel slide container content-play__bottom text-center img__height head__border text-center " data-mdb-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="card-group">
+                    <div class="card head__full" *ngFor="let film of films">
+                        <img src="{{film.poster}}" class="card-img-top img__height-picture img" />
+                    </div>
                 </div>
             </div>
-        </section>
-    </div>
+            <!-- <div class="carousel-item">
+                <div class="card-group">
+                    <div class="card head__full">
+                        <img src="assets\frontend\img\new_movie\blackwidow-updatedreleasedate_byeb.png" class="card-img-top img__height-picture img" :hover />
+                    </div>
+                    <div class="card head__full">
+                        <img src="assets\frontend\img\new_movie\spider-far-poster-3.jpg" class="card-img-top img__height-picture img" :hover />
+                    </div>
+                    <div class="card head__full">
+                        <img src="assets\frontend\img\new_movie\deew942-aeaad734-4fbb-4eff-9fa4-5abf42615fc1.jpg" class="card-img-top img__height-picture img" :hover />
+                    </div>
+                    <div class="card head__full">
+                        <img src="assets\frontend\img\new_movie\81ai6zx6eXL._AC_SY879_.jpg" class="card-img-top img__height-picture img" :hover />
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev " type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+            <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+    </div> -->
     <!-- Image Now Playing End -->
 
     <!-- Footer Start -->
-    <div class="footer container footer__height head__border footer__bottom">
-        <div class="row">
-            <div class="col-3">
-                <h2 class="footer__tittle">MENU</h2>
-                <p class="footer__font">Trang chủ</p>
-                <p class="footer__font">Suất chiếu</p>
-                <p class="footer__font">Đặt vé</p>
-                <i class="fab fa-youtube footer__social footer__space"></i>
-                <i class="fab fa-facebook footer__social footer__space"></i>
-                <i class="fab fa-twitter footer__social"></i>
-            </div>
-            <div class="col-3">
-                <h2 class="footer__tittle">ĐỊA CHỈ</h2>
-                <p class="footer__font">28 Nguyễn Tri Phương,</p>
-                <p class="footer__font">Phường Phú Nhuận, thành phố Huế</p>
-                <p class="footer__font">Email: cinerama@gmail.com</p>
-                <p class="footer__font"><i class="fas fa-phone-alt footer__social footer__space"></i>+0125.124789</p>
-            </div>
-            <div class="col-6">
-                <h2 class="footer__tittle">LIÊN HỆ</h2>
-                <div class="form-outline mb-4 footer__border">
-                    <input type="text" id="form4Example1" class="form-control" />
-                    <label class="form-label text-white-50" for="form4Example1">Tên của bạn *</label>
-                </div>
-                <div class="form-outline mb-4 footer__border">
-                    <input type="text" id="form4Example1" class="form-control" />
-                    <label class="form-label text-white-50" for="form4Example1">Email *</label>
-                </div>
-                <div class="form-outline mb-4 footer__border">
-                    <textarea class="form-control"></textarea>
-                    <label class="form-label text-white-50" for="form6Example7">Tin nhắn * </label>
-                </div>
-                <button type="button" class="btn btn-outline-warning btn-rounded">GỬI </button>
-            </div>
-        </div>
-    </div>
-    <div class="logo container head__height-menu text-center">
-        <div class="row">
-            <div class="col-4">
-                <div class="col-4">
-                    <p class="footer__font">
-                        @ Do Not Copyright</p>
-                </div>
-            </div>
-            <div class="col-4">
-                <img class="footer__logo head__margin" src="assets\frontend\logo\Logo-light.png" alt="logo">
-            </div>
-            <div class="col-4">
-                <p class="footer__font">
-                    @License by: 'Nhac cong di xem phim'</p>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
-
-
-    <!-- Modal Video Start -->
-    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModal" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="embed-responsive embed-responsive-16by9">
-                    {{!!<iframe width="972" height="547" src="https://www.youtube.com/embed/d9M3j5d0KbQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>!!}}
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Video End -->
-</div>

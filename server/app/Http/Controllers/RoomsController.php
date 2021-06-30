@@ -10,9 +10,8 @@ class RoomsController extends Controller
 {
     public function manageRoom()
 	{	
-		$rooms = Room::paginate(5);
-		$cinemas = Cinema::all();
-		return view('admin.manage.room',compact('rooms','cinemas'));
+		$rooms = Room::all();
+		return response()->json($rooms);
 	}
 
     public function createRoom()

@@ -1,30 +1,30 @@
 {
   "films": [
     {
-      "film_name": "Commodi quibusdam vo",
-      "global_name": "Aut maiores non qui ",
+      "film_name": "Góa Phụ Đen",
+      "global_name": "Black Widow ",
       "producer": "Enim tenetur et eos ",
       "categories": "Numquam vero vel rep",
       "director": "Cupiditate voluptate",
       "caster": "Facere nisi eu irure",
       "duration": "102",
-      "poster": "Qui laboris duis qui",
+      "poster": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR807cHsETx7njAkAoa7O10cCy-e11rlRmEAINbO-_W-zyGgRqI",
       "trailer": "Modi incididunt comm",
       "format_id": "0",
-      "release_date": "2010-03-17",
+      "release_date": "2021-09-11",
       "status": "1",
       "description": "Tempora illo nihil c",
       "id": 1
     },
     {
-      "film_name": "Aliquid dolorum plac",
-      "global_name": "Et vel aut anim dolo",
+      "film_name": "Shang-Chi",
+      "global_name": "Shang Chi",
       "producer": "Animi impedit hic ",
       "categories": "Laboriosam mollitia",
       "director": "Et aliquip praesenti",
       "caster": "Tenetur illum quisq",
       "duration": "111",
-      "poster": "Labore tempor iusto ",
+      "poster": "https://genk.mediacdn.vn/139269124445442048/2021/4/20/ezvqwiavoaiav-e-1618905021452596361326.jpg",
       "trailer": "Labore neque Nam bla",
       "format_id": "0",
       "release_date": "2001-09-25",
@@ -33,14 +33,30 @@
       "id": 2
     },
     {
-      "film_name": "Omnis laboriosam ve",
-      "global_name": "Dolor ipsum adipisci",
+      "film_name": "Venom 2",
+      "global_name": "Venom 2",
       "producer": "Quia dolorem pariatu",
       "categories": "Amet nostrum culpa",
       "director": "Odio id dolores comm",
       "caster": "Earum et iusto magna",
       "duration": "100",
-      "poster": "Totam cupiditate acc",
+      "poster": "https://i1.wp.com/motphimle.com/wp-content/uploads/2021/05/Venom-Doi-Mat-Tu-Thu-Venom-2-2021-poster.jpg?fit=600%2C742&ssl=1",
+      "trailer": "Et voluptatem ut nat",
+      "format_id": "1",
+      "release_date": "1995-01-07",
+      "status": "0",
+      "description": "Minima ad id vel omn",
+      "id": 3
+    },
+    {
+      "film_name": "Eternals",
+      "global_name": "Eternals",
+      "producer": "Quia dolorem pariatu",
+      "categories": "Amet nostrum culpa",
+      "director": "Odio id dolores comm",
+      "caster": "Earum et iusto magna",
+      "duration": "100",
+      "poster": "https://i.redd.it/64oq4r14qhb31.jpg",
       "trailer": "Et voluptatem ut nat",
       "format_id": "1",
       "release_date": "1995-01-07",
@@ -69,7 +85,7 @@
       "phone_number": "Sunt ex corporis est",
       "role_id": 2,
       "cinema_id": 1,
-      "role_name":"Ticket Seller",
+      "role_name": "Ticket Seller",
       "cinema_name": "Cinerama  Thừa Thiên Huế"
     }
   ],
@@ -138,6 +154,55 @@
         "B5"
       ],
       "id": 4
+    },
+    {
+      "film_id": 1,
+      "phone_number": null,
+      "user_id": null,
+      "combo_id": null,
+      "discount_id": null,
+      "status": 1,
+      "ticket_price": 45000,
+      "total_price": 60000,
+      "seats": [
+        "B5",
+        "B1"
+      ],
+      "id": 5
+    },
+    {
+      "film_id": 1,
+      "phone_number": null,
+      "user_id": null,
+      "combo_id": null,
+      "discount_id": null,
+      "status": 1,
+      "ticket_price": 45000,
+      "total_price": 60000,
+      "seats": [
+        "A2",
+        "B3",
+        "B5",
+        "B1",
+        "B3",
+        "B4"
+      ],
+      "id": 6
+    },
+    {
+      "film_id": 1,
+      "phone_number": null,
+      "user_id": null,
+      "combo_id": null,
+      "discount_id": null,
+      "status": 1,
+      "ticket_price": 45000,
+      "total_price": 60000,
+      "seats": [
+        "B4",
+        "B3"
+      ],
+      "id": 7
     }
   ],
   "rooms": [
@@ -145,21 +210,19 @@
       "id": 1,
       "room_name": "H01",
       "cinema_id": 1,
-      "cinema_name":"Cinerama  Thừa Thiên Huế"
+      "cinema_name": "Cinerama  Thừa Thiên Huế"
     },
     {
       "id": 2,
       "room_name": "H02",
       "cinema_id": 1,
-      "cinema_name":"Cinerama  Thừa Thiên Huế"
-
+      "cinema_name": "Cinerama  Thừa Thiên Huế"
     },
     {
       "room_name": "H03",
       "cinema_id": "1",
       "id": 3,
-      "cinema_name":"Cinerama  Thừa Thiên Huế"
-
+      "cinema_name": "Cinerama  Thừa Thiên Huế"
     }
   ],
   "seats": [
@@ -251,8 +314,8 @@
       "start_time": "12:00",
       "film_id": 1,
       "room_id": 1,
-      "film_name":"Omnis laboriosam ve",
-      "room_name":"H01"
+      "film_name": "Omnis laboriosam ve",
+      "room_name": "H01"
     },
     {
       "id": 2,
@@ -260,9 +323,8 @@
       "start_time": "14:00",
       "film_id": 1,
       "room_id": 2,
-      "film_name":"Omnis laboriosam ve",
-      "room_name":"H01"
-
+      "film_name": "Omnis laboriosam ve",
+      "room_name": "H01"
     },
     {
       "id": 3,
@@ -270,8 +332,8 @@
       "start_time": "16:00",
       "film_id": 1,
       "room_id": 1,
-      "film_name":"Omnis laboriosam ve",
-      "room_name":"H01"
+      "film_name": "Omnis laboriosam ve",
+      "room_name": "H01"
     }
   ],
   "members": [

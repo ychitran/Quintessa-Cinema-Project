@@ -9,20 +9,19 @@
         <div class="form-group row">
             <label class="col-md-3 form-control-label">Phim</label>
             <div class="col-md-9">
-                <select formControlName="film_id" class="form-control">
-                   
-                    <option value="{{screening.film_id}}">{{screening.film_id}}</option>
-                </select>
+                <input id="inputHorizontalWarning" formControlName="film_id" type="number" placeholder=""
+                    class="form-control form-control-warning " hidden required>
+                    <input id="inputHorizontalWarning"  type="text" value="{{film.global_name}}" placeholder=""
+                    class="form-control form-control-warning " disabled required>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-3 form-control-label">Phòng</label>
             <div class="col-md-9">
-                <select formControlName="room_id" class="form-control" id="phong">
-                    <option checked></option>
-                   
-                    <option  value="{{screening.room_id}}">{{screening.room_id}}</option>
-                </select>
+                <input id="inputHorizontalWarning" formControlName="room_id" type="number" placeholder=""
+                    class="form-control form-control-warning" hidden required>
+                    <input id="inputHorizontalWarning"  type="text" value="{{room.room_name}}" placeholder=""
+                    class="form-control form-control-warning " disabled required>
             </div>
         </div>
         <div class="form-group row">
@@ -39,7 +38,7 @@
         </div>
         <div class="form-group row">
             <div class="col-md-9 m-auto">
-                <input type="submit" value="THÊM" class="btn btn-primary">
+                <input type="submit" value="CHỈNH SỬA" class="btn btn-primary">
             </div>
         </div>
     </form>

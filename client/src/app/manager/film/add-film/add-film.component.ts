@@ -31,24 +31,31 @@ export class AddFilmComponent implements OnInit {
       caster: ["",[Validators.required]],
       duration: [1,[Validators.min(1)]],
       poster: ["",[Validators.required]],
-      banner: ["",[Validators.required]],
+      banner: [,[Validators.required]],
       trailer: ["",[Validators.required]],
-      format_id: [this.formats],
-      release_date: [],
-      status: [],
-      description: []
+      format_id: [""],
+      release_date: [""],
+      status: [""],
+      description: [""]
     })
   }
   cinemaInfo(res): void {
-this.formats = res  }
+    this.formats = res  }
 
   save() {
+
     if(this.addFilmForm.invalid){
-      alert('Thêm mới thất bại');
+      alert('Dữ liệu không hợp lệ');
       return;
     }
 
+
     const { value } = this.addFilmForm;
+    const format_id = Number(value.format_id)
+    const status = Number(value.status)
+    value.format_id = format_id
+    value.status = status
+    // console.log(value)
 
     this.filmService.save(value).subscribe(
       res =>

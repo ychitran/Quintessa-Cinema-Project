@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Film } from 'src/app/_shared/models/film.model';
 import { Order } from 'src/app/_shared/models/order.model';
+import { Remarkable } from 'src/app/_shared/models/remarkable.model';
 import { Screening } from 'src/app/_shared/models/screening.model';
 import { Seat } from 'src/app/_shared/models/seat.model';
 import { TicketDetail } from 'src/app/_shared/models/ticket.model';
@@ -17,6 +18,9 @@ import { HomeService } from './home.service';
 })
 export class HomeComponent implements OnInit {
   slides: Array<Slide>
+
+  public_films : Array<Film>
+  unpublic_films: Array<Film>
   films: Array<Film>
   film : Film
   move_name : string
@@ -31,6 +35,7 @@ export class HomeComponent implements OnInit {
   start_time : Time
   seat = []
   screening_id: number
+  remarkables: Array<Remarkable>
 
   constructor(
     private readonly homeService: HomeService,
@@ -40,14 +45,25 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSlide();
-
+    this.remarkablesValue()
     this.loadFilm();
     this.ticketForm();
   }
-  ticketForm() {
-  this.homeService.getFilms().subscribe(res => this.films = res)
+  remarkablesValue() {
+    this.homeService.getRemarkable().subscribe(res => this.loadRemarkableValue(res));
+  }
+  loadRemarkableValue(res): void {
+    this.remarkables = res;
+    console.log(res)
   }
   loadFilm() {
+  this.homeService.getFilms().subscribe(res => this.loadFilmStatus(res))
+  }
+  loadFilmStatus(res): void {
+    this.public_films = res.publics
+    this.unpublic_films = res.unpublics
+  }
+  ticketForm() {
     this.orderTicketForm = this.formBuilder.group({
       film_id:[],
       phone_number: [],

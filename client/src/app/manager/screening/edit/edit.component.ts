@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Film } from 'src/app/_shared/models/film.model';
+import { Room } from 'src/app/_shared/models/room.model';
 import { Screening } from 'src/app/_shared/models/screening.model';
 import { ScreeningService } from '../screening.service';
 
@@ -12,6 +14,8 @@ import { ScreeningService } from '../screening.service';
 export class EditComponent implements OnInit {
   screening: Screening;
   editForm: FormGroup
+  film: Film
+  room: Room 
   constructor(
     private readonly route: ActivatedRoute,
     private screeningService: ScreeningService,
@@ -25,7 +29,13 @@ export class EditComponent implements OnInit {
 
     )
   }
-  loadValue(screening: Screening): void {
+  loadValue(res): void {
+    this.screening = res[0];
+    this.film = res[1]
+    this.room = res[2]
+    this.pathValue(this.screening)
+  }
+  pathValue(screening: Screening): void {
     this.editForm = this.formBuilder.group({
       date: [screening.date,[Validators.required]],
       start_time: [screening.start_time,[Validators.required]],

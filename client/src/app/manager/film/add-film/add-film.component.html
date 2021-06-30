@@ -2,7 +2,7 @@
 		<h3 class="h6 text-uppercase mb-0">Thêm Phim Mới</h3>
 	</div>
 	<div class="card-body">
-		<form [formGroup]="addFilmForm" (ngSubmit)="save()">
+		<form [formGroup]="addFilmForm" (ngSubmit)="save()" enctype="multipart/form-data">
 			<div class="alert alert-danger" *ngIf="addFilmForm.invalid">
 				Vui lòng điền đầy đủ thông tin
 			</div>
@@ -23,7 +23,7 @@
 			<div class="form-group row">
 				<label class="col-sm-3 form-control-label">Ảnh Phim</label>
 				<div class="col-md-9">
-					<input id="inputHorizontalWarning" formControlName=poster type="file"
+					<input placeholder="Url ảnh" id="inputHorizontalWarning" formControlName=poster type="text"
 						class="form-control form-control-warning" required>
 				</div>
 			</div>
@@ -31,7 +31,7 @@
 			<div class="form-group row">
 				<label class="col-sm-3 form-control-label">Ảnh bìa Phim</label>
 				<div class="col-md-9">
-					<input id="inputHorizontalWarning" formControlName=banner type="file"
+					<input placeholder="Url ảnh" id="inputHorizontalWarning" formControlName=banner type="text"
 						class="form-control form-control-warning" required>
 				</div>
 			</div>
@@ -49,6 +49,8 @@
 						class="form-control form-control-warning " required>
 				</div>
 			</div>
+
+			
 			<div class="form-group row">
 				<label class="col-sm-3 form-control-label">Đạo Diễn</label>
 				<div class="col-md-9">
@@ -66,7 +68,7 @@
 			<div class="form-group row">
 				<label class="col-sm-3 form-control-label">Thời lượng</label>
 				<div class="col-md-9">
-					<input id="inputHorizontalWarning" formControlName="duration" type="text" placeholder="Thời lượng"
+					<input id="inputHorizontalWarning" formControlName="duration" type="number" placeholder="Thời lượng"
 						class="form-control form-control-warning " required>
 				</div>
 			</div>

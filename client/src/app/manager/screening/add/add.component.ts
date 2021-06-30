@@ -24,10 +24,12 @@ export class AddComponent implements OnInit {
     this.addScreeningForm = this.formBuilder.group({
       date: ["",[Validators.required]],
       start_time: ["",[Validators.required]],
-      film_id: [this.loadList(),[Validators.required]],
-      room_id: [this.loadListNd(),[Validators.required]]
+      film_id: [,[Validators.required]],
+      room_id: [,[Validators.required]]
 
     })
+    this.loadList()
+    this.loadListNd()
   }
 
   loadList():void {
@@ -40,7 +42,7 @@ export class AddComponent implements OnInit {
 
   save() {
     if(this.addScreeningForm.invalid){
-      alert('Thêm mới thất bại');
+      alert('Dữ liệu không hợp lệ');
       return;
     }
 

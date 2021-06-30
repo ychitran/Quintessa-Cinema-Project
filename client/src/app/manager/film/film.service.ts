@@ -29,7 +29,7 @@ export class FilmService {
   // }
 
   getElement(id): Observable<Film> {
-    return this.httpClient.get<Film>('http://localhost:3000/films/' + id);
+    return this.httpClient.get<Film>('/admin/films/edit/' + id);
   }
 
   save(film : Film): Observable<Film> {
@@ -38,11 +38,11 @@ export class FilmService {
   }
 
   update(id,film): Observable<Film> {
-    return this.httpClient.put<Film>('http://localhost:3000/films/' + id,film)
+    return this.httpClient.put<Film>('/admin/films/edit/' + id,film)
   }
 
   remove(id): Observable<any> {
     // const id = this.route.snapshot.paramMap.get("id");
-    return this.httpClient.delete<any>(`http://localhost:3000/films/` + id)
+    return this.httpClient.get<any>(`/admin/films/` + id)
   }
 }

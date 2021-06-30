@@ -10,27 +10,28 @@ import { DetailsFilmService } from './details-film.service';
   styleUrls: ['./details-film.component.scss']
 })
 export class DetailsFilmComponent implements OnInit {
-  film: Film
-  films: Array<Film>
-
+  film:Film
+  films : Array<Film>
   constructor(
     private readonly route: ActivatedRoute,
     private readonly httpClient: HttpClient,
-    private readonly detailsService: DetailsFilmService
+    private readonly detailsService: DetailsFilmService 
   ) { }
 
   ngOnInit(): void {
     this.loadFilmDetails();
-    this.getAll();
+    this.detailsService.getList().subscribe(res=>this.loadfilm(res));
+  }
+  loadfilm(res) {
+    this.films = res.publics;
   }
   
   loadFilmDetails() {
     const id = this.route.snapshot.paramMap.get("id")
     this.detailsService.getFilm(id).subscribe(res => this.film = res)
   }
-  getAll() {
-    this.detailsService.getAll().subscribe(res => { this.films = res;})
-  }
+
+  
 
 
 }

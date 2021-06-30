@@ -22,7 +22,7 @@
                     <a style="padding: 0 15px;" [routerLink]="['edit',cinema.id]">
                         <i class="fas fa-edit text-success"></i>
                     </a>
-                    <a><i class="fas fa-trash-alt text-danger"></i></a>
+                    <a (click) = remove(cinema.id)><i class="fas fa-trash-alt text-danger"></i></a>
                 </td>
             </tr>
         </tbody>

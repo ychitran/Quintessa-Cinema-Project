@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './_shared/layouts/admin-layout/admin-layout.component';
 import { ClientLayoutComponent } from './_shared/layouts/client-layout/client-layout.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const ROUTES: Routes = [
   {
@@ -31,7 +32,8 @@ const ROUTES: Routes = [
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    ReactiveFormsModule
   ],
   exports: [
     RouterModule

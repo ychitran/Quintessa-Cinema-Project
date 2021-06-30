@@ -14,7 +14,11 @@ export class DetailsFilmService {
   ) { }
 
   getFilm(id): Observable<Film> {
-    return this.httpClient.get<Film>('https://60ce078a91cc8e00178dc6b4.mockapi.io/cinema/film/' + id);
+    return this.httpClient.get<Film>('/details-film/' + id);
+  }
+
+  getList():Observable<Array<Film>> {
+    return this.httpClient.get<Array<Film>>('/');
   }
   getAll(): Observable<Array<Film>> {
     return this.httpClient.get<Array<Film>>(this.filmURL);
