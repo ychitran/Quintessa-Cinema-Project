@@ -38,11 +38,11 @@ class CinemasController extends Controller
         $cinema->cinema_name = $request->cinema_name;
         $cinema->information = $request->information;
         $cinema->save();
-        return redirect("admin/cinema");
+        return;
     }
 
     public function deleteCinema($id) {
         Cinema::where('id',$id)->delete();
-        return redirect('admin/cinema');
+        return ;
     }
 }

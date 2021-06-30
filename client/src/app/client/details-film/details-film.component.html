@@ -1,53 +1,27 @@
-<div class="body__bg">
-    <!-- Header Navbar Start -->
-    <div class="header container-fluid text-center slide__index head__border head__bottom">
-        <div class="row">
-            <div class="col-md-2 head__display">
-                <img class="head__logo head__margin" src="assets\frontend\logo\Logo-light.png" alt="logo">
-            </div>
-            <div class="col-md-8 head__display">
-                <nav class="navbar navbar-expand-lg head__margin">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                            <div class="navbar-nav">
-                                <a class="nav-link active head__space head__font" [routerLink]="['']" routerLinkActive="router-link-active" aria-current="page">HOME</a>
-                                <a class="nav-link head__space head__font ">SHOWTIMES</a>
-                                <button class="btn nav-link head__font" data-mdb-toggle="modal" data-mdb-target="#orderModal">ORDER TICKET</button>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-            <div class="col-md-2 head__display">
-                <a class="straight head__font head__margin-left">LOGIN</a>
-                <i class="fab fa-youtube head__margin-left head__icon"></i>
-            </div>
-        </div>
-    </div>
+
     <!-- Header Navbar End -->
 
     <!-- Article Details Start -->
     <div class="article-details container article__height article__padding">
         <div class="row article__full article__margin">
             <div class="col-md-4 article__col-height article__padding">
-                <img class="article__full article__filter" src="{{film?.poster}}" alt="">
+                <img class="article__full article__filter" src="{{film.poster}}" alt="">
             </div>
             <div class="col-md-8 article__col-height article__padding position-relative article__display">
                 <div class="content article__center article__content-size article__index position-absolute article__auto">
-                    <h2 class="article__font">{{film?.film_name}}</h2>
-                    <span class="article__font-category">{{film?.categories}}</span>
-                    <p class="article__font-content article__space">{{film?.description}}</p>
+                    <h2 class="article__font">{{film.global_name}}</h2>
+                    <span class="article__font-category">{{film.categories}}</span>
+                    <p class="article__font-content article__space">{{film.description}}</p>
                     <ul class="article__font-content">
-                        <li class="article__space-list article__border">Running Time: {{film?.duration}}</li>
-                        <li class="article__space-list article__border">Genre: {{film?.categories}} </li>
-                        <li class="article__space-list article__border">Director: {{film?.director}}</li>
-                        <li class="article__space-list article__border">Cast: {{film?.caster}} </li>
-                        <li class="article__space-list article__border">Release Data: {{film?.release_date}} </li>
+                        <li class="article__space-list article__border">Thời lượng: {{film.duration}}</li>
+                        <li class="article__space-list article__border">Đạo diễn: {{film.director}}</li>
+                        <li class="article__space-list article__border">Diên viên: {{film.caster}} </li>
+                        <li class="article__space-list article__border">Ngày khởi chiếu: {{film.release_date | date: 'dd-MM-yyyy'}} </li>
                     </ul>
-                    <span class="article__font-category">Available Time:</span>
-                    <br>
+                    <!-- <span class="article__font-category">Available Time:</span>
+                    <br> -->
                     <div class="row article__space">
-                        <div class="time col-md-6">
+                        <!-- <div class="time col-md-6">
                             <button type="button" class="btn btn-outline-light btn-rounded btn-sm article__space-list article__space-right" data-mdb-ripple-color="dark">
                             10:00
                           </button>
@@ -57,47 +31,38 @@
                             <button type="button" class="btn btn-outline-light btn-rounded btn-sm article__space-list article__space-right" data-mdb-ripple-color="dark">
                             12:00
                           </button>
-                        </div>
+                        </div> -->
                         <div class="col-md-6 text-right">
                             <button type="button" class="btn btn-outline-warning btn-rounded btn-sm article__space-list" data-mdb-ripple-color="dark">
-                     Order Ticket
+                     Đặt vé
                     </button>
                         </div>
                     </div>
                 </div>
-                <img class="article__full article__filter-content" src="assets\frontend\img\details\wp5888175-spider-man-far-from-home-computer-wallpapers.jpg" alt="">
+                <img class="article__full article__filter-content" src="{{film.banner}}" alt="">
             </div>
         </div>
     </div>
     <!-- Article Details End -->
 
     <!-- Tittle Now Playing Start-->
-    <div class="content-now-playing container text-center content-play__bottom">
-        <h2 class="content-play__font content-play" :after>NOW PLAYING</h2>
-    </div>
+    <!-- <div class="content-now-playing container text-center content-play__bottom">
+        <h2 class="content-play__font content-play" :after>Đang chiếu</h2>
+    </div> -->
     <!-- Tittle Now Playing End-->
 
     <!-- Image Now Playing Start -->
 
-    <div id="carouselExampleControls" class="carousel slide container content-play__bottom text-center img__height head__border text-center " data-mdb-ride="carousel">
+    <!-- <div id="carouselExampleControls" class="carousel slide container content-play__bottom text-center img__height head__border text-center " data-mdb-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="card-group">
-                    <div class="card head__full">
-                        <img src="assets\frontend\img\new_movie\blackwidow-updatedreleasedate_byeb.png" class="card-img-top img__height-picture img" />
-                    </div>
-                    <div class="card head__full">
-                        <img src="assets\frontend\img\new_movie\spider-far-poster-3.jpg" class="card-img-top img__height-picture img" :hover />
-                    </div>
-                    <div class="card head__full">
-                        <img src="assets\frontend\img\new_movie\deew942-aeaad734-4fbb-4eff-9fa4-5abf42615fc1.jpg" class="card-img-top img__height-picture img" :hover />
-                    </div>
-                    <div class="card head__full">
-                        <img src="assets\frontend\img\new_movie\81ai6zx6eXL._AC_SY879_.jpg" class="card-img-top img__height-picture img" :hover />
+                    <div class="card head__full" *ngFor="let film of films">
+                        <img src="{{film.poster}}" class="card-img-top img__height-picture img" />
                     </div>
                 </div>
             </div>
-            <div class="carousel-item">
+            <!-- <div class="carousel-item">
                 <div class="card-group">
                     <div class="card head__full">
                         <img src="assets\frontend\img\new_movie\blackwidow-updatedreleasedate_byeb.png" class="card-img-top img__height-picture img" :hover />
@@ -123,62 +88,7 @@
           </button>
         </div>
 
-    </div>
+    </div> -->
     <!-- Image Now Playing End -->
 
     <!-- Footer Start -->
-    <div class="footer container footer__height head__border footer__bottom">
-        <div class="row">
-            <div class="col-3">
-                <h2 class="footer__tittle">MENU</h2>
-                <p class="footer__font">Home</p>
-                <p class="footer__font">Showtimes</p>
-                <p class="footer__font">Order Ticket</p>
-                <i class="fab fa-youtube footer__social footer__space"></i>
-                <i class="fab fa-facebook footer__social footer__space"></i>
-                <i class="fab fa-twitter footer__social"></i>
-            </div>
-            <div class="col-3">
-                <h2 class="footer__tittle">ADDRESS</h2>
-                <p class="footer__font">28 Nguyen Tri Phuong Street,</p>
-                <p class="footer__font">Phu Nhuan, Hue City</p>
-                <p class="footer__font">Email: cinerama@gmail.com</p>
-                <p class="footer__font"><i class="fas fa-phone-alt footer__social footer__space"></i>+0125.124789</p>
-            </div>
-            <div class="col-6">
-                <h2 class="footer__tittle">CONTACT</h2>
-                <div class="form-outline mb-4 footer__border">
-                    <input type="text" id="form4Example1" class="form-control" />
-                    <label class="form-label text-white-50" for="form4Example1">Name *</label>
-                </div>
-                <div class="form-outline mb-4 footer__border">
-                    <input type="text" id="form4Example1" class="form-control" />
-                    <label class="form-label text-white-50" for="form4Example1">Email *</label>
-                </div>
-                <div class="form-outline mb-4 footer__border">
-                    <textarea class="form-control"></textarea>
-                    <label class="form-label text-white-50" for="form6Example7">Message * </label>
-                </div>
-                <button type="button" class="btn btn-outline-warning btn-rounded">SEND TO US</button>
-            </div>
-        </div>
-    </div>
-    <div class="logo container head__height-menu text-center">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="col-md-4">
-                    <p class="footer__font">
-                        @ Do Not Copyright</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <img class="footer__logo head__margin" src="assets\frontend\logo\Logo-light.png" alt="logo">
-            </div>
-            <div class="col-md-4">
-                <p class="footer__font">
-                    @License by: 'Nhac cong di xem phim'</p>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
-</div>

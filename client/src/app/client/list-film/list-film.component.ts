@@ -16,9 +16,15 @@ export class ListFilmComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getAll();
+    this.loadFilm();
+
   }
-  getAll() {
-    this.listFilmService.getAll().subscribe(res => { this.films = res;})
+
+  loadFilm() {
+    this.listFilmService.getFilms().subscribe(res => this.loadValueFilm(res))
+    }
+  loadValueFilm(res): void {
+    this.films = res.publics;
   }
+  
 }

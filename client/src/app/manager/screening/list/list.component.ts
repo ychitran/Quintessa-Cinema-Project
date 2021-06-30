@@ -17,6 +17,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadListFilm()
+    this.loadList()
   }
 
   loadList(keyword= ''):void  {

@@ -77,6 +77,367 @@
         font-weight: 600;
         padding-bottom: 15px;
     }
+
+    
+}
+
+.seat-select {
+    background-color: yellow ;
+}
+
+.seat-disable {
+    background-color: rgb(94, 86, 86);
 }
 
 // Modal Order Ticket End
+
+.body {
+    &__bg {
+        background-image: url( ../../../../assets/frontend/img/bg-single.jpg);
+    }
+}
+
+//================ Header Navbar Start===========
+.head {
+    &__auto {
+        height: auto;
+        width: 100%;
+    }
+    &__full {
+        height: 100%;
+        width: 100%;
+    }
+    &__height-menu {
+        height: 70px;
+        width: 100%;
+    }
+    &__space {
+        margin-right: 60px;
+    }
+    &__font {
+        color: #fff;
+        font-family: 'Josefin Sans', sans-serif;
+        line-height: 28px;
+        font-size: 15px;
+        letter-spacing: 2px;
+        font-weight: 600;
+    }
+    &__display {
+        display: flex;
+    }
+    &__margin {
+        margin: auto;
+    }
+    &__logo {
+        width: 60%;
+    }
+    &__icon {
+        color: white;
+        margin-right: 30px;
+    }
+    &__border {
+        border-bottom: 1px solid rgb(66, 66, 66);
+    }
+    &__margin-left {
+        margin: auto 0 auto 0;
+    }
+}
+
+.straight::after {
+    content: '|';
+    color: #fb802d;
+    margin-left: 15px;
+    margin-right: 10px;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+//================= Header Navbar End
+//================== Slide Start
+.slide {
+    &__height {
+        height: 800px;
+        width: 100%;
+        margin-bottom: 80px;
+    }
+    &__img {
+        filter: brightness(50%);
+    }
+    &__index {
+        z-index: 1;
+    }
+    &__height-auto {
+        height: auto;
+    }
+}
+
+.animation {
+    &__center {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    &__font-tittle {
+        font-family: 'Josefin Sans', sans-serif;
+        color: #fff;
+        font-size: 100px;
+        font-weight: 700;
+    }
+    &__font-under {
+        font-family: 'Josefin Sans', sans-serif;
+        color: #fff;
+        font-size: 18px;
+        letter-spacing: 5px;
+    }
+    &__height {
+        margin-top: 50px;
+    }
+}
+
+.button {
+    --offset: 10px;
+    --border-size: 2px;
+    position: relative;
+    padding: 1.5em 3em;
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: .25em;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 0;
+    box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+    transition: background .8s ease;
+    &:hover {
+        background: rgba(100, 0, 0, .03);
+    }
+    &__horizontal,
+    &__vertical {
+        position: absolute;
+        top: var(--horizontal-offset, 0);
+        right: var(--vertical-offset, 0);
+        bottom: var(--horizontal-offset, 0);
+        left: var(--vertical-offset, 0);
+        transition: transform .8s ease;
+        will-change: transform;
+        &::before {
+            content: '';
+            position: absolute;
+            border: inherit;
+        }
+    }
+    &__horizontal {
+        --vertical-offset: calc(var(--offset) * -1);
+        border-top: var(--border-size) solid currentcolor;
+        border-bottom: var(--border-size) solid currentcolor;
+        &::before {
+            top: calc(var(--vertical-offset) - var(--border-size));
+            bottom: calc(var(--vertical-offset) - var(--border-size));
+            left: calc(var(--vertical-offset) * -1);
+            right: calc(var(--vertical-offset) * -1);
+        }
+    }
+    &:hover &__horizontal {
+        transform: scaleX(0);
+    }
+    &__vertical {
+        --horizontal-offset: calc(var(--offset) * -1);
+        border-left: var(--border-size) solid currentcolor;
+        border-right: var(--border-size) solid currentcolor;
+        &::before {
+            top: calc(var(--horizontal-offset) * -1);
+            bottom: calc(var(--horizontal-offset) * -1);
+            left: calc(var(--horizontal-offset) - var(--border-size));
+            right: calc(var(--horizontal-offset) - var(--border-size));
+        }
+    }
+    &:hover &__vertical {
+        transform: scaleY(0);
+    }
+}
+
+// ===================Slide End====================
+// ===============Tittle Now Playing Start - Tittle Coming Soon Start
+.content-play {
+    &__bottom {
+        margin-bottom: 70px;
+    }
+    &__font {
+        font-family: 'Josefin Sans', sans-serif;
+        color: #fff;
+        font-size: 27px;
+        font-weight: 500;
+    }
+    &:after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 1.5px;
+        background: #f44336;
+        top: 30px;
+        margin: auto;
+        margin-top: 10px;
+    }
+}
+
+//============ Tittle Now Playing  - Tittle Coming Soon End 
+// =============Carousel Now Playing - Coming Soon Start==========================
+.img {
+    &__height {
+        height: 900px;
+    }
+}
+
+#timeline {
+    display: flex;
+    background-color: #031625;
+    &:hover {
+        .tl-item {
+            width: 23.3333%;
+        }
+    }
+}
+
+.tl-item {
+    transform: translate3d(0, 0, 0);
+    position: relative;
+    width: 25%;
+    height: 100vh;
+    min-height: 600px;
+    color: #fff;
+    overflow: hidden;
+    transition: width 0.5s ease;
+    &:before,
+    &:after {
+        transform: translate3d(0, 0, 0);
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+    &:after {
+        // background: transparentize(#031625, 0.15);
+        opacity: 1;
+        transition: opacity 0.5s ease;
+    }
+    &:before {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 75%);
+        z-index: 1;
+        opacity: 0;
+        transform: translate3d(0, 0, 0) translateY(50%);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    &:hover {
+        width: 30% !important;
+        &:after {
+            opacity: 0;
+        }
+        &:before {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) translateY(0);
+            transition: opacity 1s ease, transform 1s ease 0.25s;
+        }
+        .tl-content {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.75s ease 0.5s;
+        }
+        .tl-bg {
+            filter: grayscale(0);
+        }
+    }
+}
+
+.tl-content {
+    transform: translate3d(0, 0, 0) translateY(25px);
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin: 0 1.618em;
+    top: 55%;
+    opacity: 0;
+    h1 {
+        font-family: 'Pathway Gothic One', Helvetica Neue, Helvetica, Arial, sans-serif;
+        text-transform: uppercase;
+        color: #ce7e16;
+        font-size: 1.44rem;
+        font-weight: normal;
+    }
+}
+
+.tl-year {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 1;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    p {
+        font-family: 'Pathway Gothic One', Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 1.728rem;
+        line-height: 0;
+    }
+}
+
+.tl-bg {
+    transform: translate3d(0, 0, 0);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center center;
+    transition: filter 0.5s ease;
+    filter: brightness(25%);
+}
+
+// =============Carousel Now Playing - Coming Soon End==========================
+// Footer Start
+.footer {
+    &__height {
+        height: 400px;
+    }
+    &__tittle {
+        font-family: 'Montserrat', sans-serif;
+        color: #fff;
+        font-size: 16px;
+        letter-spacing: 2px;
+        font-weight: 500;
+        margin-bottom: 40px;
+    }
+    &__font {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.6);
+    }
+    &__social {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+    }
+    &__space {
+        margin-right: 10px;
+    }
+    &__border {
+        border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+    &__logo {
+        width: 40%;
+    }
+    &__height-logo {
+        height: 20px;
+    }
+    &__bottom {
+        margin-bottom: 50px
+    }
+}
+
+// Footer End
+// Footer End

@@ -17,40 +17,40 @@ export class ScreeningService {
   ) { }
 
   getList(keyword:string): Observable<Array<Screening>> {
-    return this.httpClient.get<Array<Screening>>('http://localhost:3000/screenings',{
-      params: {
-        q:keyword
-      }
-    });
+    return this.httpClient.get<Array<Screening>>('/admin/screenings');
   }
 
   getListProvider(): Observable<Array<Film>> {
-    return this.httpClient.get<Array<Film>>('http://localhost:3000/films');
+    return this.httpClient.get<Array<Film>>('/admin/films');
   }
 
   getListProviderNd(): Observable<Array<Room>> {
-    return this.httpClient.get<Array<Room>>('http://localhost:3000/rooms');
+    return this.httpClient.get<Array<Room>>('/admin/rooms');
   }
 
-  getListAfterProvider(id):Observable<Array<Screening>> {
-    return this.httpClient.get<Array<Screening>>('http://localhost:3000/screenings?film_id=' + id)
+  getListAfterProvider(film_id):Observable<Array<Screening>> {
+    return this.httpClient.get<Array<Screening>>('/admin/screenings/'+  film_id)
   }
 
   getElement(id): Observable<Screening> {
-    return this.httpClient.get<Screening>('http://localhost:3000/rooms/' + id);
+    return this.httpClient.get<Screening>('/admin/screenings/edit/' + id);
+  }
+
+  create():any {
+    return this.httpClient.get<any>(`/admin/screenings/add/`);
   }
 
   save(screening : Screening): Observable<Screening> {
-    return this.httpClient.post<Screening>(`http://localhost:3000/screenings/`, screening);
+    return this.httpClient.post<Screening>(`/admin/screenings/add`, screening);
   
   }
 
   update(id,screening): Observable<Screening> {
-    return this.httpClient.put<Screening>('http://localhost:3000/screenings/' + id,screening)
+    return this.httpClient.put<Screening>('/admin/screenings/edit/' + id,screening)
   }
 
   remove(id): Observable<any> {
     // const id = this.route.snapshot.paramMap.get("id");
-    return this.httpClient.delete<any>(`http://localhost:3000/screenings/` + id)
+    return this.httpClient.get<any>(`/admin/screenings/` + id)
   }
 }

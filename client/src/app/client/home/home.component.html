@@ -1,47 +1,25 @@
-<div class="body__bg">
-    <!-- Header Navbar Start -->
-    <div class="header container-fluid text-center position-absolute slide__index head__border">
-        <div class="row">
-            <div class="col-md-2 head__display">
-                <img class="head__logo head__margin" src="assets\frontend\logo\Logo-light.png" alt="logo">
-            </div>
-            <div class="col-md-8 head__display">
-                <nav class="navbar navbar-expand-lg head__margin">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                            <div class="navbar-nav">
-                                <a class="nav-link active head__space head__font" [routerLink]="['/']" routerLinkActive="router-link-active" aria-current="page">TRANG CHỦ</a>
-                                <a class="nav-link head__space head__font " [routerLink]="['/list-film']" routerLinkActive="router-link-active">SUẤT CHIẾU</a>
-                                <a class="btn nav-link head__font" data-mdb-toggle="modal" data-mdb-target="#orderModal">ĐẶT VÉ</a>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-            <div class="col-md-2 head__display head__margin">
-                <a class="btn nav-link head__font">ĐĂNG NHẬP</a>
-            </div>
-        </div>
-    </div>
+
     <!-- Header Navbar End -->
 
     <!-- Slides Start -->
-    <div class="slides-container-fluid slide__height text-center position-relative" *ngFor="let slide of slides">
-        <img class="slide__img head__full" src="{{slide.background_slide}}" alt="background">
+    <ng-container  *ngFor="let remarkable of remarkables">
+    <div class="slides-container-fluid slide__height text-center position-relative" >
+        <img class="slide__img head__full" src="{{remarkable.banner}}" alt="background">
     </div>
     <!-- Slides End -->
 
     <!-- Animation Start -->
-    <div class="animate-container position-absolute animation__center text-center " *ngFor="let slide of slides">
-        <h4 class="animation__font-tittle animate__animated animate__zoomIn animate__slower	3s animate__infinite ">{{slide.tittle_lg}}</h4>
-        <h6 class="animation__font-under animate__animated animate__zoomIn animate__slower	3s animate__infinite ">{{slide.tittle_sm}}</h6>
-        <button class="button animation__height animate__animated animate__zoomIn animate__slower	3s">
-        Order Ticket
+    <div class="animate-container position-absolute animation__center text-center ">
+        <h4 class="animation__font-tittle animate__animated animate__zoomIn animate__slower	3s animate__infinite ">{{remarkable.film_name}}</h4>
+        <h6 class="animation__font-under animate__animated animate__zoomIn animate__slower	3s animate__infinite "></h6>
+        <button [routerLink]="['/details-film', remarkable.film_id]" class="button animation__height animate__animated animate__zoomIn animate__slower3s">
+        Chi tiết Phim
         <div class="button__horizontal"></div>
         <div class="button__vertical"></div>
     </button>
         <!-- Animation End -->
     </div>
+</ng-container>
 
     <!-- Tittle Now Playing Start-->
     <div class="content-now-playing container text-center content-play__bottom">
@@ -53,13 +31,13 @@
 
     <div class="container content-play__bottom text-center img__height head__border text-center">
         <section id="timeline" class="head_full">
-            <div class="tl-item" *ngFor="let film of films">
-                <div class="tl-bg carousel-item active" style="background-image: url({{film.poster}})"></div>
+            <div class="tl-item" *ngFor="let public_film of public_films">
+                <div class="tl-bg carousel-item active" style="background-image: url({{public_film.poster}})"></div>
                 <div class="tl-year">
-                    <p class="f2 heading--sanSerif">20/7/2021</p>
+                    <p class="f2 heading--sanSerif"></p>
                 </div>
                 <div class="tl-content">
-                    <h1>Black Widow</h1>
+                    <h1>{{public_film.global_name}}</h1>
                     <p></p>
                 </div>
             </div>
@@ -77,13 +55,13 @@
 
     <div class="content-play__bottom text-center img__height head__border text-center">
         <section id="timeline" class="head_full">
-            <div class="tl-item" *ngFor="let film of films">
-                <div class="tl-bg carousel-item active" style="background-image: url({{film.poster}})"></div>
+            <div class="tl-item" *ngFor="let unpublic_film of unpublic_films">
+                <div class="tl-bg carousel-item active" style="background-image: url({{unpublic_film.poster}})"></div>
                 <div class="tl-year">
-                    <p class="f2 heading--sanSerif">20/7/2021</p>
+                    <p class="f2 heading--sanSerif"></p>
                 </div>
                 <div class="tl-content">
-                    <h1>Black Widow</h1>
+                    <h1>{{unpublic_film.global_name}}</h1>
                     <p></p>
                 </div>
             </div>
@@ -91,59 +69,4 @@
     </div>
     <!-- Image Coming Soon End -->
 
-    <!-- Footer Start -->
-    <div class="footer container footer__height head__border footer__bottom">
-        <div class="row">
-            <div class="col-3">
-                <h2 class="footer__tittle">MENU</h2>
-                <p class="footer__font">Home</p>
-                <p class="footer__font">Showtimes</p>
-                <p class="footer__font">Order Ticket</p>
-                <i class="fab fa-youtube footer__social footer__space"></i>
-                <i class="fab fa-facebook footer__social footer__space"></i>
-                <i class="fab fa-twitter footer__social"></i>
-            </div>
-            <div class="col-3">
-                <h2 class="footer__tittle">ADDRESS</h2>
-                <p class="footer__font">28 Nguyen Tri Phuong Street,</p>
-                <p class="footer__font">Phu Nhuan, Hue City</p>
-                <p class="footer__font">Email: cinerama@gmail.com</p>
-                <p class="footer__font"><i class="fas fa-phone-alt footer__social footer__space"></i>+0125.124789</p>
-            </div>
-            <div class="col-6">
-                <h2 class="footer__tittle">CONTACT</h2>
-                <div class="form-outline mb-4 footer__border">
-                    <input type="text" id="form4Example1" class="form-control" />
-                    <label class="form-label text-white-50" for="form4Example1">Name *</label>
-                </div>
-                <div class="form-outline mb-4 footer__border">
-                    <input type="text" id="form4Example1" class="form-control" />
-                    <label class="form-label text-white-50" for="form4Example1">Email *</label>
-                </div>
-                <div class="form-outline mb-4 footer__border">
-                    <textarea class="form-control"></textarea>
-                    <label class="form-label text-white-50" for="form6Example7">Message * </label>
-                </div>
-                <button type="button" class="btn btn-outline-warning btn-rounded">SEND TO US</button>
-            </div>
-        </div>
-    </div>
-    <div class="logo container head__height-menu text-center">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="col-md-4">
-                    <p class="footer__font">
-                        @ Do Not Copyright</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <img class="footer__logo head__margin" src="assets\frontend\logo\Logo-light.png" alt="logo">
-            </div>
-            <div class="col-md-4">
-                <p class="footer__font">
-                    @License by: 'Nhac cong di xem phim'</p>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
-</div>
+ 

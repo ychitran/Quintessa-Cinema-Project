@@ -31,11 +31,11 @@ export class CinemaService {
   }
 
   update(id,cinema): Observable<Cinema> {
-    return this.httpClient.put<Cinema>('http://localhost:3000/cinemas/' + id,cinema)
+    return this.httpClient.put<Cinema>('/admin/cinemas/edit/'+id,cinema)
   }
 
   remove(id): Observable<any> {
     // const id = this.route.snapshot.paramMap.get("id");
-    return this.httpClient.delete<any>(`http://localhost:3000/cinemas/` + id)
+    return this.httpClient.get<any>(`/admin/cinemas/`+ id)
   }
 }

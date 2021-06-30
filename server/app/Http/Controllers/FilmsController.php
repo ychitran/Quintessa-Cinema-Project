@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class FilmsController extends Controller
 {
+	public function listFilm() {
+		$publics = Film::where('status',1)->get();
+		$unpublics = Film::where('status',0)->get();
+		return response()->json([
+			'publics' => $publics,
+			'unpublics' => $unpublics
+		]);
+	}
+
     public function manageFilm()
 	{
 		
@@ -27,17 +36,21 @@ class FilmsController extends Controller
 	{
 
 		$films = new Film();
+		
+		
+		// if ($request->hasFile('poster')) {
+        //     $path = base64_encode(file_get_contents($request->file('poster')));
+        //     $films->poster = 'data:image/jpg;base64,'.$path;
+        // }
+
+		// if ($request->hasFile('banner')) {
+        //     $path = base64_encode(file_get_contents($request->file('banner')));
+        //     $films->banner = 'data:image/jpg;base64,'.$path;
+        // }
 		$films->film_name = $request->film_name;
 		$films->global_name = $request->global_name;
-		if ($request->hasFile('poster')) {
-            $path = base64_encode(file_get_contents($request->file('poster')));
-            $films->poster = 'data:image/jpg;base64,'.$path;
-        }
-
-		if ($request->hasFile('banner')) {
-            $path = base64_encode(file_get_contents($request->file('banner')));
-            $films->banner = 'data:image/jpg;base64,'.$path;
-        }
+		$films->banner = $request->banner;
+		$films->poster = $request->poster;
 
 		$films->producer = $request->producer;
 		$films->categories = $request->categories;
@@ -58,30 +71,30 @@ class FilmsController extends Controller
 	public function editFilm($id)
 	{
 		$formats = FormatFilm::all();
-		$film = Film::where('id',$id)->first();
-		return view('admin.film.editfilm',compact('film','formats'));
+		$film = Film::findOrFail($id);
+		return response()->json($film);
 	}
 	public function updateFilm(Request $request,$id)
 	{
-		$film = Film::where('id',$id);
-		$film->film_name=$request->film_name;
-		$film->global_name=$request->global_name;
-		if ($request->hasFile('image')) {
-            $path = base64_encode(file_get_contents($request->file('image')));
-            $film->poster = 'data:image/jpg;base64,'.$path;
-        }
-		$film->producer=$request->producer;
-		$film->categories=$request->categories;
-		$film->director=$request->director;
-		$film->caster=$request->caster;
-		$film->duration=$request->durations;
-		$film->release_date=$request->release_date;
-		$film->status=$request->status;
+		$film = Film::findOrFail($id);
+		$film->film_name = $request->film_name;
+		$film->global_name = $request->global_name;
+		$film->banner = $request->banner;
+		$film->poster = $request->poster;
+
+		$film->producer = $request->producer;
+		$film->categories = $request->categories;
+		$film->director = $request->director;
+		$film->caster = $request->caster;
+		$film->duration = $request->duration;
+		$film->release_date = $request->release_date;
+		$film->status = $request->status;
+		
 		$film->trailer=$request->trailer;
-		$film->description=$request->description;
-		$film->format_id=$request->format_id;
+		$film->description = $request->description;
+		$film->format_id = $request->format_id;
 		$film->save();
-		return redirect('admin/film');
+		return ;
 	}
 	public function deleteFilm($id)
 	{

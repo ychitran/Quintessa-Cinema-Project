@@ -9,23 +9,23 @@ use Illuminate\Http\Request;
 
 class TicketDetailController extends Controller
 {
-    public function manageTicket()
-	{
-        $tickets = TicketDetail::all();
+    // public function manageTicket()
+	// {
+    //     $tickets = TicketDetail::all();
 
-        $seats = Seat::select('row')
-        ->where('room_id', 1)
-        ->groupBy('row')
-        ->distinct()
-        ->get();
-        for ($i = 0; $i < count($seats); $i++) {
-            $seat = Seat::where([['room_id', 1], ['row', $seats[$i]->row]])->get();
+    //     $seats = Seat::select('row')
+    //     ->where('room_id', 1)
+    //     ->groupBy('row')
+    //     ->distinct()
+    //     ->get();
+    //     for ($i = 0; $i < count($seats); $i++) {
+    //         $seat = Seat::where([['room_id', 1], ['row', $seats[$i]->row]])->get();
     
-            $seats[$i]['number'] = $seat;
-        }
+    //         $seats[$i]['number'] = $seat;
+    //     }
     
-		return view('admin.manage.ticket',compact('tickets','seats'));
-	}
+	// 	return view('admin.manage.ticket',compact('tickets','seats'));
+	// }
 
     // public function orderTicket()
 	// {

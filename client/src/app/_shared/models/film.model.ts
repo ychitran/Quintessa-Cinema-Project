@@ -8,6 +8,7 @@ export interface Film {
     caster:string,
     duration:number,
     poster:string,
+    banner:string,
     trailer:string,
     format_id:number,
     release_date:Date,

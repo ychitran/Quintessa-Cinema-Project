@@ -1,3 +1,30 @@
+
+<div class="body__bg">
+    <!-- Header Navbar Start -->
+    <div class="header container-fluid text-center position-absolute slide__index head__border">
+        <div class="row">
+            <div class="col-md-2 head__display">
+                <img class="head__logo head__margin" src="../../../../assets/frontend/logo/Logo-light.png" alt="logo">
+            </div>
+            <div class="col-md-8 head__display">
+                <nav class="navbar navbar-expand-lg head__margin">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <div class="navbar-nav">
+                                <a class="nav-link active head__space head__font" [routerLink]="['/']" routerLinkActive="router-link-active" aria-current="page">TRANG CHỦ</a>
+                                <a class="nav-link head__space head__font " [routerLink]="['/list-film']" routerLinkActive="router-link-active">SUẤT CHIẾU</a>
+                                <a class="btn nav-link head__font" data-mdb-toggle="modal" data-mdb-target="#orderModal">ĐẶT VÉ</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-md-2 head__display head__margin">
+                <a class="btn nav-link head__font">ĐĂNG NHẬP</a>
+            </div>
+        </div>
+    </div>
+
 <router-outlet>
     <!--===================== Modal Order Ticket Start================================= -->
     <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -6,446 +33,105 @@
                 <div class="container ticket-order__width">
                     <div class="row">
                         <div class="col-md-8">
-                            <div id="carouselExampleControlsOrder" class="carousel slide" data-bs-interval="false" data-wrap="false">
+                            <div id="carouselExampleControlsOrder" class="carousel slide" data-bs-interval="false"
+                                data-wrap="false">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <h5 class="modal-title ticket-order__font">ORDER A TICKET</h5>
                                         <div class="order-ticket">
-                                            <h3 class="ticket-order__font-nav">MOVIE</h3>
-                                            <select name="movie" class="ticket-order__border" [(ngModel)]="film_name">
-                                <option *ngFor="let film of films" value="{{film.film_name}}">{{film.film_name}}</option>
+                                            <h3 class="ticket-order__font-nav">PHIM</h3>
+                                            <select class="ticket-order__border"
+                                                (change)="loadScreeningDate($event.target.value)"
+                                                (change)="loadFilmDetail($event.target.value)">
+                                                <option checked>Vui lòng chọn phim</option>
+                                                <option *ngFor="let public_film of public_films" value="{{public_film.id}}">
+                                                    {{public_film.film_name}}</option>
                                             </select>
                                         </div>
-                                        <div class="date">
-                                            <h3 class="ticket-order__font-nav">DATE</h3>
-                                            <input type="date" class="ticket-order__border" [(ngModel)]="date">
-                                        </div>
+                                        <!-- <div class="date">
+                                            <h3 class="ticket-order__font-nav">NGÀY</h3>
+                                            <input type="date" class="ticket-order__border" >
+                                        </div> -->
 
-                                        <h3 class="ticket-order__font-nav">COMBO</h3>
-                                        <select name="movie" class="ticket-order__border" [(ngModel)]="film_name">
-                                            <option *ngFor="let film of films" value="{{film.film_name}}">{{film.film_name}}</option>
+                                        <h3 class="ticket-order__font-nav">NGÀY</h3>
+                                        <select class="ticket-order__border"
+                                            (change)="loadStartTime($event.target.value)">
+                                            <option *ngFor="let date of dates" value="{{date.date}}">{{date.date}}
+                                            </option>
                                         </select>
 
-                                        <h3 class="ticket-order__font-nav">TIME</h3>
+                                        <h3 class="ticket-order__font-nav">GIỜ CHIẾU</h3>
                                         <div class="time">
-                                            <button value="11h00" class="btn btn-outline btn-rounded btn-sm ticket-order__space" data-mdb-ripple-color="dark" [(ngModel)]="time">11:00</button>
-                                            <button value="11h30" class="btn btn-outline btn-rounded btn-sm ticket-order__space" data-mdb-ripple-color="dark" [(ngModel)]="time">11:30</button>
-                                            <button value="12h00" class="btn btn-outline btn-rounded btn-sm ticket-order__space" data-mdb-ripple-color="dark" [(ngModel)]="time">12:00</button>
+                                            <button *ngFor="let start_time of start_times"
+                                                (click)="loadSeat(start_time.room_id,start_time.id,start_time.start_time)"
+                                                class="btn btn-outline btn-rounded btn-sm ticket-order__space"
+                                                data-mdb-ripple-color="dark" 
+                                                data-mdb-slide="next" data-mdb-target="#carouselExampleControlsOrder"
+                                                >{{start_time.start_time}}</button>
                                         </div>
 
-                                        <button type="button" class="btn btn-outline-warning btn-rounded btn-sm ticket-order__space-top" data-mdb-slide="next" data-mdb-target="#carouselExampleControlsOrder" data-mdb-ripple-color="dark">NEXT</button>
+                                        <!-- <button type="button"
+                                            class="btn btn-outline-warning btn-rounded btn-sm ticket-order__space-top"
+                                            data-mdb-slide="next" data-mdb-target="#carouselExampleControlsOrder"
+                                            data-mdb-ripple-color="dark">NEXT</button> -->
                                     </div>
                                     <!-- Modal Seat Start -->
                                     <div class="carousel-item container">
                                         <div class="row">
                                             <h5 class="modal-title ticket-order__font">SEAT</h5>
                                             <img src="assets/frontend/img/ScreenForSeating_450.png " alt="">
-                                            <div class="col-md-1 ticket-order__seat-top ticket-order__font-row">A</div>
-                                            <div class="col-md-3">
-                                                <div class="seat-chart ticket-order__seat-top">
-                                                    <div class="a1">
-                                                        <input type="checkbox" class="btn-check" id="a1" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a1">1</label></div>
-                                                    <div class="a2">
-                                                        <input type="checkbox" class="btn-check" id="a2" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a2">2</label>
-                                                    </div>
-                                                    <div class="a3">
-                                                        <input type="checkbox" class="btn-check" id="a3" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a3">3</label>
-                                                    </div>
-                                                    <div class="a4">
-                                                        <input type="checkbox" class="btn-check" id="a4" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a4">4</label>
-                                                    </div>
+                                            <div *ngFor="let seat of seats">
+                                                <div class="col-md-1 ticket-order__seat-top ticket-order__font-row">{{seat.row}}
                                                 </div>
+                                                <ng-cointainer *ngFor="let seat_number of seat['number']">
+                                                    <ng-container
+                                                        *ngIf="seat_number.screening_id != null && seat_number.screening_id == screening_id ; else seatDisable">
+                                                        <button
+                                                            class="btn btn-outline btn-rounded btn-sm  seat-disable">{{seat_number.number}}</button>
+                            
+                                                    </ng-container>
+                                                    <ng-template #seatDisable>
+                                                        <button (click)="seatSelect($event)" value="{{seat_number.row}}{{seat_number.number}}"
+                                                            type="button"
+                                                            class="btn btn-outline btn-rounded btn-sm ">{{seat_number.number}}</button>
+                                                    </ng-template>
+                                                </ng-cointainer>
+                                                <!-- <div class="col-md-3">
+                                                    <div class="seat-chart ticket-order__seat-top">
+                                                        <div class="a1">
+                                                            <input type="checkbox" class="btn-check" id="a1"
+                                                                autocomplete="off" />
+                                                            <label class="btn btn-warning ticket-order__border-seat"
+                                                                for="a1">1</label>
+                                                        </div>
+                                                        <div class="a2">
+                                                            <input type="checkbox" class="btn-check" id="a2"
+                                                                autocomplete="off" />
+                                                            <label class="btn btn-warning ticket-order__border-seat"
+                                                                for="a2">2</label>
+                                                        </div>
+                                                        <div class="a3">
+                                                            <input type="checkbox" class="btn-check" id="a3"
+                                                                autocomplete="off" />
+                                                            <label class="btn btn-warning ticket-order__border-seat"
+                                                                for="a3">3</label>
+                                                        </div>
+                                                        <div class="a4">
+                                                            <input type="checkbox" class="btn-check" id="a4"
+                                                                autocomplete="off" />
+                                                            <label class="btn btn-warning ticket-order__border-seat"
+                                                                for="a4">4</label>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
                                             </div>
-                                            <div class="col-md-5">
-                                                <div class="seat-chart ticket-order__seat-top ">
-                                                    <div class="a5">
-                                                        <input type="checkbox" class="btn-check" id="a5" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a5">5</label>
-                                                    </div>
-                                                    <div class="a6">
-                                                        <input type="checkbox" class="btn-check" id="a6" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a6">6</label>
-                                                    </div>
-                                                    <div class="a7">
-                                                        <input type="checkbox" class="btn-check" id="a7" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a7">7</label>
-                                                    </div>
-                                                    <div class="a8">
-                                                        <input type="checkbox" class="btn-check" id="a8" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a8">8</label>
-                                                    </div>
-                                                    <div class="a9">
-                                                        <input type="checkbox" class="btn-check" id="a9" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a9">9</label>
-                                                    </div>
-                                                    <div class="a10">
-                                                        <input type="checkbox" class="btn-check" id="a10" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a10">10</label>
-                                                    </div>
-                                                    <div class="a11">
-                                                        <input type="checkbox" class="btn-check" id="a11" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a11">11</label>
-                                                    </div>
-                                                    <div class="a12">
-                                                        <input type="checkbox" class="btn-check" id="a12" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a12">12</label>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="seat-chart ticket-order__seat-top ">
-                                                    <div class="a13">
-                                                        <input type="checkbox" class="btn-check" id="a13" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a12a">13</label>
-                                                    </div>
-                                                    <div class="a14">
-                                                        <input type="checkbox" class="btn-check" id="a14" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a14">14</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 ticket-order__font-row">B</div>
-                                            <div class="col-md-3">
-                                                <div class="seat-chart">
-                                                    <div class="b1">
-                                                        <input type="checkbox" class="btn-check" id="b1" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b1">1</label></div>
-                                                    <div class="b2">
-                                                        <input type="checkbox" class="btn-check" id="b2" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b2">2</label>
-                                                    </div>
-                                                    <div class="b3">
-                                                        <input type="checkbox" class="btn-check" id="b3" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b3">3</label>
-                                                    </div>
-                                                    <div class="b4">
-                                                        <input type="checkbox" class="btn-check" id="b4" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b4">4</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div class="seat-chart ">
-                                                    <div class="b5">
-                                                        <input type="checkbox" class="btn-check" id="b5" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b5">5</label>
-                                                    </div>
-                                                    <div class="b6">
-                                                        <input type="checkbox" class="btn-check" id="b6" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b6">6</label>
-                                                    </div>
-                                                    <div class="b7">
-                                                        <input type="checkbox" class="btn-check" id="b7" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b7">7</label>
-                                                    </div>
-                                                    <div class="b8">
-                                                        <input type="checkbox" class="btn-check" id="b8" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b8">8</label>
-                                                    </div>
-                                                    <div class="b9">
-                                                        <input type="checkbox" class="btn-check" id="b9" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b9">9</label>
-                                                    </div>
-                                                    <div class="b10">
-                                                        <input type="checkbox" class="btn-check" id="b10" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b10">10</label>
-                                                    </div>
-                                                    <div class="b11">
-                                                        <input type="checkbox" class="btn-check" id="b11" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b11">11</label>
-                                                    </div>
-                                                    <div class="b12">
-                                                        <input type="checkbox" class="btn-check" id="b12" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b12">12</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="seat-chart">
-                                                    <div class="a13">
-                                                        <input type="checkbox" class="btn-check" id="a13" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a12a">13</label>
-                                                    </div>
-                                                    <div class="a14">
-                                                        <input type="checkbox" class="btn-check" id="a14" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a14">14</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 ticket-order__font-row">C</div>
-                                            <div class="col-md-3">
-                                                <div class="seat-chart">
-                                                    <div class="a1">
-                                                        <input type="checkbox" class="btn-check" id="a1" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a1">1</label></div>
-                                                    <div class="a2">
-                                                        <input type="checkbox" class="btn-check" id="a2" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a2">2</label>
-                                                    </div>
-                                                    <div class="a3">
-                                                        <input type="checkbox" class="btn-check" id="a3" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a3">3</label>
-                                                    </div>
-                                                    <div class="a2">
-                                                        <input type="checkbox" class="btn-check" id="a4" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a4">4</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div class="seat-chart ">
-                                                    <div class="b5">
-                                                        <input type="checkbox" class="btn-check" id="b5" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b5">5</label>
-                                                    </div>
-                                                    <div class="b6">
-                                                        <input type="checkbox" class="btn-check" id="b6" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b6">6</label>
-                                                    </div>
-                                                    <div class="b7">
-                                                        <input type="checkbox" class="btn-check" id="b7" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b7">7</label>
-                                                    </div>
-                                                    <div class="b8">
-                                                        <input type="checkbox" class="btn-check" id="b8" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b8">8</label>
-                                                    </div>
-                                                    <div class="b9">
-                                                        <input type="checkbox" class="btn-check" id="b9" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b9">9</label>
-                                                    </div>
-                                                    <div class="b10">
-                                                        <input type="checkbox" class="btn-check" id="b10" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b10">10</label>
-                                                    </div>
-                                                    <div class="b11">
-                                                        <input type="checkbox" class="btn-check" id="b11" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b11">11</label>
-                                                    </div>
-                                                    <div class="b12">
-                                                        <input type="checkbox" class="btn-check" id="b12" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b12">12</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="seat-chart">
-                                                    <div class="a13">
-                                                        <input type="checkbox" class="btn-check" id="a13" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a12a">13</label>
-                                                    </div>
-                                                    <div class="a14">
-                                                        <input type="checkbox" class="btn-check" id="a14" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a14">14</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 ticket-order__font-row">D</div>
-                                            <div class="col-md-3">
-                                                <div class="seat-chart">
-                                                    <div class="a1">
-                                                        <input type="checkbox" class="btn-check" id="a1" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a1">1</label></div>
-                                                    <div class="a2">
-                                                        <input type="checkbox" class="btn-check" id="a2" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a2">2</label>
-                                                    </div>
-                                                    <div class="a3">
-                                                        <input type="checkbox" class="btn-check" id="a3" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a3">3</label>
-                                                    </div>
-                                                    <div class="a2">
-                                                        <input type="checkbox" class="btn-check" id="a4" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a4">4</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div class="seat-chart ">
-                                                    <div class="b5">
-                                                        <input type="checkbox" class="btn-check" id="b5" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b5">5</label>
-                                                    </div>
-                                                    <div class="b6">
-                                                        <input type="checkbox" class="btn-check" id="b6" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b6">6</label>
-                                                    </div>
-                                                    <div class="b7">
-                                                        <input type="checkbox" class="btn-check" id="b7" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b7">7</label>
-                                                    </div>
-                                                    <div class="b8">
-                                                        <input type="checkbox" class="btn-check" id="b8" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b8">8</label>
-                                                    </div>
-                                                    <div class="b9">
-                                                        <input type="checkbox" class="btn-check" id="b9" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b9">9</label>
-                                                    </div>
-                                                    <div class="b10">
-                                                        <input type="checkbox" class="btn-check" id="b10" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b10">10</label>
-                                                    </div>
-                                                    <div class="b11">
-                                                        <input type="checkbox" class="btn-check" id="b11" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b11">11</label>
-                                                    </div>
-                                                    <div class="b12">
-                                                        <input type="checkbox" class="btn-check" id="b12" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b12">12</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="a13">
-                                                    <input type="checkbox" class="btn-check" id="a13" autocomplete="off" />
-                                                    <label class="btn btn-warning ticket-order__border-seat" for="a12a">13</label>
-                                                </div>
-                                                <div class="a14">
-                                                    <input type="checkbox" class="btn-check" id="a14" autocomplete="off" />
-                                                    <label class="btn btn-warning ticket-order__border-seat" for="a14">14</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-1 ticket-order__font-row">E</div>
-                                            <div class="col-md-3">
-                                                <div class="seat-chart">
-                                                    <div class="a1">
-                                                        <input type="checkbox" class="btn-check" id="a1" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a1">1</label></div>
-                                                    <div class="a2">
-                                                        <input type="checkbox" class="btn-check" id="a2" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a2">2</label>
-                                                    </div>
-                                                    <div class="a3">
-                                                        <input type="checkbox" class="btn-check" id="a3" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a3">3</label>
-                                                    </div>
-                                                    <div class="a2">
-                                                        <input type="checkbox" class="btn-check" id="a4" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a4">4</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div class="seat-chart ">
-                                                    <div class="b5">
-                                                        <input type="checkbox" class="btn-check" id="b5" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b5">5</label>
-                                                    </div>
-                                                    <div class="b6">
-                                                        <input type="checkbox" class="btn-check" id="b6" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b6">6</label>
-                                                    </div>
-                                                    <div class="b7">
-                                                        <input type="checkbox" class="btn-check" id="b7" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b7">7</label>
-                                                    </div>
-                                                    <div class="b8">
-                                                        <input type="checkbox" class="btn-check" id="b8" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b8">8</label>
-                                                    </div>
-                                                    <div class="b9">
-                                                        <input type="checkbox" class="btn-check" id="b9" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b9">9</label>
-                                                    </div>
-                                                    <div class="b10">
-                                                        <input type="checkbox" class="btn-check" id="b10" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b10">10</label>
-                                                    </div>
-                                                    <div class="b11">
-                                                        <input type="checkbox" class="btn-check" id="b11" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b11">11</label>
-                                                    </div>
-                                                    <div class="b12">
-                                                        <input type="checkbox" class="btn-check" id="b12" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b12">12</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="a13">
-                                                    <input type="checkbox" class="btn-check" id="a13" autocomplete="off" />
-                                                    <label class="btn btn-warning ticket-order__border-seat" for="a12a">13</label>
-                                                </div>
-                                                <div class="a14">
-                                                    <input type="checkbox" class="btn-check" id="a14" autocomplete="off" />
-                                                    <label class="btn btn-warning ticket-order__border-seat" for="a14">14</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 ticket-order__font-row">F</div>
-                                            <div class="col-md-3">
-                                                <div class="seat-chart">
-                                                    <div class="a1">
-                                                        <input type="checkbox" class="btn-check" id="a1" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a1">1</label></div>
-                                                    <div class="a2">
-                                                        <input type="checkbox" class="btn-check" id="a2" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a2">2</label>
-                                                    </div>
-                                                    <div class="a3">
-                                                        <input type="checkbox" class="btn-check" id="a3" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a3">3</label>
-                                                    </div>
-                                                    <div class="a2">
-                                                        <input type="checkbox" class="btn-check" id="a4" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="a4">4</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div class="seat-chart ">
-                                                    <div class="b5">
-                                                        <input type="checkbox" class="btn-check" id="b5" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b5">5</label>
-                                                    </div>
-                                                    <div class="b6">
-                                                        <input type="checkbox" class="btn-check" id="b6" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b6">6</label>
-                                                    </div>
-                                                    <div class="b7">
-                                                        <input type="checkbox" class="btn-check" id="b7" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b7">7</label>
-                                                    </div>
-                                                    <div class="b8">
-                                                        <input type="checkbox" class="btn-check" id="b8" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b8">8</label>
-                                                    </div>
-                                                    <div class="b9">
-                                                        <input type="checkbox" class="btn-check" id="b9" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b9">9</label>
-                                                    </div>
-                                                    <div class="b10">
-                                                        <input type="checkbox" class="btn-check" id="b10" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b10">10</label>
-                                                    </div>
-                                                    <div class="b11">
-                                                        <input type="checkbox" class="btn-check" id="b11" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b11">11</label>
-                                                    </div>
-                                                    <div class="b12">
-                                                        <input type="checkbox" class="btn-check" id="b12" autocomplete="off" />
-                                                        <label class="btn btn-warning ticket-order__border-seat" for="b12">12</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="a13">
-                                                    <input type="checkbox" class="btn-check" id="a13" autocomplete="off" />
-                                                    <label class="btn btn-warning ticket-order__border-seat" for="a12a">13</label>
-                                                </div>
-                                                <div class="a14">
-                                                    <input type="checkbox" class="btn-check" id="a14" autocomplete="off" />
-                                                    <label class="btn btn-warning ticket-order__border-seat" for="a14">14</label>
-                                                </div>
-                                            </div>
+                                            
                                             <div class="col-md-1">
-                                                <button type="button" class="btn btn-outline-warning btn-rounded btn-sm ticket-order__space-top" data-mdb-slide="prev" data-mdb-target="#carouselExampleControlsOrder" data-mdb-ripple-color="dark">Previous</button>
+                                                <button type="button"
+                                                    class="btn btn-outline-warning btn-rounded btn-sm ticket-order__space-top"
+                                                    data-mdb-slide="prev"
+                                                    data-mdb-target="#carouselExampleControlsOrder"
+                                                    data-mdb-ripple-color="dark">Previous</button>
                                             </div>
                                         </div>
                                     </div>
@@ -458,15 +144,31 @@
                         <div class="col-md-4 ">
                             <h5 class="modal-title ticket-order__font ">YOUR INFORMATION</h5>
                             <h3 class="ticket-order__font-nav ">MOVIE</h3>
-                            <h5 class="ticket-order__inf ">{{film_name}}</h5>
+                            <h5 class="ticket-order__inf ">{{move_name}}</h5>
                             <h3 class="ticket-order__font-nav ">DATE</h3>
                             <h5 class="ticket-order__inf ">{{date}}</h5>
                             <h3 class="ticket-order__font-nav ">TIME</h3>
-                            <h5 class="ticket-order__inf ">{{time}}</h5>
+                            <h5 class="ticket-order__inf ">{{start_time}}</h5>
                             <h3 class="ticket-order__font-nav ">SEAT</h3>
-                            <h5 class="ticket-order__inf ">R4 S13</h5>
-                            <h3 class="ticket-order__font-nav ">TICKET: 2</h3>
+                            <h5 class="ticket-order__inf "><ng-container *ngFor="let seatt of seat"> {{seatt}}</ng-container></h5>
+                            <h3 class="ticket-order__font-nav ">SỐ LƯỢNG VÉ: {{seat.length}}</h3>
                             <h3 class="ticket-order__font-nav ">TOTAL: $30</h3>
+                            <form [formGroup]="orderTicketForm" (ngSubmit)="save()">
+                                <input class="ticket-order__inf name" formControlName="film_id" hidden>
+                                <input class="ticket-order__inf name" formControlName="screening_id" hidden>
+                                <input class="ticket-order__inf name" formControlName="seats" hidden>
+                                <input class="ticket-order__inf name" formControlName="combo_id" hidden>
+                                <input class="ticket-order__inf name" formControlName="discount_id" hidden>
+                                <input class="ticket-order__inf name" formControlName="phone_number" hidden>
+                                <input class="ticket-order__inf name" formControlName="user_id" hidden>
+                                <input class="ticket-order__inf name" formControlName="status" hidden>
+                                <input class="ticket-order__inf name" formControlName="ticket_price" hidden>
+                                <input class="ticket-order__inf name" formControlName="total_price" hidden>
+                                <div class="seatReceipt">
+                                    <button type="submit" class="btn btn-outline-primary">Đặt vé</button>
+                                </div>
+                            </form>
+                        
                         </div>
                         <!-- Your Information End -->
                     </div>
@@ -476,3 +178,58 @@
     </div>
     <!-- ============================Modal Order Ticket End============================== -->
 </router-outlet>
+   <!-- Footer Start -->
+   <div class="footer container footer__height head__border footer__bottom">
+    <div class="row">
+        <div class="col-3">
+            <h2 class="footer__tittle">MENU</h2>
+            <p class="footer__font">Home</p>
+            <p class="footer__font">Showtimes</p>
+            <p class="footer__font">Order Ticket</p>
+            <i class="fab fa-youtube footer__social footer__space"></i>
+            <i class="fab fa-facebook footer__social footer__space"></i>
+            <i class="fab fa-twitter footer__social"></i>
+        </div>
+        <div class="col-3">
+            <h2 class="footer__tittle">ADDRESS</h2>
+            <p class="footer__font">28 Nguyen Tri Phuong Street,</p>
+            <p class="footer__font">Phu Nhuan, Hue City</p>
+            <p class="footer__font">Email: cinerama@gmail.com</p>
+            <p class="footer__font"><i class="fas fa-phone-alt footer__social footer__space"></i>+0125.124789</p>
+        </div>
+        <div class="col-6">
+            <h2 class="footer__tittle">CONTACT</h2>
+            <div class="form-outline mb-4 footer__border">
+                <input type="text" id="form4Example1" class="form-control" />
+                <label class="form-label text-white-50" for="form4Example1">Name *</label>
+            </div>
+            <div class="form-outline mb-4 footer__border">
+                <input type="text" id="form4Example1" class="form-control" />
+                <label class="form-label text-white-50" for="form4Example1">Email *</label>
+            </div>
+            <div class="form-outline mb-4 footer__border">
+                <textarea class="form-control"></textarea>
+                <label class="form-label text-white-50" for="form6Example7">Message * </label>
+            </div>
+            <button type="button" class="btn btn-outline-warning btn-rounded">SEND TO US</button>
+        </div>
+    </div>
+</div>
+<div class="logo container head__height-menu text-center">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="col-md-4">
+                <p class="footer__font">
+                    @ Do Not Copyright</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <img class="footer__logo head__margin" src="../../../../assets/frontend/logo/Logo-light.png" alt="logo">
+        </div>
+        <div class="col-md-4">
+            <p class="footer__font">
+                @License by: 'Nhac cong di xem phim'</p>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->

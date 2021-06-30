@@ -7,23 +7,40 @@ use App\Models\Film;
 use App\Models\Room;
 use App\Models\Screening;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ScreeningsController extends Controller
 {
+	public function getScreeningOfFilm($film_id) {
+		$screenings = Screening::where('film_id',$film_id)
+		->leftJoin('films',"screenings.film_id","=","films.id")
+		->leftJoin('rooms','screenings.room_id','=','rooms.id')
+		->select('screenings.*','films.global_name as global_name',"rooms.room_name as room_name")
+		->get();
+		return response()->json($screenings);
+	}
     public function manageScreening()
 	{
-		$screenings = Screening::all();
-		return view('admin.manage.screenings',compact('screenings'));
+		$screenings = DB::table('screenings')
+		->leftJoin('films',"screenings.film_id","=","films.id")
+		->leftJoin('rooms','screenings.room_id','=','rooms.id')
+		->select('screenings.*','films.global_name as global_name',"rooms.room_name as room_name")
+		->get();
+		return response()->json($screenings);
 	}
 
 	public function createScreeningPage()
 	{
-		$staff_id = auth()->user()->cinema_id; 
-		$films = Film::where('status',1)->get();
-		// $films = Film::all();
-		$cinema = Cinema::findOrFail($staff_id);
-		$rooms = Room::where('cinema_id', $staff_id)->get();
-		return view('admin.screening.addscreening',compact('films','cinema','rooms'));
+		// $staff_id = auth()->user()->cinema_id; 
+		// $films = Film::where('status',1)->get();
+		// // $films = Film::all();
+		// $cinema = Cinema::all();
+		// $rooms = Room::where('cinema_id', $staff_id)->get();
+		// return response()->json([
+		// 	"films" => $films,
+		// 	"cinemas" => $cinema,
+		// 	"rooms" => $rooms
+		// ]);
 	}
 	public function storeScreening(Request $request)
 	{
@@ -33,13 +50,15 @@ class ScreeningsController extends Controller
 		$screenings->date = $request->date;
 		$screenings->start_time = $request->start_time;
 		$screenings->save();
-		return redirect('admin/screening');
+		return ;
 	}
 
 	public function editScreening($id)
 	{
-		$screenings = Screening::where('id',$id)->get();
-		return view('admin.screening.editscreening',compact('screenings'));
+		$screening = Screening::where('id',$id)->first();
+		$film = Film::where('id',$screening->film_id)->first();
+		$room = Room::where('id',$screening->room_id)->first();
+		return response()->json([$screening,$film,$room]);
 	}
 
 	public function updateScreening(Request $request,$id)
@@ -48,7 +67,7 @@ class ScreeningsController extends Controller
 			'date'=>$request->date,
 			'start_time'=>$request->start_time
 		]) ;
-		return redirect('admin/screening');
+		return ;
 	}
 	public function deleteScreening($id)
 	{

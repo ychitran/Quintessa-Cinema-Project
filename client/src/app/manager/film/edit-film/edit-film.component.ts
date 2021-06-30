@@ -38,6 +38,7 @@ export class EditFilmComponent implements OnInit {
       caster: [film.caster,[Validators.required]],
       duration: [film.duration,[Validators.min(1)]],
       poster: [film.poster,[Validators.required]],
+      banner: [film.banner,[Validators.required]],
       trailer: [film.trailer,[Validators.required]],
       format_id: [film.format_id],
       release_date: [film.release_date],
@@ -54,6 +55,7 @@ export class EditFilmComponent implements OnInit {
 
     const { value } = this.editFilmForm;
     const id = this.route.snapshot.paramMap.get('id')
+    console.log(value)
 
     this.filmService.update(id,value).subscribe(
       res =>
