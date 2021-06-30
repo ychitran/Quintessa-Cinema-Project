@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Film } from 'src/app/_shared/models/film.model';
+import { DetailsFilmService } from './details-film.service';
 
 @Component({
   selector: 'app-details-film',
@@ -9,20 +10,26 @@ import { Film } from 'src/app/_shared/models/film.model';
   styleUrls: ['./details-film.component.scss']
 })
 export class DetailsFilmComponent implements OnInit {
-  film?:Film
+  film: Film
+  films: Array<Film>
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly httpClient: HttpClient
+    private readonly httpClient: HttpClient,
+    private readonly detailsService: DetailsFilmService
   ) { }
 
   ngOnInit(): void {
     this.loadFilmDetails();
+    this.getAll();
   }
   
   loadFilmDetails() {
     const id = this.route.snapshot.paramMap.get("id")
-    this.httpClient.get('https://60ce078a91cc8e00178dc6b4.mockapi.io/cinema/film/' + id).subscribe((res:any) => this.film = res)
+    this.detailsService.getFilm(id).subscribe(res => this.film = res)
+  }
+  getAll() {
+    this.detailsService.getAll().subscribe(res => { this.films = res;})
   }
 
 

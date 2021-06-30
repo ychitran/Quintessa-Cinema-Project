@@ -10,16 +10,16 @@
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
-                                <a class="nav-link active head__space head__font" [routerLink]="['/']" routerLinkActive="router-link-active" aria-current="page">HOME</a>
-                                <a class="nav-link head__space head__font" [routerLink]="['/list-film']" routerLinkActive="router-link-active">SHOWTIMES</a>
-                                <button class="btn nav-link head__font" data-mdb-toggle="modal" data-mdb-target="#orderModal">ORDER TICKET</button>
+                                <a class="nav-link active head__space head__font" [routerLink]="['/']" routerLinkActive="router-link-active" aria-current="page">TRANG CHỦ</a>
+                                <a class="nav-link head__space head__font" [routerLink]="['/list-film']" routerLinkActive="router-link-active">SUẤT CHIẾU</a>
+                                <button class="btn nav-link head__font" data-mdb-toggle="modal" data-mdb-target="#orderModal">ĐẶT VÉ</button>
                             </div>
                         </div>
                     </div>
                 </nav>
             </div>
             <div class="col-md-2 head__display">
-                <a class="straight head__font head__margin-left">LOGIN</a>
+                <a class="nav-link active head__space head__font" [routerLink]="['/profile']" routerLinkActive="router-link-active" aria-current="page">ĐĂNG NHẬP</a>
                 <i class="fab fa-youtube head__margin-left head__icon"></i>
             </div>
         </div>
@@ -28,7 +28,7 @@
 
     <!-- List Film Content Start -->
     <header class="text-center">
-        <h2 class="tittle__font">LIST FILM</h2>
+        <h2 class="tittle__font">DANH SÁCH PHIM</h2>
     </header>
 
     <!-- List Film Content End -->
@@ -59,25 +59,25 @@
         <div class="row">
             <div class="col-3">
                 <h2 class="footer__tittle">MENU</h2>
-                <p class="footer__font">Home</p>
-                <p class="footer__font">Showtimes</p>
-                <p class="footer__font">Order Ticket</p>
+                <p class="footer__font">Trang chủ</p>
+                <p class="footer__font">Suất chiếu</p>
+                <p class="footer__font">Đặt vé</p>
                 <i class="fab fa-youtube footer__social footer__space"></i>
                 <i class="fab fa-facebook footer__social footer__space"></i>
                 <i class="fab fa-twitter footer__social"></i>
             </div>
             <div class="col-3">
-                <h2 class="footer__tittle">ADDRESS</h2>
-                <p class="footer__font">28 Nguyen Tri Phuong Street,</p>
-                <p class="footer__font">Phu Nhuan, Hue City</p>
+                <h2 class="footer__tittle">ĐỊA CHỈ</h2>
+                <p class="footer__font">28 Nguyễn Tri Phương,</p>
+                <p class="footer__font">Phường Phú Nhuận, thành phố Huế</p>
                 <p class="footer__font">Email: cinerama@gmail.com</p>
                 <p class="footer__font"><i class="fas fa-phone-alt footer__social footer__space"></i>+0125.124789</p>
             </div>
             <div class="col-6">
-                <h2 class="footer__tittle">CONTACT</h2>
+                <h2 class="footer__tittle">LIÊN HỆ</h2>
                 <div class="form-outline mb-4 footer__border">
                     <input type="text" id="form4Example1" class="form-control" />
-                    <label class="form-label text-white-50" for="form4Example1">Name *</label>
+                    <label class="form-label text-white-50" for="form4Example1">Tên của bạn *</label>
                 </div>
                 <div class="form-outline mb-4 footer__border">
                     <input type="text" id="form4Example1" class="form-control" />
@@ -85,24 +85,24 @@
                 </div>
                 <div class="form-outline mb-4 footer__border">
                     <textarea class="form-control"></textarea>
-                    <label class="form-label text-white-50" for="form6Example7">Message * </label>
+                    <label class="form-label text-white-50" for="form6Example7">Tin nhắn * </label>
                 </div>
-                <button type="button" class="btn btn-outline-warning btn-rounded">SEND TO US</button>
+                <button type="button" class="btn btn-outline-warning btn-rounded">GỬI </button>
             </div>
         </div>
     </div>
     <div class="logo container head__height-menu text-center">
         <div class="row">
-            <div class="col-md-4">
-                <div class="col-md-4">
+            <div class="col-4">
+                <div class="col-4">
                     <p class="footer__font">
                         @ Do Not Copyright</p>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-4">
                 <img class="footer__logo head__margin" src="assets\frontend\logo\Logo-light.png" alt="logo">
             </div>
-            <div class="col-md-4">
+            <div class="col-4">
                 <p class="footer__font">
                     @License by: 'Nhac cong di xem phim'</p>
             </div>
