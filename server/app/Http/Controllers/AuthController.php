@@ -8,50 +8,60 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function loginPage()
-    {
-        return view('auth.login');
-    }
+    // public function loginPage()
+    // {
+    //     return view('auth.login');
+    // }
 
-    public function registerPage()
-    {
-        return view('auth.register');
-    }
+    // public function registerPage()
+    // {
+    //     return view('auth.register');
+    // }
 
-    public function register(Request $request) {
-        $this->validate($request,[
-            'password'=>'required|min:6',
-            'repassword'=>'required|min:6|same:password'
-        ],[
-            'repassword.same'=>'Bạn chưa nhập lại mật khẩu'
-        ]);
+    public function register(Request $request)
+    {
+        // $this->validate($request, [
+        //     'password' => 'required|min:6',
+        //     'repassword' => 'required|min:6|same:password'
+        // ], [
+        //     'repassword.same' => 'Bạn chưa nhập lại mật khẩu'
+        // ]);
         $user = new User();
-        $user->full_name=$request->full_name;
-        $user->email=$request->email;
-        $user->password=bcrypt($request->password);
-        $user->phone_number=$request->phone_number;
+        $user->full_name = $request->full_name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->phone_number = $request->phone_number;
         $user->save();
-        return redirect()->route('cinema.loginpage');
+        return ;
     }
 
     public function login(Request $request)
     {
-            $email =$request->email;
-            $password=$request->password;
-            if(Auth::attempt(['email'=>$email,'password'=>$password])){
-            if(Auth::user()->role_id != null){
-                return redirect('admin');
-            }else {
-            return redirect('/');
+        $email = $request->email;
+        $password = $request->password;
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            if (Auth::user()->role_id != null) {
+                return ;
+            } else {
+                return ;
             }
-        }else{
-            return redirect()->route('cinema.loginpage');
+        } else {
+            return ;
         }
+    }
+
+    public function checkUser() {
+        if(Auth::check()) {
+            return response()->json(auth()->user());
+        }
+        $check = false;
+        return response()->json($check);
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect('/');
+        $auth = 0;
+        return response()->json($auth);
     }
 }
