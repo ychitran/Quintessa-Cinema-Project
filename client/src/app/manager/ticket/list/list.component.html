@@ -15,10 +15,10 @@
             <thead>
                 <tr>
                     <th>No.</th>
-                    <th>Số điện thoại</th>
                     <th>Tên khách hàng</th>
-                    <!-- <th>Tên phim</th> -->
-                    <th>Suất chiếu</th>
+                    <th>Số điện thoại</th>
+                    <th>Tên phim</th>
+                    <th>Ngày chiếu</th>
                     <th>Số ghế</th>
                     <th>Trạng thái</th>
                     <th>Chức năng</th>
@@ -27,11 +27,16 @@
             <tbody>
                 <tr *ngFor="let ticket of tickets; index as i">
                     <th>{{i+1}}</th>
+                    <td>{{ticket.full_name}}</td>
                     <td>{{ticket.phone_number}}</td>
-                    <td>{{ticket.user_id}}</td>
-                    <td>{{ticket.screening_id}}</td>
+                    <td>{{ticket.global_name}}</td>
+                    <td>{{ticket.date}}</td>
                     <td>{{ticket.seats}}</td>
-                    <td>{{ticket.status}}</td>
+                    <ng-container *ngIf="ticket.status == 1; else unPublic">
+                        <td>Chưa sử dụng</td>
+                    </ng-container>
+                    
+                        <ng-template #unPublic><td>Đã sử dụng</td></ng-template>
                     <td>
                         <a style="padding: 0 15px;" [routerLink]="['detail',ticket.id]">
                             <i class="fas fa-edit text-success"></i>

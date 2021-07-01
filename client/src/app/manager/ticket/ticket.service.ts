@@ -19,7 +19,7 @@ export class TicketService {
   ) { }
 
   getList(keyword:string): Observable<Array<TicketDetail>> {
-    return this.httpClient.get<Array<TicketDetail>>('http://localhost:3000/tickets',{
+    return this.httpClient.get<Array<TicketDetail>>('/admin/tickets',{
       params: {
         q:keyword
       }
@@ -28,7 +28,7 @@ export class TicketService {
 
   //Second
   getListNd():Observable<Array<TicketPrice>>{
-    return this.httpClient.get<Array<TicketPrice>>('http://localhost:3000/ticket-prices')
+    return this.httpClient.get<Array<TicketPrice>>('/admin/ticket-prices')
   }
 
   getElement(id):Observable<TicketPrice> {

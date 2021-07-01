@@ -1,50 +1,26 @@
-<!-- Header Navbar Start -->
-<div class="header container-fluid text-center head__border head__bottom">
-    <div class="row">
-        <div class="col-md-2 head__display">
-            <img class="head__logo head__margin" src="../../../../assets/frontend/logo/Logo-light.png" alt="logo">
-        </div>
-        <div class="col-md-8 head__display">
-            <nav class="navbar navbar-expand-lg head__margin">
-                <div class="container-fluid">
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav">
-                            <a class="nav-link active head__space head__font" [routerLink]="['/']" routerLinkActive="router-link-active" aria-current="page">TRANG CHỦ</a>
-                            <a class="nav-link head__space head__font " [routerLink]="['/list-film']" routerLinkActive="router-link-active">SUẤT CHIẾU</a>
-                            <a class="btn nav-link head__font" data-mdb-toggle="modal" data-mdb-target="#orderModal">ĐẶT VÉ</a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <div class="col-md-2 head__display head__margin">
-            <a class="btn nav-link head__font">ĐĂNG NHẬP</a>
-        </div>
-    </div>
-</div>
-<!-- Header Navbar End -->
+    <!-- Header Navbar End -->
 
-<!-- Article Details Start -->
-<div class="article-details container article__height article__padding">
-    <div class="row article__full article__margin">
-        <div class="col-md-4 article__col-height article__padding">
-            <img class="article__full article__filter" src="{{film.poster}}" alt="">
-        </div>
-        <div class="col-md-8 article__col-height article__padding position-relative article__display">
-            <div class="content article__center article__content-size article__index position-absolute article__auto">
-                <h2 class="article__font">{{film.global_name}}</h2>
-                <span class="article__font-category">{{film.categories}}</span>
-                <p class="article__font-content article__space">{{film.description}}</p>
-                <ul class="article__font-content">
-                    <li class="article__space-list article__border">Thời lượng: {{film.duration}}</li>
-                    <li class="article__space-list article__border">Đạo diễn: {{film.director}}</li>
-                    <li class="article__space-list article__border">Diên viên: {{film.caster}} </li>
-                    <li class="article__space-list article__border">Ngày khởi chiếu: {{film.release_date | date: 'dd-MM-yyyy'}} </li>
-                </ul>
-                <!-- <span class="article__font-category">Available Time:</span>
+    <!-- Article Details Start -->
+    <div class="article-details container article__height article__padding">
+        <div class="row article__full article__margin">
+            <div class="col-md-4 article__col-height article__padding">
+                <img class="article__full article__filter" src="{{film.poster}}" alt="">
+            </div>
+            <div class="col-md-8 article__col-height article__padding position-relative article__display">
+                <div class="content article__center article__content-size article__index position-absolute article__auto">
+                    <h2 class="article__font">{{film.global_name}}</h2>
+                    <span class="article__font-category">{{film.categories}}</span>
+                    <p class="article__font-content article__space">{{film.description}}</p>
+                    <ul class="article__font-content">
+                        <li class="article__space-list article__border">Thời lượng: {{film.duration}}</li>
+                        <li class="article__space-list article__border">Đạo diễn: {{film.director}}</li>
+                        <li class="article__space-list article__border">Diên viên: {{film.caster}} </li>
+                        <li class="article__space-list article__border">Ngày khởi chiếu: {{film.release_date }} </li>
+                    </ul>
+                    <!-- <span class="article__font-category">Available Time:</span>
                     <br> -->
-                <div class="row article__space">
-                    <!-- <div class="time col-md-6">
+                    <div class="row article__space">
+                        <!-- <div class="time col-md-6">
                             <button type="button" class="btn btn-outline-light btn-rounded btn-sm article__space-list article__space-right" data-mdb-ripple-color="dark">
                             10:00
                           </button>
@@ -55,31 +31,31 @@
                             12:00
                           </button>
                         </div> -->
-                    <div class="col-md-6 text-right">
-                        <button type="button" class="btn video-btn btn-outline-warning btn-rounded btn-sm article__space-list" data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#videoModal"><i class="far fa-play-circle"></i>
+                        <div class="col-md-6 text-right">
+                            <button type="button" class="btn video-btn btn-outline-warning btn-rounded btn-sm article__space-list" data-mdb-ripple-color="dark" data-mdb-toggle="modal" data-mdb-target="#videoModal"><i class="far fa-play-circle"></i>
                      Trailer
                     </button>
-                        <button type="button" class="btn btn-outline-warning btn-rounded btn-sm article__space-list" data-mdb-toggle="modal" data-mdb-target="#orderModal" data-mdb-ripple-color="dark">
+                            <button type="button" class="btn btn-outline-warning btn-rounded btn-sm article__space-list" data-mdb-toggle="modal" data-mdb-target="#orderModal" data-mdb-ripple-color="dark">
                      Đặt vé
                     </button>
+                        </div>
                     </div>
                 </div>
+                <img class="article__full article__filter-content" src="{{film.banner}}" alt="">
             </div>
-            <img class="article__full article__filter-content" src="{{film.banner}}" alt="">
         </div>
     </div>
-</div>
-<!-- Article Details End -->
+    <!-- Article Details End -->
 
-<!-- Tittle Now Playing Start-->
-<!-- <div class="content-now-playing container text-center content-play__bottom">
+    <!-- Tittle Now Playing Start-->
+    <!-- <div class="content-now-playing container text-center content-play__bottom">
         <h2 class="content-play__font content-play" :after>Đang chiếu</h2>
     </div> -->
-<!-- Tittle Now Playing End-->
+    <!-- Tittle Now Playing End-->
 
-<!-- Image Now Playing Start -->
+    <!-- Image Now Playing Start -->
 
-<!-- <div id="carouselExampleControls" class="carousel slide container content-play__bottom text-center img__height head__border text-center " data-mdb-ride="carousel">
+    <!-- <div id="carouselExampleControls" class="carousel slide container content-play__bottom text-center img__height head__border text-center " data-mdb-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="card-group">
@@ -115,6 +91,6 @@
         </div>
 
     </div> -->
-<!-- Image Now Playing End -->
+    <!-- Image Now Playing End -->
 
-<!-- Footer Start -->
+    <!-- Footer Start -->
