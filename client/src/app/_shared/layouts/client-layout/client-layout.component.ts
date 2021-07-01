@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { $ } from 'protractor';
 import { Film } from 'src/app/_shared/models/film.model';
+import { Member } from '../../models/member.model';
 import { Order } from '../../models/order.model';
 import { Screening } from '../../models/screening.model';
 import { Seat } from '../../models/seat.model';
@@ -44,6 +45,8 @@ export class ClientLayoutComponent implements OnInit {
   total_price: number;
   seat_id = []
 
+  member : Member
+  check_auth :true
   constructor(
     private readonly clientLayoutService:ClientLayoutService,
     private formBuilder:FormBuilder,
@@ -54,7 +57,20 @@ export class ClientLayoutComponent implements OnInit {
     // this.getAll();
     this.loadFilm();
     this.ticketForm();
+    this.checkUser();
   }
+  checkUser() {
+    this.clientLayoutService.checkUser().subscribe(res => this.getUser(res));
+  }
+
+  getUser(res): void {
+    if(res == false) {
+      this.check_auth = res;
+    } else {
+      this.member = res;
+    }
+  }
+
   ticketForm() {
     this.orderTicketForm = this.formBuilder.group({
       film_id:[],

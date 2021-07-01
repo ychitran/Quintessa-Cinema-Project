@@ -4,16 +4,16 @@
         <div class="col-4 offset-4">
             <h3 class="login__font-tittle text-center login__form-bottom animate__animated animate__backInRight">Đăng nhập
             </h3>
-            <form>
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
                 <!-- Phone input -->
                 <div class="form-outline login__form-bottom">
-                    <input type="email" id="form2Example1" class="form-control login__border" />
+                    <input type="text" formControlName="email" id="form2Example1" class="form-control login__border" />
                     <label class="form-label login__font" for="form2Example1">Email</label>
                 </div>
 
                 <!-- Password input -->
                 <div class="form-outline login__form-bottom">
-                    <input type="password" id="form2Example2" class="form-control login__border" />
+                    <input type="password" formControlName="password" id="form2Example2" class="form-control login__border" />
                     <label class="form-label login__font" for="form2Example2">Password</label>
                 </div>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CinemasController;
@@ -28,6 +29,11 @@ use App\Models\TicketDetail;
 |
 
 */
+//AUTH CONTROLLER
+Route::post('/auth/login',[AuthController::class,'login']);
+Route::post('/auth/register',[AuthController::class,'register']);
+Route::get('/checkUser',[AuthController::class,'checkUser']);
+
 //USER CONTROLLER
 Route::get('/',[FilmsController::class,'listFilm']);
 Route::get('/remarkable',[RemarkableController::class,'enableRemarkable']);
@@ -44,6 +50,8 @@ Route::get('/screeningid/{film_id}/{date}/{start_time}/{room_id}',[ScreeningsCon
 Route::get('/screeningseat/{room_id}/{screening_id}',[OrderTicketController::class,'getSeat']);
 Route::get('/film-price/{film_id}',[FilmsController::class,'filmPrice']);
 Route::post('/orderticket',[OrderTicketController::class,'storeOrderTicket']);
+
+
 
 
 

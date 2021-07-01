@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Film } from 'src/app/_shared/models/film.model';
+import { Member } from '../../models/member.model';
 import { Screening } from '../../models/screening.model';
 import { Seat } from '../../models/seat.model';
 import { TicketPrice } from '../../models/ticket-price.model';
@@ -59,6 +60,11 @@ export class ClientLayoutService {
   save(cinema : TicketDetail): Observable<TicketDetail> {
     return this.httpClient.post<TicketDetail>(`/orderticket`, cinema);
   
+  }
+
+
+  checkUser():Observable<Member> {
+    return this.httpClient.get<Member>(`/checkUser`);
   }
  
 }

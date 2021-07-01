@@ -4,44 +4,44 @@
         <div class="col-4 offset-4">
             <h3 class="login__font-tittle text-center login__form-bottom animate__animated animate__backInRight">ĐĂNG KÍ</h3>
         </div>
-        <form class="row">
+        <form [formGroup]="registerForm" (ngSubmit)="register()" class="row">
             <div class="col-6">
                 <!-- Phone input -->
                 <div class="form-outline login__form-bottom">
-                    <input type="email" id="form2Example1" class="form-control login__border" />
+                    <input type="text" formControlName="email" id="form2Example1" class="form-control login__border" />
                     <label class="form-label login__font" for="form2Example1">Email</label>
                 </div>
 
                 <!-- Password input -->
                 <div class="form-outline login__form-bottom">
-                    <input type="password" id="form2Example2" class="form-control login__border" />
+                    <input type="password" formControlName="password" id="form2Example2" class="form-control login__border" />
                     <label class="form-label login__font" for="form2Example2">Mật khẩu</label>
                 </div>
 
                 <!-- Name input -->
                 <div class="form-outline login__form-bottom">
-                    <input type="text" id="form2Example2" class="form-control login__border" />
+                    <input type="text" formControlName="full_name" id="form2Example2" class="form-control login__border" />
                     <label class="form-label login__font" for="form2Example2">Họ và tên</label>
                 </div>
             </div>
             <div class="col-6 login__form-bottom ">
                 <!-- Phone input -->
                 <div class="form-outline login__form-bottom">
-                    <input type="text" id="form2Example2" class="form-control login__border" />
+                    <input type="text" formControlName="phone_number" id="form2Example2" class="form-control login__border" />
                     <label class="form-label login__font" for="form2Example2">Số điện thoại</label>
                 </div>
 
                 <!-- Address input -->
-                <div class="form-outline login__form-bottom">
+                <!-- <div class="form-outline login__form-bottom">
                     <input type="text" id="form2Example2" class="form-control login__border" />
                     <label class="form-label login__font" for="form2Example2">Địa chỉ</label>
-                </div>
+                </div> -->
 
                 <!-- City input -->
-                <div class="form-outline login__form-bottom">
+                <!-- <div class="form-outline login__form-bottom">
                     <input type="text" id="form2Example2" class="form-control login__border" />
                     <label class="form-label login__font" for="form2Example2">Thành phố</label>
-                </div>
+                </div> -->
             </div>
             <!-- Submit button -->
             <div class="col-4 offset-4">
