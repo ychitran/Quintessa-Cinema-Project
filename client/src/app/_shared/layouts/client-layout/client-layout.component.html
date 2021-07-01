@@ -1,6 +1,6 @@
 <div class="body__bg">
     <!-- Header Navbar Start -->
-    <div class="header container-fluid text-center  slide__index head__border">
+    <div class="header container-fluid text-center slide__index head__border">
         <div class="row">
             <div class="col-md-2 head__display">
                 <img class="head__logo head__margin" src="../../../../assets/frontend/logo/Logo-light.png" alt="logo">
@@ -10,12 +10,9 @@
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
-                                <a class="nav-link active head__space head__font" [routerLink]="['/']"
-                                    routerLinkActive="router-link-active" aria-current="page">TRANG CHỦ</a>
-                                <a class="nav-link head__space head__font " [routerLink]="['/list-film']"
-                                    routerLinkActive="router-link-active">SUẤT CHIẾU</a>
-                                <a class="btn nav-link head__font" data-mdb-toggle="modal"
-                                    data-mdb-target="#orderModal">ĐẶT VÉ</a>
+                                <a class="nav-link active head__space head__font" [routerLink]="['/']" routerLinkActive="router-link-active" aria-current="page">TRANG CHỦ</a>
+                                <a class="nav-link head__space head__font " [routerLink]="['/list-film']" routerLinkActive="router-link-active">SUẤT CHIẾU</a>
+                                <a class="btn nav-link head__font" data-mdb-toggle="modal" data-mdb-target="#orderModal">ĐẶT VÉ</a>
                             </div>
                         </div>
                     </div>
@@ -41,9 +38,7 @@
                                             <h5 class="modal-title ticket-order__font">Đặt vé</h5>
                                             <div class="order-ticket">
                                                 <h3 class="ticket-order__font-nav">PHIM</h3>
-                                                <select class="ticket-order__border"
-                                                    (change)="loadScreeningDate($event.target.value)"
-                                                    (change)="loadFilmDetail($event.target.value)">
+                                                <select class="ticket-order__border" (change)="loadScreeningDate($event.target.value)" (change)="loadFilmDetail($event.target.value)">
                                                     <option checked>Vui lòng chọn phim</option>
                                                     <option *ngFor="let public_film of public_films"
                                                         value="{{public_film.id}}">
@@ -56,8 +51,7 @@
                                         </div> -->
 
                                             <h3 class="ticket-order__font-nav">NGÀY</h3>
-                                            <select class="ticket-order__border"
-                                                (change)="loadStartTime($event.target.value)">
+                                            <select class="ticket-order__border" (change)="loadStartTime($event.target.value)">
                                                 <option checked>Vui lòng chọn Ngày chiếu</option>
                                                 <option *ngFor="let date of dates" value="{{date.date}}">{{date.date |
                                                     date:'dd/MM/yyyy'}}
@@ -66,25 +60,15 @@
 
                                             <h3 class="ticket-order__font-nav">GIỜ CHIẾU</h3>
                                             <div class="time">
-                                                <button *ngFor="let start_time of start_times"
-                                                    (click)="loadRoom(start_time.start_time)"
-                                                    class="btn btn-outline btn-rounded btn-sm ticket-order__space"
-                                                    data-mdb-ripple-color="dark">{{start_time.start_time}}</button>
+                                                <button *ngFor="let start_time of start_times" (click)="loadRoom(start_time.start_time)" class="btn btn-outline-dark btn-rounded  btn-sm ticket-order__space ticket-order__screen-bottom" data-mdb-ripple-color="dark">{{start_time.start_time}}</button>
                                             </div>
 
                                             <h3 class="ticket-order__font-nav">PHÒNG CHIẾU</h3>
                                             <div class="time">
-                                                <button *ngFor="let room of rooms"
-                                                    (click)="loadScreeningId(room.room_id)"
-                                                    class="btn btn-outline btn-rounded btn-sm ticket-order__space"
-                                                    data-mdb-ripple-color="dark" data-mdb-slide="next"
-                                                    data-mdb-target="#carouselExampleControlsOrder">{{room.room_id}}</button>
+                                                <button *ngFor="let room of rooms" (click)="loadScreeningId(room.room_id)" class="btn btn-outline btn-rounded btn-sm ticket-order__space" data-mdb-ripple-color="dark" data-mdb-slide="next" data-mdb-target="#carouselExampleControlsOrder">{{room.room_id}}</button>
                                             </div>
 
-                                            <button type="button"
-                                                class="btn btn-outline-warning btn-rounded btn-sm ticket-order__space-top "
-                                                data-mdb-slide="next" data-mdb-target="#carouselExampleControlsOrder"
-                                                data-mdb-ripple-color="dark">NEXT</button>
+                                            <button type="button" class="btn btn-outline-warning btn-rounded btn-sm ticket-order__space-top " data-mdb-slide="next" data-mdb-target="#carouselExampleControlsOrder" data-mdb-ripple-color="dark">NEXT</button>
 
                                         </div>
                                         <!-- Modal Seat Start -->
@@ -97,18 +81,12 @@
                                                         {{seat.row}}
                                                     </div>
                                                     <ng-cointainer *ngFor="let seat_number of seat['number']">
-                                                        <ng-container
-                                                            *ngIf="seat_number.screening_id != null && seat_number.screening_id == screening_id ; else seatDisable">
-                                                            <button
-                                                                class="btn btn-outline btn-rounded btn-sm  seat-disable">{{seat_number.number}}</button>
+                                                        <ng-container *ngIf="seat_number.screening_id != null && seat_number.screening_id == screening_id ; else seatDisable">
+                                                            <button class="btn btn-outline btn-rounded btn-sm seat-disable">{{seat_number.number}}</button>
 
                                                         </ng-container>
                                                         <ng-template #seatDisable>
-                                                            <button (click)="seatSelect($event,seat_number.id)"
-                                                                id="seatSelected"
-                                                                value="{{seat_number.row}}{{seat_number.number}}"
-                                                                type="button"
-                                                                class="btn btn-outline btn-rounded btn-sm ">{{seat_number.number}}</button>
+                                                            <button (click)="seatSelect($event,seat_number.id)" id="seatSelected" value="{{seat_number.row}}{{seat_number.number}}" type="button" class="btn btn-outline btn-rounded btn-sm ">{{seat_number.number}}</button>
                                                         </ng-template>
                                                     </ng-cointainer>
                                                     <!-- <div class="col-md-3">
@@ -144,11 +122,7 @@
                                                 </div>
 
                                                 <div class="col-md-1">
-                                                    <button (click)=clearSeat() type="button"
-                                                        class="btn btn-outline-warning btn-rounded btn-sm ticket-order__space-top"
-                                                        data-mdb-slide="prev"
-                                                        data-mdb-target="#carouselExampleControlsOrder"
-                                                        data-mdb-ripple-color="dark">Previous</button>
+                                                    <button (click)=clearSeat() type="button" class="btn btn-outline-warning btn-rounded btn-sm ticket-order__space-top" data-mdb-slide="prev" data-mdb-target="#carouselExampleControlsOrder" data-mdb-ripple-color="dark">Previous</button>
                                                 </div>
                                             </div>
                                             <!-- Modal Seat End -->
@@ -156,42 +130,41 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <!-- Your Information Start -->
-                                <div class="col-md-4 ">
-                                    <h5 class="modal-title ticket-order__font ">THÔNG TIN ĐẶT VÉ</h5>
-                                    <h3 class="ticket-order__font-nav ">PHIM</h3>
-                                    <h5 class="ticket-order__inf ">{{move_name}}</h5>
-                                    <h3 class="ticket-order__font-nav ">NGÀY CHIẾU</h3>
-                                    <h5 class="ticket-order__inf ">{{date | date: 'dd/MM/yyyy'}}</h5>
-                                    <h3 class="ticket-order__font-nav ">GIỜ CHIẾU</h3>
-                                    <h5 class="ticket-order__inf ">{{start_time}}</h5>
-                                    <h3 class="ticket-order__font-nav ">SỐ GHẾ</h3>
-                                    <h5 class="ticket-order__inf ">
-                                        <ng-container *ngFor="let seatt of seat"> {{seatt}}</ng-container>
-                                    </h5>
-                                    <h3 class="ticket-order__font-nav ">SỐ LƯỢNG VÉ: {{seat.length}}</h3>
-                                    <h3 class="ticket-order__font-nav ">TỔNG TIỀN: {{total_price}}</h3>
-                                    <button class="btn btn-outline-warning" (click)="clearSeat()">Clear</button>
-                                    <form [formGroup]="orderTicketForm" (ngSubmit)="save()">
-                                        <input class="ticket-order__inf name" formControlName="film_id" hidden>
-                                        <input class="ticket-order__inf name" formControlName="screening_id" hidden>
-                                        <input class="ticket-order__inf name" formControlName="seats" hidden>
-                                        <input class="ticket-order__inf name" formControlName="combo_id" hidden>
-                                        <input class="ticket-order__inf name" formControlName="discount_id" hidden>
-                                        <input class="ticket-order__inf name" formControlName="phone_number" hidden>
-                                        <input class="ticket-order__inf name" formControlName="user_id" hidden>
-                                        <input class="ticket-order__inf name" formControlName="status" hidden>
-                                        <input class="ticket-order__inf name" formControlName="ticket_price" hidden>
-                                        <input class="ticket-order__inf name" formControlName="total_price" hidden>
-                                        <div class="seatReceipt">
-                                            <button type="submit" class="btn btn-outline-primary">Đặt vé</button>
-                                        </div>
-                                    </form>
-
-                                </div>
-                                <!-- Your Information End -->
                             </div>
+                            <!-- Your Information Start -->
+                            <div class="col-md-4 ">
+                                <h5 class="modal-title ticket-order__font ">THÔNG TIN ĐẶT VÉ</h5>
+                                <h3 class="ticket-order__font-nav ">PHIM</h3>
+                                <h5 class="ticket-order__inf ">{{move_name}}</h5>
+                                <h3 class="ticket-order__font-nav ">NGÀY CHIẾU</h3>
+                                <h5 class="ticket-order__inf ">{{date | date: 'dd/MM/yyyy'}}</h5>
+                                <h3 class="ticket-order__font-nav ">GIỜ CHIẾU</h3>
+                                <h5 class="ticket-order__inf ">{{start_time}}</h5>
+                                <h3 class="ticket-order__font-nav ">SỐ GHẾ</h3>
+                                <h5 class="ticket-order__inf ">
+                                    <ng-container *ngFor="let seatt of seat"> {{seatt}}</ng-container>
+                                </h5>
+                                <h3 class="ticket-order__font-nav ">SỐ LƯỢNG VÉ: {{seat.length}}</h3>
+                                <h3 class="ticket-order__font-nav ">TỔNG TIỀN: {{total_price}}</h3>
+                                <button class="btn btn-outline-warning" (click)="clearSeat()">Clear</button>
+                                <form [formGroup]="orderTicketForm" (ngSubmit)="save()">
+                                    <input class="ticket-order__inf name" formControlName="film_id" hidden>
+                                    <input class="ticket-order__inf name" formControlName="screening_id" hidden>
+                                    <input class="ticket-order__inf name" formControlName="seats" hidden>
+                                    <input class="ticket-order__inf name" formControlName="combo_id" hidden>
+                                    <input class="ticket-order__inf name" formControlName="discount_id" hidden>
+                                    <input class="ticket-order__inf name" formControlName="phone_number" hidden>
+                                    <input class="ticket-order__inf name" formControlName="user_id" hidden>
+                                    <input class="ticket-order__inf name" formControlName="status" hidden>
+                                    <input class="ticket-order__inf name" formControlName="ticket_price" hidden>
+                                    <input class="ticket-order__inf name" formControlName="total_price" hidden>
+                                    <div class="seatReceipt">
+                                        <button type="submit" class="btn btn-outline-primary">Đặt vé</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                            <!-- Your Information End -->
                         </div>
                     </div>
                 </div>

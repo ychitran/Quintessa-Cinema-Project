@@ -65,24 +65,24 @@
         padding: 0;
     }
     &__seat-top {
-        margin-top: 80px;
+        margin-top: 20px;
     }
     &__seat-space {
         margin-right: 20px;
     }
     &__font-row {
-        font-family: 'Montserrat', sans-serif;
         color: #000;
         font-size: 12px;
         font-weight: 600;
         padding-bottom: 15px;
     }
-
-    
+    &__screen-bottom {
+        margin-bottom: 50px;
+    }
 }
 
 .seat-select {
-    background-color: yellow ;
+    background-color: yellow;
 }
 
 .seat-disable {
@@ -90,10 +90,9 @@
 }
 
 // Modal Order Ticket End
-
 .body {
     &__bg {
-        background-image: url( ../../../../assets/frontend/img/bg-single.jpg);
+        background-image: url(../../../../assets/frontend/img/bg-single.jpg);
     }
 }
 
