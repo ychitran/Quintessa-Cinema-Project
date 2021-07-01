@@ -2,11 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TicketDetail;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class MembersController extends Controller
 {
+	public function profileMember($id) {
+		$member = User::where('id',$id)->first();
+		return response()->json($member);
+	}
+
+	public function orderTicketOfMember($id) {
+		$tickets = TicketDetail::where('ticket_details.user_id',$id)
+		->leftJoin('screenings','ticket_details.screening_id','=','screenings.id')
+        ->leftJoin('films','ticket_details.film_id','=','films.id')
+        ->select('ticket_details.*','films.global_name as global_name','screenings.date as date','screenings.start_time as start_time')
+        ->get();
+		return response()->json($tickets);
+	}
+
     public function manageMember()
 	{
        $members = User::where('role_id',null)->get();

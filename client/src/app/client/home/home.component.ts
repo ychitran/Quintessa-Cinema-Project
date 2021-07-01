@@ -8,7 +8,7 @@ import { Remarkable } from 'src/app/_shared/models/remarkable.model';
 import { Screening } from 'src/app/_shared/models/screening.model';
 import { Seat } from 'src/app/_shared/models/seat.model';
 import { TicketDetail } from 'src/app/_shared/models/ticket.model';
-import { Slide } from '../model/home.model';
+// import { Slide } from '../model/home.model';
 import { HomeService } from './home.service';
 
 @Component({
@@ -17,7 +17,7 @@ import { HomeService } from './home.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  slides: Array<Slide>
+  // slides: Array<Slide>
 
   public_films : Array<Film>
   unpublic_films: Array<Film>
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getSlide();
+    // this.getSlide();
     this.remarkablesValue()
     this.loadFilm();
   }
@@ -48,8 +48,8 @@ export class HomeComponent implements OnInit {
     this.unpublic_films = res.unpublics
   }
   
-  getSlide() {
-    this.homeService.getSlide().subscribe(res => { this.slides = res; })
-  }
+  // getSlide() {
+  //   this.homeService.getSlide().subscribe(res => { this.slides = res; })
+  // }
 
 }

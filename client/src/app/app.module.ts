@@ -20,7 +20,7 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    ClientLayoutComponent
+    ClientLayoutComponent,
   ],
   imports: [
     BrowserModule,
