@@ -10,7 +10,9 @@ use App\Http\Controllers\RoomsController;
 use App\Http\Controllers\ScreeningsController;
 use App\Http\Controllers\SeatController;
 use App\Http\Controllers\TicketDetailController;
+use App\Http\Controllers\TicketPriceController;
 use App\Models\Film;
+use App\Models\Order;
 use App\Models\TicketDetail;
 
 /*
@@ -26,7 +28,17 @@ use App\Models\TicketDetail;
 */
 Route::get('/',[FilmsController::class,'listFilm']);
 Route::get('/remarkable',[RemarkableController::class,'enableRemarkable']);
+
+//Modal Order Ticket
 Route::get('/details-film/{id}',[FilmsController::class,'editFilm']);
+Route::get('/screeningdate/{film_id}',[ScreeningsController::class,'getScreeningOfFilm']);
+Route::get('/screeningtime/{film_id}/{date}',[ScreeningsController::class,'getTimeOfDate']);
+Route::get('/screeningroom/{film_id}/{date}/{start_time}',[ScreeningsController::class,'getRoomOfScreening']);
+Route::get('/screeningid/{film_id}/{date}/{start_time}/{room_id}',[ScreeningsController::class,'getScreeningId']);
+Route::get('/screeningseat/{room_id}/{screening_id}',[OrderTicketController::class,'getSeat']);
+Route::get('/film-price/{film_id}',[FilmsController::class,'filmPrice']);
+Route::post('/orderticket',[OrderTicketController::class,'storeOrderTicket']);
+
 
 //,'middleware' => 'checkpermission'
 Route::group(['prefix' =>'admin'], function() {
@@ -49,7 +61,7 @@ Route::group(['prefix' =>'admin'], function() {
     //,'middleware' => 'administrator'
     Route::group(['prefix' => 'cinemas'], function() {
     Route::get('/create',[CinemasController::class,'createCinema']);
-    Route::post('/create',[CinemasController::class,'storeCinema']);
+    Route::post('/add',[CinemasController::class,'storeCinema']);
 
     Route::get('/edit/{id}',[CinemasController::class,'editCinema']);
     Route::put('/edit/{id}',[CinemasController::class,'updateCinema']);
@@ -123,7 +135,7 @@ Route::group(['prefix' =>'admin'], function() {
     });
 
     //Manager Ticket Price
-    Route::get('/ticket-price',[TicketPriceController::class,'managePrice']);
+    Route::get('/ticket-prices',[TicketPriceController::class,'managePrice']);
     
     Route::group(['prefix' => 'ticket-price'], function() {
     // Route::get('/create',[CombosController::class,'createCombo']);
@@ -133,9 +145,11 @@ Route::group(['prefix' =>'admin'], function() {
     // Route::get('/delete/{id}',[CombosController::class,'deleteCombo']);
     });
 
-    Route::get('/ticket',[TicketDetailController::class,'manageTicket']);
+
+    //manage Ticket
+    Route::get('/tickets',[TicketDetailController::class,'manageTicket']);
     
-    Route::group(['prefix' => 'ticket'], function() {
+    Route::group(['prefix' => 'tickets'], function() {
     Route::get('/order',[TicketDetailController::class,'orderTicket']);
     // Route::post('/create',[CombosController::class,'storeCombo']);
     Route::get('/edit/{id}',[TicketPriceController::class,'edit']);

@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\TicketPrice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TicketPriceController extends Controller
 {
     public function managePrice()
 	{
-        $prices = TicketPrice::all();
-		return view('admin.manage.ticket-price',compact('prices'));
+        $prices = DB::table('ticket_prices')
+		->leftJoin('format_films','ticket_prices.format_id','=','format_films.id')
+		->select('ticket_prices.*','format_films.format_name as format_name')
+		->get();
+		return response()->json($prices);
 	}
 
     public function create()

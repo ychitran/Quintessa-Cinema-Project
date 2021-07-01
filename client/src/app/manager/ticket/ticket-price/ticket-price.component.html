@@ -20,9 +20,9 @@
            
             <tr *ngFor="let price of prices; index as key">
                 <td>{{key+1}}</td>
-                <td>{{price.format_id}}</td>
+                <td>{{price.format_name}}</td>
                 <td>{{price.normal_price}}</td>
-                <td>{{price.membership}}</td>
+                <td>{{price.member_price}}</td>
                 <td>{{price.weekend_price}}</td>
                 <td>{{price.holiday_price}}</td>
                 <td><a [routerLink]="['edit',price.id]"><button style="background-color: #ffffff00;border: none"
