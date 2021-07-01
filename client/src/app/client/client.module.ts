@@ -7,6 +7,8 @@ import { DetailsFilmComponent } from './details-film/details-film.component';
 import { ListFilmComponent } from './list-film/list-film.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const ROUTES: Routes = [
@@ -21,13 +23,19 @@ const ROUTES: Routes = [
       },
       {
       path: 'profile', component: ProfileComponent
+      },
+      {
+      path: 'login', component: LoginComponent
+      },
+      {
+      path: 'register', component: RegisterComponent
       }
 ]
 
 
 
 @NgModule({
-  declarations: [HomeComponent, DetailsFilmComponent, ListFilmComponent, ProfileComponent],
+  declarations: [HomeComponent, DetailsFilmComponent, ListFilmComponent, ProfileComponent, LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(ROUTES),

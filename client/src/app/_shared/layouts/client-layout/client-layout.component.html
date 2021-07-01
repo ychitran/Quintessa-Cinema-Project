@@ -1,4 +1,3 @@
-
 <div class="body__bg">
     <!-- Header Navbar Start -->
     <div class="header container-fluid text-center  slide__index head__border">
@@ -42,12 +41,13 @@
                                             <select class="ticket-order__border"
                                                 (change)="loadScreeningDate($event.target.value)"
                                                 (change)="loadFilmDetail($event.target.value)">
+>>>>>>> master
                                                 <option checked>Vui lòng chọn phim</option>
                                                 <option *ngFor="let public_film of public_films" value="{{public_film.id}}">
                                                     {{public_film.film_name}}</option>
                                             </select>
-                                        </div>
-                                        <!-- <div class="date">
+                                            </div>
+                                            <!-- <div class="date">
                                             <h3 class="ticket-order__font-nav">NGÀY</h3>
                                             <input type="date" class="ticket-order__border" >
                                         </div> -->
@@ -105,6 +105,7 @@
                                                     </ng-template>
                                                 </ng-cointainer>
                                                 <!-- <div class="col-md-3">
+>>>>>>> master
                                                     <div class="seat-chart ticket-order__seat-top">
                                                         <div class="a1">
                                                             <input type="checkbox" class="btn-check" id="a1"
@@ -132,6 +133,7 @@
                                                         </div>
                                                     </div>
                                                 </div> -->
+
                                             </div>
                                             
                                             <div class="col-md-1">
@@ -142,12 +144,12 @@
                                                     data-mdb-ripple-color="dark">Previous</button>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- Modal Seat End -->
+                                        <!-- Modal Seat End -->
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+
                         <!-- Your Information Start -->
                         <div class="col-md-4 ">
                             <h5 class="modal-title ticket-order__font ">THÔNG TIN ĐẶT VÉ</h5>
@@ -185,61 +187,60 @@
                 </div>
             </div>
         </div>
+        <!-- ============================Modal Order Ticket End============================== -->
+    </router-outlet>
+    <!-- Footer Start -->
+    <div class="footer container footer__height head__border footer__bottom">
+        <div class="row">
+            <div class="col-3">
+                <h2 class="footer__tittle">MENU</h2>
+                <p class="footer__font">Home</p>
+                <p class="footer__font">Showtimes</p>
+                <p class="footer__font">Order Ticket</p>
+                <i class="fab fa-youtube footer__social footer__space"></i>
+                <i class="fab fa-facebook footer__social footer__space"></i>
+                <i class="fab fa-twitter footer__social"></i>
+            </div>
+            <div class="col-3">
+                <h2 class="footer__tittle">ADDRESS</h2>
+                <p class="footer__font">28 Nguyen Tri Phuong Street,</p>
+                <p class="footer__font">Phu Nhuan, Hue City</p>
+                <p class="footer__font">Email: cinerama@gmail.com</p>
+                <p class="footer__font"><i class="fas fa-phone-alt footer__social footer__space"></i>+0125.124789</p>
+            </div>
+            <div class="col-6">
+                <h2 class="footer__tittle">CONTACT</h2>
+                <div class="form-outline mb-4 footer__border">
+                    <input type="text" id="form4Example1" class="form-control" />
+                    <label class="form-label text-white-50" for="form4Example1">Name *</label>
+                </div>
+                <div class="form-outline mb-4 footer__border">
+                    <input type="text" id="form4Example1" class="form-control" />
+                    <label class="form-label text-white-50" for="form4Example1">Email *</label>
+                </div>
+                <div class="form-outline mb-4 footer__border">
+                    <textarea class="form-control"></textarea>
+                    <label class="form-label text-white-50" for="form6Example7">Message * </label>
+                </div>
+                <button type="button" class="btn btn-outline-warning btn-rounded">SEND TO US</button>
+            </div>
+        </div>
     </div>
-    <!-- ============================Modal Order Ticket End============================== -->
-</router-outlet>
-   <!-- Footer Start -->
-   <div class="footer container footer__height head__border footer__bottom">
-    <div class="row">
-        <div class="col-3">
-            <h2 class="footer__tittle">MENU</h2>
-            <p class="footer__font">Home</p>
-            <p class="footer__font">Showtimes</p>
-            <p class="footer__font">Order Ticket</p>
-            <i class="fab fa-youtube footer__social footer__space"></i>
-            <i class="fab fa-facebook footer__social footer__space"></i>
-            <i class="fab fa-twitter footer__social"></i>
-        </div>
-        <div class="col-3">
-            <h2 class="footer__tittle">ADDRESS</h2>
-            <p class="footer__font">28 Nguyen Tri Phuong Street,</p>
-            <p class="footer__font">Phu Nhuan, Hue City</p>
-            <p class="footer__font">Email: cinerama@gmail.com</p>
-            <p class="footer__font"><i class="fas fa-phone-alt footer__social footer__space"></i>+0125.124789</p>
-        </div>
-        <div class="col-6">
-            <h2 class="footer__tittle">CONTACT</h2>
-            <div class="form-outline mb-4 footer__border">
-                <input type="text" id="form4Example1" class="form-control" />
-                <label class="form-label text-white-50" for="form4Example1">Name *</label>
+    <div class="logo container head__height-menu text-center">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-md-4">
+                    <p class="footer__font">
+                        @ Do Not Copyright</p>
+                </div>
             </div>
-            <div class="form-outline mb-4 footer__border">
-                <input type="text" id="form4Example1" class="form-control" />
-                <label class="form-label text-white-50" for="form4Example1">Email *</label>
+            <div class="col-md-4">
+                <img class="footer__logo head__margin" src="../../../../assets/frontend/logo/Logo-light.png" alt="logo">
             </div>
-            <div class="form-outline mb-4 footer__border">
-                <textarea class="form-control"></textarea>
-                <label class="form-label text-white-50" for="form6Example7">Message * </label>
-            </div>
-            <button type="button" class="btn btn-outline-warning btn-rounded">SEND TO US</button>
-        </div>
-    </div>
-</div>
-<div class="logo container head__height-menu text-center">
-    <div class="row">
-        <div class="col-md-4">
             <div class="col-md-4">
                 <p class="footer__font">
-                    @ Do Not Copyright</p>
+                    @License by: 'Nhac cong di xem phim'</p>
             </div>
         </div>
-        <div class="col-md-4">
-            <img class="footer__logo head__margin" src="../../../../assets/frontend/logo/Logo-light.png" alt="logo">
-        </div>
-        <div class="col-md-4">
-            <p class="footer__font">
-                @License by: 'Nhac cong di xem phim'</p>
-        </div>
     </div>
-</div>
-<!-- Footer End -->
+    <!-- Footer End -->
