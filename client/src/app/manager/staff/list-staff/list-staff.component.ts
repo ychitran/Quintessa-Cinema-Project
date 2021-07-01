@@ -23,6 +23,10 @@ export class ListStaffComponent implements OnInit {
     this.staffService.getList(keyword).subscribe(res => this.staffs = res);
   }
 
+  loadListSearch($event):void  {
+    this.staffService.getListSearch($event).subscribe(res => this.staffs = res);
+  }
+
   remove(id):void {
     if(!confirm("Bạn có chắc muốn xóa?")) {
       return;

@@ -30,9 +30,10 @@
 					<ng-template #unPublic><td>Phim Sắp Chiếu</td></ng-template>
 
 				<td>
-					<a class="btn btn-danger" (click)="remove(film.id)"><i class="fas fa-trash-alt"></i></a>
-					<a class="btn btn-primary" [routerLink]="['edit',film.id]"><i class="far fa-edit"></i></a>
-
+					<a style="padding: 0 15px;" [routerLink]="['edit',film.id]">
+                        <i class="fas fa-edit text-success"></i>
+                    </a>
+                    <a (click)="remove(film.id)"><i class="fas fa-trash-alt text-danger"></i></a>
 				</td>
 			</tr>
 		</tbody>

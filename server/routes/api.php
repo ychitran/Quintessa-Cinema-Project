@@ -10,6 +10,7 @@ use App\Http\Controllers\RemarkableController;
 use App\Http\Controllers\RoomsController;
 use App\Http\Controllers\ScreeningsController;
 use App\Http\Controllers\SeatController;
+use App\Http\Controllers\StaffsController;
 use App\Http\Controllers\TicketDetailController;
 use App\Http\Controllers\TicketPriceController;
 use App\Models\Film;
@@ -88,8 +89,9 @@ Route::group(['prefix' =>'admin'], function() {
     Route::delete('/delete/{id}',[ScreeningsController::class,'deleteScreening']);
     });
     //Manager Staff
-    Route::get('/staff',[StaffsController::class,'manageStaff'])->name('admin.managestaff');
-    
+    Route::get('/staffs',[StaffsController::class,'manageStaff']);
+    Route::get('/staffs/{keyword}',[StaffsController::class,'searchStaff']);
+
     Route::group(['prefix' => 'staff'], function() {
     Route::get('/create',[StaffsController::class,'createStaff'])->name('admin.addstaff.page');
     Route::post('/create',[StaffsController::class,'storeStaff'])->name('admin.addstaff');
@@ -155,7 +157,9 @@ Route::group(['prefix' =>'admin'], function() {
 
     //manage Ticket
     Route::get('/tickets',[TicketDetailController::class,'manageTicket']);
-    
+    Route::get('/tickets/search/{keyword}',[TicketDetailController::class,'getSearchList']);
+
+
     Route::group(['prefix' => 'tickets'], function() {
     Route::get('/order',[TicketDetailController::class,'orderTicket']);
     // Route::post('/create',[CombosController::class,'storeCombo']);
