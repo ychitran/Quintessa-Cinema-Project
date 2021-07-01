@@ -6,21 +6,20 @@ import { Remarkable } from 'src/app/_shared/models/remarkable.model';
 import { Screening } from 'src/app/_shared/models/screening.model';
 import { Seat } from 'src/app/_shared/models/seat.model';
 import { TicketDetail } from 'src/app/_shared/models/ticket.model';
-import { Slide } from '../model/home.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomeService {
-  private apiURL: string = "https://60ce078a91cc8e00178dc6b4.mockapi.io/cinema/slide";
-  private filmURL: string = "https://60ce078a91cc8e00178dc6b4.mockapi.io/cinema/film";
+  // private apiURL: string = "https://60ce078a91cc8e00178dc6b4.mockapi.io/cinema/slide";
+  // private filmURL: string = "https://60ce078a91cc8e00178dc6b4.mockapi.io/cinema/film";
 
   constructor(
     private readonly httpClient: HttpClient
   ) { }
-  getSlide(): Observable<Array<Slide>> {
-    return this.httpClient.get<Array<Slide>>(this.apiURL);
-  }
+  // getSlide(): Observable<Array<Slide>> {
+  //   return this.httpClient.get<Array<Slide>>(this.apiURL);
+  // }
 
 
   getSeat(room_id,screening_id): Observable<Array<Seat>> {

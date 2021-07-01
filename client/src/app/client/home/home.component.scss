@@ -48,6 +48,9 @@
     &__margin-left {
         margin: auto 0 auto 0;
     }
+    &__index {
+        z-index: 1;
+    }
 }
 
 .straight::after {

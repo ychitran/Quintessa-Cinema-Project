@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './_shared/layouts/admin-layout/admin-layout.component';
 import { ClientLayoutComponent } from './_shared/layouts/client-layout/client-layout.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthModule } from './auth/auth.module';
 
 const ROUTES: Routes = [
   {
@@ -13,7 +14,11 @@ const ROUTES: Routes = [
     children: [{
       path:'',
       loadChildren: () => import(`./client/client.module`). then(m => m.ClientModule)
-    }]
+      }]
+  },
+  {
+    path: 'login',
+    loadChildren: () => import(`./auth/auth.module`). then(m => m.AuthModule)
     
   },
   {

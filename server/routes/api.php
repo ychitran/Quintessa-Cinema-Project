@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CinemasController;
 use App\Http\Controllers\FilmsController;
+use App\Http\Controllers\MembersController;
 use App\Http\Controllers\OrderTicketController;
 use App\Http\Controllers\RemarkableController;
 use App\Http\Controllers\RoomsController;
@@ -26,9 +27,13 @@ use App\Models\TicketDetail;
 |
 
 */
+//USER CONTROLLER
 Route::get('/',[FilmsController::class,'listFilm']);
 Route::get('/remarkable',[RemarkableController::class,'enableRemarkable']);
 
+//Profile Member
+Route::get('/profile/{id}',[MembersController::class,'profileMember']);
+Route::get('/orderticketmember/{id}',[MembersController::class,'orderTicketOfMember']);
 //Modal Order Ticket
 Route::get('/details-film/{id}',[FilmsController::class,'editFilm']);
 Route::get('/screeningdate/{film_id}',[ScreeningsController::class,'getScreeningOfFilm']);
@@ -38,6 +43,8 @@ Route::get('/screeningid/{film_id}/{date}/{start_time}/{room_id}',[ScreeningsCon
 Route::get('/screeningseat/{room_id}/{screening_id}',[OrderTicketController::class,'getSeat']);
 Route::get('/film-price/{film_id}',[FilmsController::class,'filmPrice']);
 Route::post('/orderticket',[OrderTicketController::class,'storeOrderTicket']);
+
+
 
 
 //,'middleware' => 'checkpermission'

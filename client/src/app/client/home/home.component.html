@@ -1,5 +1,5 @@
 <!-- Header Navbar Start -->
-<div class="header container-fluid text-center position-absolute slide__index head__border">
+<div class="header container-fluid text-center head__border position-absolute head__index head__bottom">
     <div class="row">
         <div class="col-md-2 head__display">
             <img class="head__logo head__margin" src="../../../../assets/frontend/logo/Logo-light.png" alt="logo">
@@ -18,7 +18,7 @@
             </nav>
         </div>
         <div class="col-md-2 head__display head__margin">
-            <a class="nav-link head__font" [routerLink]="['/login']" routerLinkActive="router-link-active">ĐĂNG NHẬP</a>
+            <a class="btn nav-link head__font" [routerLink]="['/login']" routerLinkActive="router-link-active">ĐĂNG NHẬP</a>
         </div>
     </div>
 </div>
@@ -27,7 +27,7 @@
 <!-- Slides Start -->
 <ng-container *ngFor="let remarkable of remarkables">
     <div class="slides-container-fluid slide__height text-center position-relative">
-        <img class="slide__img head__full" src="../../../assets/frontend/img/vKnNpHL.jpeg" alt="background">
+        <img class="slide__img head__full" src="{{remarkable.banner}}" alt="background">
     </div>
     <!-- Slides End -->
 
@@ -36,10 +36,10 @@
         <h4 class="animation__font-tittle animate__animated animate__zoomIn animate__slower	3s animate__infinite ">{{remarkable.film_name}}</h4>
         <h6 class="animation__font-under animate__animated animate__zoomIn animate__slower	3s animate__infinite "></h6>
         <button [routerLink]="['/details-film', remarkable.film_id]" class="button animation__height animate__animated animate__zoomIn animate__slower3s">
-            Chi tiết Phim
-            <div class="button__horizontal"></div>
-            <div class="button__vertical"></div>
-        </button>
+        Chi tiết Phim
+        <div class="button__horizontal"></div>
+        <div class="button__vertical"></div>
+    </button>
         <!-- Animation End -->
     </div>
 </ng-container>
