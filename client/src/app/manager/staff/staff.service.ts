@@ -15,11 +15,11 @@ export class StaffService {
   ) { }
 
   getList(keyword:string): Observable<Array<Staff>> {
-    return this.httpClient.get<Array<Staff>>('http://localhost:3000/staffs',{
-      params: {
-        q:keyword
-      }
-    });
+    return this.httpClient.get<Array<Staff>>('/admin/staffs');
+  }
+
+  getListSearch(keyword): Observable<Array<Staff>> {
+    return this.httpClient.get<Array<Staff>>('/admin/staffs/'+keyword);
   }
 
   getElement(id): Observable<Staff> {

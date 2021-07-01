@@ -17,8 +17,12 @@ export class ListComponent implements OnInit {
     this.loadList();
   }
 
-  loadList(keyword=''):void  {
-    this.ticketService.getList(keyword).subscribe(res => this.tickets = res);
+  loadList():void  {
+    this.ticketService.getList().subscribe(res => this.tickets = res);
+  }
+
+  searchList($event):void {
+    this.ticketService.getSearchList($event).subscribe(res => this.tickets = res)
   }
 
   
