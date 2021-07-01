@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FormatFilm extends Model
 {
-    protected $table = 'format_films';
+    // protected $table = 'format_films';
     use HasFactory;
     public function film() {
         return $this->hasMany('App\Models\Film');

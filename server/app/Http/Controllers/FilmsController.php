@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Film;
 use App\Models\FormatFilm;
+use App\Models\TicketPrice;
 use Illuminate\Http\Request;
 
 class FilmsController extends Controller
@@ -11,10 +12,23 @@ class FilmsController extends Controller
 	public function listFilm() {
 		$publics = Film::where('status',1)->get();
 		$unpublics = Film::where('status',0)->get();
+
 		return response()->json([
 			'publics' => $publics,
 			'unpublics' => $unpublics
 		]);
+	}
+
+	public function filmPrice($film_id) {
+		// $price = Film::where('id',$film_id)
+		// ->leftJoin('ticket_prices','films.format_id','=','ticket_prices.format_id')
+		// ->select('films.*',"ticket_prices.member_price as member_prices")
+		// ->first();
+		$film = Film::findOrFail($film_id);
+		$format_id = $film->format_id;
+		$ticket = TicketPrice::findOrFail($format_id);
+		$price = $ticket->member_price;
+		return response()->json($price);
 	}
 
     public function manageFilm()

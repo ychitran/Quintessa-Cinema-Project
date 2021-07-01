@@ -8,6 +8,7 @@ export interface TicketDetail {
     combo_id:number,
     discount_id:number,
     status:number,
+    order_date:Date,
     ticket_price: number,
     total_price:number
 }
