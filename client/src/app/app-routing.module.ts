@@ -14,12 +14,12 @@ const ROUTES: Routes = [
     children: [{
       path:'',
       loadChildren: () => import(`./client/client.module`). then(m => m.ClientModule)
-    }]
-    
+    },
+    ]  
   },
   {
-    path: 'login',
-    loadChildren: () => import(`./auth/auth.module`). then(m => m.AuthModule)
+    path: 'auth',
+    loadChildren: () => import(`./auth/auth.module`).then(m => m.AuthModule)
     
   },
   {

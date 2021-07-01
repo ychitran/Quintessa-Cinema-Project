@@ -1,103 +1,47 @@
-    //  Font Awesome 
+//  Font Awesome 
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css);
 // Google Fonts 
 @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap);
 // MDB
 @import url(https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.5.0/mdb.min.css);
-    
-
+// Animation
+@import url(https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css);
 .body {
     &__bg {
-        background-image: url( ../../../assets/frontend/img/bg-single.jpg);
+        background-image: url(../../../assets/frontend/img/bg-single.jpg);
+        height: 800px;
+        padding-top: 200px;
     }
 }
-    //================ Header Navbar Start===========
-    .head {
-        &__auto {
-            height: auto;
-            width: 100%;
-        }
-        &__full {
-            height: 100%;
-            width: 100%;
-        }
-        &__height-menu {
-            height: 70px;
-            width: 100%;
-        }
-        &__space {
-            margin-right: 60px;
-        }
-        &__font {
-            color: #fff;
-            font-family: 'Josefin Sans', sans-serif;
-            line-height: 28px;
-            font-size: 14px;
-            letter-spacing: 2px;
-            font-weight: 600;
-        }
-        &__display {
-            display: flex;
-        }
-        &__margin {
-            margin: auto;
-        }
-        &__logo {
-            width: 60%;
-        }
-        &__icon {
-            color: white;
-            margin-right: 30px;
-        }
-        &__border {
-            border-bottom: 1px solid rgb(66, 66, 66);
-        }
-        &__margin-left {
-            margin: auto 0 auto 10px;
-        }
-        &__bottom {
-            margin-bottom: 100px;
-        }
+
+// Login form Start
+.login {
+    &__bottom {
+        margin-bottom: 100px;
     }
-    
-    .straight::after {
-        content: '|';
-        color: #fb802d;
-        margin-left: 15px;
-        margin-right: 10px;
-        font-size: 20px;
-        font-weight: 300;
+    &__font {
+        font-size: 17px;
+        font-weight: 400;
+        color: #fff !important;
     }
-    
-    //================= Header Navbar End
-    // Login form Start
-    .login {
-        &__bottom {
-            margin-bottom: 100px;
-        }
-        &__font {
-            font-size: 17px;
-            font-weight: 400;
-            color: #fff !important;
-        }
-        &__border {
-            border-top: none;
-            border-left: none;
-            border-right: none;
-            border-bottom: 1px solid #fff;
-        }
-        &__form-bottom {
-            margin-bottom: 50px;
-        }
-        &__color {
-            color: #fff;
-        }
-        &__font-tittle {
-            font-family: 'Josefin Sans', sans-serif;
-            color: #fff;
-            font-size: 30px;
-            font-weight: 700;
-        }
+    &__border {
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid #fff;
     }
-    
-    // Login form End
+    &__form-bottom {
+        margin-bottom: 50px;
+    }
+    &__color {
+        color: #fff;
+    }
+    &__font-tittle {
+        font-family: 'Josefin Sans', sans-serif;
+        color: #fff;
+        font-size: 30px;
+        font-weight: 700;
+    }
+}
+
+// Login form End
