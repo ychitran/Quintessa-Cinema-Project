@@ -12,13 +12,43 @@ use Illuminate\Support\Facades\DB;
 class ScreeningsController extends Controller
 {
 	public function getScreeningOfFilm($film_id) {
-		$screenings = Screening::where('film_id',$film_id)
-		->leftJoin('films',"screenings.film_id","=","films.id")
-		->leftJoin('rooms','screenings.room_id','=','rooms.id')
-		->select('screenings.*','films.global_name as global_name',"rooms.room_name as room_name")
+		$screenings = Screening::select('date')
+		->where('film_id',$film_id)
+		->groupBy('date')
 		->get();
 		return response()->json($screenings);
 	}
+
+	public function getTimeOfDate($film_id,$date){
+		$screenings = Screening::select('start_time')
+		->where('film_id',$film_id)
+		->where('date',$date)
+		->groupBy('start_time')
+		->get();
+		return response()->json($screenings);
+	}
+
+	public function getRoomOfScreening($film_id,$date, $start_time ) {
+		$screenings = Screening::select('room_id')
+		->where('film_id',$film_id)
+		->where('date',$date)
+		->where('start_time',$start_time)
+		->groupBy('room_id')
+		->get();
+		return response()->json($screenings);
+	}
+
+	public function getScreeningId($film_id,$date, $start_time,$room_id ){
+		$screening_id = Screening::select('id')
+		->where('film_id',$film_id)
+		->where('date',$date)
+		->where('start_time',$start_time)
+		->where('room_id',$room_id)
+		->first();
+		return response()->json($screening_id);
+	}
+
+
     public function manageScreening()
 	{
 		$screenings = DB::table('screenings')

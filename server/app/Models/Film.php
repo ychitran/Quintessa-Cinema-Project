@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Film extends Model
 {
     use HasFactory;
+    public function format() {
+       return $this->belongsTo('App\Models\FormatFilm');
+    }
 }
