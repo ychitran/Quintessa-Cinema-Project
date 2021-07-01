@@ -11,16 +11,31 @@ class StaffsController extends Controller
 {
     public function manageStaff()
 	{
-        $role = auth()->user()->role_id;
-        if($role == 1) {
-            $staffs = User::where('role_id','<>',1)->where('role_id','<>',null)
-			->leftJoin('roles','users.role_id','=','roles.id')
-			->select('users.*','roles.role_name as role_name')
-			->get(); 
-        } elseif($role == 2) {
-            $staffs = User::where('role_id',3)->first();
-        }
-		return view('admin.manage.staff',compact('staffs'));
+        // $role = auth()->user()->role_id;
+        // if($role == 1) {
+        //     $staffs = User::where('role_id','<>',1)->where('role_id','<>',null)
+		// 	->leftJoin('roles','users.role_id','=','roles.id')
+		// 	->select('users.*','roles.role_name as role_name')
+		// 	->get(); 
+        // } elseif($role == 2) {
+        //     $staffs = User::where('role_id',3)->first();
+        // }
+		$staffs = User::where('role_id','<>',1)->where('role_id','<>',null)
+		->leftJoin('roles','users.role_id','=','roles.id')
+		->leftJoin('cinemas','users.cinema_id','=','cinemas.id')
+			->select('users.*','roles.role_name as role_name','cinemas.cinema_name as cinema_name')
+			->get();
+		return response()->json($staffs);
+	}
+
+	public function searchStaff($keyword) {
+		$staffs = User::where('full_name', 'LIKE' ,'%'.$keyword.'%')
+		->leftJoin('roles','users.role_id','=','roles.id')
+		->leftJoin('cinemas','users.cinema_id','=','cinemas.id')
+			->select('users.*','roles.role_name as role_name','cinemas.cinema_name as cinema_name')	
+		->get();
+		return response()->json($staffs);
+
 	}
 
     public function createStaff()

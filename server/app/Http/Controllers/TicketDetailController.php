@@ -12,7 +12,7 @@ class TicketDetailController extends Controller
 {
     public function manageTicket()
 	{
-        $tickets = DB::table('ticket_details')
+        $tickets = DB::table('ticket_details') 
         ->leftJoin('screenings','ticket_details.screening_id','=','screenings.id')
         ->leftJoin('films','ticket_details.film_id','=','films.id')
         ->leftJoin('users','ticket_details.user_id','=','users.id')
@@ -24,6 +24,14 @@ class TicketDetailController extends Controller
     
 		return response()->json($tickets);
 	}
+
+    public function getSearchList($keyword)
+    {
+        $tickets = TicketDetail::where('phone_number', 'LIKE' ,'%'.$keyword.'%')
+            ->get();
+
+        return response()->json($tickets);
+    }
 
     // public function orderTicket()
 	// {

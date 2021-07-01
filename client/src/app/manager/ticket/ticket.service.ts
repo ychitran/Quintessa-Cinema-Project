@@ -18,12 +18,12 @@ export class TicketService {
     private readonly route: ActivatedRoute
   ) { }
 
-  getList(keyword:string): Observable<Array<TicketDetail>> {
-    return this.httpClient.get<Array<TicketDetail>>('/admin/tickets',{
-      params: {
-        q:keyword
-      }
-    });
+  getList(): Observable<Array<TicketDetail>> {
+    return this.httpClient.get<Array<TicketDetail>>('/admin/tickets');
+  }
+
+  getSearchList(keyword): Observable<Array<TicketDetail>> {
+    return this.httpClient.get<Array<TicketDetail>>('/admin/tickets/search/' + keyword);
   }
 
   //Second
