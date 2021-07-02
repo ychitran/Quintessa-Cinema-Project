@@ -21,6 +21,8 @@ class CreateTicketDetailsTable extends Migration
             $table->unsignedBigInteger('screening_id');
             $table->unsignedBigInteger('combo_id')->nullable(true);
             $table->unsignedBigInteger('discount_id')->nullable(true);
+            $table->unsignedBigInteger('film_id');
+               
             $table->integer('status');
             $table->integer('ticket_price');
             $table->integer('total_price');
@@ -28,6 +30,7 @@ class CreateTicketDetailsTable extends Migration
             $table->foreign('screening_id')->references('id')->on('screenings');
             $table->foreign('combo_id')->references('id')->on('combos');
             $table->foreign('discount_id')->references('id')->on('discounts');
+            $table->foreign('film_id')->references('id')->on('films');
             $table->timestamps();
         });
     }

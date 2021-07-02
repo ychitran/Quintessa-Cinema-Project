@@ -40,13 +40,11 @@ class AuthController extends Controller
         $email = $request->email;
         $password = $request->password;
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            if (Auth::user()->role_id != null) {
-                return ;
-            } else {
-                return ;
-            }
+            $auth = Auth::user();
+            return response()->json($auth) ;
         } else {
-            return ;
+            $message = 'Tài khoản hoặc mật khẩu không đúng';
+            return response()->json($message);
         }
     }
 

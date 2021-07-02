@@ -21,7 +21,7 @@ export class ScreeningService {
   }
 
   getListProvider(): Observable<Array<Film>> {
-    return this.httpClient.get<Array<Film>>('/admin/films');
+    return this.httpClient.get<Array<Film>>('/admin/films/status');
   }
 
   getListProviderNd(): Observable<Array<Room>> {
@@ -51,6 +51,6 @@ export class ScreeningService {
 
   remove(id): Observable<any> {
     // const id = this.route.snapshot.paramMap.get("id");
-    return this.httpClient.get<any>(`/admin/screenings/` + id)
+    return this.httpClient.get<any>(`/admin/screenings/delete/` + id)
   }
 }

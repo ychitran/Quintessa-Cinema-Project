@@ -25,7 +25,7 @@ class MembersController extends Controller
     public function manageMember()
 	{
        $members = User::where('role_id',null)->get();
-		return view('admin.manage.member',compact('members'));
+		return response()->json($members);
 	}
 
     public function createMember()

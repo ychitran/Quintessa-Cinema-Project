@@ -11,10 +11,12 @@ use Illuminate\Support\Facades\DB;
 
 class ScreeningsController extends Controller
 {
-	public function getScreeningOfFilm($film_id) {
-		$screenings = Screening::select('date')
-		->where('film_id',$film_id)
-		->groupBy('date')
+	public function getScreeningOfFilm($id) {
+		$screenings = DB::table('screenings')
+		->where('screenings.film_id',$id)
+		->leftJoin('films','screenings.film_id','=','films.id')
+		->leftJoin('rooms','screenings.room_id','=','rooms.id')
+		->select('screenings.*','films.global_name as global_name','rooms.room_name as room_name')
 		->get();
 		return response()->json($screenings);
 	}
@@ -102,6 +104,6 @@ class ScreeningsController extends Controller
 	public function deleteScreening($id)
 	{
 		Screening::where('id',$id)->delete();
-		return redirect('admin/screening');
+		return ;
 	}
 }

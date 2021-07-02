@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Cinema;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RoomsController extends Controller
 {
     public function manageRoom()
 	{	
-		$rooms = Room::all();
+		$rooms = DB::table('rooms')
+		->leftJoin('cinemas','rooms.cinema_id','=','cinemas.id')
+		->select('rooms.*','cinemas.cinema_name as cinema_name')->get();
 		return response()->json($rooms);
 	}
 

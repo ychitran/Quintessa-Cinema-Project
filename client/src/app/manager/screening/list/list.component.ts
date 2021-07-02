@@ -25,7 +25,10 @@ export class ListComponent implements OnInit {
   }
 
   loadListFilm():void {
-    this.screeningService.getListProvider().subscribe(res => this.films = res);
+    this.screeningService.getListProvider().subscribe(res => this.getFilmWithStatus(res));
+  }
+  getFilmWithStatus(res): void {
+    this.films = res.publics;
   }
 
   loadListProvider(event):void {

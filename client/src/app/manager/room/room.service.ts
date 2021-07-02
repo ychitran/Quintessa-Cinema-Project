@@ -16,7 +16,7 @@ export class RoomService {
   ) { }
 
   getList(keyword:string): Observable<Array<Room>> {
-    return this.httpClient.get<Array<Room>>('http://localhost:3000/rooms',{
+    return this.httpClient.get<Array<Room>>('/admin/rooms',{
       params: {
         q:keyword
       }

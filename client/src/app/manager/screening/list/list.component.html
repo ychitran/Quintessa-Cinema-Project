@@ -19,7 +19,7 @@
             <tr>
                 <th>No.</th>
                 <th>Phim</th>
-                <th>Rạp</th>
+                <th>Phòng</th>
                 <th>Ngày</th>
                 <th>Thời gian</th>
                 <th>Chức năng</th>
@@ -36,7 +36,7 @@
                 <td><a [routerLink]="['edit',screening.id]"><button style="background-color: #ffffff00;border: none"
                             title="Sửa"><i class="fas fa-edit text-success"></i></button></a><br>
                     
-                        <button type="submit" style="background-color: #ffffff00;border: none" title="Xóa"><i
+                        <button (click)="remove(screening.id)" type="submit" style="background-color: #ffffff00;border: none" title="Xóa"><i
                                 class="fas fa-trash-alt text-danger"></i></button>
                 </td>
             </tr>

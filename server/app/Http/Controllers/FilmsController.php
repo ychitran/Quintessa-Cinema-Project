@@ -113,6 +113,6 @@ class FilmsController extends Controller
 	public function deleteFilm($id)
 	{
 		Film::where('id',$id)->delete();
-		return redirect('admin/film');
+		return;
 	}
 }
