@@ -33,8 +33,9 @@ export class LoginComponent implements OnInit {
     const { value } = this.loginForm;
 
     this.authService.login(value).subscribe(
-      res =>
-      this.router.navigateByUrl("/"),
+      res =>{alert('đăng nhập thành công')
+        console.log(res)
+      this.router.navigateByUrl("/")},
       err => alert('Email hoặc mật khẩu không đúng')      
     )
   }

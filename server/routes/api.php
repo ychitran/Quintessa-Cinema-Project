@@ -64,6 +64,7 @@ Route::group(['prefix' =>'admin'], function() {
 
     //,'middleware' => 'administrator'
     Route::get('/films',[FilmsController::class,'manageFilm']);
+    Route::get('/films/status',[FilmsController::class,'listFilm']);
     Route::group(['prefix' => 'films'], function() {
     Route::get('/add',[FilmsController::class,'createFilm']);
     Route::post('/add',[FilmsController::class,'storeFilm']);
@@ -94,7 +95,7 @@ Route::group(['prefix' =>'admin'], function() {
     Route::post('/add',[ScreeningsController::class,'storeScreening']);
     Route::get('/edit/{id}',[ScreeningsController::class,'editScreening']);
     Route::put('/edit/{id}',[ScreeningsController::class,'updateScreening']);
-    Route::delete('/delete/{id}',[ScreeningsController::class,'deleteScreening']);
+    Route::get('/delete/{id}',[ScreeningsController::class,'deleteScreening']);
     });
     //Manager Staff
     Route::get('/staffs',[StaffsController::class,'manageStaff']);
@@ -130,7 +131,7 @@ Route::group(['prefix' =>'admin'], function() {
     });
 
     //manager User
-    Route::get('/member',[MembersController::class,'manageMember']);
+    Route::get('/members',[MembersController::class,'manageMember']);
     
     Route::group(['prefix' => 'member','middleware' => 'manager'], function() {
     Route::get('/create',[MembersController::class,'createMember']);

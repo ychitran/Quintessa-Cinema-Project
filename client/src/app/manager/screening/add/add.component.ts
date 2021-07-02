@@ -33,7 +33,10 @@ export class AddComponent implements OnInit {
   }
 
   loadList():void {
-    this.screeningService.getListProvider().subscribe(res => this.films = res);
+    this.screeningService.getListProvider().subscribe(res => this.getListFilm(res));
+  }
+  getListFilm(res): void {
+    this.films = res.publics;
   }
 
   loadListNd():void {

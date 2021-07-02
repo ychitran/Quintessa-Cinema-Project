@@ -1,7 +1,7 @@
 import { Time } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { $ } from 'protractor';
 import { Film } from 'src/app/_shared/models/film.model';
 import { Member } from '../../models/member.model';
@@ -17,6 +17,7 @@ import { ClientLayoutService } from './client-layout.service';
 })
 export class ClientLayoutComponent implements OnInit {
   // public film_name = '';
+  @ViewChild('closebutton') closebutton;
   // // public date = '';
   // public time = '';
   public_films : Array<Film>
@@ -51,6 +52,8 @@ export class ClientLayoutComponent implements OnInit {
     private readonly clientLayoutService:ClientLayoutService,
     private formBuilder:FormBuilder,
     private route: ActivatedRoute,
+    private readonly router: Router
+
   ) { }
 
   ngOnInit(): void {
@@ -151,10 +154,15 @@ export class ClientLayoutComponent implements OnInit {
     value.seats = string
     console.log(value)
     this.clientLayoutService.save(value).subscribe(
-      res =>
-      alert('Đặt vé thành công'),
+      res =>{
+        alert('Đặt vé thành công')
+          
+        this.router.navigateByUrl('/list-film')
+      }
+      ,
       err => alert('Đệch con mợ mày')      
     )
+    this.closebutton.nativeElement.click();
   }
 
   getDateDetail(res): void {

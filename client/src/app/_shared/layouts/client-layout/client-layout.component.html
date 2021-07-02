@@ -113,20 +113,43 @@
                                                     <div class="col-md-1 ticket-order__seat-top ticket-order__font-row">
                                                         {{seat.row}}
                                                     </div>
-                                                    <ng-cointainer *ngFor="let seat_number of seat['number']">
-                                                        <ng-container
-                                                            *ngIf="seat_number.screening_id != null && seat_number.screening_id == screening_id ; else seatDisable">
-                                                            <button
-                                                                class="btn btn-outline btn-rounded btn-sm seat-disable">{{seat_number.number}}</button>
+                                                    <ng-cointainer
+                                                        *ngFor="let seat_number of seat['number'];index as i">
+                                                        <ng-container *ngIf="i == 3 || i == 9; else noneMargin">
+
+                                                            <ng-container
+                                                                *ngIf="seat_number.screening_id != null && seat_number.screening_id == screening_id ; else seatDisable">
+                                                                <button
+                                                                    class="me-4 btn btn-outline btn-rounded btn-sm seat-disable">{{seat_number.number}}</button>
+
+                                                            </ng-container>
+                                                            <ng-template #seatDisable>
+                                                                <button (click)="seatSelect($event,seat_number.id)"
+                                                                    id="seatSelected"
+                                                                    value="{{seat_number.row}}{{seat_number.number}}"
+                                                                    type="button"
+                                                                    class="me-4 btn btn-outline btn-rounded btn-sm ">{{seat_number.number}}</button>
+                                                            </ng-template>
 
                                                         </ng-container>
-                                                        <ng-template #seatDisable>
-                                                            <button (click)="seatSelect($event,seat_number.id)"
-                                                                id="seatSelected"
-                                                                value="{{seat_number.row}}{{seat_number.number}}"
-                                                                type="button"
-                                                                class="btn btn-outline btn-rounded btn-sm ">{{seat_number.number}}</button>
+                                                        <ng-template #noneMargin>
+
+                                                            <ng-container
+                                                                *ngIf="seat_number.screening_id != null && seat_number.screening_id == screening_id ; else seatDisable">
+                                                                <button
+                                                                    class=" btn btn-outline btn-rounded btn-sm seat-disable">{{seat_number.number}}</button>
+
+                                                            </ng-container>
+                                                            <ng-template #seatDisable>
+                                                                <button (click)="seatSelect($event,seat_number.id)"
+                                                                    id="seatSelected"
+                                                                    value="{{seat_number.row}}{{seat_number.number}}"
+                                                                    type="button"
+                                                                    class="btn btn-outline btn-rounded btn-sm ">{{seat_number.number}}</button>
+                                                            </ng-template>
+
                                                         </ng-template>
+
                                                     </ng-cointainer>
                                                     <!-- <div class="col-md-3">
 
