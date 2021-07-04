@@ -12,15 +12,15 @@ const ROUTES : Routes = [
     component:ListComponent
   },
   {
-    path:'film/:monthly_id',
+    path:'films/:monthly_id',
     component:FilmRevenComponent
   },
   {
-    path:'combo/:monthly_id',
+    path:'combos/:monthly_id',
     component:ComboRevenComponent
   },
   {
-    path:'adv/:monthly_id',
+    path:'advs/:monthly_id',
     component:AdvRevenComponent
   }
 ]

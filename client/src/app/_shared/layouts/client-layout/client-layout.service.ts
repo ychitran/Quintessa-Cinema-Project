@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Film } from 'src/app/_shared/models/film.model';
+import { Combo } from '../../models/combo.model';
 import { Member } from '../../models/member.model';
 import { Screening } from '../../models/screening.model';
 import { Seat } from '../../models/seat.model';
@@ -26,6 +27,14 @@ export class ClientLayoutService {
 
   getFilms():Observable<Array<Film>> {
     return this.httpClient.get<Array<Film>>('/')
+  }
+
+  getCombos():Observable<Array<Combo>> {
+    return this.httpClient.get<Array<Combo>>('/products')
+  }
+
+  getComboDetail(id):Observable<Combo> {
+    return this.httpClient.get<Combo>('/products/'+id)
   }
 
   getFilm(id):Observable<Film> {

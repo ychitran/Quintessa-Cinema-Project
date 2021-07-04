@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Combo } from 'src/app/_shared/models/combo.model';
 import { ComboService } from '../combo.service';
 
@@ -11,16 +11,17 @@ import { ComboService } from '../combo.service';
 })
 export class EditComponent implements OnInit {
   combo: Combo
-  editComboForm
+  editComboForm: FormGroup
   constructor(
     private readonly route:ActivatedRoute,
     private readonly comboService : ComboService  ,
     private readonly formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get("id")
-    this.editComboForm.getElement(id).subscribe(
+    this.comboService.getElement(id).subscribe(
       res => this.loadAdvValue(res)
 
     )
@@ -44,8 +45,10 @@ export class EditComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id')
 
     this.comboService.update(id,value).subscribe(
-      res =>
-      alert('Chỉnh sửa thành công'),
+      res =>{
+      alert('Chỉnh sửa thành công')
+      this.router.navigateByUrl('/admin/combos')}
+      ,
       err => alert('Chỉnh sửa thất bại')      
     )
   }
