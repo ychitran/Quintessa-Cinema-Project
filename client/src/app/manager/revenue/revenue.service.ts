@@ -18,7 +18,7 @@ export class RevenueService {
   ) { }
 
   getMonthRevenList(keyword:string):Observable<Array<MonthlyRevenue>> {
-    return this.httpClient.get<Array<MonthlyRevenue>>('http://localhost:3000/monthly_revenues', {
+    return this.httpClient.get<Array<MonthlyRevenue>>('/admin/revenues', {
       params: {
         q : keyword
       }
@@ -26,11 +26,11 @@ export class RevenueService {
   }
 
   getFilmRevenList(monthly_id): Observable<Array<FilmRevenue>> {
-    return this.httpClient.get<Array<FilmRevenue>>('http://localhost:3000/film_revenues?monthly_id=' + monthly_id)
+    return this.httpClient.get<Array<FilmRevenue>>('/admin/revenues/films/' + monthly_id)
   }
 
   getComboRevenList(monthly_id): Observable<Array<ComboRevenue>> {
-    return this.httpClient.get<Array<ComboRevenue>>('http://localhost:3000/combo_revenues?monthly_id=' + monthly_id)
+    return this.httpClient.get<Array<ComboRevenue>>('/admin/revenues/combos/' + monthly_id)
   }
 
   getAdvRevenList(monthly_id): Observable<Array<AdvertisementRevenue>> {

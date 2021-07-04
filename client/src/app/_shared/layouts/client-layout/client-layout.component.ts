@@ -1,9 +1,9 @@
 import { Time } from '@angular/common';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { $ } from 'protractor';
 import { Film } from 'src/app/_shared/models/film.model';
+import { Combo } from '../../models/combo.model';
 import { Member } from '../../models/member.model';
 import { Order } from '../../models/order.model';
 import { Screening } from '../../models/screening.model';
@@ -17,13 +17,13 @@ import { ClientLayoutService } from './client-layout.service';
 })
 export class ClientLayoutComponent implements OnInit {
   // public film_name = '';
-  @ViewChild('closebutton') closebutton;
   // // public date = '';
   // public time = '';
   public_films : Array<Film>
   unpublic_films: Array<Film>
   films: Array<Film>
   film : Film
+  combos: Array<Combo>
   film_id : number
   move_name : string
   orderTicketForm : FormGroup
@@ -40,10 +40,13 @@ export class ClientLayoutComponent implements OnInit {
   start_time : Time
   seat = []
   screening_id: number
+  combo_id:number
+  combo_name:string
+  combo_price:number
   count_ticket : Number
   room_id:number
-  price: number
-  total_price: number;
+  format_price: number
+  total_price: number = 0;
   seat_id = []
 
   member : Member
@@ -61,6 +64,13 @@ export class ClientLayoutComponent implements OnInit {
     this.loadFilm();
     this.ticketForm();
     this.checkUser();
+    this.loadCombo();
+  }
+  loadCombo() {
+    this.clientLayoutService.getCombos().subscribe(res =>this.getProductList(res));
+  }
+  getProductList(res): void {
+    this.combos = res.data;
   }
   checkUser() {
     this.clientLayoutService.checkUser().subscribe(res => this.getUser(res));
@@ -77,17 +87,15 @@ export class ClientLayoutComponent implements OnInit {
   ticketForm() {
     this.orderTicketForm = this.formBuilder.group({
       film_id:[],
-      phone_number: [],
       user_id:[],
       screening_id:[],
       combo_id:[],
       discount_id:[],
       status:[],
-      ticket_price:[],
+      product_price:[],
       total_price:[],
       seats: [],
       seat_id: [],
-      order_date:[],
     })  
   }
   
@@ -102,6 +110,15 @@ export class ClientLayoutComponent implements OnInit {
   //   this.clientLayoutService.getAll().subscribe(res => { this.films = res;})
   // }
 
+  getProductDetail(event):void {
+    this.combo_id = event
+    this.clientLayoutService.getComboDetail(event).subscribe(res => this.loadProductDetail(res))
+  }
+  loadProductDetail(res): void {
+    this.combo_name = res.product_name;
+    this.combo_price = res.product_value;
+  }
+
   loadScreeningDate(event):void {
     this.film_id = event
     this.dates = []
@@ -109,7 +126,7 @@ export class ClientLayoutComponent implements OnInit {
     this.clientLayoutService.getFilmPrice(event).subscribe(res => this.getPrice(res))
   }
   getPrice(res){
-    this.price = res;
+    this.format_price = res;
   }
 
   loadFilmDetail(id):void{
@@ -121,21 +138,19 @@ export class ClientLayoutComponent implements OnInit {
   }
 
 
-  patchFormValue(id,screening_id,total_price,seat,seat_id): void {
+  patchFormValue(id,screening_id,combo_id,combo_price,total_price,seat,seat_id): void {
       this.orderTicketForm.patchValue({
       film_id:id,
-      phone_number: null,
       user_id:3,
       screening_id:screening_id,
-      combo_id:null,
+      combo_id: combo_id,
       discount_id:null,
       status:1, 
-      ticket_price:total_price,
+      product_price:combo_price,
       total_price:total_price,
       seats: seat,
-      seat_id : seat_id,
-      order_date : new Date(),
-    })
+      seat_id : seat_id
+        })
   }
 
   
@@ -152,7 +167,6 @@ export class ClientLayoutComponent implements OnInit {
       string =  value.seats[i]+ ' ' + string ;
     }
     value.seats = string
-    console.log(value)
     this.clientLayoutService.save(value).subscribe(
       res =>{
         alert('Đặt vé thành công')
@@ -162,7 +176,6 @@ export class ClientLayoutComponent implements OnInit {
       ,
       err => alert('Đệch con mợ mày')      
     )
-    this.closebutton.nativeElement.click();
   }
 
   getDateDetail(res): void {
@@ -212,7 +225,7 @@ export class ClientLayoutComponent implements OnInit {
     const value = event.target.value;
     this.seat.push(value);
     this.seat_id.push(seat_id);
-    this.total_price = this.price * this.seat.length
+    this.total_price = this.format_price * this.seat.length + this.combo_price
   }
 
   removeSeatValue(event,seat_id) {
@@ -239,7 +252,6 @@ export class ClientLayoutComponent implements OnInit {
     }
     this.seat = []
     this.total_price = 0
-    
   }
 
   seatSelect(event,seat_id) {
@@ -249,7 +261,7 @@ export class ClientLayoutComponent implements OnInit {
     } else {
       event.target.classList.add('seat-select');
       this.getSeatValue(event,seat_id);
-      this.patchFormValue(this.film.id,this.screening_id,this.total_price,this.seat,this.seat_id)
+      this.patchFormValue(this.film.id,this.screening_id,this.combo_id,this.combo_price,this.total_price,this.seat,this.seat_id)
     }
   }
 

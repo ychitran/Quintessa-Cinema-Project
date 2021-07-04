@@ -67,6 +67,17 @@
                                                         {{public_film.film_name}}</option>
                                                 </select>
                                             </div>
+
+                                            <div class="order-ticket">
+                                                <h3 class="ticket-order__font-nav">BẮP NƯỚC</h3>
+                                                <select class="ticket-order__border" 
+                                                (change)="getProductDetail($event.target.value)">
+                                                    <option checked>Vui lòng chọn phim</option>
+                                                    <option *ngFor="let combo of combos"
+                                                        value="{{combo.id}}">
+                                                        {{combo.product_name}}</option>
+                                                </select>
+                                            </div>
                                             <!-- <div class="date">
                                             <h3 class="ticket-order__font-nav">NGÀY</h3>
                                             <input type="date" class="ticket-order__border" >
@@ -120,7 +131,7 @@
                                                             <ng-container
                                                                 *ngIf="seat_number.screening_id != null && seat_number.screening_id == screening_id ; else seatDisable">
                                                                 <button
-                                                                    class="me-4 btn btn-outline btn-rounded btn-sm seat-disable">{{seat_number.number}}</button>
+                                                                    class="me-3 btn btn-outline btn-rounded btn-sm seat-disable">{{seat_number.number}}</button>
 
                                                             </ng-container>
                                                             <ng-template #seatDisable>
@@ -128,7 +139,7 @@
                                                                     id="seatSelected"
                                                                     value="{{seat_number.row}}{{seat_number.number}}"
                                                                     type="button"
-                                                                    class="me-4 btn btn-outline btn-rounded btn-sm ">{{seat_number.number}}</button>
+                                                                    class="me-3 btn btn-outline btn-rounded btn-sm ">{{seat_number.number}}</button>
                                                             </ng-template>
 
                                                         </ng-container>
@@ -210,8 +221,12 @@
                                 <h5 class="ticket-order__inf ">
                                     <ng-container *ngFor="let seatt of seat"> {{seatt}}</ng-container>
                                 </h5>
+                                <h3 class="ticket-order__font-nav ">BẮP NƯỚC ĐI KÈM</h3>
+                                <h5 class="ticket-order__inf ">{{combo_name}}</h5>
+                                <h3 class="ticket-order__font-nav ">GIÁ</h3>
+                                <h5 class="ticket-order__inf ">{{combo_price}} Vnd</h5>
                                 <h3 class="ticket-order__font-nav ">SỐ LƯỢNG VÉ: {{seat.length}}</h3>
-                                <h3 class="ticket-order__font-nav ">TỔNG TIỀN: {{total_price}}</h3>
+                                <h3 class="ticket-order__font-nav ">TỔNG TIỀN: {{total_price}} Vnd</h3>
                                 <button class="btn btn-outline-warning" (click)="clearSeat()">Clear</button>
                                 <form [formGroup]="orderTicketForm" (ngSubmit)="save()">
                                     <input class="ticket-order__inf name" formControlName="film_id" hidden>
