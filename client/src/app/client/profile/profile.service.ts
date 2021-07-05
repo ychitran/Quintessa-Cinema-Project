@@ -7,7 +7,7 @@ import { TicketDetail } from 'src/app/_shared/models/ticket.model';
 @Injectable({
   providedIn: 'root'
 })
-export class ProfleService {
+export class ProfileService {
 
   constructor(
     private readonly httpClient: HttpClient
