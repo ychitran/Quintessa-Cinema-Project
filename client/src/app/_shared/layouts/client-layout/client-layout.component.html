@@ -48,7 +48,7 @@
                                 <div id="carouselExampleControlsOrder" class="carousel slide" data-mdb-interval="false">
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <h5 class="modal-title ticket-order__font">Đặt vé</h5>
+                                            <h5 class="modal-title ticket-order__font">ĐẶT VÉ</h5>
                                             <div class="order-ticket">
                                                 <h3 class="ticket-order__font-nav">PHIM</h3>
                                                 <select class="ticket-order__border" (change)="loadScreeningDate($event.target.value)" (change)="loadFilmDetail($event.target.value)">
@@ -62,7 +62,7 @@
                                             <div class="order-ticket">
                                                 <h3 class="ticket-order__font-nav">BẮP NƯỚC</h3>
                                                 <select class="ticket-order__border" (change)="getProductDetail($event.target.value)">
-                                                    <option checked>Vui lòng chọn phim</option>
+                                                    <option checked>Vui lòng chọn combo</option>
                                                     <option *ngFor="let combo of combos"
                                                         value="{{combo.id}}">
                                                         {{combo.product_name}}</option>
@@ -97,7 +97,7 @@
                                         <!-- Modal Seat Start -->
                                         <div class="carousel-item container">
                                             <div class="row">
-                                                <h5 class="modal-title ticket-order__font">SEAT</h5>
+                                                <h5 class="modal-title ticket-order__font">GHẾ NGỒI</h5>
                                                 <img src="assets/frontend/img/ScreenForSeating_450.png " alt="">
                                                 <div *ngFor="let seat of seats">
                                                     <div class="col-md-1 ticket-order__seat-top ticket-order__font-row">
