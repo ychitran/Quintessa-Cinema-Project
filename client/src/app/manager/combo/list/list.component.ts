@@ -17,7 +17,10 @@ export class ListComponent implements OnInit {
     this.loadList();
   }
   loadList(keyword= ''):void  {
-    this.comboService.getList(keyword).subscribe(res => this.combos = res);
+    this.comboService.getList(keyword).subscribe(res => this.getList(res));
+  }
+  getList(res): void {
+    this.combos = res.data;
   }
 
   remove(id):void {
@@ -25,7 +28,10 @@ export class ListComponent implements OnInit {
       return;
     } 
     this.comboService.remove(id).subscribe(
-      res => this.loadList() 
+      res =>{
+        alert('Xóa thành công')
+        this.loadList() 
+      }
       ,
       err => alert('Xóa thất bại')
     )

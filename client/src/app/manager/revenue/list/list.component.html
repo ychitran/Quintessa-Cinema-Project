@@ -16,15 +16,15 @@
         <tbody>
             <tr *ngFor="let revenue of revenues; index as i">
                 <th>{{i+1}}</th>
-                <td>{{revenue.cinema_id}}</td>
-                <td>{{revenue.month}}</td>
+                <td>{{revenue.cinema_name}}</td>
+                <td>{{revenue.month + "/" + revenue.year}}</td>
                 <td>{{revenue.total_revenue}}</td>
                 <td>
-                    <a style="padding: 0 15px;" [routerLink]="['film',revenue.id]">
-                        <i class="fas fa-edit text-success"></i>
+                    <a style="padding: 0 15px;" [routerLink]="['films',revenue.id]">
+                        <i class="fad fa-film text-success"></i>
                     </a>
-                    <a [routerLink]="['combo',revenue.id]"><i class="fas fa-trash-alt text-danger"></i></a>
-                    <a [routerLink]="['advertisement',revenue.id]"><i class="fas fa-trash-alt text-danger"></i></a>
+                    <a [routerLink]="['combos',revenue.id]"><i class="fad fa-popcorn text-danger"></i></a>
+                    <!-- <a [routerLink]="['advertisement',revenue.id]"><i class="fas fa-trash-alt text-danger"></i></a> -->
                 </td>
             </tr>
         </tbody>

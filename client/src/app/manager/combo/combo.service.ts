@@ -14,28 +14,24 @@ export class ComboService {
     private readonly route: ActivatedRoute
   ) { }
   getList(keyword:string): Observable<Array<Combo>> {
-    return this.httpClient.get<Array<Combo>>('http://localhost:3000/combos',{
-      params: {
-        q:keyword
-      }
-    });
+    return this.httpClient.get<Array<Combo>>('/admin/combos');
   }
 
   getElement(id): Observable<Combo> {
-    return this.httpClient.get<Combo>('http://localhost:3000/combos/' + id);
+    return this.httpClient.get<Combo>('/admin/combos/edit/' + id);
   }
 
-  save(combo : Combo): Observable<Combo> {
-    return this.httpClient.post<Combo>(`http://localhost:3000/combos/`, combo);
+  save(combo): Observable<Combo> {
+    return this.httpClient.post<Combo>(`/admin/combos/add`, combo);
   
   }
 
   update(id,combo): Observable<Combo> {
-    return this.httpClient.put<Combo>('http://localhost:3000/combos/' + id,combo)
+    return this.httpClient.put<Combo>('/admin/combos/edit/' + id ,combo)
   }
 
   remove(id): Observable<any> {
     // const id = this.route.snapshot.paramMap.get("id");
-    return this.httpClient.delete<any>(`http://localhost:3000/combos/` + id)
+    return this.httpClient.get<any>(`/admin/combos/delete/` + id)
   }
 }

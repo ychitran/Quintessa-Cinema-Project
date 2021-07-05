@@ -1,13 +1,16 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CinemasController;
+use App\Http\Controllers\CombosController;
 use App\Http\Controllers\FilmsController;
 use App\Http\Controllers\MembersController;
 use App\Http\Controllers\OrderTicketController;
 use App\Http\Controllers\RemarkableController;
+use App\Http\Controllers\RevenuesController;
 use App\Http\Controllers\RoomsController;
 use App\Http\Controllers\ScreeningsController;
 use App\Http\Controllers\SeatController;
@@ -29,6 +32,9 @@ use App\Models\TicketDetail;
 |
 
 */
+Route::get('/revenue/list/{id}',[AdminController::class,'list']);
+// Route::post('/revenue/testpost',[AdminController::class,'post']);
+
 //AUTH CONTROLLER
 Route::post('/auth/login',[AuthController::class,'login']);
 Route::post('/auth/register',[AuthController::class,'register']);
@@ -37,6 +43,9 @@ Route::get('/checkUser',[AuthController::class,'checkUser']);
 //USER CONTROLLER
 Route::get('/',[FilmsController::class,'listFilm']);
 Route::get('/remarkable',[RemarkableController::class,'enableRemarkable']);
+Route::get('/products',[CombosController::class,'manageCombo']);
+Route::get('/products/{id}',[CombosController::class,'editCombo']);
+
 
 //Profile Member
 Route::get('/profile/{id}',[MembersController::class,'profileMember']);
@@ -142,13 +151,13 @@ Route::group(['prefix' =>'admin'], function() {
     });
 
     //manager Combo
-    Route::get('/combo',[CombosController::class,'manageCombo']);
-    
-    Route::group(['prefix' => 'combo','middleware' => 'manager'], function() {
-    Route::get('/create',[CombosController::class,'createCombo']);
-    Route::post('/create',[CombosController::class,'storeCombo']);
+    Route::get('/combos',[CombosController::class,'manageCombo']);
+    // ,'middleware' => 'manager'
+    Route::group(['prefix' => 'combos'], function() {
+    // Route::get('/create',[CombosController::class,'createCombo']);
+    Route::post('/add',[CombosController::class,'storeCombo']);
     Route::get('/edit/{id}',[CombosController::class,'editCombo']);
-    Route::post('/edit/{id}',[CombosController::class,'updateCombo']);
+    Route::put('/edit/{id}',[CombosController::class,'updateCombo']);
     Route::get('/delete/{id}',[CombosController::class,'deleteCombo']);
     });
 
@@ -182,6 +191,14 @@ Route::group(['prefix' =>'admin'], function() {
         Route::get('/add',[RemarkableController::class,'createRemarkable']);
         Route::post('/add',[RemarkableController::class,'storeRemarkable']);
 
+    });
+
+    //REVENUE
+
+    Route::group(['prefix'=>'revenues'], function() {
+        Route::get('',[RevenuesController::class,'revenues']);
+        Route::get('/films/{id}',[RevenuesController::class,'filmRevenues']);
+        Route::get('/combos/{id}',[RevenuesController::class,'productRevenues']);
     });
 
 });

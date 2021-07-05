@@ -26,6 +26,8 @@ class CinemasController extends Controller
 		$cinemas->information = $request->information;
 		$cinemas->save();
 
+        
+
 		return;
 	}
     public function editCinema($id) {

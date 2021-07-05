@@ -58,6 +58,16 @@
                                                         {{public_film.film_name}}</option>
                                                 </select>
                                             </div>
+
+                                            <div class="order-ticket">
+                                                <h3 class="ticket-order__font-nav">BẮP NƯỚC</h3>
+                                                <select class="ticket-order__border" (change)="getProductDetail($event.target.value)">
+                                                    <option checked>Vui lòng chọn phim</option>
+                                                    <option *ngFor="let combo of combos"
+                                                        value="{{combo.id}}">
+                                                        {{combo.product_name}}</option>
+                                                </select>
+                                            </div>
                                             <!-- <div class="date">
                                             <h3 class="ticket-order__font-nav">NGÀY</h3>
                                             <input type="date" class="ticket-order__border" >
@@ -173,6 +183,10 @@
                                 <h5 class="ticket-order__inf ">
                                     <ng-container *ngFor="let seatt of seat"> {{seatt}}</ng-container>
                                 </h5>
+                                <h3 class="ticket-order__font-nav ">BẮP NƯỚC ĐI KÈM</h3>
+                                <h5 class="ticket-order__inf ">{{combo_name}}</h5>
+                                <h3 class="ticket-order__font-nav ">GIÁ</h3>
+                                <h5 class="ticket-order__inf ">{{combo_price}} Vnd</h5>
                                 <h3 class="ticket-order__font-nav ">SỐ LƯỢNG VÉ: {{seat.length}}</h3>
                                 <h3 class="ticket-order__font-nav ">TỔNG TIỀN: {{total_price}}</h3>
                                 <div class="button-ticket d-flex">
