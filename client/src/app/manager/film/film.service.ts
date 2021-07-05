@@ -28,6 +28,10 @@ export class FilmService {
   //   }
   // }
 
+  searchList(keyword): Observable<Array<Film>> {
+    return this.httpClient.get<Array<Film>>('/admin/films/search/'+keyword);
+  } 
+
   getElement(id): Observable<Film> {
     return this.httpClient.get<Film>('/admin/films/edit/' + id);
   }

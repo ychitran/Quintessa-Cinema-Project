@@ -16,6 +16,7 @@ export class EditCinemaComponent implements OnInit {
     private readonly route:ActivatedRoute,
     private readonly cinemaService : CinemaService  ,
     private readonly formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -42,8 +43,10 @@ export class EditCinemaComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id')
 
     this.cinemaService.update(id,value).subscribe(
-      res =>
-      alert('Chỉnh sửa thành công'),
+      res =>{
+        alert('Chỉnh sửa thành công'),
+        this.router.navigateByUrl('/admin/cinemas')
+      },
       err => alert('Chỉnh sửa thất bại')      
     )
   }

@@ -58,8 +58,11 @@ export class AddFilmComponent implements OnInit {
     // console.log(value)
 
     this.filmService.save(value).subscribe(
-      res =>
-      alert('Thêm mới thành công'),
+      res =>{
+        alert('Thêm mới thành công'),
+
+        this.router.navigateByUrl('/admin/films')
+      },
       err => alert('Thêm mới thất bại')      
     )
   }

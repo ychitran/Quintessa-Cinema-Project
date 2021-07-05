@@ -26,6 +26,10 @@ export class ListFilmComponent implements OnInit {
 
   }
 
+  searchList(keyword) {
+    this.filmService.searchList(keyword).subscribe(res => this.films = res)
+  }
+
   remove(id):void {
     if(confirm("Bạn có chắc muốn xóa?")) {
       this.filmService.remove(id).subscribe(

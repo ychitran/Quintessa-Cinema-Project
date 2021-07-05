@@ -8,15 +8,15 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    // public function loginPage()
-    // {
-    //     return view('auth.login');
-    // }
+    public function loginPage()
+    {
+        return view('auth.login');
+    }
 
-    // public function registerPage()
-    // {
-    //     return view('auth.register');
-    // }
+    public function registerPage()
+    {
+        return view('auth.register');
+    }
 
     public function register(Request $request)
     {
@@ -49,10 +49,13 @@ class AuthController extends Controller
     }
 
     public function checkUser() {
-        if(Auth::check()) {
-            return response()->json(auth()->user());
-        }
-        $check = false;
+        // if(Auth::check()) {
+        //     return response()->json(auth()->user());
+        // }else {
+        //     $check = false;
+        // }
+        $check = Auth::user();
+        
         return response()->json($check);
     }
 
