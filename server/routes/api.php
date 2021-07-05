@@ -42,7 +42,7 @@ Route::get('/checkuser',[AuthController::class,'checkUser']);
 
 //USER CONTROLLER
 Route::get('/',[FilmsController::class,'listFilm']);
-Route::get('/remarkable',[RemarkableController::class,'enableRemarkable']);
+Route::get('/remarkable',[RemarkableController::class,'getRemarkable']);
 Route::get('/products',[CombosController::class,'manageCombo']);
 Route::get('/products/{id}',[CombosController::class,'editCombo']);
 

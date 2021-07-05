@@ -27,6 +27,14 @@ class RemarkableController extends Controller
         return response()->json($res);
     }
 
+    public function getRemarkable() {
+        $remarkable = Remarkable::where('remarkables.status',1)
+        ->leftJoin('films','remarkables.film_id','=','films.id')
+        ->select('remarkables.*','films.global_name as film_name')
+        ->get();
+        return response()->json($remarkable);
+    }
+
     public function listRemarkable(){
         $remarkable = DB::table('remarkables')
         ->leftJoin('films','remarkables.film_id','=','films.id')
