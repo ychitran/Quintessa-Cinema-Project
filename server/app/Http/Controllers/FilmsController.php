@@ -9,6 +9,15 @@ use Illuminate\Http\Request;
 
 class FilmsController extends Controller
 {
+	public function searchFilm($keyword)
+    {
+        $tickets = Film::where('film_name', 'LIKE' ,'%'.$keyword.'%')
+		->orWhere('global_name','LIKE','%'.$keyword.'%')
+        ->get();
+
+        return response()->json($tickets);
+    }
+
 	public function listFilm() {
 		$publics = Film::where('status',1)->get();
 		$unpublics = Film::where('status',0)->get();

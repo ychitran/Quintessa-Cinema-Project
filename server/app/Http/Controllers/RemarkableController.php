@@ -11,7 +11,23 @@ use Illuminate\Support\Facades\DB;
 
 class RemarkableController extends Controller
 {
-    public function enableRemarkable() {
+    public function enableRemarkable($id,$status) {
+        if($status == 0) {
+            DB::table('remarkables')->where('id',$id)->update([
+                'status' => 1,  
+            ]);
+            $res = true;
+        } else {
+            DB::table('remarkables')->where('id',$id)->update([
+                'status' => 0,
+            ]);
+            $res = false;
+        };
+        
+        return response()->json($res);
+    }
+
+    public function getRemarkable() {
         $remarkable = Remarkable::where('remarkables.status',1)
         ->leftJoin('films','remarkables.film_id','=','films.id')
         ->select('remarkables.*','films.global_name as film_name')
@@ -20,7 +36,13 @@ class RemarkableController extends Controller
     }
 
     public function listRemarkable(){
-        $remarkable = Remarkable::all();
+        $remarkable = DB::table('remarkables')
+        ->leftJoin('films','remarkables.film_id','=','films.id')
+        ->leftJoin('combos','remarkables.combo_id','=','combos.id')
+        ->leftJoin('discounts','remarkables.discount_id','=','discounts.id')
+        ->select('remarkables.*','films.global_name as film_name','combos.product_name as combo_name','discounts.information as information')
+        ->get()
+        ;
         return response()->json($remarkable);
     }
 

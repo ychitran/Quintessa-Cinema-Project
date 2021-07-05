@@ -188,25 +188,21 @@
                                 <h3 class="ticket-order__font-nav ">GIÁ</h3>
                                 <h5 class="ticket-order__inf ">{{combo_price}} Vnd</h5>
                                 <h3 class="ticket-order__font-nav ">SỐ LƯỢNG VÉ: {{seat.length}}</h3>
-                                <h3 class="ticket-order__font-nav ">TỔNG TIỀN: {{total_price}}</h3>
-                                <div class="button-ticket d-flex">
-                                    <button class="btn btn-outline-warning btn-rounded btn-sm ticket-order__space" (click)="clearSeat()">Clear</button>
-                                    <form [formGroup]="orderTicketForm" (ngSubmit)="save()">
-                                        <input class="ticket-order__inf name" formControlName="film_id" hidden>
-                                        <input class="ticket-order__inf name" formControlName="screening_id" hidden>
-                                        <input class="ticket-order__inf name" formControlName="seats" hidden>
-                                        <input class="ticket-order__inf name" formControlName="combo_id" hidden>
-                                        <input class="ticket-order__inf name" formControlName="discount_id" hidden>
-                                        <input class="ticket-order__inf name" formControlName="phone_number" hidden>
-                                        <input class="ticket-order__inf name" formControlName="user_id" hidden>
-                                        <input class="ticket-order__inf name" formControlName="status" hidden>
-                                        <input class="ticket-order__inf name" formControlName="ticket_price" hidden>
-                                        <input class="ticket-order__inf name" formControlName="total_price" hidden>
-                                        <div class="seatReceipt">
-                                            <button type="submit" class="btn btn-warning btn-rounded">ĐẶT VÉ</button>
-                                        </div>
-                                    </form>
-                                </div>
+                                <h3 class="ticket-order__font-nav ">TỔNG TIỀN: {{total_price}} Vnd</h3>
+                                <button class="btn btn-outline-warning" (click)="clearSeat()">Clear</button>
+                                <form [formGroup]="orderTicketForm" (ngSubmit)="save()">
+                                    <input class="ticket-order__inf name" formControlName="film_id" hidden>
+                                    <input class="ticket-order__inf name" formControlName="screening_id" hidden>
+                                    <input class="ticket-order__inf name" formControlName="seats" hidden>
+                                    <input class="ticket-order__inf name" formControlName="combo_id" hidden>
+                                    <input class="ticket-order__inf name" formControlName="discount_id" hidden>
+                                    <input class="ticket-order__inf name" formControlName="user_id" hidden>
+                                    <input class="ticket-order__inf name" formControlName="status" hidden>
+                                    <input class="ticket-order__inf name" formControlName="total_price" hidden>
+                                    <div class="seatReceipt">
+                                        <button type="submit" class="btn btn-outline-primary">Đặt vé</button>
+                                    </div>
+                                </form>
 
                             </div>
                             <!-- Your Information End -->

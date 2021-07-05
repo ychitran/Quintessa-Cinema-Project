@@ -38,11 +38,11 @@ Route::get('/revenue/list/{id}',[AdminController::class,'list']);
 //AUTH CONTROLLER
 Route::post('/auth/login',[AuthController::class,'login']);
 Route::post('/auth/register',[AuthController::class,'register']);
-Route::get('/checkUser',[AuthController::class,'checkUser']);
+Route::get('/checkuser',[AuthController::class,'checkUser']);
 
 //USER CONTROLLER
 Route::get('/',[FilmsController::class,'listFilm']);
-Route::get('/remarkable',[RemarkableController::class,'enableRemarkable']);
+Route::get('/remarkable',[RemarkableController::class,'getRemarkable']);
 Route::get('/products',[CombosController::class,'manageCombo']);
 Route::get('/products/{id}',[CombosController::class,'editCombo']);
 
@@ -74,6 +74,8 @@ Route::group(['prefix' =>'admin'], function() {
     //,'middleware' => 'administrator'
     Route::get('/films',[FilmsController::class,'manageFilm']);
     Route::get('/films/status',[FilmsController::class,'listFilm']);
+    Route::get('/films/search/{keyword}',[FilmsController::class,'searchFilm']);
+
     Route::group(['prefix' => 'films'], function() {
     Route::get('/add',[FilmsController::class,'createFilm']);
     Route::post('/add',[FilmsController::class,'storeFilm']);
@@ -187,7 +189,9 @@ Route::group(['prefix' =>'admin'], function() {
     });
 
     //Remarkable 
+    Route::get('remarkables',[RemarkableController::class,'listRemarkable']);
     Route::group(['prefix'=> 'remarkables'], function(){
+        Route::get('/change/{id}/{status}',[RemarkableController::class,'enableRemarkable']);
         Route::get('/add',[RemarkableController::class,'createRemarkable']);
         Route::post('/add',[RemarkableController::class,'storeRemarkable']);
 
