@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Film } from 'src/app/_shared/models/film.model';
 import { DetailsFilmService } from './details-film.service';
+
 
 @Component({
   selector: 'app-details-film',
@@ -15,7 +17,8 @@ export class DetailsFilmComponent implements OnInit {
   constructor(
     private readonly route: ActivatedRoute,
     private readonly httpClient: HttpClient,
-    private readonly detailsService: DetailsFilmService 
+    private readonly detailsService: DetailsFilmService,
+    private readonly sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +32,10 @@ export class DetailsFilmComponent implements OnInit {
   loadFilmDetails() {
     const id = this.route.snapshot.paramMap.get("id")
     this.detailsService.getFilm(id).subscribe(res => this.film = res)
+  }
+  //Trailer Video
+  getEmbedUrl(film) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + film.trailer);
   }
 
   

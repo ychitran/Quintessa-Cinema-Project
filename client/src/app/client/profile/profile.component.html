@@ -1,4 +1,4 @@
-<title>Hồ sơ cá nhân</title>
+<div class="head__height"></div>
 <div class="profile__height container position-relative">
     <div class="profile__head">
         <img src="{{profile.avatar}}" class="img-fluid rounded-circle profile__avatar position-absolute" alt="" />
@@ -16,21 +16,19 @@
                     <div class="email mb-5">
                         <span class="profile__font">Email:</span>
                         <div class="form mt-3">
-                            <input type="text" id="form5Example1" value="{{profile.email}}"
-                                class="form-control profile__input-bg" />
+                            <input type="text" id="form5Example1" value="{{profile.email}}" class="form-control profile__input-bg profile__color" />
                         </div>
                     </div>
                     <div class="password mb-5">
                         <span class="profile__font">Mật khẩu:</span>
                         <div class="form mt-3">
-                            <input type="password" value="" id="form5Example1" class="form-control profile__input-bg" />
+                            <input type="password" value="" id="form5Example1" class="form-control profile__input-bg profile__color" />
                         </div>
                     </div>
                     <div class="name mb-5">
                         <span class="profile__font">Điểm tích lũy</span>
                         <div class="form mt-3">
-                            <input type="text" value="{{profile.cinema_point}}" id="form5Example1"
-                                class="form-control profile__input-bg" />
+                            <input type="text" value="{{profile.cinema_point}}" id="form5Example1" class="form-control profile__input-bg profile__color" />
                         </div>
                     </div>
                 </div>
@@ -38,27 +36,23 @@
                     <div class="phone mb-5">
                         <span class="profile__font">Số điện thoại:</span>
                         <div class="form mt-3">
-                            <input type="text" id="form5Example1" value="{{profile.phone_number}}"
-                                class="form-control profile__input-bg" />
+                            <input type="text" id="form5Example1" value="{{profile.phone_number}}" class="form-control profile__input-bg profile__color" />
                         </div>
                     </div>
                     <div class="address mb-5">
                         <span class="profile__font">Địa chỉ:</span>
                         <div class="form mt-3">
-                            <input type="text" id="form5Example1" value="250 Hà Nội"
-                                class="form-control profile__input-bg" />
+                            <input type="text" id="form5Example1" value="250 Hà Nội" class="form-control profile__input-bg profile__color" />
                         </div>
                     </div>
                     <div class="city mb-5">
                         <span class="profile__font">Thành phố: </span>
                         <div class="form mt-3">
-                            <input type="text" id="form5Example1" value="Hà Nội"
-                                class="form-control profile__input-bg" />
+                            <input type="text" id="form5Example1" value="Hà Nội" class="form-control profile__input-bg profile__color" />
                         </div>
                     </div>
                     <div class="history text-center">
-                        <button (click)="loadOrderTicket(profile.id)" type="button" class="btn" data-mdb-toggle="modal"
-                            data-mdb-target="#historyModal"> <span class="profile__font">Lịch sử giao dịch
+                        <button (click)="loadOrderTicket(profile.id)" type="button" class="btn" data-mdb-toggle="modal" data-mdb-target="#historyModal"> <span class="profile__font">Lịch sử giao dịch
                             </span></button>
 
                     </div>

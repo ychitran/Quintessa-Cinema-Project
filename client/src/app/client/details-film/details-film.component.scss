@@ -51,6 +51,10 @@
     &__bottom {
         margin-bottom: 100px;
     }
+    &__height {
+        height: 100px;
+        width: 100%;
+    }
 }
 
 .straight::after {
@@ -69,6 +73,7 @@
         height: 750px;
         background-color: #333;
         margin-bottom: 80px;
+        margin-top: 100px;
     }
     &__col-height {
         height: 100%;

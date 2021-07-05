@@ -1,5 +1,6 @@
-<!-- Header Navbar End -->
+<div class="head__height">
 
+</div>
 <!-- Article Details Start -->
 <title>Chi tiết phim</title>
 <div class="article-details container article__height article__padding">
@@ -98,8 +99,8 @@
 <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModal" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
-            <div class="ratio ratio-16x9" >
-                <iframe width="791" height="445" src="{{film.trailer}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="ratio ratio-16x9">
+                <iframe width="560" height="315" [src]="getEmbedUrl(film)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 
         </div>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Member } from 'src/app/_shared/models/member.model';
 import { TicketDetail } from 'src/app/_shared/models/ticket.model';
-import { ProfleService } from './profle.service';
+import { ProfileService } from './profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
   tickets : Array<TicketDetail>
   constructor(
     private readonly route:ActivatedRoute,
-    private readonly profileService: ProfleService
+    private readonly profileService: ProfileService
   ) { }
 
   ngOnInit(): void {
