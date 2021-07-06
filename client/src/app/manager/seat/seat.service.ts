@@ -24,11 +24,11 @@ export class SeatService {
   ) { }
 
   getUser(keyword):Observable<Member> {
-    return this.httpClient.get<Member>('/admin/order/user/'+keyword);
+    return this.httpClient.get<Member>('/admin/orders/user/'+keyword);
   }
 
   getFilms():Observable<Array<Film>> {
-    return this.httpClient.get<Array<Film>>('/admin/order/films')
+    return this.httpClient.get<Array<Film>>('/admin/orders/films')
   }
 
   getCombos():Observable<Array<Combo>> {
@@ -40,36 +40,36 @@ export class SeatService {
   }
 
   getFilm(id):Observable<Film> {
-    return this.httpClient.get<Film>('/admin/order/details-film/'+id)
+    return this.httpClient.get<Film>('/admin/orders/details-film/'+id)
   }
 
   getDate(film_id):Observable<Array<Screening>> {
-    return this.httpClient.get<Array<Screening>>('/admin/order/screeningdate/' + film_id)
+    return this.httpClient.get<Array<Screening>>('/admin/orders/screeningdate/' + film_id)
   }
 
   getStartTime(date,film_id):Observable <Array<Screening>> {
-    return this.httpClient.get<Array<Screening>>('/admin/order/screeningtime/' + film_id  + '/' + date)
+    return this.httpClient.get<Array<Screening>>('/admin/orders/screeningtime/' + film_id  + '/' + date)
   }
 
   getRoom(film_id,date, start_time):Observable<Array<Screening>> {
-    return this.httpClient.get<Array<Screening>>('/admin/order/screeningroom/'+ film_id + '/' + date + '/' + start_time)
+    return this.httpClient.get<Array<Screening>>('/admin/orders/screeningroom/'+ film_id + '/' + date + '/' + start_time)
   }
 
   getScreeningId(film_id,date, start_time,room_id):Observable<Array<Screening>> {
-    return this.httpClient.get<Array<Screening>>('/admin/order/screeningid/'+ film_id + '/' + date + '/' + start_time + '/' + room_id )
+    return this.httpClient.get<Array<Screening>>('/admin/orders/screeningid/'+ film_id + '/' + date + '/' + start_time + '/' + room_id )
   }
 
   getSeat(room_id,screening_id):Observable<Array<Screening>> {
-    return this.httpClient.get<Array<Screening>>('/admin/order/screeningseat/'+ room_id + '/' + screening_id)
+    return this.httpClient.get<Array<Screening>>('/admin/orders/screeningseat/'+ room_id + '/' + screening_id)
   }
 
   getFilmPrice(film_id):Observable<Array<TicketPrice>> {
-    return this.httpClient.get<Array<TicketPrice>>('/admin/order/film-price/'+ film_id)
+    return this.httpClient.get<Array<TicketPrice>>('/admin/orders/film-price/'+ film_id)
   }
  
 
   save(cinema : TicketDetail): Observable<TicketDetail> {
-    return this.httpClient.post<TicketDetail>(`/admin/order/orderticket`, cinema);
+    return this.httpClient.post<TicketDetail>(`/admin/orders/orderticket`, cinema);
   
   }
 }

@@ -78,6 +78,7 @@ export class ListComponent implements OnInit {
     this.seatService.getUser(event).subscribe(res => this.getUserInfo(res))
   }
   getUserInfo(res): void {
+    console.log(res)
     this.member = res;
   }
 
@@ -167,7 +168,7 @@ export class ListComponent implements OnInit {
         this.router.navigateByUrl('/list-film')
       }
       ,
-      err => alert('Đệch con mợ mày')      
+      err => alert('Đặt vé thất bại')      
     )
   }
 
@@ -218,7 +219,7 @@ export class ListComponent implements OnInit {
     const value = event.target.value;
     this.seat.push(value);
     this.seat_id.push(seat_id);
-    this.total_price = this.format_price * this.seat.length + this.combo_price
+    this.total_price = this.format_price * this.seat.length
   }
 
   removeSeatValue(event,seat_id) {
@@ -238,7 +239,6 @@ export class ListComponent implements OnInit {
   }
 
   clearSeat(){
-    console.log(this.seat.length)
     for(let i = 0;i<this.seat.length;i++){
       const seat_select = document.getElementById('seatSelected')
       seat_select.classList.remove('seat-select')

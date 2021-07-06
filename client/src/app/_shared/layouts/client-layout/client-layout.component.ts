@@ -185,7 +185,7 @@ export class ClientLayoutComponent implements OnInit {
         this.router.navigateByUrl('/list-film')
       }
       ,
-      err => alert('Đệch con mợ mày')      
+      err => alert('Đặt vé thất bại')      
     )
   }
 
