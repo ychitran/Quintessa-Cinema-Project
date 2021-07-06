@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Film } from 'src/app/_shared/models/film.model';
+import { Cinema } from '../../models/cinema.model';
 import { Combo } from '../../models/combo.model';
 import { Member } from '../../models/member.model';
 import { Screening } from '../../models/screening.model';
@@ -29,6 +30,10 @@ export class ClientLayoutService {
     return this.httpClient.get<Array<Film>>('/')
   }
 
+  getCinemas():Observable<Array<Cinema>> {
+    return this.httpClient.get<Array<Cinema>>('/cinema');
+  }
+
   getCombos():Observable<Array<Combo>> {
     return this.httpClient.get<Array<Combo>>('/products')
   }
@@ -41,20 +46,20 @@ export class ClientLayoutService {
     return this.httpClient.get<Film>('/details-film/'+id)
   }
 
-  getDate(film_id):Observable<Array<Screening>> {
-    return this.httpClient.get<Array<Screening>>('/screeningdate/' + film_id)
+  getDate(film_id,cinema_id):Observable<Array<Screening>> {
+    return this.httpClient.get<Array<Screening>>('/screeningdate/' + film_id + '/' + cinema_id)
   }
 
-  getStartTime(date,film_id):Observable <Array<Screening>> {
-    return this.httpClient.get<Array<Screening>>('/screeningtime/' + film_id  + '/' + date)
+  getStartTime(date,film_id,cinema_id):Observable <Array<Screening>> {
+    return this.httpClient.get<Array<Screening>>('/screeningtime/' + film_id  + '/' + date + '/' + cinema_id)
   }
 
-  getRoom(film_id,date, start_time):Observable<Array<Screening>> {
-    return this.httpClient.get<Array<Screening>>('/screeningroom/'+ film_id + '/' + date + '/' + start_time)
+  getRoom(film_id,date, start_time,cinema_id):Observable<Array<Screening>> {
+    return this.httpClient.get<Array<Screening>>('/screeningroom/'+ film_id + '/' + date + '/' + start_time + '/' + cinema_id)
   }
 
-  getScreeningId(film_id,date, start_time,room_id):Observable<Array<Screening>> {
-    return this.httpClient.get<Array<Screening>>('/screeningid/'+ film_id + '/' + date + '/' + start_time + '/' + room_id)
+  getScreeningId(film_id,date, start_time,room_id,cinema_id):Observable<Array<Screening>> {
+    return this.httpClient.get<Array<Screening>>('/screeningid/'+ film_id + '/' + date + '/' + start_time + '/' + room_id + '/' + cinema_id)
   }
 
   getSeat(room_id,screening_id):Observable<Array<Screening>> {
