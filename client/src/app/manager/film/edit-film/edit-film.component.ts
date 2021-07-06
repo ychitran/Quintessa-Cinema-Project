@@ -58,8 +58,10 @@ export class EditFilmComponent implements OnInit {
     console.log(value)
 
     this.filmService.update(id,value).subscribe(
-      res =>
-      alert('Chỉnh sửa thành công'),
+      res => {
+        this.router.navigateByUrl('/admin/films'),
+        alert('Chỉnh sửa thành công')
+      },
       err => alert('Chỉnh sửa thất bại')      
     )
   }

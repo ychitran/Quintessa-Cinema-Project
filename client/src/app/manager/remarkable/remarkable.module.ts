@@ -7,10 +7,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterModule, Routes } from '@angular/router';
 
 const ROUTES : Routes = [
-  // {
-  //   path:'',
-  //   component:ListComponent
-  // },
+  {
+    path:'',
+    component:ListComponent
+  },
   {
     path:'add',
     component:AddComponent

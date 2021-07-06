@@ -19,16 +19,52 @@ use SebastianBergmann\Environment\Console;
 
 class OrderTicketController extends Controller
 {
-    public function getScreeningDate($id)
-    {
-        $screenings = Screening::where('film_id', $id)->get();
-        return response()->json($screenings);
-    }
-    public function getScreeningTime($date)
-    {
-        $screenings = Screening::where('date', $date)->get();
-        return response()->json($screenings);
-    }
+
+    public function getScreeningOfFilmAdmin($id) {
+		$screenings = DB::table('screenings')
+		->where('screenings.film_id',$id)
+		->where('screenings.cinema_id',1)
+		->leftJoin('films','screenings.film_id','=','films.id')
+		->leftJoin('rooms','screenings.room_id','=','rooms.id')
+		->select('screenings.*','films.global_name as global_name','rooms.room_name as room_name')
+		->get();
+		return response()->json($screenings);
+	}
+
+	public function getTimeOfDateAdmin($film_id,$date){
+		$screenings = Screening::select('start_time')
+		->where('film_id',$film_id)
+		->where('date',$date)
+		->where('cinema_id',1)
+		->groupBy('start_time')
+		->get();
+		return response()->json($screenings);
+	}
+
+	public function getRoomOfScreeningAdmin($film_id,$date, $start_time) {
+		$screenings = Screening::select('room_id')
+		->where('film_id',$film_id)
+		->where('cinema_id',1)
+		->where('date',$date)
+		->where('start_time',$start_time)
+		->groupBy('room_id')
+		->get();
+		return response()->json($screenings);
+	}
+
+	public function getScreeningIdAdmin($film_id,$date, $start_time,$room_id){
+		$screening_id = Screening::select('id')
+		->where('film_id',$film_id)
+		->where('cinema_id',1)
+		->where('date',$date)
+		->where('start_time',$start_time)
+		->where('room_id',$room_id)
+		->first();
+		return response()->json($screening_id);
+	}
+
+
+
     public function getProviderOfOrderTicket()
     {
         $combos = Combo::all();
@@ -39,6 +75,15 @@ class OrderTicketController extends Controller
             'discounts' => $discounts,
             'prices' => $prices
         ]);
+    }
+
+    
+
+    public function getUserDetail($keyword){
+        $user = User::where('phone_number', 'LIKE' ,'%'.$keyword.'%')
+		// ->orWhere('full_name','LIKE','%'.$keyword.'%')
+        ->first();
+        return response()->json($user);
     }
 
 
@@ -132,4 +177,5 @@ class OrderTicketController extends Controller
         //revenue 
         return ;
     }
+
 }

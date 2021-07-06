@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Film } from 'src/app/_shared/models/film.model';
+import { Cinema } from '../../models/cinema.model';
 import { Combo } from '../../models/combo.model';
 import { Member } from '../../models/member.model';
 import { Order } from '../../models/order.model';
@@ -33,6 +34,8 @@ export class ClientLayoutComponent implements OnInit {
   start_times : Array<Screening> = []
   rooms: Array<Screening> = []
   orders : Array<Order> = []
+  cinemas: Array<Cinema>
+  cinema_id: number
 
 
   status: boolean = false
@@ -65,7 +68,15 @@ export class ClientLayoutComponent implements OnInit {
     this.ticketForm();
     this.checkUser();
     this.loadCombo();
+    this.loadCinema();
   }
+  loadCinema() {
+    this.clientLayoutService.getCinemas().subscribe(res => this.cinemas = res)
+  }
+  getCinema_id(event) {
+    this.cinema_id = event
+  }
+
   loadCombo() {
     this.clientLayoutService.getCombos().subscribe(res =>this.getProductList(res));
   }
@@ -122,7 +133,7 @@ export class ClientLayoutComponent implements OnInit {
   loadScreeningDate(event):void {
     this.film_id = event
     this.dates = []
-    this.clientLayoutService.getDate(event).subscribe(res => this.getDateDetail(res))
+    this.clientLayoutService.getDate(event,this.cinema_id).subscribe(res => this.getDateDetail(res))
     this.clientLayoutService.getFilmPrice(event).subscribe(res => this.getPrice(res))
   }
   getPrice(res){
@@ -174,7 +185,7 @@ export class ClientLayoutComponent implements OnInit {
         this.router.navigateByUrl('/list-film')
       }
       ,
-      err => alert('Đệch con mợ mày')      
+      err => alert('Đặt vé thất bại')      
     )
   }
 
@@ -185,7 +196,7 @@ export class ClientLayoutComponent implements OnInit {
   loadStartTime(event):void {
     this.date = event
     this.start_times = []
-    this.clientLayoutService.getStartTime(event,this.film_id).subscribe(res => this.getStartTimeDetail(res))
+    this.clientLayoutService.getStartTime(event,this.film_id,this.cinema_id).subscribe(res => this.getStartTimeDetail(res))
   }
   getStartTimeDetail(res) {
     this.start_times = res
@@ -194,7 +205,7 @@ export class ClientLayoutComponent implements OnInit {
   loadRoom(start_time) {
     this.rooms = []
     this.start_time = start_time
-    this.clientLayoutService.getRoom(this.film_id,this.date,start_time).subscribe(res => this.getRoomList(res))
+    this.clientLayoutService.getRoom(this.film_id,this.date,start_time,this.cinema_id).subscribe(res => this.getRoomList(res))
   }
   getRoomList(res): void {
     this.rooms = res;
@@ -202,7 +213,7 @@ export class ClientLayoutComponent implements OnInit {
 
   loadScreeningId(room_id) {
     this.room_id = room_id
-    this.clientLayoutService.getScreeningId(this.film_id,this.date,this.start_time,room_id).subscribe(res => this.getScreeningId(res))
+    this.clientLayoutService.getScreeningId(this.film_id,this.date,this.start_time,room_id,this.cinema_id).subscribe(res => this.getScreeningId(res))
   }
   getScreeningId(res): void {
     this.screening_id = res.id

@@ -14,12 +14,8 @@ export class RemarkableService {
     private readonly route: ActivatedRoute
   ) { }
 
-  getList(keyword:string): Observable<Array<Remarkable>> {
-    return this.httpClient.get<Array<Remarkable>>('/admin/remarkables',{
-      params: {
-        q:keyword
-      }
-    });
+  getList(): Observable<Array<Remarkable>> {
+    return this.httpClient.get<Array<Remarkable>>('/admin/remarkables');
   }
 
   getListProvider() {
@@ -33,6 +29,10 @@ export class RemarkableService {
   save(remarkable : Remarkable): Observable<Remarkable> {
     return this.httpClient.post<Remarkable>(`/admin/remarkables/add`, remarkable);
   
+  }
+
+  changStatus(id,status) {
+    return this.httpClient.get('/admin/remarkables/change/'+id+'/'+status);
   }
 
   update(id,remarkable): Observable<Remarkable> {
