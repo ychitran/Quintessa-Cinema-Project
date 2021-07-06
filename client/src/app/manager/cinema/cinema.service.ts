@@ -14,11 +14,7 @@ export class CinemaService {
   ) { }
 
   getList(keyword:string): Observable<Array<Cinema>> {
-    return this.httpClient.get<Array<Cinema>>('/admin/cinemas',{
-      params: {
-        q:keyword
-      }
-    });
+    return this.httpClient.get<Array<Cinema>>('/admin/cinemas');
   }
 
   getElement(id): Observable<Cinema> {

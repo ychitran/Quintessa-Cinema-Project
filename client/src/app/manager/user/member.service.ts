@@ -16,11 +16,7 @@ export class MemberService {
   ) { }
 
   getList(keyword:string): Observable<Array<Member>> {
-    return this.httpClient.get<Array<Member>>('/admin/members',{
-      params: {
-        q:keyword
-      }
-    });
+    return this.httpClient.get<Array<Member>>('/admin/members');
   }
 
   getElement(id): Observable<Member> {

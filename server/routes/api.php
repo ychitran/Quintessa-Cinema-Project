@@ -37,7 +37,9 @@ Route::get('/revenue/list/{id}', [AdminController::class, 'list']);
 // Route::post('/revenue/testpost',[AdminController::class,'post']);
 
 //AUTH CONTROLLER
+
 Route::post('/auth/login', [AuthController::class, 'login']);
+
 Route::post('/auth/register', [AuthController::class, 'register']);
 Route::get('/checkuser', [AuthController::class, 'checkUser']);
 

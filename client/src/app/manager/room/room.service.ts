@@ -16,11 +16,7 @@ export class RoomService {
   ) { }
 
   getList(keyword:string): Observable<Array<Room>> {
-    return this.httpClient.get<Array<Room>>('/admin/rooms',{
-      params: {
-        q:keyword
-      }
-    });
+    return this.httpClient.get<Array<Room>>('/admin/rooms');
   }
 
   getListProvider(): Observable<Array<Cinema>> {

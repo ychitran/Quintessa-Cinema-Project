@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Film } from 'src/app/_shared/models/film.model';
 import { Room } from 'src/app/_shared/models/room.model';
 import { ScreeningService } from '../screening.service';
@@ -17,7 +17,8 @@ export class AddComponent implements OnInit {
   constructor(
     private readonly screeningService:ScreeningService,
     private readonly route: ActivatedRoute,
-    private readonly formBuilder:FormBuilder
+    private readonly formBuilder:FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -52,8 +53,11 @@ export class AddComponent implements OnInit {
     const { value } = this.addScreeningForm;
 
     this.screeningService.save(value).subscribe(
-      res =>
-      alert('Thêm mới thành công'),
+      res =>{
+        alert('Thêm mới thành công')
+        this.router.navigateByUrl('/admin/cinemas')
+      }
+      ,
       err => alert('Thêm mới thất bại')      
     )
   }

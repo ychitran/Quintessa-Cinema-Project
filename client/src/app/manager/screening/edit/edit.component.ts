@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Film } from 'src/app/_shared/models/film.model';
 import { Room } from 'src/app/_shared/models/room.model';
 import { Screening } from 'src/app/_shared/models/screening.model';
@@ -19,7 +19,8 @@ export class EditComponent implements OnInit {
   constructor(
     private readonly route: ActivatedRoute,
     private screeningService: ScreeningService,
-    private formBuilder:FormBuilder
+    private formBuilder:FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -54,8 +55,11 @@ export class EditComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id')
 
     this.screeningService.update(id,value).subscribe(
-      res =>
-      alert('Chỉnh sửa thành công'),
+      res => {
+        alert('Chỉnh sửa thành công')
+        this.router.navigateByUrl('/admin/cinemas')
+      }
+      ,
       err => alert('Chỉnh sửa thất bại')      
     )
   }
