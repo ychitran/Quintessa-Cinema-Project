@@ -146,6 +146,17 @@
     }
 }
 
+@media (max-width: 576px) {
+    .article {
+        &__font-content {
+            font-size: 10px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            color: #fff;
+        }
+    }
+}
+
 // Article Details End
 // ===============Tittle Now Playing Start - Tittle Coming Soon Start
 .content-play {

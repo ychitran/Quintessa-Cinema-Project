@@ -2,23 +2,23 @@
     <!-- Header Navbar Start -->
     <div class="header container-fluid text-center slide__index head__border position-absolute">
         <div class="row">
-            <div class="col-md-2 head__display">
+            <div class="col-2 head__display">
                 <img class="head__logo head__margin" src="client/assets/frontend/logo/Logo-light.png" alt="logo">
             </div>
-            <div class="col-md-8 head__display">
-                <nav class="navbar navbar-expand-lg head__margin">
+            <div class="col-8 head__display">
+                <nav class="navbar navbar-expand head__margin">
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
-                                <a class="nav-link active head__space head__font" [routerLink]="['/']" routerLinkActive="router-link-active" aria-current="page">TRANG CHỦ</a>
-                                <a class="nav-link head__space head__font " [routerLink]="['/list-film']" routerLinkActive="router-link-active">SUẤT CHIẾU</a>
+                                <a class="nav-link active head__space head__font" [routerLink]="['/client']" routerLinkActive="router-link-active" aria-current="page">TRANG CHỦ</a>
+                                <a class="nav-link head__space head__font " [routerLink]="['/client/list-film']" routerLinkActive="router-link-active">SUẤT CHIẾU</a>
                                 <a class="btn nav-link head__font" data-mdb-toggle="modal" data-mdb-target="#orderModal">ĐẶT VÉ</a>
                             </div>
                         </div>
                     </div>
                 </nav>
             </div>
-            <div class="col-md-2 head__display head__margin">
+            <div class="col-2 head__display head__margin">
                 <ng-container *ngIf="check_auth == true; else existUser">
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">
@@ -26,7 +26,7 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li><a class="dropdown-item" routerLink="./profile">Profile</a></li>
-                            <li><a class="dropdown-item" href="">ĐĂNG SUẤT</a></li>
+                            <li><a class="dropdown-item" href="">ĐĂNG XUẤT</a></li>
                         </ul>
                     </div>
                 </ng-container>
@@ -44,7 +44,7 @@
                 <div class="modal-content">
                     <div class="container ticket-order__width">
                         <div class="row">
-                            <div class="col-md-7 ticket-order__border-ticket">
+                            <div class="col-7 ticket-order__border-ticket">
                                 <div id="carouselExampleControlsOrder" class="carousel slide" data-mdb-interval="false">
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
@@ -52,14 +52,14 @@
 
                                             <div class="order-ticket">
                                                 <h3 class="ticket-order__font-nav">Rạp phim</h3>
-                                                <select class="ticket-order__border" (change)="getCinema_id($event.target.value)" >
+                                                <select class="ticket-order__border" (change)="getCinema_id($event.target.value)">
                                                     <option checked>Vui lòng chọn rạp phim</option>
                                                     <option *ngFor="let cinema of cinemas"
                                                         value="{{cinema.id}}">
                                                         {{cinema.cinema_name}}</option>
                                                 </select>
                                             </div>
-                                            
+
                                             <div class="order-ticket">
                                                 <h3 class="ticket-order__font-nav">PHIM</h3>
                                                 <select class="ticket-order__border" (change)="loadScreeningDate($event.target.value)" (change)="loadFilmDetail($event.target.value)">
@@ -70,7 +70,7 @@
                                                 </select>
                                             </div>
 
-                                            
+
 
                                             <div class="order-ticket">
                                                 <h3 class="ticket-order__font-nav">BẮP NƯỚC</h3>
@@ -113,7 +113,7 @@
                                                 <h5 class="modal-title ticket-order__font">GHẾ NGỒI</h5>
                                                 <img src="client/assets/frontend/img/ScreenForSeating_450.png " alt="">
                                                 <div *ngFor="let seat of seats">
-                                                    <div class="col-md-1 ticket-order__seat-top ticket-order__font-row">
+                                                    <div class="col-1 ticket-order__seat-top ticket-order__font-row">
                                                         {{seat.row}}
                                                     </div>
                                                     <ng-cointainer *ngFor="let seat_number of seat['number'];index as i">
@@ -141,7 +141,7 @@
                                                         </ng-template>
 
                                                     </ng-cointainer>
-                                                    <!-- <div class="col-md-3">
+                                                    <!-- <div class="col-3">
 
                                                     <div class="seat-chart ticket-order__seat-top">
                                                         <div class="a1">
@@ -173,7 +173,7 @@
 
                                                 </div>
 
-                                                <div class="col-md-1">
+                                                <div class="col-1">
                                                     <button (click)=clearSeat() type="button" class="btn btn-outline-warning btn-rounded btn-sm ticket-order__space-top" data-mdb-slide="prev" data-mdb-target="#carouselExampleControlsOrder" data-mdb-ripple-color="dark">Previous</button>
                                                 </div>
                                             </div>
@@ -185,7 +185,7 @@
                             </div>
                             <!-- Your Information Start -->
                             <div class="col-1"></div>
-                            <div class="col-md-4 ">
+                            <div class="col-4 ">
                                 <h5 class="modal-title ticket-order__font ">THÔNG TIN ĐẶT VÉ</h5>
                                 <h3 class="ticket-order__font-nav ">PHIM</h3>
                                 <h5 class="ticket-order__inf ">{{move_name}}</h5>
@@ -203,20 +203,22 @@
                                 <h5 class="ticket-order__inf ">{{combo_price}} Vnd</h5>
                                 <h3 class="ticket-order__font-nav ">SỐ LƯỢNG VÉ: {{seat.length}}</h3>
                                 <h3 class="ticket-order__font-nav ">TỔNG TIỀN: {{total_price}} Vnd</h3>
-                                <button class="btn btn-outline-warning" (click)="clearSeat()">Clear</button>
-                                <form [formGroup]="orderTicketForm" (ngSubmit)="save()">
-                                    <input class="ticket-order__inf name" formControlName="film_id" hidden>
-                                    <input class="ticket-order__inf name" formControlName="screening_id" hidden>
-                                    <input class="ticket-order__inf name" formControlName="seats" hidden>
-                                    <input class="ticket-order__inf name" formControlName="combo_id" hidden>
-                                    <input class="ticket-order__inf name" formControlName="discount_id" hidden>
-                                    <input class="ticket-order__inf name" formControlName="user_id" hidden>
-                                    <input class="ticket-order__inf name" formControlName="status" hidden>
-                                    <input class="ticket-order__inf name" formControlName="total_price" hidden>
-                                    <div class="seatReceipt">
-                                        <button type="submit" class="btn btn-outline-primary">Đặt vé</button>
-                                    </div>
-                                </form>
+                                <div class="ticket-order__display">
+                                    <button class="btn btn-outline-warning btn-rounded me-3" (click)="clearSeat()">Clear</button>
+                                    <form [formGroup]="orderTicketForm" (ngSubmit)="save()">
+                                        <input class="ticket-order__inf name" formControlName="film_id" hidden>
+                                        <input class="ticket-order__inf name" formControlName="screening_id" hidden>
+                                        <input class="ticket-order__inf name" formControlName="seats" hidden>
+                                        <input class="ticket-order__inf name" formControlName="combo_id" hidden>
+                                        <input class="ticket-order__inf name" formControlName="discount_id" hidden>
+                                        <input class="ticket-order__inf name" formControlName="user_id" hidden>
+                                        <input class="ticket-order__inf name" formControlName="status" hidden>
+                                        <input class="ticket-order__inf name" formControlName="total_price" hidden>
+                                        <div class="seatReceipt">
+                                            <button type="submit" class="btn btn-warning btn-rounded">Đặt vé</button>
+                                        </div>
+                                    </form>
+                                </div>
 
                             </div>
                             <!-- Your Information End -->
@@ -228,55 +230,55 @@
         <!-- ============================Modal Order Ticket End============================== -->
     </router-outlet>
     <!-- Footer Start -->
-    <div class="footer container footer__height head__border footer__bottom">
-        <div class="row">
-            <div class="col-3">
-                <h2 class="footer__tittle">MENU</h2>
-                <p class="footer__font">Home</p>
-                <p class="footer__font">Showtimes</p>
-                <p class="footer__font">Order Ticket</p>
-                <i class="fab fa-youtube footer__social footer__space"></i>
-                <i class="fab fa-facebook footer__social footer__space"></i>
-                <i class="fab fa-twitter footer__social"></i>
+    <div class="footer container footer__height head__border footer__bottom ">
+        <div class="row ">
+            <div class="col-3 ">
+                <h2 class="footer__tittle ">MENU</h2>
+                <p class="footer__font ">Home</p>
+                <p class="footer__font ">Showtimes</p>
+                <p class="footer__font ">Order Ticket</p>
+                <i class="fab fa-youtube footer__social footer__space "></i>
+                <i class="fab fa-facebook footer__social footer__space "></i>
+                <i class="fab fa-twitter footer__social "></i>
             </div>
-            <div class="col-3">
-                <h2 class="footer__tittle">ADDRESS</h2>
-                <p class="footer__font">28 Nguyen Tri Phuong Street,</p>
-                <p class="footer__font">Phu Nhuan, Hue City</p>
-                <p class="footer__font">Email: cinerama@gmail.com</p>
-                <p class="footer__font"><i class="fas fa-phone-alt footer__social footer__space"></i>+0125.124789</p>
+            <div class="col-3 ">
+                <h2 class="footer__tittle ">ADDRESS</h2>
+                <p class="footer__font ">28 Nguyen Tri Phuong Street,</p>
+                <p class="footer__font ">Phu Nhuan, Hue City</p>
+                <p class="footer__font ">Email: cinerama@gmail.com</p>
+                <p class="footer__font "><i class="fas fa-phone-alt footer__social footer__space "></i>+0125.124789</p>
             </div>
-            <div class="col-6">
-                <h2 class="footer__tittle">CONTACT</h2>
-                <div class="form-outline mb-4 footer__border">
-                    <input type="text" id="form4Example1" class="form-control" />
-                    <label class="form-label text-white-50" for="form4Example1">Name *</label>
+            <div class="col-6 ">
+                <h2 class="footer__tittle ">CONTACT</h2>
+                <div class="form-outline mb-4 footer__border ">
+                    <input type="text " id="form4Example1 " class="form-control " />
+                    <label class="form-label text-white-50 " for="form4Example1 ">Name *</label>
                 </div>
-                <div class="form-outline mb-4 footer__border">
-                    <input type="text" id="form4Example1" class="form-control" />
-                    <label class="form-label text-white-50" for="form4Example1">Email *</label>
+                <div class="form-outline mb-4 footer__border ">
+                    <input type="text " id="form4Example1 " class="form-control " />
+                    <label class="form-label text-white-50 " for="form4Example1 ">Email *</label>
                 </div>
-                <div class="form-outline mb-4 footer__border">
-                    <textarea class="form-control"></textarea>
-                    <label class="form-label text-white-50" for="form6Example7">Message * </label>
+                <div class="form-outline mb-4 footer__border ">
+                    <textarea class="form-control "></textarea>
+                    <label class="form-label text-white-50 " for="form6Example7 ">Message * </label>
                 </div>
-                <button type="button" class="btn btn-outline-warning btn-rounded">SEND TO US</button>
+                <button type="button " class="btn btn-outline-warning btn-rounded ">SEND TO US</button>
             </div>
         </div>
     </div>
-    <div class="logo container head__height-menu text-center">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="col-md-4">
-                    <p class="footer__font">
+    <div class="logo container head__height-menu text-center ">
+        <div class="row ">
+            <div class="col-4 ">
+                <div class="col-4 ">
+                    <p class="footer__font ">
                         @ Do Not Copyright</p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <img class="footer__logo head__margin" src="client/assets/frontend/logo/Logo-light.png" alt="logo">
+            <div class="col-4 ">
+                <img class="footer__logo head__margin " src="client/assets/frontend/logo/Logo-light.png " alt="logo ">
             </div>
-            <div class="col-md-4">
-                <p class="footer__font">
+            <div class="col-4 ">
+                <p class="footer__font ">
                     @License by: 'Nhac cong di xem phim'</p>
             </div>
         </div>

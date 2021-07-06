@@ -12,16 +12,16 @@ import { ProfileComponent } from './profile/profile.component';
 
 const ROUTES: Routes = [
   {
-    path: '', component: HomeComponent
+    path: 'client', component: HomeComponent
     },
       {
-      path: 'list-film', component: ListFilmComponent
+      path: 'client/list-film', component: ListFilmComponent
       },
       {
-      path: 'details-film/:id', component: DetailsFilmComponent
+      path: 'client/details-film/:id', component: DetailsFilmComponent
       },
       {
-      path: 'profile', component: ProfileComponent
+      path: 'client/profile', component: ProfileComponent
       }
 ]
 
