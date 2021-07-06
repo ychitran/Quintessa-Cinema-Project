@@ -45,7 +45,7 @@ export class ClientLayoutComponent implements OnInit {
   screening_id: number
   combo_id:number
   combo_name:string
-  combo_price:number
+  combo_price:number = 0
   count_ticket : Number
   room_id:number
   format_price: number

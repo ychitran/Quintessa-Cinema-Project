@@ -47,7 +47,7 @@ class RemarkableController extends Controller
     }
 
     public function createRemarkable() {
-        $list_of_category = Film::where('status',1)->get();
+        $list_of_category = Film::all();
         // if($category == 'film') {
         //     $list_of_category = Film::all();
         // }elseif($category == 'combo') {

@@ -49,12 +49,11 @@ class AuthController extends Controller
     }
 
     public function checkUser() {
-        // if(Auth::check()) {
-        //     return response()->json(auth()->user());
-        // }else {
-        //     $check = false;
-        // }
-        $check = Auth::user();
+        if(Auth::check()) {
+            $check = true;
+        }else {
+            $check = false;
+        }
         
         return response()->json($check);
     }
