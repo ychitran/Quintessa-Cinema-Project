@@ -49,6 +49,17 @@
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
                                             <h5 class="modal-title ticket-order__font">ĐẶT VÉ</h5>
+
+                                            <div class="order-ticket">
+                                                <h3 class="ticket-order__font-nav">Rạp phim</h3>
+                                                <select class="ticket-order__border" (change)="getCinema_id($event.target.value)" >
+                                                    <option checked>Vui lòng chọn rạp phim</option>
+                                                    <option *ngFor="let cinema of cinemas"
+                                                        value="{{cinema.id}}">
+                                                        {{cinema.cinema_name}}</option>
+                                                </select>
+                                            </div>
+                                            
                                             <div class="order-ticket">
                                                 <h3 class="ticket-order__font-nav">PHIM</h3>
                                                 <select class="ticket-order__border" (change)="loadScreeningDate($event.target.value)" (change)="loadFilmDetail($event.target.value)">
@@ -58,6 +69,8 @@
                                                         {{public_film.film_name}}</option>
                                                 </select>
                                             </div>
+
+                                            
 
                                             <div class="order-ticket">
                                                 <h3 class="ticket-order__font-nav">BẮP NƯỚC</h3>

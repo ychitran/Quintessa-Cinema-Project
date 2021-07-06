@@ -5,6 +5,13 @@
 </div>
 
 <div class="card-body">
+    <div class="input-group">
+
+        <input #keyword (keydown.enter)="searchUser($event.target.value)" type="text"
+            class="form-control col-sm-3 form-control-label" placeholder="Tìm kiếm" aria-label="Search Keyword"
+            aria-describedby="basic-addon2">
+
+    </div>
     <div class="form-group row">
         <label class="col-md-3 form-control-label">Phim</label>
         <div class="col-md-9">
@@ -80,17 +87,20 @@
                 <div class="col-md-4 ">
 
                     <h5 class="modal-title ticket-order__font ">THÔNG TIN</h5>
+                    <h3 class="ticket-order__font-nav ">THÀNH VIÊN</h3>
+                    <h3 class="ticket-order__font-nav ">{{member.full_name}}</h3>
                     <h3 class="ticket-order__font-nav ">TÊN PHIM</h3>
                     <h3 class="ticket-order__font-nav ">{{move_name}}</h3>
                     <h3 class="ticket-order__font-nav ">NGÀY</h3>
-                    <h5 class="ticket-order__inf ">{{date}}</h5>
+                    <h5 class="ticket-order__inf ">{{date | date: 'dd/MM/yyyy'}}</h5>
                     <h3 class="ticket-order__font-nav ">SUẤT CHIẾU</h3>
                     <h5 class="ticket-order__inf ">{{start_time}}</h5>
                     <h3 class="ticket-order__font-nav ">SỐ GHẾ</h3>
                     <h5 class="ticket-order__inf ">
                         <ng-container *ngFor="let seatt of seat"> {{seatt}}</ng-container>
                     </h5>
-                    <h3 class="ticket-order__font-nav ">TỔNG TIỀN: $30</h3>
+                    <h3 class="ticket-order__font-nav ">SỐ LƯỢNG VÉ: {{seat.length}}</h3>
+                    <h3 class="ticket-order__font-nav ">TỔNG TIỀN: {{total_price}} Vnd</h3>
                 </div>
                 <div class="seatReceipt">
                     <button class="btn btn-outline-warning" (click)="clearSeat()">Clear</button>
@@ -99,12 +109,9 @@
                     <input class="ticket-order__inf name" formControlName="film_id" hidden>
                     <input class="ticket-order__inf name" formControlName="screening_id" hidden>
                     <input class="ticket-order__inf name" formControlName="seats" hidden>
-                    <input class="ticket-order__inf name" formControlName="combo_id" hidden>
                     <input class="ticket-order__inf name" formControlName="discount_id" hidden>
-                    <input class="ticket-order__inf name" formControlName="phone_number" hidden>
                     <input class="ticket-order__inf name" formControlName="user_id" hidden>
                     <input class="ticket-order__inf name" formControlName="status" hidden>
-                    <input class="ticket-order__inf name" formControlName="ticket_price" hidden>
                     <input class="ticket-order__inf name" formControlName="total_price" hidden>
                     <div class="seatReceipt">
                         <button type="submit" class="btn btn-outline-primary">Đặt vé</button>
